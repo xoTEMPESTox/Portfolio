@@ -1,68 +1,109 @@
 # 🚀 Priyanshu Sah – AI & Full-Stack Portfolio
 
-This repository contains the source code for my **personal portfolio website**, a fully interactive and feature-packed developer hub.
-It was designed and scaffolded using **local agentic AI workflows** and enhanced with **Next.js, TailwindCSS, Three.js, and React Three Fiber**.
-
-The portfolio showcases my **AI, full-stack, and research projects** with dynamic stats integrations, 3D UI, parallax effects, and an embedded **AI resume assistant**.
+**AI-built portfolio website** using local **agentic AI orchestration** (Kilo Code).
+This repo is a **living project** — developed in stages from simple templates to a fully interactive 3D experience.
 
 ---
 
-## ✨ Features
+## 📌 Project Vision
 
-* ⚡ **3D Interactive UI** – built with Three.js & React Three Fiber
-* 🎭 **Smooth Animations & Parallax** – Framer Motion & scroll effects
-* 📊 **Dynamic Stats Dashboard** – GitHub, LeetCode, Codolio, and more
-* 🏆 **Hackathons & Achievements** – Technovate, Intel Hackathon, SIH, Avishkar
-* 🤖 **AI Resume Assistant** – chatbot that answers questions about my work
-* 📰 **Blog/Content Feed** – auto-fetches latest posts from Medium/LinkedIn
-* 🌓 **Dark/Light Mode** – responsive, accessible theming
-* 📄 **Resume Viewer + Download** – inline PDF & vCard export
-* 📬 **Contact Form + Social Links** – email + icons with hover effects
+Create a **feature-packed developer hub** that:
+
+* Showcases **projects, experience, hackathons, and stats**
+* Uses **3D, parallax, and modern UI**
+* Integrates **live stats from GitHub, LeetCode, Codolio, etc.**
+* Includes an **AI Resume Assistant** to answer recruiter questions
 
 ---
 
-## 🔗 Links
+## 📑 Requirements Checklist
 
-* **Resume** → [bit.ly/Priyanshu\_Sah-Resume-Foreign](https://bit.ly/Priyanshu_Sah-Resume-Foreign)
-* **GitHub** → [@xoTEMPESTox](https://github.com/xoTEMPESTox)
-* **LinkedIn** → [linkedin.com/in/priyanshu123sah](https://www.linkedin.com/in/priyanshu123sah/)
-* **Portfolio (Codolio)** → [codolio.com/profile/*TEMPEST*](https://codolio.com/profile/_TEMPEST_)
-* **Email** → [priyanshu123sah@gmail.com](mailto:priyanshu123sah@gmail.com)
+### Core Sections
 
----
+* [ ] Hero Section (intro, tagline, resume + contact buttons)
+* [ ] About Me (bio, skills, photo)
+* [ ] Work Experience (timeline)
+* [ ] Projects (GitHub repos + demos)
+* [ ] Hackathons & Awards
+* [ ] Publications / Blogs
+* [ ] Resume (viewer + download)
+* [ ] Contact (form + social links)
 
-## 🛠️ Tech Stack
+### Extra Features
 
-* **Framework:** Next.js (React)
-* **Styling:** TailwindCSS, Framer Motion
-* **3D Graphics:** Three.js, React Three Fiber, Drei
-* **Backend:** FastAPI (optional for stats aggregation)
-* **Databases (if needed):** PostgreSQL, MongoDB
-* **APIs & Integrations:**
-
-  * GitHub API (repos, commits, stars)
-  * LeetCode API (problems solved, ratings)
-  * Codolio API (badges, coding profile)
-  * Kaggle API (competitions, rank)
-  * Stack Overflow API (reputation, badges)
+* [ ] Dynamic Stats Dashboard (GitHub, LeetCode, Codolio, etc.)
+* [ ] 3D Skills Cloud
+* [ ] Gamification (XP, badges)
+* [ ] AI Resume Assistant
+* [ ] Blog Auto-Fetch (Medium, LinkedIn)
+* [ ] Dark/Light Mode
 
 ---
 
-## 🚀 Deployment
+## 🏗️ Development Stages
 
-* Hosted on **Vercel** for fast, global, serverless deployment.
-* CI/CD with GitHub → automatic build & deploy on push.
+Each requirement will be built in **tiers**, starting from the simplest template and iteratively enhanced by the agent:
+
+### Stage 0 – Setup
+
+* [x] Initialize repo + README
+* [ ] Configure local agent orchestration (Kilo Code + API keys)
+
+### Stage 1 – Templates (Low Tier)
+
+* [ ] Static HTML pages for each section
+* [ ] Plain text content placeholders
+
+### Stage 2 – Mid Tier (HTML + CSS + JS)
+
+* [ ] Add basic layout + navigation
+* [ ] Styled sections with TailwindCSS
+* [ ] Responsive design (mobile + desktop)
+
+### Stage 3 – Dynamic (Next.js + API Integrations)
+
+* [ ] Projects auto-fetched from GitHub API
+* [ ] Stats dashboard pulling GitHub + LeetCode + Codolio
+* [ ] Contact form with email API (Formspree/Resend)
+
+### Stage 4 – Advanced (3D + Parallax)
+
+* [ ] Add Three.js / React Three Fiber components
+* [ ] Parallax scroll effects + Framer Motion animations
+* [ ] 3D Skills Cloud
+
+### Stage 5 – Final Feature-Packed Version
+
+* [ ] AI Resume Assistant (RAG pipeline from resume + GitHub projects)
+* [ ] Gamification layer (XP bars, badges)
+* [ ] Blog auto-fetch from Medium/LinkedIn
+* [ ] Dark/light mode toggle
+* [ ] Deployment on Vercel
 
 ---
 
-## 📌 Repo Purpose
+## 🔗 Resources & Links
 
-This repo is not just a personal portfolio — it’s a **living showcase of AI + full-stack engineering**.
-It was **scaffolded using local agentic AI tools**, making it an experiment in building production-ready software with AI-assisted workflows.
+* **Resume:** [bit.ly/Priyanshu\_Sah-Resume-Foreign](https://bit.ly/Priyanshu_Sah-Resume-Foreign)
+* **GitHub:** [@xoTEMPESTox](https://github.com/xoTEMPESTox)
+* **LinkedIn:** [linkedin.com/in/priyanshu123sah](https://www.linkedin.com/in/priyanshu123sah/)
+* **Codolio Portfolio:** [codolio.com/profile/*TEMPEST*](https://codolio.com/profile/_TEMPEST_)
+* **Email:** [priyanshu123sah@gmail.com](mailto:priyanshu123sah@gmail.com)
 
-Future updates will include:
+---
 
-* More 3D components
-* AI-powered blog summarizer
-* Deeper integrations (Kaggle, Stack Overflow, publications)
+## ⚙️ Agent Configuration
 
+The agent will use **local orchestration mode** with these APIs:
+
+* **Groq API** (LLaMA 3, Mixtral – 128k ctx)
+* **Local Ollama** (Qwen3-30b – 256k ctx)
+
+---
+
+## 📅 Project Flow
+
+* The README will be **updated at each milestone** by the agent.
+* Each requirement moves from **unchecked → implemented**.
+* Each stage will have **commits tagged** (Stage 1, Stage 2, etc.).
+* Development will pause/resume over multiple weeks — the README keeps state so nothing is lost.
