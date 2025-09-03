@@ -163,7 +163,7 @@ export function Optimized3D({ children, fallback = null }) {
 
   useEffect(() => {
     // Decide whether to render 3D based on capabilities
-    const should3D = capabilities.webgl && 
+    const should3D = capabilities.webgl &&
                      capabilities.maxTextureSize >= 1024 &&
                      deviceTier !== 'low'
     
@@ -171,7 +171,8 @@ export function Optimized3D({ children, fallback = null }) {
   }, [capabilities, deviceTier])
 
   if (!shouldRender3D) {
-    return fallback || <div className="text-center p-8 text-gray-500">3D features disabled for better performance</div>
+    // Return null to let parent handle fallback outside Canvas
+    return null
   }
 
   return (

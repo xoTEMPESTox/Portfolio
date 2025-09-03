@@ -174,7 +174,7 @@ export default function Hero3D({ children }) {
               gl={canvasSettings}
               dpr={canvasSettings.pixelRatio}
             >
-              <Optimized3D fallback={<WebGLFallback />}>
+              <Optimized3D>
                 <Scene />
               </Optimized3D>
             </Canvas>

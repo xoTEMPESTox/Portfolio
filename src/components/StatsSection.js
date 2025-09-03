@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { fetchGitHubProfile, fallbackGitHubData } from '../utils/github'
 import { fetchLeetCodeStats, fallbackLeetCodeData } from '../utils/leetcode'
-import { fetchCodolioStats, fallbackCodolioData } from '../utils/codolio'
+import { fetchCodolioStats, fallbackCodolioData, getCodolioProfileUrl } from '../utils/codolio'
+import CodolioIframe, { CodolioStats } from './CodolioIframe'
 
 const StatsSection = () => {
   const [stats, setStats] = useState({
@@ -159,12 +160,35 @@ const StatsSection = () => {
                 <span className="font-semibold text-blue-600 dark:text-blue-400">{stats.codolio?.rank || 'N/A'}</span>
               </div>
             </div>
+            <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-600">
+              <a
+                href={getCodolioProfileUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center text-sm text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-colors duration-200"
+              >
+                <span>View Full Profile</span>
+                <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        {/* Codolio Interactive Profile Section */}
+        <div className="mt-12">
+          <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
+            Interactive Codolio Profile
+          </h3>
+          <div className="max-w-4xl mx-auto">
+            <CodolioStats height="500px" className="mb-6" />
           </div>
         </div>
         
         <div className="text-center mt-8">
           <p className="text-sm text-gray-500 dark:text-gray-400 italic">
-            Stats are fetched live from GitHub, LeetCode, and Codolio APIs (fallback data shown if APIs fail)
+            Stats are fetched live from GitHub and LeetCode APIs. Codolio profile is embedded via iframe (fallback data shown if APIs fail)
           </p>
         </div>
       </div>

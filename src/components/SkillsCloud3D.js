@@ -212,7 +212,7 @@ export default function SkillsCloud3D({ skills }) {
                   dpr={canvasSettings.pixelRatio}
                   style={{ touchAction: "pan-y" }}
                 >
-                  <Optimized3D fallback={<SkillsCloudFallback skills={skills} />}>
+                  <Optimized3D>
                     <SkillsScene skills={skills} />
                   </Optimized3D>
                 </Canvas>
