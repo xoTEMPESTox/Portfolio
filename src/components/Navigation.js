@@ -24,21 +24,22 @@ const Navigation = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="logo">
-            <Link href="/">
-              <h2 className="text-2xl font-bold text-blue-600 cursor-pointer">Portfolio</h2>
+            <Link href="/" className="text-2xl font-bold text-blue-600 cursor-pointer">
+              Portfolio
             </Link>
           </div>
           <ul className="flex space-x-4 md:space-x-8">
             {navItems.map((item) => (
               <li key={item.href}>
-                <Link href={item.href}>
-                  <a className={`font-medium transition-all duration-300 ${
+                <Link
+                  href={item.href}
+                  className={`font-medium transition-all duration-300 ${
                     isActive(item.href)
                       ? 'text-blue-600 border-b-2 border-blue-600'
                       : 'text-gray-800 hover:text-blue-600'
-                  }`}>
-                    {item.label}
-                  </a>
+                  }`}
+                >
+                  {item.label}
                 </Link>
               </li>
             ))}
