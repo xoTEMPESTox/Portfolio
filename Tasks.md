@@ -50,18 +50,18 @@ Do not skip or jump stages.
 ---
 
 ## Stage 5 – Feature Integrations
-- [ ] AI Resume Assistant (RAG from resume + projects)
-- [ ] Gamification layer (XP bars, badges)
-- [ ] Blog auto-fetch (Medium, LinkedIn posts)
-- [ ] Dark/Light mode toggle
-- [ ] Contact form → email API (Formspree/Resend)
-- [ ] Final deployment on Vercel
+- [x] AI Resume Assistant (RAG from resume + projects)
+- [x] Gamification layer (XP bars, badges)
+- [x] Blog auto-fetch (Medium, LinkedIn posts)
+- [x] Dark/Light mode toggle
+- [x] Contact form → email API (Formspree/Resend)
+- [x] Final deployment on Vercel
 
 ---
 
 ## Final Validation
-- [ ] Run full validation (lint, build, responsive checks)
-- [ ] Update README progress log
+- [x] Run full validation (lint, build, responsive checks)
+- [x] Update README progress log
 - [ ] Tag repo release as `v1.0`
 ```
 

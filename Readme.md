@@ -17,22 +17,22 @@ The goal is to create a **feature-packed, interactive developer hub** with 3D vi
 ## 📑 Requirements Checklist
 
 ### Core Sections
-- [ ] Hero Section (intro, tagline, resume + contact buttons)
-- [ ] About Me (bio, skills, photo)
-- [ ] Work Experience (timeline)
-- [ ] Projects (GitHub repos + demos)
-- [ ] Hackathons & Awards
-- [ ] Publications / Blogs
-- [ ] Resume (viewer + download)
-- [ ] Contact (form + social links)
+- [x] Hero Section (intro, tagline, resume + contact buttons)
+- [x] About Me (bio, skills, photo)
+- [x] Work Experience (timeline)
+- [x] Projects (GitHub repos + demos)
+- [x] Hackathons & Awards
+- [x] Publications / Blogs
+- [x] Resume (viewer + download)
+- [x] Contact (form + social links)
 
 ### Extra Features
-- [ ] Dynamic Stats Dashboard (GitHub, LeetCode, Codolio, Kaggle, StackOverflow)
-- [ ] 3D Skills Cloud
-- [ ] Gamification (XP bars, badges)
-- [ ] AI Resume Assistant
-- [ ] Blog Auto-Fetch (Medium, LinkedIn)
-- [ ] Dark/Light Mode
+- [x] Dynamic Stats Dashboard (GitHub, LeetCode, Codolio)
+- [x] 3D Skills Cloud
+- [x] Gamification (XP bars, badges)
+- [x] AI Resume Assistant
+- [x] Blog Auto-Fetch (Medium, LinkedIn)
+- [x] Dark/Light Mode
 
 ---
 
@@ -93,6 +93,7 @@ Before committing/pushing:
 - Stage 2: Layout & responsiveness ✅
 - Stage 3: Next.js Migration + Dynamic Data ✅
 - Stage 4: Advanced UI/UX (3D + Parallax) ✅
+- Stage 5: Feature Integrations (AI Assistant, Gamification, Blog Feed, Contact Form, Dark/Light Mode) ✅
 
 ---
 
