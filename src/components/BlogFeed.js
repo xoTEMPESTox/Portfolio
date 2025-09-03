@@ -11,6 +11,22 @@ const BlogFeed = () => {
   const CACHE_KEY = 'portfolio_blog_cache';
   const CACHE_DURATION = 30 * 60 * 1000; // 30 minutes
 
+  const getCachedBlogs = () => {
+    try {
+      const cached = localStorage.getItem(CACHE_KEY);
+      if (cached) {
+        const data = JSON.parse(cached);
+        const now = new Date().getTime();
+        if (now - data.timestamp < CACHE_DURATION) {
+          return data;
+        }
+      }
+    } catch (err) {
+      console.error('Error reading cache:', err);
+    }
+    return null;
+  };
+
   const fetchBlogs = useCallback(async (forceRefresh = false) => {
     setLoading(true);
     setError(null);
@@ -65,22 +81,6 @@ const BlogFeed = () => {
   useEffect(() => {
     fetchBlogs();
   }, [fetchBlogs]);
-
-  const getCachedBlogs = () => {
-    try {
-      const cached = localStorage.getItem(CACHE_KEY);
-      if (cached) {
-        const data = JSON.parse(cached);
-        const now = new Date().getTime();
-        if (now - data.timestamp < CACHE_DURATION) {
-          return data;
-        }
-      }
-    } catch (err) {
-      console.error('Error reading cache:', err);
-    }
-    return null;
-  };
 
   const cacheBlogs = (blogs) => {
     try {
