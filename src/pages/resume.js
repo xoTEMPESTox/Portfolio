@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import personalData from '../data/personal.json'
+import Link from 'next/link';
 
 export default function Resume() {
   return (
@@ -55,10 +56,10 @@ export default function Resume() {
                    rel="noopener noreferrer">
                    📄 Download Resume (PDF)
                 </a>
-                <a href="/contact" 
+                <Link href="/contact" 
                    className="btn btn-outline text-lg px-8 py-3">
                    📧 Contact Me
-                </a>
+                </Link>
               </div>
               
               <div className="mt-8 pt-6 border-t border-gray-200">

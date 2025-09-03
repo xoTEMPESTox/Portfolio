@@ -11,17 +11,17 @@ export default function Home() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="hero-content max-w-4xl mx-auto">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Hi, I'm <span className="text-blue-600">{personalData.name}</span>
+              Hi, I&apos;m <span className="text-blue-600">{personalData.name}</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
               {personalData.tagline}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/resume">
-                <a className="btn btn-primary w-full sm:w-auto">View Resume</a>
+              <Link href="/resume" className="btn btn-primary w-full sm:w-auto">
+                View Resume
               </Link>
-              <Link href="/contact">
-                <a className="btn btn-outline w-full sm:w-auto">Contact Me</a>
+              <Link href="/contact" className="btn btn-outline w-full sm:w-auto">
+                Contact Me
               </Link>
             </div>
           </div>
