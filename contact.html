@@ -4,64 +4,195 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact - Portfolio</title>
+    <link href="./dist/output.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen">
     <!-- Navigation -->
-    <nav>
-        <div class="logo">
-            <h2>Portfolio</h2>
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="logo">
+                    <h2 class="text-2xl font-bold text-blue-600">Portfolio</h2>
+                </div>
+                <ul class="flex space-x-4 md:space-x-8">
+                    <li><a href="index.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Home</a></li>
+                    <li><a href="about.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">About</a></li>
+                    <li><a href="experience.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Experience</a></li>
+                    <li><a href="projects.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Projects</a></li>
+                    <li><a href="hackathons.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Hackathons</a></li>
+                    <li><a href="publications.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Publications</a></li>
+                    <li><a href="resume.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Resume</a></li>
+                    <li><a href="contact.html" class="text-blue-600 font-medium border-b-2 border-blue-600">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="hackathons.html">Hackathons</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
     </nav>
 
     <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h1>Contact Me</h1>
+    <section id="contact" class="pt-24 pb-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">Contact Me</h1>
             
-            <!-- Contact Form Placeholder -->
-            <div class="contact-form">
-                <h2>Send a Message</h2>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Send a Message</h2>
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Name</label>
+                            <input type="text" 
+                                   id="name" 
+                                   name="name" 
+                                   placeholder="Your Name" 
+                                   required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                            <input type="email" 
+                                   id="email" 
+                                   name="email" 
+                                   placeholder="Your Email" 
+                                   required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                            <input type="text" 
+                                   id="subject" 
+                                   name="subject" 
+                                   placeholder="Subject" 
+                                   required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+                            <textarea id="message" 
+                                      name="message" 
+                                      placeholder="Your Message" 
+                                      rows="5" 
+                                      required 
+                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-vertical"></textarea>
+                        </div>
+                        <button type="submit" 
+                                class="btn btn-primary w-full text-lg py-3">
+                            📧 Send Message
+                        </button>
+                    </form>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <p class="text-sm text-gray-600 text-center">
+                            Form submission will be integrated with email service in Stage 5
+                        </p>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                
+                <!-- Contact Information & Social Links -->
+                <div class="space-y-8">
+                    <!-- Contact Info -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg p-8">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Get In Touch</h2>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">📧</span>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-700">Email</p>
+                                    <a href="mailto:priyanshu123sah@gmail.com" 
+                                       class="text-blue-600 hover:text-blue-800 transition-colors">
+                                       priyanshu123sah@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">💼</span>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-700">Professional Status</p>
+                                    <p class="text-gray-600">Open for opportunities</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center mr-4">
+                                    <span class="text-white text-lg">🌍</span>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold text-gray-700">Location</p>
+                                    <p class="text-gray-600">Available for remote work</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    
+                    <!-- Social Links -->
+                    <div class="bg-white rounded-lg shadow-lg p-8 border border-gray-200">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-6">Connect with Me</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <a href="https://bit.ly/Priyanshu_Sah-Resume-Foreign" 
+                               target="_blank" 
+                               class="flex items-center p-4 bg-red-50 hover:bg-red-100 rounded-lg transition-colors border border-red-200">
+                                <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white text-lg">📄</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-red-800">Resume</p>
+                                    <p class="text-red-600 text-sm">Download PDF</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://github.com/xoTEMPESTox" 
+                               target="_blank" 
+                               class="flex items-center p-4 bg-gray-50 hover:bg-gray-100 rounded-lg transition-colors border border-gray-200">
+                                <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white text-lg">🐱</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">GitHub</p>
+                                    <p class="text-gray-600 text-sm">@xoTEMPESTox</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://www.linkedin.com/in/priyanshu123sah/" 
+                               target="_blank" 
+                               class="flex items-center p-4 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors border border-blue-200">
+                                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white text-lg">💼</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-blue-800">LinkedIn</p>
+                                    <p class="text-blue-600 text-sm">Priyanshu Sah</p>
+                                </div>
+                            </a>
+                            
+                            <a href="https://codolio.com/profile/_TEMPEST_" 
+                               target="_blank" 
+                               class="flex items-center p-4 bg-green-50 hover:bg-green-100 rounded-lg transition-colors border border-green-200">
+                                <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center mr-3">
+                                    <span class="text-white text-lg">⚡</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-green-800">Codolio</p>
+                                    <p class="text-green-600 text-sm">_TEMPEST_</p>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    
+                    <!-- Response Time -->
+                    <div class="bg-yellow-50 rounded-lg p-6 border border-yellow-200">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white text-sm">⏱️</span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-yellow-800">Quick Response</p>
+                                <p class="text-yellow-700 text-sm">I typically respond within 24 hours</p>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
-
-            <!-- Social Links -->
-            <div class="social-links">
-                <h2>Connect with Me</h2>
-                <ul>
-                    <li><a href="https://bit.ly/Priyanshu_Sah-Resume-Foreign" target="_blank">Resume</a></li>
-                    <li><a href="https://github.com/xoTEMPESTox" target="_blank">GitHub</a></li>
-                    <li><a href="https://www.linkedin.com/in/priyanshu123sah/" target="_blank">LinkedIn</a></li>
-                    <li><a href="https://codolio.com/profile/_TEMPEST_" target="_blank">Codolio Portfolio</a></li>
-                    <li><a href="mailto:priyanshu123sah@gmail.com">Email</a></li>
-                </ul>
+                </div>
             </div>
         </div>
     </section>

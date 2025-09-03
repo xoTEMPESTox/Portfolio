@@ -4,79 +4,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hackathons & Awards - Portfolio</title>
+    <link href="./dist/output.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen">
     <!-- Navigation -->
-    <nav>
-        <div class="logo">
-            <h2>Portfolio</h2>
+    <nav class="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="logo">
+                    <h2 class="text-2xl font-bold text-blue-600">Portfolio</h2>
+                </div>
+                <ul class="flex space-x-4 md:space-x-8">
+                    <li><a href="index.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Home</a></li>
+                    <li><a href="about.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">About</a></li>
+                    <li><a href="experience.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Experience</a></li>
+                    <li><a href="projects.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Projects</a></li>
+                    <li><a href="hackathons.html" class="text-blue-600 font-medium border-b-2 border-blue-600">Hackathons</a></li>
+                    <li><a href="publications.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Publications</a></li>
+                    <li><a href="resume.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Resume</a></li>
+                    <li><a href="contact.html" class="text-gray-800 hover:text-blue-600 font-medium transition-all duration-300">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="hackathons.html">Hackathons</a></li>
-            <li><a href="publications.html">Publications</a></li>
-            <li><a href="resume.html">Resume</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
     </nav>
 
     <!-- Hackathons Section -->
-    <section id="hackathons">
-        <div class="container">
-            <h1>My Hackathons</h1>
+    <section id="hackathons" class="pt-24 pb-16 bg-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">My Hackathons</h1>
             
-            <!-- Hackathon 1 -->
-            <div class="hackathon">
-                <h2>Hackathon Name 1</h2>
-                <p><strong>Date:</strong> Month Year</p>
-                <p><strong>Role:</strong> Team Member/Leader</p>
-                <p><strong>Description:</strong> This is a placeholder for describing the hackathon, including the problem statement, your team's solution, and technologies used.</p>
-                <p><strong>Achievements:</strong> What your team accomplished, any awards won, etc.</p>
-            </div>
-            
-            <!-- Hackathon 2 -->
-            <div class="hackathon">
-                <h2>Hackathon Name 2</h2>
-                <p><strong>Date:</strong> Month Year</p>
-                <p><strong>Role:</strong> Team Member/Leader</p>
-                <p><strong>Description:</strong> This is a placeholder for describing the hackathon, including the problem statement, your team's solution, and technologies used.</p>
-                <p><strong>Achievements:</strong> What your team accomplished, any awards won, etc.</p>
-            </div>
-            
-            <!-- Additional hackathons can be added here -->
-            <div class="hackathon-placeholder">
-                <p><em>Add more hackathons as needed...</em></p>
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Hackathon 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="flex-grow">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-2">Hackathon Name 1</h2>
+                            <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+                                <div class="flex items-center">
+                                    <span class="font-semibold mr-2">📅 Date:</span>
+                                    <span>Month Year</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-semibold mr-2">👥 Role:</span>
+                                    <span>Team Member/Leader</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center ml-6">
+                            <span class="text-2xl">🏆</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Description:</p>
+                            <p class="text-gray-700 leading-relaxed">
+                                This is a placeholder for describing the hackathon, including the problem statement, your team's solution, 
+                                and technologies used. Replace with details about the challenge, your approach, and implementation.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Achievements:</p>
+                            <p class="text-gray-700 leading-relaxed">
+                                What your team accomplished, any awards won, recognition received, and impact of your solution.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hackathon 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-start justify-between mb-6">
+                        <div class="flex-grow">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-2">Hackathon Name 2</h2>
+                            <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+                                <div class="flex items-center">
+                                    <span class="font-semibold mr-2">📅 Date:</span>
+                                    <span>Month Year</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-semibold mr-2">👥 Role:</span>
+                                    <span>Team Member/Leader</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center ml-6">
+                            <span class="text-2xl">🏆</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Description:</p>
+                            <p class="text-gray-700 leading-relaxed">
+                                This is a placeholder for describing the hackathon, including the problem statement, your team's solution, 
+                                and technologies used. Replace with details about the challenge, your approach, and implementation.
+                            </p>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-900 mb-2">Achievements:</p>
+                            <p class="text-gray-700 leading-relaxed">
+                                What your team accomplished, any awards won, recognition received, and impact of your solution.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Add more hackathons placeholder -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 text-center">
+                    <p class="text-gray-600 italic">Add more hackathons as needed...</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Awards Section -->
-    <section id="awards">
-        <div class="container">
-            <h1>My Awards</h1>
+    <section id="awards" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-16">My Awards</h1>
             
-            <!-- Award 1 -->
-            <div class="award">
-                <h2>Award Name 1</h2>
-                <p><strong>Date:</strong> Month Year</p>
-                <p><strong>Organization:</strong> Organization Name</p>
-                <p><strong>Description:</strong> This is a placeholder for describing the award, including the criteria for selection and what it recognizes.</p>
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Award 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-grow">
+                            <h2 class="text-xl font-bold text-gray-900 mb-2">Award Name 1</h2>
+                            <div class="space-y-2 text-sm text-gray-600">
+                                <div class="flex items-center">
+                                    <span class="font-semibold mr-2">📅 Date:</span>
+                                    <span>Month Year</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-semibold mr-2">🏢 Organization:</span>
+                                    <span>Organization Name</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center ml-4">
+                            <span class="text-xl">🏅</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900 mb-2">Description:</p>
+                        <p class="text-gray-700 leading-relaxed text-sm">
+                            This is a placeholder for describing the award, including the criteria for selection and what it recognizes. 
+                            Replace with actual details about your achievement.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Award 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-all duration-300">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex-grow">
+                            <h2 class="text-xl font-bold text-gray-900 mb-2">Award Name 2</h2>
+                            <div class="space-y-2 text-sm text-gray-600">
+                                <div class="flex items-center">
+                                    <span class="font-semibold mr-2">📅 Date:</span>
+                                    <span>Month Year</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <span class="font-semibold mr-2">🏢 Organization:</span>
+                                    <span>Organization Name</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center ml-4">
+                            <span class="text-xl">🏅</span>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900 mb-2">Description:</p>
+                        <p class="text-gray-700 leading-relaxed text-sm">
+                            This is a placeholder for describing the award, including the criteria for selection and what it recognizes. 
+                            Replace with actual details about your achievement.
+                        </p>
+                    </div>
+                </div>
             </div>
             
-            <!-- Award 2 -->
-            <div class="award">
-                <h2>Award Name 2</h2>
-                <p><strong>Date:</strong> Month Year</p>
-                <p><strong>Organization:</strong> Organization Name</p>
-                <p><strong>Description:</strong> This is a placeholder for describing the award, including the criteria for selection and what it recognizes.</p>
-            </div>
-            
-            <!-- Additional awards can be added here -->
-            <div class="award-placeholder">
-                <p><em>Add more awards as needed...</em></p>
+            <!-- Add more awards placeholder -->
+            <div class="max-w-4xl mx-auto mt-8">
+                <div class="bg-white p-6 rounded-lg border border-gray-200 text-center">
+                    <p class="text-gray-600 italic">Add more awards as needed...</p>
+                </div>
             </div>
         </div>
     </section>
