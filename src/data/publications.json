@@ -1,0 +1,48 @@
+{
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Blog Title 1",
+      "date": "Month Year",
+      "tags": ["Technology", "Programming", "Web Development"],
+      "summary": "This is a placeholder for a blog post summary. Replace this with a brief description of your blog post content, key insights shared, and the value it provides to readers.",
+      "url": "https://yourblogplatform.com/blog1",
+      "icon": "📝"
+    },
+    {
+      "id": 2,
+      "title": "Blog Title 2",
+      "date": "Month Year",
+      "tags": ["AI/ML", "Data Science", "Python"],
+      "summary": "This is a placeholder for a blog post summary. Replace this with a brief description of your blog post content, key insights shared, and the value it provides to readers.",
+      "url": "https://yourblogplatform.com/blog2",
+      "icon": "📝"
+    }
+  ],
+  "publications": [
+    {
+      "id": 1,
+      "title": "Publication Title 1",
+      "date": "Month Year",
+      "publishedIn": "Journal/Conference Name",
+      "coAuthors": "Author 1, Author 2, Author 3",
+      "abstract": "This is a placeholder for the publication abstract. Replace this with the actual abstract of your publication, highlighting the research problem, methodology, key findings, and contributions to the field.",
+      "url": "https://publicationplatform.com/pub1",
+      "icon": "📄"
+    },
+    {
+      "id": 2,
+      "title": "Publication Title 2",
+      "date": "Month Year",
+      "publishedIn": "Journal/Conference Name",
+      "coAuthors": "Author 1, Author 2, Author 3",
+      "abstract": "This is a placeholder for the publication abstract. Replace this with the actual abstract of your publication, highlighting the research problem, methodology, key findings, and contributions to the field.",
+      "url": "https://publicationplatform.com/pub2",
+      "icon": "📄"
+    }
+  ],
+  "placeholders": {
+    "blogs": "Add more blog posts as needed...",
+    "publications": "Add more publications as needed..."
+  }
+}

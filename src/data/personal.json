@@ -1,0 +1,33 @@
+{
+  "name": "Priyanshu Sah",
+  "title": "AI & Full-Stack Developer",
+  "tagline": "A passionate developer creating amazing web experiences with AI and Full-Stack technologies",
+  "bio": [
+    "I'm a passionate AI and Full-Stack developer with expertise in creating innovative web experiences. My journey in technology spans across various domains including machine learning, web development, and software engineering.",
+    "This is a placeholder for your bio. Replace this text with your actual biography, including your background, education, and professional journey. Share your story, achievements, and what drives you in the world of technology."
+  ],
+  "stats": {
+    "projectsCompleted": "50+",
+    "yearsExperience": "3+",
+    "technologiesMastered": "10+"
+  },
+  "resumeHighlights": {
+    "experience": "3+ Years Professional",
+    "education": "Computer Science",
+    "skills": "Full-Stack & AI",
+    "projects": "50+ Completed"
+  },
+  "links": {
+    "resume": "https://bit.ly/Priyanshu_Sah-Resume-Foreign",
+    "github": "https://github.com/xoTEMPESTox",
+    "linkedin": "https://www.linkedin.com/in/priyanshu123sah/",
+    "codolio": "https://codolio.com/profile/_TEMPEST_",
+    "email": "priyanshu123sah@gmail.com"
+  },
+  "contact": {
+    "email": "priyanshu123sah@gmail.com",
+    "status": "Open for opportunities",
+    "location": "Available for remote work",
+    "responseTime": "I typically respond within 24 hours"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "repositories": [
+    {
+      "id": 1,
+      "name": "Repository Name 1",
+      "description": "Description of your first project/repo. Replace this with actual details about your project, technologies used, and key features implemented.",
+      "technologies": ["React", "Node.js"],
+      "githubUrl": "https://github.com/xoTEMPESTox/repo1",
+      "icon": "📁"
+    },
+    {
+      "id": 2,
+      "name": "Repository Name 2",
+      "description": "Description of your second project/repo. Replace this with actual details about your project, technologies used, and key features implemented.",
+      "technologies": ["Python", "AI/ML"],
+      "githubUrl": "https://github.com/xoTEMPESTox/repo2",
+      "icon": "📁"
+    },
+    {
+      "id": 3,
+      "name": "Repository Name 3",
+      "description": "Description of your third project/repo. Replace this with actual details about your project, technologies used, and key features implemented.",
+      "technologies": ["TypeScript", "Next.js"],
+      "githubUrl": "https://github.com/xoTEMPESTox/repo3",
+      "icon": "📁"
+    }
+  ],
+  "demos": [
+    {
+      "id": 1,
+      "name": "Demo Project 1",
+      "description": "Description of your first demo project. Replace this with actual details about your project, its functionality, and the problem it solves.",
+      "demoUrl": "https://demo1.yourwebsite.com",
+      "icon": "🚀"
+    },
+    {
+      "id": 2,
+      "name": "Demo Project 2",
+      "description": "Description of your second demo project. Replace this with actual details about your project, its functionality, and the problem it solves.",
+      "demoUrl": "https://demo2.yourwebsite.com",
+      "icon": "🚀"
+    }
+  ],
+  "notes": {
+    "repositories": "This section showcases my public GitHub repositories. Replace these placeholders with links to your actual repositories.",
+    "demos": "This section showcases live demos of my projects. Replace these placeholders with links to your actual demos."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "skills": [
+    {
+      "category": "Frontend Development",
+      "technologies": "React, Next.js, TypeScript, TailwindCSS, HTML5, CSS3",
+      "description": "Building responsive and interactive user interfaces"
+    },
+    {
+      "category": "Backend Development", 
+      "technologies": "Node.js, Python, Express, APIs, Database Management",
+      "description": "Creating robust server-side applications and APIs"
+    },
+    {
+      "category": "AI & Machine Learning",
+      "technologies": "TensorFlow, PyTorch, Natural Language Processing, Computer Vision",
+      "description": "Developing intelligent systems and ML models"
+    },
+    {
+      "category": "Tools & Technologies",
+      "technologies": "Git, Docker, AWS, Vercel, VS Code, Linux",
+      "description": "Development tools and deployment platforms"
+    }
+  ],
+  "note": "Replace these placeholder skills with your actual skills and expertise."
+}

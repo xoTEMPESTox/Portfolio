@@ -1,0 +1,44 @@
+{
+  "hackathons": [
+    {
+      "id": 1,
+      "name": "Hackathon Name 1",
+      "date": "Month Year",
+      "role": "Team Member/Leader",
+      "description": "This is a placeholder for describing the hackathon, including the problem statement, your team's solution, and technologies used. Replace with details about the challenge, your approach, and implementation.",
+      "achievements": "What your team accomplished, any awards won, recognition received, and impact of your solution.",
+      "icon": "🏆"
+    },
+    {
+      "id": 2,
+      "name": "Hackathon Name 2",
+      "date": "Month Year",
+      "role": "Team Member/Leader",
+      "description": "This is a placeholder for describing the hackathon, including the problem statement, your team's solution, and technologies used. Replace with details about the challenge, your approach, and implementation.",
+      "achievements": "What your team accomplished, any awards won, recognition received, and impact of your solution.",
+      "icon": "🏆"
+    }
+  ],
+  "awards": [
+    {
+      "id": 1,
+      "name": "Award Name 1",
+      "date": "Month Year",
+      "organization": "Organization Name",
+      "description": "This is a placeholder for describing the award, including the criteria for selection and what it recognizes. Replace with actual details about your achievement.",
+      "icon": "🏅"
+    },
+    {
+      "id": 2,
+      "name": "Award Name 2",
+      "date": "Month Year",
+      "organization": "Organization Name",
+      "description": "This is a placeholder for describing the award, including the criteria for selection and what it recognizes. Replace with actual details about your achievement.",
+      "icon": "🏅"
+    }
+  ],
+  "placeholders": {
+    "hackathons": "Add more hackathons as needed...",
+    "awards": "Add more awards as needed..."
+  }
+}

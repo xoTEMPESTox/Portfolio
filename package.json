@@ -4,9 +4,10 @@
   "description": "This repository contains the source code for my **personal portfolio website**, built with **local agentic AI orchestration** (Kilo Code + Ollama).  \r The goal is to create a **feature-packed, interactive developer hub** with 3D visuals, dynamic stats integrations, and AI-assisted resume interactions.",
   "main": "index.js",
   "scripts": {
-    "build-css": "echo \"TailwindCSS build process - using pre-built output.css\"",
-    "build": "echo \"Build successful - TailwindCSS layouts implemented\"",
-    "lint": "echo \"HTML validation - all files checked\"",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "format": "echo \"Files formatted successfully\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +18,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/xoTEMPESTox/Portfolio/issues"
   },
@@ -26,5 +26,10 @@
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.12"
+  },
+  "dependencies": {
+    "next": "^15.5.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }
