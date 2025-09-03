@@ -20,12 +20,12 @@ Do not skip or jump stages.
 ---
 
 ## Stage 2 – Layout & Responsiveness (Tailwind + Vanilla JS)
-- [ ] Add TailwindCSS setup
-- [ ] Build responsive layout for Hero & About sections
-- [ ] Build responsive layout for Experience & Projects sections
-- [ ] Build responsive layout for Hackathons, Publications, Resume, Contact
-- [ ] Add smooth scrolling between sections
-- [ ] Validate mobile responsiveness
+- [x] Add TailwindCSS setup
+- [x] Build responsive layout for Hero & About sections
+- [x] Build responsive layout for Experience & Projects sections
+- [x] Build responsive layout for Hackathons, Publications, Resume, Contact
+- [x] Add smooth scrolling between sections
+- [x] Validate mobile responsiveness
 
 ---
 

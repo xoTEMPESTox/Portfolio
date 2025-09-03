@@ -90,7 +90,7 @@ Before committing/pushing:
 
 - Stage 0: Repo initialized ✅
 - Stage 1: Static HTML templates scaffolded ✅
-- Stage 2: Layout & responsiveness (in progress)
+- Stage 2: Layout & responsiveness ✅
 
 ---
 
