@@ -3,6 +3,7 @@ import { fetchGitHubProfile, fallbackGitHubData } from '../utils/github'
 import { fetchLeetCodeStats, fallbackLeetCodeData } from '../utils/leetcode'
 import { fetchCodolioStats, fallbackCodolioData, getCodolioProfileUrl } from '../utils/codolio'
 import CodolioIframe, { CodolioStats } from './CodolioIframe'
+import CodolioProfile from './CodolioProfile'
 
 const StatsSection = () => {
   const [stats, setStats] = useState({
@@ -12,45 +13,78 @@ const StatsSection = () => {
   })
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    async function loadStats() {
-      try {
-        setLoading(true)
-        
-        // Load all stats in parallel
-        const [githubData, leetcodeData, codolioData] = await Promise.allSettled([
-          fetchGitHubProfile(),
-          fetchLeetCodeStats(),
-          fetchCodolioStats()
-        ])
-
-        setStats({
-          github: githubData.status === 'fulfilled' && githubData.value 
-            ? githubData.value 
-            : fallbackGitHubData.profile,
-          leetcode: leetcodeData.status === 'fulfilled' && leetcodeData.value 
-            ? leetcodeData.value 
-            : fallbackLeetCodeData.stats,
-          codolio: codolioData.status === 'fulfilled' && codolioData.value 
-            ? codolioData.value 
-            : fallbackCodolioData.stats
-        })
-      } catch (error) {
-        console.error('Error loading stats:', error)
-        // Use fallback data
-        setStats({
-          github: fallbackGitHubData.profile,
-          leetcode: fallbackLeetCodeData.stats,
-          codolio: fallbackCodolioData.stats
-        })
-      } finally {
-        setLoading(false)
+  
+    // Simple caching mechanism
+    const CACHE_KEY = 'portfolio_stats_cache'
+    const CACHE_DURATION = 5 * 60 * 1000 // 5 minutes
+  
+    useEffect(() => {
+      async function loadStats() {
+        try {
+          setLoading(true)
+          
+          // Check for cached data
+          const cachedData = localStorage.getItem(CACHE_KEY)
+          const cacheTimestamp = localStorage.getItem(`${CACHE_KEY}_timestamp`)
+          
+          if (cachedData && cacheTimestamp) {
+            const now = new Date().getTime()
+            const cacheAge = now - parseInt(cacheTimestamp)
+            
+            if (cacheAge < CACHE_DURATION) {
+              // Use cached data
+              const parsedData = JSON.parse(cachedData)
+              setStats(parsedData)
+              setLoading(false)
+              return
+            }
+          }
+          
+          // Load all stats in parallel
+          const [githubData, leetcodeData, codolioData] = await Promise.allSettled([
+            fetchGitHubProfile(),
+            fetchLeetCodeStats(),
+            fetchCodolioStats()
+          ])
+  
+          const newStats = {
+            github: githubData.status === 'fulfilled' && githubData.value
+              ? githubData.value
+              : fallbackGitHubData.profile,
+            leetcode: leetcodeData.status === 'fulfilled' && leetcodeData.value
+              ? leetcodeData.value
+              : fallbackLeetCodeData.stats,
+            codolio: codolioData.status === 'fulfilled' && codolioData.value
+              ? codolioData.value
+              : fallbackCodolioData.stats
+          }
+          
+          // Cache the data
+          localStorage.setItem(CACHE_KEY, JSON.stringify(newStats))
+          localStorage.setItem(`${CACHE_KEY}_timestamp`, new Date().getTime().toString())
+          
+          setStats(newStats)
+        } catch (error) {
+          console.error('Error loading stats:', error)
+          // Use fallback data
+          const fallbackStats = {
+            github: fallbackGitHubData.profile,
+            leetcode: fallbackLeetCodeData.stats,
+            codolio: fallbackCodolioData.stats
+          }
+          
+          // Cache fallback data
+          localStorage.setItem(CACHE_KEY, JSON.stringify(fallbackStats))
+          localStorage.setItem(`${CACHE_KEY}_timestamp`, new Date().getTime().toString())
+          
+          setStats(fallbackStats)
+        } finally {
+          setLoading(false)
+        }
       }
-    }
-
-    loadStats()
-  }, [])
-
+  
+      loadStats()
+    }, [])
   if (loading) {
     return (
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
@@ -182,7 +216,7 @@ const StatsSection = () => {
             Interactive Codolio Profile
           </h3>
           <div className="max-w-4xl mx-auto">
-            <CodolioStats height="500px" className="mb-6" />
+            <CodolioProfile className="mb-6" />
           </div>
         </div>
         

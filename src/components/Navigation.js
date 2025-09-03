@@ -81,21 +81,23 @@ const Navigation = () => {
       variants={navVariants}
       initial="hidden"
       animate="visible"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      role="navigation"
+      aria-label="Main navigation"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg'
-          : 'bg-white dark:bg-gray-900 shadow-md'
+          ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-xl border-b border-gray-200/30 dark:border-gray-700/30'
+          : 'bg-gradient-to-r from-white/80 via-white/60 to-white/80 dark:from-gray-900/80 dark:via-gray-900/60 dark:to-gray-900/80 backdrop-blur-md shadow-md'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3 lg:py-4">
           {/* Logo */}
           <motion.div
             className="logo"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link href="/" className="text-2xl font-bold text-blue-600 dark:text-blue-400 cursor-pointer">
+            <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent cursor-pointer">
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -107,29 +109,30 @@ const Navigation = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <ul className="flex space-x-8">
+          <div className="hidden lg:flex items-center space-x-2">
+            <ul className="flex space-x-2">
             {navItems.map((item, index) => (
               <motion.li
                 key={item.href}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * index + 0.3 }}
+                className="relative"
               >
                 <Link href={item.href}>
                   <motion.span
-                    className={`relative font-medium transition-all duration-300 cursor-pointer ${
+                    className={`relative font-medium px-4 py-2 rounded-lg transition-all duration-300 cursor-pointer flex items-center ${
                       isActive(item.href)
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : 'text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
+                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50/50 dark:bg-blue-900/20'
+                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
                     }`}
-                    whileHover={{ scale: 1.05 }}
+                    whileHover={{ y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     {item.label}
                     {isActive(item.href) && (
                       <motion.div
-                        className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 dark:bg-blue-400"
+                        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1.5 h-1.5 bg-blue-600 dark:bg-blue-400 rounded-full"
                         layoutId="activeTab"
                         initial={false}
                         transition={{
@@ -146,36 +149,43 @@ const Navigation = () => {
             </ul>
             
             {/* Theme Toggle */}
-            <ThemeToggle />
+            <div className="ml-4">
+              <ThemeToggle />
+            </div>
           </div>
 
           {/* Mobile Menu Button and Theme Toggle */}
           <div className="lg:hidden flex items-center space-x-3">
             <ThemeToggle />
             <motion.button
-              className="flex flex-col justify-center items-center w-8 h-8 space-y-1"
+              className="flex flex-col justify-center items-center w-8 h-8 space-y-1.5"
               onClick={() => setIsOpen(!isOpen)}
               whileTap={{ scale: 0.95 }}
               aria-label="Toggle mobile menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               <motion.span
-                className="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300"
+                className="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 rounded-full transition-all duration-300"
                 animate={{
                   rotate: isOpen ? 45 : 0,
-                  y: isOpen ? 6 : 0
+                  y: isOpen ? 2 : 0,
+                  width: isOpen ? '1.5rem' : '1.5rem'
                 }}
               />
               <motion.span
-                className="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300"
+                className="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 rounded-full transition-all duration-300"
                 animate={{
-                  opacity: isOpen ? 0 : 1
+                  opacity: isOpen ? 0 : 1,
+                  width: isOpen ? 0 : '1.5rem'
                 }}
               />
               <motion.span
-                className="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300"
+                className="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 rounded-full transition-all duration-300"
                 animate={{
                   rotate: isOpen ? -45 : 0,
-                  y: isOpen ? -6 : 0
+                  y: isOpen ? -2 : 0,
+                  width: isOpen ? '1.5rem' : '1.5rem'
                 }}
               />
             </motion.button>
@@ -191,8 +201,10 @@ const Navigation = () => {
               animate="open"
               exit="closed"
               className="lg:hidden overflow-hidden"
+              id="mobile-menu"
+              role="menu"
             >
-              <motion.ul className="py-4 space-y-4">
+              <motion.ul className="py-4 space-y-2">
                 {navItems.map((item) => (
                   <motion.li
                     key={item.href}
@@ -200,13 +212,13 @@ const Navigation = () => {
                   >
                     <Link href={item.href}>
                       <motion.span
-                        className={`block py-2 px-4 rounded-lg font-medium transition-all duration-300 cursor-pointer ${
+                        className={`block py-3 px-6 rounded-xl font-medium transition-all duration-300 cursor-pointer mx-2 ${
                           isActive(item.href)
-                            ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
-                            : 'text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
+                            ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 shadow-sm'
+                            : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-100/50 dark:hover:bg-gray-800/50'
                         }`}
-                        whileHover={{ x: 10 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ x: 5 }}
+                        whileTap={{ scale: 0.98 }}
                       >
                         {item.label}
                       </motion.span>
