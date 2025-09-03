@@ -41,11 +41,11 @@ Do not skip or jump stages.
 ---
 
 ## Stage 4 – Advanced UI/UX (3D + Parallax)
-- [ ] Add React Three Fiber + Drei
-- [ ] Implement Hero background 3D animation
-- [ ] Add parallax scroll effects with Framer Motion
-- [ ] Create 3D Skills Cloud
-- [ ] Validate animations are smooth & performant
+- [x] Add React Three Fiber + Drei
+- [x] Implement Hero background 3D animation
+- [x] Add parallax scroll effects with Framer Motion
+- [x] Create 3D Skills Cloud
+- [x] Validate animations are smooth & performant
 
 ---
 

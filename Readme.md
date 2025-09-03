@@ -92,6 +92,7 @@ Before committing/pushing:
 - Stage 1: Static HTML templates scaffolded ✅
 - Stage 2: Layout & responsiveness ✅
 - Stage 3: Next.js Migration + Dynamic Data ✅
+- Stage 4: Advanced UI/UX (3D + Parallax) ✅
 
 ---
 
