@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect } from 'react'
+import ThemeToggle from './ThemeToggle'
 
 const Navigation = () => {
   const router = useRouter()
@@ -82,8 +83,8 @@ const Navigation = () => {
       animate="visible"
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-lg'
-          : 'bg-white shadow-md'
+          ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg'
+          : 'bg-white dark:bg-gray-900 shadow-md'
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,7 +95,7 @@ const Navigation = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Link href="/" className="text-2xl font-bold text-blue-600 cursor-pointer">
+            <Link href="/" className="text-2xl font-bold text-blue-600 dark:text-blue-400 cursor-pointer">
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -106,7 +107,8 @@ const Navigation = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <ul className="hidden lg:flex space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
+            <ul className="flex space-x-8">
             {navItems.map((item, index) => (
               <motion.li
                 key={item.href}
@@ -118,8 +120,8 @@ const Navigation = () => {
                   <motion.span
                     className={`relative font-medium transition-all duration-300 cursor-pointer ${
                       isActive(item.href)
-                        ? 'text-blue-600'
-                        : 'text-gray-800 hover:text-blue-600'
+                        ? 'text-blue-600 dark:text-blue-400'
+                        : 'text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
                     }`}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -127,7 +129,7 @@ const Navigation = () => {
                     {item.label}
                     {isActive(item.href) && (
                       <motion.div
-                        className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600"
+                        className="absolute -bottom-1 left-0 w-full h-0.5 bg-blue-600 dark:bg-blue-400"
                         layoutId="activeTab"
                         initial={false}
                         transition={{
@@ -141,36 +143,43 @@ const Navigation = () => {
                 </Link>
               </motion.li>
             ))}
-          </ul>
+            </ul>
+            
+            {/* Theme Toggle */}
+            <ThemeToggle />
+          </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            className="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1"
-            onClick={() => setIsOpen(!isOpen)}
-            whileTap={{ scale: 0.95 }}
-            aria-label="Toggle mobile menu"
-          >
-            <motion.span
-              className="w-6 h-0.5 bg-gray-800 transition-all duration-300"
-              animate={{
-                rotate: isOpen ? 45 : 0,
-                y: isOpen ? 6 : 0
-              }}
-            />
-            <motion.span
-              className="w-6 h-0.5 bg-gray-800 transition-all duration-300"
-              animate={{
-                opacity: isOpen ? 0 : 1
-              }}
-            />
-            <motion.span
-              className="w-6 h-0.5 bg-gray-800 transition-all duration-300"
-              animate={{
-                rotate: isOpen ? -45 : 0,
-                y: isOpen ? -6 : 0
-              }}
-            />
-          </motion.button>
+          {/* Mobile Menu Button and Theme Toggle */}
+          <div className="lg:hidden flex items-center space-x-3">
+            <ThemeToggle />
+            <motion.button
+              className="flex flex-col justify-center items-center w-8 h-8 space-y-1"
+              onClick={() => setIsOpen(!isOpen)}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Toggle mobile menu"
+            >
+              <motion.span
+                className="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300"
+                animate={{
+                  rotate: isOpen ? 45 : 0,
+                  y: isOpen ? 6 : 0
+                }}
+              />
+              <motion.span
+                className="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300"
+                animate={{
+                  opacity: isOpen ? 0 : 1
+                }}
+              />
+              <motion.span
+                className="w-6 h-0.5 bg-gray-800 dark:bg-gray-200 transition-all duration-300"
+                animate={{
+                  rotate: isOpen ? -45 : 0,
+                  y: isOpen ? -6 : 0
+                }}
+              />
+            </motion.button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -193,8 +202,8 @@ const Navigation = () => {
                       <motion.span
                         className={`block py-2 px-4 rounded-lg font-medium transition-all duration-300 cursor-pointer ${
                           isActive(item.href)
-                            ? 'text-blue-600 bg-blue-50'
-                            : 'text-gray-800 hover:text-blue-600 hover:bg-gray-50'
+                            ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20'
+                            : 'text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-gray-50 dark:hover:bg-gray-800'
                         }`}
                         whileHover={{ x: 10 }}
                         whileTap={{ scale: 0.95 }}

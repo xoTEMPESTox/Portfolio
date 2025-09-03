@@ -3,8 +3,10 @@ import Head from 'next/head'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
+import { ThemeProvider } from '../contexts/ThemeContext'
+import AIResumeAssistant from './AIResumeAssistant'
 
-const Layout = ({ children, title = 'Portfolio - Priyanshu Sah' }) => {
+const LayoutContent = ({ children, title = 'Portfolio - Priyanshu Sah' }) => {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)
 
@@ -85,7 +87,7 @@ const Layout = ({ children, title = 'Portfolio - Priyanshu Sah' }) => {
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       </Head>
       
-      <div className="bg-gray-50 min-h-screen overflow-x-hidden">
+      <div className="bg-gray-50 dark:bg-gray-900 min-h-screen overflow-x-hidden transition-colors duration-300">
         {/* Loading indicator */}
         <AnimatePresence>
           {isLoading && <LoadingSpinner />}
@@ -113,6 +115,9 @@ const Layout = ({ children, title = 'Portfolio - Priyanshu Sah' }) => {
             {children}
           </motion.main>
         </AnimatePresence>
+
+        {/* AI Resume Assistant */}
+        <AIResumeAssistant />
 
         {/* Scroll to top button */}
         <ScrollToTop />
@@ -155,7 +160,7 @@ const ScrollToTop = () => {
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-colors duration-200"
+          className="fixed bottom-8 right-20 z-40 bg-blue-600 dark:bg-blue-500 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors duration-200"
           aria-label="Scroll to top"
         >
           <svg
@@ -174,6 +179,16 @@ const ScrollToTop = () => {
         </motion.button>
       )}
     </AnimatePresence>
+  )
+}
+
+const Layout = ({ children, title }) => {
+  return (
+    <ThemeProvider>
+      <LayoutContent title={title}>
+        {children}
+      </LayoutContent>
+    </ThemeProvider>
   )
 }
 
