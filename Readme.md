@@ -91,6 +91,7 @@ Before committing/pushing:
 - Stage 0: Repo initialized ✅
 - Stage 1: Static HTML templates scaffolded ✅
 - Stage 2: Layout & responsiveness ✅
+- Stage 3: Next.js Migration + Dynamic Data ✅
 
 ---
 

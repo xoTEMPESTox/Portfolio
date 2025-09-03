@@ -30,13 +30,13 @@ Do not skip or jump stages.
 ---
 
 ## Stage 3 – Next.js Migration + Dynamic Data
-- [ ] Migrate project into Next.js structure
-- [ ] Split sections into components (`src/components/`)
-- [ ] Move content into `src/data/*.json`
-- [ ] Integrate GitHub API to auto-fetch pinned repos
-- [ ] Integrate LeetCode API for coding stats
-- [ ] Integrate Codolio API
-- [ ] Validate with build + lint
+- [x] Migrate project into Next.js structure
+- [x] Split sections into components (`src/components/`)
+- [x] Move content into `src/data/*.json`
+- [x] Integrate GitHub API to auto-fetch pinned repos
+- [x] Integrate LeetCode API for coding stats
+- [x] Integrate Codolio API
+- [x] Validate with build + lint
 
 ---
 
