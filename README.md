@@ -1,4 +1,4 @@
-<img src="https://github.com/xoTEMPESTox/xoTEMPESTox/blob/main/Portfolio/public/assets/images/animations/grid-snake.svg" width="100%"/>
+<img src="https://github.com/xoTEMPESTox/Portfolio/blob/main/Portfolio/public/assets/images/animations/grid-snake.svg" width="100%"/>
 
 <!-- <h1 align="center"><b>Priyanshu Sah</b> | <i>TEMPEST</i></h1> -->
 
