@@ -6,7 +6,6 @@ const baseUrl = (() => {
 const backgroundImageBasePath = "assets/images/backgrounds";
 const backgroundVideoBasePath = "assets/videos/backgrounds";
 const videoExtensions = ["mp4", "webm", "ogv", "ogg"];
-const backgroundReadyEventName = "background-placeholder-ready";
 function withBase(path) {
     if (!path) {
         return baseUrl;
@@ -120,6 +119,11 @@ function changeBackgroundAfterWhile() {
     }
     const manifestUrl = withBase("assets/images/backgrounds/backgrounds.json");
     const storageKey = "portfolio:lastBackground";
+    const storedBackgroundRaw = getStoredBackground(storageKey);
+    const storedBackground = parseStoredBackground(storedBackgroundRaw);
+    if (storedBackground) {
+        applyStoredBackgroundPlaceholder(main, storedBackground);
+    }
     fetch(manifestUrl)
         .then((response) => {
         if (!response.ok) {
@@ -133,13 +137,13 @@ function changeBackgroundAfterWhile() {
             console.warn("No background assets available.");
             return;
         }
-        const lastAsset = getStoredBackground(storageKey);
-        const candidateAssets = normalizedAssets.filter((asset) => asset.src !== lastAsset);
+        const lastAssetSrc = storedBackground?.src || (typeof storedBackgroundRaw === "string" ? storedBackgroundRaw : null);
+        const candidateAssets = normalizedAssets.filter((asset) => asset.src !== lastAssetSrc);
         const selectionPool = candidateAssets.length ? candidateAssets : normalizedAssets;
         const selectedAsset = selectionPool[Math.floor(Math.random() * selectionPool.length)];
         applyBackground(main, selectedAsset);
         enableBackgroundParallax(main, selectedAsset);
-        setStoredBackground(storageKey, selectedAsset.src);
+        setStoredBackground(storageKey, serializeBackgroundConfig(selectedAsset));
     })
         .catch((error) => {
         console.error("Failed to set background:", error);
@@ -249,7 +253,6 @@ function applyBackground(main, asset) {
         if (placeholder) {
             video.setAttribute("poster", placeholder);
             setVideoPlaceholder(main, placeholder);
-            signalBackgroundReady();
         }
         else {
             main.style.backgroundImage = "";
@@ -259,9 +262,6 @@ function applyBackground(main, asset) {
         const handleVideoReady = () => {
             video.style.opacity = "1";
             clearVideoPlaceholder(main);
-            if (!placeholder) {
-                signalBackgroundReady();
-            }
         };
         video.addEventListener("loadeddata", handleVideoReady, { once: true });
         video.addEventListener("error", () => {
@@ -275,7 +275,6 @@ function applyBackground(main, asset) {
         removeBackgroundVideo(main);
         delete main.dataset.backgroundPlaceholder;
         main.style.backgroundImage = `url("${assetUrl}")`;
-        signalBackgroundReady();
     }
 }
 function ensureBackgroundContainer(main) {
@@ -312,6 +311,65 @@ function setStoredBackground(key, value) {
         return;
     }
 }
+function parseStoredBackground(rawValue) {
+    if (!rawValue) {
+        return null;
+    }
+    if (typeof rawValue === "string") {
+        try {
+            const parsed = JSON.parse(rawValue);
+            const normalized = createAssetConfig(parsed);
+            if (normalized) {
+                return normalized;
+            }
+        }
+        catch (error) {
+            const normalized = createAssetConfig(rawValue);
+            if (normalized) {
+                return normalized;
+            }
+        }
+    }
+    return null;
+}
+function serializeBackgroundConfig(asset) {
+    if (!asset) {
+        return "";
+    }
+    let payload;
+    if (asset.type === "video") {
+        payload = {
+            video: asset.src,
+            image: asset.poster || null,
+            videoBasePath: asset.srcBasePath,
+            imageBasePath: asset.posterBasePath
+        };
+    }
+    else {
+        payload = {
+            image: asset.src,
+            imageBasePath: asset.srcBasePath
+        };
+    }
+    return JSON.stringify(payload);
+}
+function applyStoredBackgroundPlaceholder(main, asset) {
+    if (!asset) {
+        return;
+    }
+    if (asset.type === "video") {
+        const placeholder = asset.poster ? resolveAssetUrl(asset.poster, "image", asset.posterBasePath) : null;
+        if (placeholder) {
+            main.style.backgroundImage = `url("${placeholder}")`;
+        }
+    }
+    else {
+        const imageUrl = resolveAssetUrl(asset.src, "image", asset.srcBasePath);
+        if (imageUrl) {
+            main.style.backgroundImage = `url("${imageUrl}")`;
+        }
+    }
+}
 function setVideoPlaceholder(main, poster) {
     if (!poster) {
         return;
@@ -324,12 +382,6 @@ function clearVideoPlaceholder(main) {
         delete main.dataset.backgroundPlaceholder;
     }
     main.style.backgroundImage = "none";
-}
-function signalBackgroundReady() {
-    if (typeof window === "undefined" || typeof window.dispatchEvent !== "function") {
-        return;
-    }
-    window.dispatchEvent(new Event(backgroundReadyEventName));
 }
 function enableBackgroundParallax(main, asset) {
     if (cleanupParallax) {

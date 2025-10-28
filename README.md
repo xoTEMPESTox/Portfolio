@@ -5,7 +5,7 @@ A Vite-powered personal portfolio showcasing key projects, services, and testimo
 - Single-page layout with quick navigation between `home`, `about`, `quality`, `skills`, `services`, `portfolio`, `reviews`, and `contact` sections.
 - Background stills load instantly from `public/assets/images/backgrounds/backgrounds.json`, and matching videos fade in once buffered, with optional parallax for desktop visitors.
 - Swiper.js sliders highlight portfolio work and client reviews, adapting automatically to varying screen widths.
-- Lightweight loader fades out once the page assets finish downloading, improving perceived performance.
+- Staged background loader shows the paired still immediately and fades in the video once buffered, keeping the first paint fast.
 - Bootstrap bundle is imported locally so data attributes (e.g. tooltips, dropdowns) work without additional setup.
 
 ## Getting Started

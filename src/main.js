@@ -5,6 +5,5 @@ import "./styles/main.css";
 import "./scripts/imports.js";
 
 // Local behaviour modules
-import "./scripts/loader.js";
 import "./scripts/main.js";
 import "./scripts/swiper.js";
