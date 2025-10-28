@@ -287,7 +287,7 @@ function applyParallaxOffset(main, asset, container, position) {
     const clampedX = Math.min(1, Math.max(0, position.x));
     const clampedY = Math.min(1, Math.max(0, position.y));
     if (asset.type === "video" && container) {
-        const offsetIntensity = 20;
+        const offsetIntensity = 10;
         const offsetX = (clampedX - 0.5) * offsetIntensity;
         const offsetY = (clampedY - 0.5) * offsetIntensity;
         container.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1.08)`;
