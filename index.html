@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- * All meta data used -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="Hi there! I'm James Oliver. I'm a Front End Developer who using ReactJS library">
+    <meta name="keywords" content="HTML, HTML5, CSS, CSS3, Bootstrap, SCSS, JavaScript, TypeScript, APIs">
+    <meta name="author" content="Khaled Mohamed Mahmoud">
+
+    <!-- * Title of the page -->
+    <title>James Oliver | Portfolio web site with awesome layout and creative one!</title>
+
+    <!-- * All favicon needed in the page -->
+    <link type="image/png" sizes="16x16" rel="icon" href="assets/favicons/Web/hand-16.png">
+    <link type="image/png" sizes="32x32" rel="icon" href="assets/favicons/Web/hand-32.png">
+    <link type="image/png" sizes="96x96" rel="icon" href="assets/favicons/Web/hand-96.png">
+
+    <link rel="icon" type="image/png" sizes="72x72" href="assets/favicons/Android-Chrome/hand-72.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/Android-Chrome/hand-96.png">
+
+    <link rel="apple-touch-icon" type="image/png" sizes="57x57"
+        href="assets/favicons/iOS-Safari-Web-Clip/hand-57.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="60x60"
+        href="assets/favicons/iOS-Safari-Web-Clip/hand-60.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="72x72"
+        href="assets/favicons/iOS-Safari-Web-Clip/hand-72.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="76x76"
+        href="assets/favicons/iOS-Safari-Web-Clip/hand-76.png">
+
+    <meta name="msapplication-square70x70logo" content="./assets/favicons/Windows/hand-70.png">
+    <meta name="msapplication-TileColor" content="#364958">
+    <meta name="application-name" content="James Oliver Site!">
+
+    <!-- * There are all main css files -->
+    <link rel=" stylesheet" href="dist/css/fontello.css">
+    <link rel=" stylesheet" href="dist/css-purgecss/main.css">
+
+    <!-- * This is html5shiv.js -->
+    <!--[if lt IE 9]>
+        <script src="dist/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script defer src="dist/js/loader.js"></script>
+</head>
+
+<body>
+
+    <!-- * Start main section -->
+    <main class="main" id="main">
+        <!-- * Start preloader section -->
+        <div class="preloader">
+            <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                preserveAspectRatio="xMidYMid" class="lds-ripple" style="background:0 0">
+                <circle cx="50" cy="50" r="4.719" fill="none" stroke="#3b6064" stroke-width="2">
+                    <animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="7"
+                        keySplines="0 0.2 0.8 1" begin="-1.5s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="7"
+                        keySplines="0.2 0 0.8 1" begin="-1.5s" repeatCount="indefinite" />
+                </circle>
+                <circle cx="50" cy="50" r="27.591" fill="none" stroke="#3b6064" stroke-width="2">
+                    <animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="7"
+                        keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite" />
+
+                    <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="7"
+                        keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite" />
+                </circle>
+            </svg>
+        </div> <!-- ./preloader -->
+
+        <!-- * Start list section -->
+        <ul class="list" id="list">
+            <li id="item-home" class="list-item" data-name-sec="home">
+                <i class="demo-icon homeicon-"></i>
+            </li> <!-- ./list-item -->
+
+            <li id="item-about" class="list-item" data-name-sec="about">
+                <i class="demo-icon help-circledicon-"></i>
+            </li> <!-- ./list-item -->
+
+            <li id="item-quality" class="list-item" data-name-sec="quality">
+                <i class="demo-icon chart-baricon-"></i>
+            </li> <!-- ./list-item -->
+
+            <li id="item-skills" class="list-item" data-name-sec="skills">
+                <i class="demo-icon toolsicon-"></i>
+            </li> <!-- ./list-item -->
+
+            <li id="item-services" class="list-item" data-name-sec="services">
+                <i class="demo-icon clipboardicon-"></i>
+            </li> <!-- ./list-item -->
+
+            <li id="item-portfolio" class="list-item" data-name-sec="portfolio">
+                <i class="demo-icon briefcaseicon-"></i>
+            </li> <!-- ./list-item -->
+
+            <li id="item-reviews" class="list-item" data-name-sec="reviews">
+                <i class="demo-icon handshake-oicon-"></i>
+            </li> <!-- ./list-item -->
+
+            <li id="item-contact" class="list-item" data-name-sec="contact">
+                <i class="demo-icon mailicon-"></i>
+            </li> <!-- ./list-item -->
+        </ul> <!-- ./list -->
+
+        <!-- * Start home section -->
+        <section class="home full-screen-left" id="home">
+            <div class="container">
+                <div class="row align-items-center gx-0 gy-sm-4 mx-auto text-center">
+                    <div class="col-md-6">
+                        <div class="home__img mx-auto">
+                            <img src="assets/images/person/man-1-min.jpg" alt="James Oliver's picture!"
+                                draggable="false" loading="lazy">
+                        </div> <!-- ./home__img -->
+                    </div> <!-- ./col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="home__info">
+                            <h2 class="home__info__title text-capitalize">
+                                james oliver
+                                <span></span>
+                            </h2>
+                            <p class="home__info__desc my-4">
+                                Welcome here in my Portfolio!<br>
+                                I'm a Front End Developer & Graphic Designer!<br>
+                                I'm a Freelancer Web Developer at upwork.com.
+                            </p> <!-- ./home__info__desc -->
+                            <a id="read-more-home" class="home__info__btn custom-btn mx-auto" href="index.html#">read more</a>
+                        </div> <!-- ./home__info -->
+                    </div> <!-- ./col-md-6 -->
+                </div> <!-- ./row -->
+            </div> <!-- ./container -->
+        </section> <!-- ./home -->
+
+        <!-- * Start about section -->
+        <section class="about" id="about">
+            <div class="container">
+                <div class="row d-flex justify-content-center align-items-center gx-5 gy-sm-4 mx-auto">
+                    <div class="col-md-7">
+                        <h3 class="about__title">james oliver</h3>
+
+                        <div class="row gx-1 d-flex justify-content-center align-items-center mx-auto">
+                            <div class="col-sm-8 col-md-7">
+                                <div class="about__info">
+                                    <span class="about__info__label">job: </span><br>
+                                    <span class="about__info__value">front end developer</span><br>
+                                </div> <!-- ./about__info -->
+
+                                <div class="about__info">
+                                    <span class="about__info__label">degree: </span><br>
+                                    <span class="about__info__value">master</span><br>
+                                </div> <!-- ./about__info -->
+
+                                <div class="about__info">
+                                    <span class="about__info__label">address: </span><br>
+                                    <span class="about__info__value">123 street, new york, USA</span><br>
+                                </div> <!-- ./about__info -->
+
+                                <div class="about__info">
+                                    <span class="about__info__label">phone: </span><br>
+                                    <span class="about__info__value">+012 345 6789</span><br>
+                                </div> <!-- ./about__info -->
+                            </div> <!-- ./col-sm-6 -->
+
+                            <div class="col-sm-4 mx-auto">
+                                <div class="about__info">
+                                    <span class="about__info__label">birthday: </span><br>
+                                    <span class="about__info__value">22 may 1998</span><br>
+                                </div> <!-- ./about__info -->
+
+                                <div class="about__info">
+                                    <span class="about__info__label">experience: </span><br>
+                                    <span class="about__info__value">4 years</span><br>
+                                </div> <!-- ./about__info -->
+
+                                <div class="about__info">
+                                    <span class="about__info__label">email: </span><br>
+                                    <span class="about__info__value">james.oliver@gmail.com</span><br>
+                                </div> <!-- ./about__info -->
+
+                                <div class="about__info">
+                                    <span class="about__info__label">freelance: </span><br>
+                                    <span class="about__info__value">available</span><br>
+                                </div> <!-- ./about__info -->
+                            </div> <!-- ./col-sm-6 -->
+                        </div> <!-- ./row -->
+                    </div> <!-- ./col-md-8 -->
+
+                    <div class="col-md-3">
+                        <div class="about__img">
+                            <img src="assets/images/person/man-2-min.jpg"
+                                alt="James Oliver's picture in about section" draggable="false" loading="lazy">
+                        </div> <!-- ./about__img -->
+                    </div> <!-- ./col-md-4 -->
+                </div> <!-- ./row -->
+            </div> <!-- ./container -->
+        </section> <!-- ./about -->
+
+        <!-- * Start quality section -->
+        <section class="quality" id="quality">
+            <div class="container">
+                <div class="row align-items-center justify-content-center gx-5 gy-sm-4 mx-auto">
+                    <div class="col-md-6">
+                        <h2 class="quality__title">my education</h2>
+
+                        <div class="quality__card">
+                            <h3 class="quality__card__title">master in computer science</h3>
+                            <p class="quality__card__place">
+                                cambridge | <span>2010 - 2014</span>
+                            </p> <!-- ./quality__card__place -->
+                            <p class="quality__card__desc">
+                                studying computer science and software engineering with good university lecturers.
+                            </p> <!-- ./quality__card__desc -->
+                        </div> <!-- ./quality__card -->
+
+                        <div class="quality__card">
+                            <h3 class="quality__card__title">PHD degree in computer science</h3>
+                            <p class="quality__card__place">
+                                Stanford | <span>2016 - 2018</span>
+                            </p> <!-- ./quality__card__place -->
+                            <p class="quality__card__desc">
+                                having PHD in computer science in stanford university with Dr. david chris.
+                            </p> <!-- ./quality__card__desc -->
+                        </div> <!-- ./quality__card -->
+                    </div> <!-- ./col-md-6 -->
+
+                    <div class="col-md-6">
+                        <h3 class="quality__title">my experience</h3>
+
+                        <div class="quality__card">
+                            <h3 class="quality__card__title">software engineer</h3>
+                            <p class="quality__card__place">
+                                google | <span>2018 - 2020</span>
+                            </p> <!-- ./quality__card__university -->
+                            <p class="quality__card__desc">
+                                good work with high experience at google inc. with strongest software engineers.
+                            </p> <!-- ./quality__card__desc -->
+                        </div> <!-- ./quality__card -->
+
+                        <div class="quality__card">
+                            <h3 class="quality__card__title">senior front end developer</h3>
+                            <p class="quality__card__place">
+                                facebook | <span>2020 - now</span>
+                            </p> <!-- ./quality__card__university -->
+                            <p class="quality__card__desc">
+                                just a senior front end developer and team leader in creative products at facebook.
+                            </p> <!-- ./quality__card__desc -->
+                        </div> <!-- ./quality__card -->
+                    </div> <!-- ./col-md-6 -->
+                </div> <!-- ./row -->
+            </div> <!-- ./container -->
+        </section> <!-- ./quality -->
+
+        <!-- * Start skills section -->
+        <section class="skills" id="skills">
+            <div class="container">
+                <h2 class="skills__title text-capitalize">my skills</h2>
+                <div class="row justify-content-center gy-0">
+                    <div class="col-md-6">
+                        <div class="skills__box">
+                            <div class="skills__box__head">
+                                <span class="skills__box__head__lang">HTML</span>
+                                <span class="skills__box__head__rate">90%</span>
+                            </div> <!-- ./skills__box__head -->
+                            <div class="skills__box__line">
+                                <span data-rate="90"></span>
+                            </div> <!-- ./skills__box__line -->
+                        </div> <!-- ./skills__box -->
+
+                        <div class="skills__box">
+                            <div class="skills__box__head">
+                                <span class="skills__box__head__lang">CSS</span>
+                                <span class="skills__box__head__rate">80%</span>
+                            </div> <!-- ./skills__box__head -->
+                            <div class="skills__box__line">
+                                <span data-rate="80"></span>
+                            </div> <!-- ./skills__box__line -->
+                        </div> <!-- ./skills__box -->
+
+                        <div class="skills__box">
+                            <div class="skills__box__head">
+                                <span class="skills__box__head__lang">javaScript</span>
+                                <span class="skills__box__head__rate">85%</span>
+                            </div> <!-- ./skills__box__head -->
+                            <div class="skills__box__line">
+                                <span data-rate="85"></span>
+                            </div> <!-- ./skills__box__line -->
+                        </div> <!-- ./skills__box -->
+
+                        <div class="skills__box">
+                            <div class="skills__box__head">
+                                <span class="skills__box__head__lang">bootstrap</span>
+                                <span class="skills__box__head__rate">95%</span>
+                            </div> <!-- ./skills__box__head -->
+                            <div class="skills__box__line">
+                                <span data-rate="95"></span>
+                            </div> <!-- ./skills__box__line -->
+                        </div> <!-- ./skills__box -->
+                    </div> <!-- ./col-md-6 -->
+
+                    <div class="col-md-6">
+                        <div class="skills__box">
+                            <div class="skills__box__head">
+                                <span class="skills__box__head__lang">SCSS</span>
+                                <span class="skills__box__head__rate">70%</span>
+                            </div> <!-- ./skills__box__head -->
+                            <div class="skills__box__line">
+                                <span data-rate="70"></span>
+                            </div> <!-- ./skills__box__line -->
+                        </div> <!-- ./skills__box -->
+
+                        <div class="skills__box">
+                            <div class="skills__box__head">
+                                <span class="skills__box__head__lang">typeScript</span>
+                                <span class="skills__box__head__rate">80%</span>
+                            </div> <!-- ./skills__box__head -->
+                            <div class="skills__box__line">
+                                <span data-rate="80"></span>
+                            </div> <!-- ./skills__box__line -->
+                        </div> <!-- ./skills__box -->
+
+                        <div class="skills__box">
+                            <div class="skills__box__head">
+                                <span class="skills__box__head__lang">react</span>
+                                <span class="skills__box__head__rate">90%</span>
+                            </div> <!-- ./skills__box__head -->
+                            <div class="skills__box__line">
+                                <span data-rate="90"></span>
+                            </div> <!-- ./skills__box__line -->
+                        </div> <!-- ./skills__box -->
+
+                        <div class="skills__box">
+                            <div class="skills__box__head">
+                                <span class="skills__box__head__lang">angular</span>
+                                <span class="skills__box__head__rate">80%</span>
+                            </div> <!-- ./skills__box__head -->
+                            <div class="skills__box__line">
+                                <span data-rate="80"></span>
+                            </div> <!-- ./skills__box__line -->
+                        </div> <!-- ./skills__box -->
+                    </div> <!-- ./col-md-6 -->
+                </div> <!-- ./row -->
+            </div> <!-- ./container -->
+        </section> <!-- ./skills -->
+
+        <!-- * Start services section -->
+        <section class="services" id="services">
+            <div class="services__wrapper">
+                <h4 class="services__wrapper__title">Services</h4>
+                <div class="services__wrapper__circle rounding"></div>
+
+                <div class="services__wrapper__icons" id="icon-div">
+                    <div class="services__wrapper__icons__item" data-service-name="web design">
+                        <i class="demo-icon desktopicon-"></i>
+                    </div> <!-- ./services__wrapper__icons -->
+
+                    <div class="services__wrapper__icons__item" data-service-name="development">
+                        <i class="demo-icon codeicon-"></i>
+                    </div> <!-- ./services__wrapper__icons -->
+
+                    <div class="services__wrapper__icons__item" data-service-name="UI / UX">
+                        <i class="demo-icon penicon-"></i>
+                    </div> <!-- ./services__wrapper__icons -->
+
+                    <div class="services__wrapper__icons__item" data-service-name="SEO">
+                        <i class="demo-icon searchicon-"></i>
+                    </div> <!-- ./services__wrapper__icons -->
+
+                    <div class="services__wrapper__icons__item" data-service-name="edit designs">
+                        <i class="demo-icon doc-texticon-"></i>
+                    </div> <!-- ./services__wrapper__icons -->
+
+                    <div class="services__wrapper__icons__item" data-service-name="hosting">
+                        <i class="demo-icon servericon-"></i>
+                    </div> <!-- ./services__wrapper__icons -->
+                </div> <!-- ./services__wrapper__icons -->
+            </div> <!-- ./services__wrapper -->
+        </section> <!-- ./services -->
+
+        <!-- * Start portfolio section -->
+        <section class="portfolio" id="portfolio">
+            <div class="container">
+                <div class="row gx-4 justify-content-evenly mx-auto text-center">
+                    <div class="col-md-8">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide d-flex justify-content-center align-items-center">
+                                    <div class="my-card">
+                                        <div class="my-card__img">
+                                            <img src="assets/images/projects/project-1.png" alt="Project 1"
+                                                loading="lazy">
+                                            <div class="my-card__img__links">
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon searchicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon linkicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                            </div> <!-- ./my-card__img__links -->
+                                        </div> <!-- ./my-card__img -->
+
+                                        <div class="my-card__info">
+                                            <h4 class="my-card__info__title">Project</h4>
+                                            <p class="my-card__info__desc">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            </p> <!-- ./my-card__info__desc -->
+                                        </div> <!-- ./my-card__info -->
+                                    </div> <!-- ./my-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide d-flex justify-content-center align-items-center">
+                                    <div class="my-card">
+                                        <div class="my-card__img">
+                                            <img src="assets/images/projects/project-2.jpg" alt="Project 2"
+                                                loading="lazy">
+                                            <div class="my-card__img__links">
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon searchicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon linkicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                            </div> <!-- ./my-card__img__links -->
+                                        </div> <!-- ./my-card__img -->
+
+                                        <div class="my-card__info">
+                                            <h4 class="my-card__info__title">Project</h4>
+                                            <p class="my-card__info__desc">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            </p> <!-- ./my-card__info__desc -->
+                                        </div> <!-- ./my-card__info -->
+                                    </div> <!-- ./my-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide d-flex justify-content-center align-items-center">
+                                    <div class="my-card">
+                                        <div class="my-card__img">
+                                            <img src="assets/images/projects/project-3.png" alt="Project 3"
+                                                loading="lazy">
+                                            <div class="my-card__img__links">
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon searchicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon linkicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                            </div> <!-- ./my-card__img__links -->
+                                        </div> <!-- ./my-card__img -->
+
+                                        <div class="my-card__info">
+                                            <h4 class="my-card__info__title">Project</h4>
+                                            <p class="my-card__info__desc">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            </p> <!-- ./my-card__info__desc -->
+                                        </div> <!-- ./my-card__info -->
+                                    </div> <!-- ./my-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide d-flex justify-content-center align-items-center">
+                                    <div class="my-card">
+                                        <div class="my-card__img">
+                                            <img src="assets/images/projects/project-4.jpg" alt="Project 4"
+                                                loading="lazy">
+                                            <div class="my-card__img__links">
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon searchicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon linkicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                            </div> <!-- ./my-card__img__links -->
+                                        </div> <!-- ./my-card__img -->
+
+                                        <div class="my-card__info">
+                                            <h4 class="my-card__info__title">Project</h4>
+                                            <p class="my-card__info__desc">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            </p> <!-- ./my-card__info__desc -->
+                                        </div> <!-- ./my-card__info -->
+                                    </div> <!-- ./my-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide d-flex justify-content-center align-items-center">
+                                    <div class="my-card">
+                                        <div class="my-card__img">
+                                            <img src="assets/images/projects/project-5.png" alt="Project 5"
+                                                loading="lazy">
+                                            <div class="my-card__img__links">
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon searchicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon linkicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                            </div> <!-- ./my-card__img__links -->
+                                        </div> <!-- ./my-card__img -->
+
+                                        <div class="my-card__info">
+                                            <h4 class="my-card__info__title">Project</h4>
+                                            <p class="my-card__info__desc">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            </p> <!-- ./my-card__info__desc -->
+                                        </div> <!-- ./my-card__info -->
+                                    </div> <!-- ./my-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide d-flex justify-content-center align-items-center">
+                                    <div class="my-card">
+                                        <div class="my-card__img">
+                                            <img src="assets/images/projects/project-6.jpg" alt="Project 6"
+                                                loading="lazy">
+                                            <div class="my-card__img__links">
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon searchicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                                <a href="index.html#" class="my-card__img__links__item">
+                                                    <i class="demo-icon linkicon-"></i>
+                                                </a> <!-- ./my-card__img__links__item -->
+                                            </div> <!-- ./my-card__img__links -->
+                                        </div> <!-- ./my-card__img -->
+
+                                        <div class="my-card__info">
+                                            <h4 class="my-card__info__title">Project</h4>
+                                            <p class="my-card__info__desc">
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            </p> <!-- ./my-card__info__desc -->
+                                        </div> <!-- ./my-card__info -->
+                                    </div> <!-- ./my-card -->
+                                </div> <!-- ./swiper-slide -->
+                            </div> <!-- ./swiper-wrapper -->
+                        </div> <!-- ./mySwiper -->
+                    </div> <!-- ./col-md-8 -->
+                </div> <!-- ./row -->
+            </div> <!-- ./container -->
+        </section> <!-- ./portfolio -->
+
+        <!-- * Start reviews section -->
+        <section class="reviews" id="reviews">
+            <div class="container">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-lg-8">
+                        <div class="swiper mySwiperReviews">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="review-card">
+                                        <p class="review-card__text">
+                                            <span>"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Reiciendis nihil cum eveniet neque officiis eaque harum ipsum, impedit
+                                            praesentium eos blanditiis ducimus consequatur <span>"</span>
+                                        </p>
+                                        <div class="review-card__info">
+                                            <div class="review-card__info__img">
+                                                <img src="assets/images/testimonials/person-1.jpg" alt="Person 1"
+                                                    loading="lazy">
+                                            </div> <!-- ./review-card__info__img -->
+                                            <h4 class="review-card__info__name">levi daniel</h4>
+                                            <h5 class="review-card__info__job">web designer</h5>
+                                        </div> <!-- ./review-card__info -->
+                                    </div> <!-- ./review-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide">
+                                    <div class="review-card">
+                                        <p class="review-card__text">
+                                            <span>"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Reiciendis nihil cum eveniet neque officiis eaque harum ipsum, impedit
+                                            praesentium eos blanditiis ducimus consequatur <span>"</span>
+                                        </p>
+                                        <div class="review-card__info">
+                                            <div class="review-card__info__img">
+                                                <img src="assets/images/testimonials/person-2.jpg" alt="Person 2"
+                                                    loading="lazy">
+                                            </div> <!-- ./review-card__info__img -->
+                                            <h4 class="review-card__info__name">mason owen</h4>
+                                            <h5 class="review-card__info__job">UI developer</h5>
+                                        </div> <!-- ./review-card__info -->
+                                    </div> <!-- ./review-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide">
+                                    <div class="review-card">
+                                        <p class="review-card__text">
+                                            <span>"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Reiciendis nihil cum eveniet neque officiis eaque harum ipsum, impedit
+                                            praesentium eos blanditiis ducimus consequatur <span>"</span>
+                                        </p>
+                                        <div class="review-card__info">
+                                            <div class="review-card__info__img">
+                                                <img src="assets/images/testimonials/person-3.jpg" alt="Person 3"
+                                                    loading="lazy">
+                                            </div> <!-- ./review-card__info__img -->
+                                            <h4 class="review-card__info__name">david leo</h4>
+                                            <h5 class="review-card__info__job">UI / UX</h5>
+                                        </div> <!-- ./review-card__info -->
+                                    </div> <!-- ./review-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide">
+                                    <div class="review-card">
+                                        <p class="review-card__text">
+                                            <span>"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Reiciendis nihil cum eveniet neque officiis eaque harum ipsum, impedit
+                                            praesentium eos blanditiis ducimus consequatur <span>"</span>
+                                        </p>
+                                        <div class="review-card__info">
+                                            <div class="review-card__info__img">
+                                                <img src="assets/images/testimonials/person-4.jpg" alt="Person 4"
+                                                    loading="lazy">
+                                            </div> <!-- ./review-card__info__img -->
+                                            <h4 class="review-card__info__name">elias charles</h4>
+                                            <h5 class="review-card__info__job">product manager</h5>
+                                        </div> <!-- ./review-card__info -->
+                                    </div> <!-- ./review-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide">
+                                    <div class="review-card">
+                                        <p class="review-card__text">
+                                            <span>"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Reiciendis nihil cum eveniet neque officiis eaque harum ipsum, impedit
+                                            praesentium eos blanditiis ducimus consequatur <span>"</span>
+                                        </p>
+                                        <div class="review-card__info">
+                                            <div class="review-card__info__img">
+                                                <img src="assets/images/testimonials/person-5.jpg" alt="Person 5"
+                                                    loading="lazy">
+                                            </div> <!-- ./review-card__info__img -->
+                                            <h4 class="review-card__info__name">nathan jaxson</h4>
+                                            <h5 class="review-card__info__job">front end engineer</h5>
+                                        </div> <!-- ./review-card__info -->
+                                    </div> <!-- ./review-card -->
+                                </div> <!-- ./swiper-slide -->
+
+                                <div class="swiper-slide">
+                                    <div class="review-card">
+                                        <p class="review-card__text">
+                                            <span>"</span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                                            Reiciendis nihil cum eveniet neque officiis eaque harum ipsum, impedit
+                                            praesentium eos blanditiis ducimus consequatur <span>"</span>
+                                        </p>
+                                        <div class="review-card__info">
+                                            <div class="review-card__info__img">
+                                                <img src="assets/images/testimonials/person-6.jpg" alt="Person 6"
+                                                    loading="lazy">
+                                            </div> <!-- ./review-card__info__img -->
+                                            <h4 class="review-card__info__name">logan john</h4>
+                                            <h5 class="review-card__info__job">back end developer</h5>
+                                        </div> <!-- ./review-card__info -->
+                                    </div> <!-- ./review-card -->
+                                </div> <!-- ./swiper-slide -->
+                            </div> <!-- ./swiper-wrapper -->
+                        </div> <!-- ./mySwiper -->
+                    </div> <!-- ./col-lg-8 -->
+                </div> <!-- ./row -->
+            </div> <!-- ./container -->
+        </section> <!-- ./reviews -->
+
+        <!-- * Start contact section -->
+        <section class="contact" id="contact">
+            <form method="POST" class="form needs-validation" autocomplete="off">
+
+                <div class="container">
+                    <div class="row gy-4">
+                        <div class="col-md-6">
+                            <div class="form-action">
+                                <input type="text" class="w-100 your-first-name" name="First&nbsp;Name"
+                                    id="your-first-name" placeholder="enter your first name...." required>
+                            </div> <!-- ./form-action -->
+                        </div> <!-- ./col-md-6 -->
+
+                        <div class="col-md-6">
+                            <div class="form-action">
+                                <input type="text" class="w-100 your-second-name" name="Second&nbsp;Name"
+                                    id="your-second-name" placeholder="enter your second name...." required>
+                            </div> <!-- ./form-action -->
+                        </div> <!-- ./col-md-6 -->
+
+                        <div class="col-md-6">
+                            <div class="form-action">
+                                <input type="text" class="w-100 your-phone-number" name="Phone&nbsp;Number"
+                                    id="phone-number-form" placeholder="enter your phone number...." required>
+                            </div> <!-- ./form-action -->
+                        </div> <!-- ./col-md-6 -->
+
+                        <div class="col-md-6">
+                            <div class="form-action">
+                                <input type="email" class="w-100 your-email" name="Email" id="your-email"
+                                    placeholder="enter your email...." required>
+                            </div> <!-- ./form-action -->
+                        </div> <!-- ./col-md-6 -->
+
+                        <div class="col-12 w-100">
+                            <div class="form-action">
+                                <textarea name="Message" id="msg" class="w-100 your-msg" placeholder="your message...."
+                                    required></textarea>
+                            </div> <!-- ./form-action -->
+                        </div> <!-- ./col-12 -->
+
+                        <div class="col-12 w-100 mx-auto text-center">
+                            <button type="submit" class="my-btn">
+                                send message
+                            </button> <!-- ./my-btn -->
+                        </div> <!-- ./col-12 -->
+                    </div> <!-- ./row -->
+                </div> <!-- ./container -->
+            </form> <!-- ./form -->
+        </section> <!-- ./contact -->
+    </main> <!-- ./main -->
+
+    <!-- * All my script files -->
+    <script type="module" src="dist/js/imports.js"></script>
+    <script src="node_modules/swiper/swiper-bundle.min.js"></script>
+    <script src="dist/js/main.js"></script>
+    <script src="dist/js/swiper.js"></script>
+</body>
+
+</html>
