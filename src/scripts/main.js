@@ -150,16 +150,26 @@ function createAssetConfig(src) {
     const type = extension && videoExtensions.includes(extension.toLowerCase()) ? "video" : "image";
     return { src: sanitizedSrc, type };
 }
+function resolveAssetUrl(src) {
+    if (!src) {
+        return "";
+    }
+    if (/^(?:https?:)?\/\//i.test(src)) {
+        return src;
+    }
+    return `/assets/images/backgrounds/${src}`;
+}
 function applyBackground(main, asset) {
     if (!asset) {
         return;
     }
+    const assetUrl = resolveAssetUrl(asset.src);
     if (asset.type === "video") {
         const container = ensureBackgroundContainer(main);
         container.innerHTML = "";
         const video = document.createElement("video");
         video.className = "main__background-media";
-        video.src = `/assets/images/backgrounds/${asset.src}`;
+        video.src = assetUrl;
         video.autoplay = true;
         video.loop = true;
         video.muted = true;
@@ -175,7 +185,7 @@ function applyBackground(main, asset) {
     }
     else {
         removeBackgroundVideo(main);
-        main.style.backgroundImage = `url("/assets/images/backgrounds/${asset.src}")`;
+        main.style.backgroundImage = `url("${assetUrl}")`;
     }
 }
 function ensureBackgroundContainer(main) {
