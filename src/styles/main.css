@@ -446,19 +446,7 @@ section {
   visibility: visible;
 }
 
-.preloader {
-  background: #000;
-  height: 100vh;
-  left: 0;
-  position: fixed;
-  -webkit-transition: opacity 0.3s linear 0s;
-  -o-transition: opacity 0.3s linear 0s;
-  transition: opacity 0.3s linear 0s;
-  z-index: 9999999999999;
-}
-
-.home,
-.preloader {
+.home {
   -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-box-pack: center;
