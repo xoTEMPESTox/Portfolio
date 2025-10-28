@@ -6,6 +6,7 @@ const baseUrl = (() => {
 const backgroundImageBasePath = "assets/images/backgrounds";
 const backgroundVideoBasePath = "assets/videos/backgrounds";
 const videoExtensions = ["mp4", "webm", "ogv", "ogg"];
+const backgroundReadyEventName = "background-placeholder-ready";
 function withBase(path) {
     if (!path) {
         return baseUrl;
@@ -248,6 +249,7 @@ function applyBackground(main, asset) {
         if (placeholder) {
             video.setAttribute("poster", placeholder);
             setVideoPlaceholder(main, placeholder);
+            signalBackgroundReady();
         }
         else {
             main.style.backgroundImage = "";
@@ -257,6 +259,9 @@ function applyBackground(main, asset) {
         const handleVideoReady = () => {
             video.style.opacity = "1";
             clearVideoPlaceholder(main);
+            if (!placeholder) {
+                signalBackgroundReady();
+            }
         };
         video.addEventListener("loadeddata", handleVideoReady, { once: true });
         video.addEventListener("error", () => {
@@ -270,6 +275,7 @@ function applyBackground(main, asset) {
         removeBackgroundVideo(main);
         delete main.dataset.backgroundPlaceholder;
         main.style.backgroundImage = `url("${assetUrl}")`;
+        signalBackgroundReady();
     }
 }
 function ensureBackgroundContainer(main) {
@@ -318,6 +324,12 @@ function clearVideoPlaceholder(main) {
         delete main.dataset.backgroundPlaceholder;
     }
     main.style.backgroundImage = "none";
+}
+function signalBackgroundReady() {
+    if (typeof window === "undefined" || typeof window.dispatchEvent !== "function") {
+        return;
+    }
+    window.dispatchEvent(new Event(backgroundReadyEventName));
 }
 function enableBackgroundParallax(main, asset) {
     if (cleanupParallax) {
