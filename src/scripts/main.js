@@ -3,11 +3,21 @@ const baseUrl = (() => {
     const url = (import.meta.env?.BASE_URL ?? "/");
     return url.endsWith("/") ? url : `${url}/`;
 })();
+const backgroundImageBasePath = "assets/images/backgrounds";
+const backgroundVideoBasePath = "assets/videos/backgrounds";
+const videoExtensions = ["mp4", "webm", "ogv", "ogg"];
 function withBase(path) {
     if (!path) {
         return baseUrl;
     }
     return `${baseUrl}${path.replace(/^\/+/, "")}`;
+}
+function sanitizePathValue(value) {
+    return typeof value === "string" ? value.trim() : "";
+}
+function sanitizeBasePath(value) {
+    const sanitized = sanitizePathValue(value);
+    return sanitized ? sanitized.replace(/\/+$/, "") : "";
 }
 let cleanupParallax = null;
 if (document.readyState === "loading") {
@@ -139,42 +149,87 @@ function normalizeBackgroundAssets(assets) {
         return [];
     }
     return assets
-        .map((asset) => {
-        if (typeof asset === "string") {
-            return createAssetConfig(asset);
-        }
-        if (asset && typeof asset === "object" && typeof asset.src === "string") {
-            return createAssetConfig(asset.src);
-        }
-        return null;
-    })
+        .map((asset) => createAssetConfig(asset))
         .filter((asset) => asset !== null);
 }
-function createAssetConfig(src) {
-    const sanitizedSrc = typeof src === "string" ? src.trim() : "";
-    if (!sanitizedSrc) {
+function createAssetConfig(entry) {
+    if (!entry) {
         return null;
     }
-    const extension = sanitizedSrc.includes(".") ? sanitizedSrc.split(".").pop() : "";
-    const videoExtensions = ["mp4", "webm", "ogv", "ogg"];
-    const type = extension && videoExtensions.includes(extension.toLowerCase()) ? "video" : "image";
-    return { src: sanitizedSrc, type };
+    if (typeof entry === "string") {
+        const sanitizedSrc = sanitizePathValue(entry);
+        if (!sanitizedSrc) {
+            return null;
+        }
+        const extension = sanitizedSrc.includes(".") ? sanitizedSrc.split(".").pop() : "";
+        const type = extension && videoExtensions.includes(extension.toLowerCase()) ? "video" : "image";
+        const basePath = type === "video" ? backgroundVideoBasePath : backgroundImageBasePath;
+        return {
+            src: sanitizedSrc,
+            type,
+            srcBasePath: basePath,
+            poster: null,
+            posterBasePath: backgroundImageBasePath
+        };
+    }
+    if (typeof entry === "object") {
+        const videoSrc = sanitizePathValue(entry.video);
+        const imageSrc = sanitizePathValue(entry.image);
+        const posterSrc = sanitizePathValue(entry.poster);
+        const rawSrc = sanitizePathValue(entry.src);
+        const declaredType = sanitizePathValue(entry.type).toLowerCase();
+        if (videoSrc || declaredType === "video") {
+            const resolvedVideoSrc = videoSrc || rawSrc;
+            if (!resolvedVideoSrc) {
+                return null;
+            }
+            const basePath = sanitizeBasePath(entry.videoBasePath) || sanitizeBasePath(entry.basePath) || backgroundVideoBasePath;
+            const posterCandidate = posterSrc || imageSrc;
+            const posterBase = sanitizeBasePath(entry.imageBasePath) || sanitizeBasePath(entry.posterBasePath) || backgroundImageBasePath;
+            return {
+                src: resolvedVideoSrc,
+                type: "video",
+                srcBasePath: basePath,
+                poster: posterCandidate || null,
+                posterBasePath: posterBase || backgroundImageBasePath
+            };
+        }
+        const resolvedImageSrc = rawSrc || imageSrc || posterSrc;
+        if (!resolvedImageSrc) {
+            return null;
+        }
+        const imageBase = sanitizeBasePath(entry.imageBasePath) || sanitizeBasePath(entry.basePath) || backgroundImageBasePath;
+        return {
+            src: resolvedImageSrc,
+            type: "image",
+            srcBasePath: imageBase || backgroundImageBasePath,
+            poster: null,
+            posterBasePath: backgroundImageBasePath
+        };
+    }
+    return null;
 }
-function resolveAssetUrl(src) {
+function resolveAssetUrl(src, type, basePath) {
     if (!src) {
         return "";
     }
     if (/^(?:https?:)?\/\//i.test(src)) {
         return src;
     }
-    return withBase(`assets/images/backgrounds/${src.replace(/^\/+/, "")}`);
+    const normalizedSrc = src.replace(/^\/+/, "");
+    if (normalizedSrc.startsWith("assets/")) {
+        return withBase(normalizedSrc);
+    }
+    const normalizedBase = (basePath && basePath.length ? basePath : type === "video" ? backgroundVideoBasePath : backgroundImageBasePath).replace(/\/+$/, "");
+    return withBase(`${normalizedBase}/${normalizedSrc}`);
 }
 function applyBackground(main, asset) {
     if (!asset) {
         return;
     }
-    const assetUrl = resolveAssetUrl(asset.src);
+    const assetUrl = resolveAssetUrl(asset.src, asset.type, asset.srcBasePath);
     if (asset.type === "video") {
+        const placeholder = asset.poster ? resolveAssetUrl(asset.poster, "image", asset.posterBasePath) : null;
         const container = ensureBackgroundContainer(main);
         container.innerHTML = "";
         const video = document.createElement("video");
@@ -189,12 +244,31 @@ function applyBackground(main, asset) {
         video.setAttribute("playsinline", "");
         video.setAttribute("autoplay", "");
         video.setAttribute("loop", "");
-        video.setAttribute("preload", "auto");
+        video.setAttribute("preload", placeholder ? "metadata" : "auto");
+        if (placeholder) {
+            video.setAttribute("poster", placeholder);
+            setVideoPlaceholder(main, placeholder);
+        }
+        else {
+            main.style.backgroundImage = "";
+        }
+        video.style.opacity = "0";
+        video.style.transition = "opacity 600ms ease";
+        const handleVideoReady = () => {
+            video.style.opacity = "1";
+            clearVideoPlaceholder(main);
+        };
+        video.addEventListener("loadeddata", handleVideoReady, { once: true });
+        video.addEventListener("error", () => {
+            if (!placeholder) {
+                main.style.backgroundImage = "";
+            }
+        }, { once: true });
         container.appendChild(video);
-        main.style.backgroundImage = "none";
     }
     else {
         removeBackgroundVideo(main);
+        delete main.dataset.backgroundPlaceholder;
         main.style.backgroundImage = `url("${assetUrl}")`;
     }
 }
@@ -231,6 +305,19 @@ function setStoredBackground(key, value) {
     catch (error) {
         return;
     }
+}
+function setVideoPlaceholder(main, poster) {
+    if (!poster) {
+        return;
+    }
+    main.style.backgroundImage = `url("${poster}")`;
+    main.dataset.backgroundPlaceholder = "true";
+}
+function clearVideoPlaceholder(main) {
+    if (main.dataset.backgroundPlaceholder === "true") {
+        delete main.dataset.backgroundPlaceholder;
+    }
+    main.style.backgroundImage = "none";
 }
 function enableBackgroundParallax(main, asset) {
     if (cleanupParallax) {

@@ -3,7 +3,7 @@
 A Vite-powered personal portfolio showcasing key projects, services, and testimonials on a single-page experience. The site blends Bootstrap 5 styling with custom animations, dynamic background media, and Swiper.js carousels to create an interactive presentation.
 
 - Single-page layout with quick navigation between `home`, `about`, `quality`, `skills`, `services`, `portfolio`, `reviews`, and `contact` sections.
-- Background images/videos rotate on load using `public/assets/images/backgrounds/backgrounds.json`, with optional parallax for desktop visitors.
+- Background stills load instantly from `public/assets/images/backgrounds/backgrounds.json`, and matching videos fade in once buffered, with optional parallax for desktop visitors.
 - Swiper.js sliders highlight portfolio work and client reviews, adapting automatically to varying screen widths.
 - Lightweight loader fades out once the page assets finish downloading, improving perceived performance.
 - Bootstrap bundle is imported locally so data attributes (e.g. tooltips, dropdowns) work without additional setup.
@@ -35,22 +35,24 @@ If you need to test from another device on your network, run `npm run dev -- --h
 
 ```
 .
-├─ public/
-│  └─ assets/
-│     └─ images/backgrounds/   # Background videos referenced by backgrounds.json
-├─ src/
-│  ├─ scripts/                 # Behaviour: navigation logic, loaders, Swiper setup
-│  ├─ styles/                  # Main styles and icon font bundle
-│  └─ main.js                  # Entry point wiring styles and scripts
-├─ index.html                  # Page markup and section content
-└─ vite.config.js              # Vite configuration (default)
+public/
+  assets/
+    images/backgrounds/        # Still images referenced by backgrounds.json
+    videos/backgrounds/        # Matching video files
+src/
+  scripts/                     # Behaviour: navigation logic, loaders, Swiper setup
+  styles/                      # Main styles and icon font bundle
+  main.js                      # Entry point wiring styles and scripts
+index.html                     # Page markup and section content
+vite.config.js                 # Vite configuration (default)
 ```
 
 ## Background Media
 
 - Update `public/assets/images/backgrounds/backgrounds.json` to control which media files are considered for rotation.
-- Each entry should match a file located in `public/assets/images/backgrounds/`.
-- Videos are served via Vite's static assets pipeline and automatically selected at random on page load, avoiding repeats between sessions when possible.
+- Each entry can be either a simple string (image-only background) or an object with `image` and `video` keys pointing to files in `public/assets/images/backgrounds/` and `public/assets/videos/backgrounds/`, respectively.
+- Videos fade in after their paired still image is shown, so initial page load stays responsive while motion assets buffer in the background.
+- Assets are selected at random on page load, avoiding repeats between sessions when possible thanks to localStorage caching.
 
 ## Customization Tips
 
