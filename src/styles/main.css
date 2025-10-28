@@ -408,6 +408,7 @@ section {
 
 .list .list-item:before {
   background-color: #000000;
+  border: 1px solid #ffffff;
   border-radius: 1.4rem;
   color: #ffffff;
   content: attr(data-name-sec);
