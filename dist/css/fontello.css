@@ -1,0 +1,79 @@
+@font-face {
+  font-family: "fontello";
+  src: url("../font/fontello.eot@73109038");
+  src: url("../font/fontello.eot@73109038") format("embedded-opentype"),
+    url("../font/fontello.woff2@73109038") format("woff2"),
+    url("../font/fontello.woff@73109038") format("woff"),
+    url("../font/fontello.ttf@73109038") format("truetype"),
+    url("../font/fontello.svg@73109038") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class$="icon-"]:before,
+[class*="icon- "]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  margin-left: 0.2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.help-circledicon-:before {
+  content: "\e800";
+}
+.clipboardicon-:before {
+  content: "\e801";
+}
+.homeicon-:before {
+  content: "\e802";
+}
+.toolsicon-:before {
+  content: "\e803";
+}
+.briefcaseicon-:before {
+  content: "\e804";
+}
+.mailicon-:before {
+  content: "\e805";
+}
+.desktopicon-:before {
+  content: "\e806";
+}
+.penicon-:before {
+  content: "\e807";
+}
+.linkicon-:before {
+  content: "\e808";
+}
+.search-1icon-:before {
+  content: "\e809";
+}
+.doc-texticon-:before {
+  content: "\f0f6";
+}
+.codeicon-:before {
+  content: "\f121";
+}
+.servericon-:before {
+  content: "\f233";
+}
+.handshake-oicon-:before {
+  content: "\f2b5";
+}
+.searchicon-:before {
+  content: "\f50d";
+}
+.chart-baricon-:before {
+  content: "\f526";
+}
