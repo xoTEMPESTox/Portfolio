@@ -26,14 +26,12 @@ jobs:
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: Portfolio/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install deps
-        working-directory: Portfolio
         run: npm ci
 
       - name: Build
-        working-directory: Portfolio
         run: npm run build
 
       - name: Setup Pages
@@ -42,7 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: Portfolio/dist
+          path: dist
 
   deploy:
     runs-on: ubuntu-latest
