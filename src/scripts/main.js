@@ -1,9 +1,12 @@
 "use strict";
-changeListItems();
 if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", changeBackgroundAfterWhile);
+    document.addEventListener("DOMContentLoaded", () => {
+        changeListItems();
+        changeBackgroundAfterWhile();
+    });
 }
 else {
+    changeListItems();
     changeBackgroundAfterWhile();
 }
 function changeListItems() {
@@ -93,7 +96,7 @@ function changeBackgroundAfterWhile() {
     if (!main) {
         return;
     }
-    const manifestUrl = "assets/images/backgrounds/backgrounds.json";
+    const manifestUrl = "/assets/images/backgrounds/backgrounds.json";
     const storageKey = "portfolio:lastBackground";
     fetch(manifestUrl)
         .then((response) => {
@@ -154,7 +157,7 @@ function applyBackground(main, asset) {
         container.innerHTML = "";
         const video = document.createElement("video");
         video.className = "main__background-media";
-        video.src = `assets/images/backgrounds/${asset.src}`;
+        video.src = `/assets/images/backgrounds/${asset.src}`;
         video.autoplay = true;
         video.loop = true;
         video.muted = true;
@@ -170,7 +173,7 @@ function applyBackground(main, asset) {
     }
     else {
         removeBackgroundVideo(main);
-        main.style.backgroundImage = `url("assets/images/backgrounds/${asset.src}")`;
+        main.style.backgroundImage = `url("/assets/images/backgrounds/${asset.src}")`;
     }
 }
 function ensureBackgroundContainer(main) {
@@ -205,4 +208,3 @@ function setStoredBackground(key, value) {
         return;
     }
 }
-//# sourceMappingURL=main.js.map
