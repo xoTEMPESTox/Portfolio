@@ -328,7 +328,7 @@ section {
 }
 
 .main:before {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.5);
   content: "";
   height: 100%;
   left: 0;
@@ -364,6 +364,7 @@ section {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  border: 1px solid #ffffff;
   background-color: #000000;
   border-radius: 1.4rem;
   bottom: 4rem;
@@ -1139,6 +1140,7 @@ section {
   -ms-flex-pack: center;
   align-items: center;
   background-color: #000000;
+  border: 1px solid #ffffff;
   border-radius: 50%;
   cursor: pointer;
   display: -webkit-box;
@@ -1189,6 +1191,7 @@ section {
   opacity: 1;
   top: -80%;
   visibility: visible;
+  border: 1px solid #ffffff;
 }
 
 .services__wrapper__icons__item.deg-45 {
@@ -1229,7 +1232,7 @@ section {
 
 .services .rounding {
   background-color: #000000;
-  border: 0.35rem dashed #000000;
+  border: 1px dashed #ffffff;
 }
 
 @-webkit-keyframes rotation-360 {
@@ -1395,6 +1398,7 @@ section {
   height: 100%;
   padding: 1.4rem 1rem 0;
   width: 100%;
+  border: 1px solid #ffffff;
 }
 
 .reviews .swiper-slide .review-card__text {
@@ -1501,8 +1505,8 @@ section {
 
 .contact input,
 .contact textarea {
-  background-color: transparent;
-  border: 0.05rem solid rgba(201, 228, 202, 0.596);
+  background-color:rgba(0,0,0,.9);
+  border: 0.05rem solid #ffffff;
   border-radius: 1vmax;
   caret-color: #ffffff;
   color: #ffffff;
@@ -1516,31 +1520,31 @@ section {
 
 .contact input::-webkit-input-placeholder,
 .contact textarea::-webkit-input-placeholder {
-  color: rgba(201, 228, 202, 0.322);
+  color: #ffffff;
   text-transform: capitalize;
 }
 
 .contact input::-moz-placeholder,
 .contact textarea::-moz-placeholder {
-  color: rgba(201, 228, 202, 0.322);
+  color: #ffffff;
   text-transform: capitalize;
 }
 
 .contact input:-ms-input-placeholder,
 .contact textarea:-ms-input-placeholder {
-  color: rgba(201, 228, 202, 0.322);
+  color: #ffffff;
   text-transform: capitalize;
 }
 
 .contact input::-ms-input-placeholder,
 .contact textarea::-ms-input-placeholder {
-  color: rgba(201, 228, 202, 0.322);
+  color: #ffffff;
   text-transform: capitalize;
 }
 
 .contact input::placeholder,
 .contact textarea::placeholder {
-  color: rgba(201, 228, 202, 0.322);
+  color: #ffffff;
   text-transform: capitalize;
 }
 
@@ -1551,7 +1555,7 @@ section {
 
 .contact .my-btn {
   background-color: #000000;
-  border: 0.05rem solid #000000;
+  border: 1px solid #ffffff;
   border-radius: 1vmax;
   color: #ffffff;
   font-size: 1.4rem;
