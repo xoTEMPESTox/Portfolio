@@ -226,8 +226,8 @@ function enableBackgroundParallax(main, asset) {
         target: { x: 0.5, y: 0.5 },
         current: { x: 0.5, y: 0.5 }
     };
-    const smoothingFactor = 0.12;
-    const settleThreshold = 0.001;
+    const smoothingFactor = 0.1;
+    const settleThreshold = 0.00000000001;
     let animationFrameId = null;
     const stepAnimation = () => {
         const deltaX = state.target.x - state.current.x;
@@ -287,13 +287,13 @@ function applyParallaxOffset(main, asset, container, position) {
     const clampedX = Math.min(1, Math.max(0, position.x));
     const clampedY = Math.min(1, Math.max(0, position.y));
     if (asset.type === "video" && container) {
-        const offsetIntensity = 10;
+        const offsetIntensity = 50;
         const offsetX = (clampedX - 0.5) * offsetIntensity;
         const offsetY = (clampedY - 0.5) * offsetIntensity;
         container.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1.08)`;
     }
     else {
-        const offsetIntensityPercent = 10;
+        const offsetIntensityPercent = 50;
         const offsetXPercent = (clampedX - 0.5) * offsetIntensityPercent;
         const offsetYPercent = (clampedY - 0.5) * offsetIntensityPercent;
         main.style.backgroundPosition = `${50 + offsetXPercent}% ${50 + offsetYPercent}%`;
@@ -315,6 +315,12 @@ function resetParallax(main, asset, container) {
 }
 function shouldEnableParallax() {
     if (typeof window === "undefined" || typeof window.matchMedia !== "function") {
+        return false;
+    }
+    const hasTouchInput = (typeof navigator !== "undefined" &&
+        ((navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+            (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0))) || "ontouchstart" in window;
+    if (hasTouchInput) {
         return false;
     }
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
