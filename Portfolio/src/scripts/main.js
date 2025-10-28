@@ -1,4 +1,14 @@
 "use strict";
+const baseUrl = (() => {
+    const url = (import.meta.env?.BASE_URL ?? "/");
+    return url.endsWith("/") ? url : `${url}/`;
+})();
+function withBase(path) {
+    if (!path) {
+        return baseUrl;
+    }
+    return `${baseUrl}${path.replace(/^\/+/, "")}`;
+}
 let cleanupParallax = null;
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
@@ -97,7 +107,7 @@ function changeBackgroundAfterWhile() {
     if (!main) {
         return;
     }
-    const manifestUrl = "/assets/images/backgrounds/backgrounds.json";
+    const manifestUrl = withBase("assets/images/backgrounds/backgrounds.json");
     const storageKey = "portfolio:lastBackground";
     fetch(manifestUrl)
         .then((response) => {
@@ -157,7 +167,7 @@ function resolveAssetUrl(src) {
     if (/^(?:https?:)?\/\//i.test(src)) {
         return src;
     }
-    return `/assets/images/backgrounds/${src}`;
+    return withBase(`assets/images/backgrounds/${src.replace(/^\/+/, "")}`);
 }
 function applyBackground(main, asset) {
     if (!asset) {
