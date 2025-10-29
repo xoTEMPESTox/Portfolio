@@ -253,12 +253,11 @@ function applyBackground(main, asset) {
         if (placeholder) {
             video.setAttribute("poster", placeholder);
             setVideoPlaceholder(main, placeholder);
+            video.style.opacity = "0";
         }
         else {
             main.style.backgroundImage = "";
         }
-        video.style.opacity = "0";
-        video.style.transition = "opacity 600ms ease";
         const handleVideoReady = () => {
             video.style.opacity = "1";
             clearVideoPlaceholder(main);
