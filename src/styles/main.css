@@ -587,19 +587,20 @@ section {
   background-color: #C4C4C4;
   border-radius: 0.6rem;
   display: block;
-  height: 100%;
-  left: 0;
+  bottom: 0;
+  height: 0.3rem;
+  left: 50%;
   position: absolute;
-  top: 0;
-  -webkit-transition: width 0.4s ease 0s;
-  -o-transition: width 0.4s ease 0s;
-  transition: width 0.4s ease 0s;
-  width: 0;
-  z-index: -1;
+  right: 50%;
+  -webkit-transition: left 0.4s ease 0s, right 0.4s ease 0s;
+  -o-transition: left 0.4s ease 0s, right 0.4s ease 0s;
+  transition: left 0.4s ease 0s, right 0.4s ease 0s;
+  z-index: 0;
 }
 
 .home__info__title:hover span {
-  width: 100%;
+  left: 2rem;
+  right: 2rem;
 }
 
 .home__info__desc {
@@ -890,7 +891,7 @@ section {
   }
 }
 
-.quality {
+.journey {
   -webkit-box-align: center;
   -ms-flex-align: center;
   -webkit-box-pack: center;
@@ -914,23 +915,23 @@ section {
   width: 100%;
 }
 
-.quality .container {
+.journey .container {
   z-index: 300;
 }
 
 @media (max-width: 575.98px) {
-  .quality .container {
+  .journey .container {
     margin-bottom: 4.5rem;
     margin-left: 3rem;
   }
 }
 
-.quality .container .col-md-6 {
+.journey .container .col-md-6 {
   border-left: 0.1rem solid #eaeaea;
   padding-left: 2.4rem;
 }
 
-.quality__title {
+.journey__title {
   color: #eaeaea;
   font-size: 2.55rem;
   margin-bottom: 4.5rem;
@@ -945,12 +946,12 @@ section {
 }
 
 @media (max-width: 767.98px) {
-  .quality__title {
+  .journey__title {
     margin-bottom: 2rem;
   }
 }
 
-.quality__title:before {
+.journey__title:before {
   background-color: #eaeaea;
   border-radius: 0.3rem;
   bottom: -25%;
@@ -961,7 +962,7 @@ section {
   width: 100%;
 }
 
-.quality__card {
+.journey__card {
   color: #ffffff;
   margin-bottom: 3.2rem;
   position: relative;
@@ -972,24 +973,24 @@ section {
   width: fit-content; 
 }
 
-.quality__card-group {
+.journey__card-group {
   display: grid;
   grid-template-columns: max-content;
   max-width: 100%;
   width: max-content;
 }
 
-.quality__card-group .quality__card {
+.journey__card-group .journey__card {
   width: 100%;
 }
 
-.quality__card__title {
+.journey__card__title {
   font-size: 1.7rem;
   font-weight: 700;
   position: relative;
 }
 
-.quality__card__title:before {
+.journey__card__title:before {
   background-color: #000;
   border: 0.1rem solid #ffffff;
   border-radius: 50%;
@@ -1002,17 +1003,17 @@ section {
   width: 1rem;
 }
 
-.quality__card__place {
+.journey__card__place {
   font-size: 1.3rem;
   font-weight: 700;
 }
 
-.quality__card__desc {
+.journey__card__desc {
   font-size: 1.3rem;
 }
 
 @media (max-width: 767.98px) {
-  .quality__card__desc {
+  .journey__card__desc {
     display: none;
   }
 }

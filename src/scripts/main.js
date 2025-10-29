@@ -35,7 +35,7 @@ else {
 function changeListItems() {
     let home = document.getElementById("home");
     let about = document.getElementById("about");
-    let quality = document.getElementById("quality");
+    let journey = document.getElementById("journey");
     let skills = document.getElementById("skills");
     let services = document.getElementById("services");
     let portfolio = document.getElementById("portfolio");
@@ -84,8 +84,8 @@ function changeListItems() {
             else if (li.getAttribute("id") === "item-about") {
                 about.classList.add("full-screen-right");
             }
-            else if (li.getAttribute("id") === "item-quality") {
-                quality.classList.add("full-screen-left");
+            else if (li.getAttribute("id") === "item-journey") {
+                journey.classList.add("full-screen-left");
             }
             else if (li.getAttribute("id") === "item-skills") {
                 skills.classList.add("full-screen-right");
