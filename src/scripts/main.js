@@ -24,11 +24,13 @@ if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
         changeListItems();
         changeBackgroundAfterWhile();
+        initSkillBarAnimations();
     });
 }
 else {
     changeListItems();
     changeBackgroundAfterWhile();
+    initSkillBarAnimations();
 }
 function changeListItems() {
     let home = document.getElementById("home");
@@ -111,6 +113,91 @@ function changeListItems() {
         });
     }
     readMoreHome();
+}
+function initSkillBarAnimations() {
+    if (typeof document === "undefined") {
+        return;
+    }
+    const skillsSection = document.getElementById("skills");
+    if (!skillsSection) {
+        return;
+    }
+    const items = [];
+    skillsSection.querySelectorAll(".skills__box").forEach((box) => {
+        const rateElement = box.querySelector(".skills__box__head__rate");
+        const barElement = box.querySelector(".skills__box__line span");
+        if (!rateElement || !barElement) {
+            return;
+        }
+        const rateText = (rateElement.textContent || "").trim();
+        const match = rateText.match(/(\d+(?:\.\d+)?)/);
+        if (!match) {
+            return;
+        }
+        const parsed = parseFloat(match[1]);
+        if (Number.isNaN(parsed)) {
+            return;
+        }
+        const clampedRate = Math.min(100, Math.max(0, parsed));
+        items.push({ box, bar: barElement, rate: clampedRate });
+    });
+    if (!items.length) {
+        return;
+    }
+    const supportsWindow = typeof window !== "undefined";
+    let prefersReducedMotion = false;
+    if (supportsWindow && typeof window.matchMedia === "function") {
+        prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
+    if (supportsWindow) {
+        items.forEach(({ box }) => {
+            const removeTouch = () => {
+                box.classList.remove("is-touch");
+            };
+            box.addEventListener("touchstart", () => {
+                box.classList.add("is-touch");
+            }, { passive: true });
+            box.addEventListener("touchend", removeTouch);
+            box.addEventListener("touchcancel", removeTouch);
+        });
+    }
+    if (!supportsWindow || prefersReducedMotion) {
+        items.forEach(({ bar, rate }) => {
+            bar.style.transition = "none";
+            bar.style.width = `${rate}%`;
+        });
+        return;
+    }
+    items.forEach(({ bar }) => {
+        bar.style.width = "0";
+    });
+    let hasAnimated = false;
+    const schedule = typeof window.requestAnimationFrame === "function"
+        ? window.requestAnimationFrame.bind(window)
+        : (callback) => window.setTimeout(callback, 0);
+    const animate = () => {
+        if (hasAnimated) {
+            return;
+        }
+        hasAnimated = true;
+        schedule(() => {
+            items.forEach(({ bar, rate }) => {
+                bar.style.width = `${rate}%`;
+            });
+        });
+    };
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                animate();
+                observer.disconnect();
+            }
+        }, { threshold: 0.35 });
+        observer.observe(skillsSection);
+    }
+    else {
+        animate();
+    }
 }
 function changeBackgroundAfterWhile() {
     const main = document.getElementById("main");

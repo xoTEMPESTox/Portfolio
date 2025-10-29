@@ -1088,7 +1088,8 @@ section {
   transition:
     transform 0.34s ease-in 0s,
     -webkit-transform 0.34s ease-in 0s;
-  width: 100%;
+  left: 2rem;   /* same as horizontal padding */
+  right: 2rem;  /* keeps equal gap on both sides */
 }
 
 .skills__title:hover:before {
@@ -1121,10 +1122,21 @@ section {
   padding: 1.1rem;
   text-transform: capitalize;
   width: 100%;
+  transform: translateY(0) scale(1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
   padding: 1.5rem;
+}
+
+.skills__box:hover,
+.skills__box:focus-within,
+.skills__box:active,
+.skills__box.is-touch {
+  transform: translateY(-0.5rem) scale(1.02);
+  box-shadow: 0 1.1rem 2rem rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 767.98px) {
@@ -1167,28 +1179,11 @@ section {
   border-radius: 100vmax;
   height: 100%;
   left: 0;
+  transform-origin: left center;
+  transition: width 0.85s ease;
+  width: 0;
   position: absolute;
   top: 0;
-}
-
-.skills__box__line span[data-rate="70"] {
-  width: 70%;
-}
-
-.skills__box__line span[data-rate="80"] {
-  width: 80%;
-}
-
-.skills__box__line span[data-rate="85"] {
-  width: 85%;
-}
-
-.skills__box__line span[data-rate="90"] {
-  width: 90%;
-}
-
-.skills__box__line span[data-rate="95"] {
-  width: 95%;
 }
 
 .services {
