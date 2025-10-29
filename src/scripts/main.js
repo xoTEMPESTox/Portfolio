@@ -278,10 +278,45 @@ function applyBackground(main, asset) {
                 }
             }
         };
-        const handleVideoReady = () => {
-            clearVideoPlaceholder(main);
+        const revealVideo = () => {
+            const performClear = () => clearVideoPlaceholder(main);
+            if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
+                window.requestAnimationFrame(() => {
+                    window.requestAnimationFrame(performClear);
+                });
+            }
+            else {
+                performClear();
+            }
         };
-        video.addEventListener("loadeddata", handleVideoReady, { once: true });
+        let revealFallbackId = null;
+        const cancelFallback = () => {
+            if (typeof window !== "undefined" && revealFallbackId !== null) {
+                window.clearTimeout(revealFallbackId);
+                revealFallbackId = null;
+            }
+        };
+        const handleVideoPlaying = () => {
+            cancelFallback();
+            revealVideo();
+        };
+        video.addEventListener("playing", handleVideoPlaying, { once: true });
+        video.addEventListener("loadeddata", () => {
+            if (video.paused) {
+                const playPromise = video.play();
+                if (playPromise && typeof playPromise.catch === "function") {
+                    playPromise.catch(() => {
+                        // Autoplay might be blocked; keep placeholder in place.
+                    });
+                }
+            }
+            if (typeof window !== "undefined") {
+                revealFallbackId = window.setTimeout(() => {
+                    revealFallbackId = null;
+                    revealVideo();
+                }, 2000);
+            }
+        }, { once: true });
         video.addEventListener("error", () => {
             if (!placeholder) {
                 main.style.backgroundImage = "";
