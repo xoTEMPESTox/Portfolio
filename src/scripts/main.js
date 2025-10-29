@@ -137,10 +137,19 @@ function changeBackgroundAfterWhile() {
             console.warn("No background assets available.");
             return;
         }
-        const lastAssetSrc = storedBackground?.src || (typeof storedBackgroundRaw === "string" ? storedBackgroundRaw : null);
-        const candidateAssets = normalizedAssets.filter((asset) => asset.src !== lastAssetSrc);
-        const selectionPool = candidateAssets.length ? candidateAssets : normalizedAssets;
-        const selectedAsset = selectionPool[Math.floor(Math.random() * selectionPool.length)];
+        let selectedAsset = null;
+        if (!storedBackground && normalizedAssets.length) {
+            selectedAsset = normalizedAssets[0];
+        }
+        else {
+            const lastAssetSrc = storedBackground?.src || (typeof storedBackgroundRaw === "string" ? storedBackgroundRaw : null);
+            const candidateAssets = normalizedAssets.filter((asset) => asset.src !== lastAssetSrc);
+            const selectionPool = candidateAssets.length ? candidateAssets : normalizedAssets;
+            selectedAsset = selectionPool[Math.floor(Math.random() * selectionPool.length)];
+        }
+        if (!selectedAsset) {
+            selectedAsset = normalizedAssets[0];
+        }
         applyBackground(main, selectedAsset);
         enableBackgroundParallax(main, selectedAsset);
         setStoredBackground(storageKey, serializeBackgroundConfig(selectedAsset));
@@ -239,7 +248,6 @@ function applyBackground(main, asset) {
         container.innerHTML = "";
         const video = document.createElement("video");
         video.className = "main__background-media";
-        video.src = assetUrl;
         video.autoplay = true;
         video.loop = true;
         video.muted = true;
@@ -249,17 +257,28 @@ function applyBackground(main, asset) {
         video.setAttribute("playsinline", "");
         video.setAttribute("autoplay", "");
         video.setAttribute("loop", "");
-        video.setAttribute("preload", placeholder ? "metadata" : "auto");
+        video.preload = "metadata";
+        video.setAttribute("preload", "metadata");
+        video.setAttribute("fetchpriority", "low");
         if (placeholder) {
             video.setAttribute("poster", placeholder);
             setVideoPlaceholder(main, placeholder);
-            video.style.opacity = "0";
         }
         else {
             main.style.backgroundImage = "";
         }
+        const beginVideoLoad = () => {
+            if (!video.src) {
+                video.src = assetUrl;
+                try {
+                    video.load();
+                }
+                catch (_a) {
+                    // Ignore load errors; the browser will handle failed fetches.
+                }
+            }
+        };
         const handleVideoReady = () => {
-            video.style.opacity = "1";
             clearVideoPlaceholder(main);
         };
         video.addEventListener("loadeddata", handleVideoReady, { once: true });
@@ -269,6 +288,15 @@ function applyBackground(main, asset) {
             }
         }, { once: true });
         container.appendChild(video);
+        if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+            window.requestIdleCallback(beginVideoLoad, { timeout: 2500 });
+        }
+        else if (typeof window !== "undefined") {
+            window.setTimeout(beginVideoLoad, 700);
+        }
+        else {
+            beginVideoLoad();
+        }
     }
     else {
         removeBackgroundVideo(main);
