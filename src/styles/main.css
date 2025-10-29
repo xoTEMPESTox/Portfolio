@@ -518,8 +518,9 @@ section {
   border-radius: 16px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
-  padding: 0.5rem;
+  padding: 1.5rem;
   width: fit-content;
+  margin: 0 auto;
 }
 
 @media (min-width: 992px) {
@@ -666,7 +667,7 @@ section {
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
-  padding: 0.5rem;
+  padding: 1.5rem;
 }
 
 .about__title:first-letter {
@@ -750,7 +751,7 @@ section {
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
-  padding: 0.5rem;
+  padding: 1.5rem;
   width: fit-content;
 }
 
@@ -838,7 +839,7 @@ section {
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
-  padding: 0.5rem;
+  padding: 1.5rem;
 }
 
 @media (max-width: 767.98px) {
@@ -865,7 +866,7 @@ section {
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
-  padding: 0.5rem;
+  padding: 1.5rem;
   width: fit-content; 
 }
 
@@ -958,7 +959,7 @@ section {
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
-  padding: 0.5rem;
+  padding: 1.5rem;
   width: fit-content; 
 }
 
@@ -1024,7 +1025,7 @@ section {
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
-  padding: 0.5rem;
+  padding: 1.5rem;
 }
 
 @media (max-width: 767.98px) {
