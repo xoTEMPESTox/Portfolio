@@ -25,6 +25,8 @@
     <meta name="application-name" content="Priyanshu Sah Site!">
 
     <!-- Styles are bundled by Vite entry -->
+    <link rel="preload" as="image" href="/assets/images/backgrounds/1.jpeg" fetchpriority="high">
+    <link rel="preload" as="image" href="/assets/images/person/man-1-min.jpg" fetchpriority="high">
 </head>
 
 <body>
@@ -73,7 +75,7 @@
                     <div class="col-md-6">
                         <div class="home__img mx-auto">
                             <img src="/assets/images/person/man-1-min.jpg" alt="Priyanshu Sah's picture!"
-                                draggable="false" loading="lazy">
+                                draggable="false" fetchpriority="high" decoding="async">
                         </div> <!-- ./home__img -->
                     </div> <!-- ./col-md-6 -->
 

@@ -321,9 +321,6 @@ section {
   height: 100vh;
   overflow: hidden;
   position: relative;
-  -webkit-transition: background-image 1s ease-in 0s;
-  -o-transition: background-image 1s ease-in 0s;
-  transition: background-image 1s ease-in 0s;
   width: 100vw;
 }
 
