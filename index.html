@@ -27,11 +27,26 @@
     <!-- Styles are bundled by Vite entry -->
     <link rel="preload" as="image" href="/assets/images/backgrounds/1.jpeg" fetchpriority="high">
     <link rel="preload" as="image" href="/assets/images/person/man-1-min.jpg" fetchpriority="high">
-  <script type="module" crossorigin src="/assets/index-CkM48iRl.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BSGDKO-b.css">
+  <script type="module" crossorigin src="/assets/index-wYw5s9kX.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-D2tTLyeY.css">
 </head>
 
 <body>
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;pointer-events:none;visibility:hidden">
+        <defs>
+            <filter id="nnnoise-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox"
+                primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">
+                <feTurbulence type="fractalNoise" baseFrequency="0.2" numOctaves="4" seed="15" stitchTiles="stitch"
+                    x="0%" y="0%" width="100%" height="100%" result="turbulence"></feTurbulence>
+                <feSpecularLighting surfaceScale="15" specularConstant="1.1" specularExponent="20"
+                    lighting-color="#a193b3" x="0%" y="0%" width="100%" height="100%" in="turbulence"
+                    result="specularLighting">
+                    <feDistantLight azimuth="3" elevation="62"></feDistantLight>
+                </feSpecularLighting>
+            </filter>
+        </defs>
+    </svg>
 
     <!-- * Start main section -->
     <main class="main" id="main">
@@ -45,7 +60,7 @@
                 <i class="demo-icon help-circledicon-"></i>
             </li> <!-- ./list-item -->
 
-            <li id="item-quality" class="list-item" data-name-sec="quality">
+            <li id="item-journey" class="list-item" data-name-sec="journey">
                 <i class="demo-icon chart-baricon-"></i>
             </li> <!-- ./list-item -->
 
@@ -61,14 +76,92 @@
                 <i class="demo-icon briefcaseicon-"></i>
             </li> <!-- ./list-item -->
 
-            <li id="item-reviews" class="list-item" data-name-sec="reviews">
-                <i class="demo-icon handshake-oicon-"></i>
+            <li id="item-socials" class="list-item" data-name-sec="socials">
+                <i class="demo-icon linkicon-"></i>
             </li> <!-- ./list-item -->
 
-            <li id="item-contact" class="list-item" data-name-sec="contact">
+            <!-- <li id="item-reviews" class="list-item" data-name-sec="reviews">
+                <i class="demo-icon handshake-oicon-"></i>
+            </li>  -->
+            <!-- ./list-item -->
+
+            <!-- <li id="item-contact" class="list-item" data-name-sec="contact">
                 <i class="demo-icon mailicon-"></i>
-            </li> <!-- ./list-item -->
+            </li>  -->
+            <!-- ./list-item -->
         </ul> <!-- ./list -->
+
+        <ul class="socials" id="socials" aria-label="Social links">
+            <li class="socials__item">
+                <a class="socials__link" href="mailto:priyanshu123sah@gmail.com"
+                    aria-label="Email Priyanshu Sah">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" role="img" aria-hidden="true">
+                        <rect x="3.5" y="5.5" width="17" height="13" rx="2.5"></rect>
+                        <path d="m3.5 7.5 8.5 6 8.5-6"></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="socials__item">
+                <a class="socials__link" href="https://www.linkedin.com/in/priyanshu123sah/" target="_blank"
+                    rel="noopener noreferrer" aria-label="LinkedIn profile">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <path d="M4.75 7.75C4.75 6.09315 6.09315 4.75 7.75 4.75H16.25C17.9069 4.75 19.25 6.09315 19.25 7.75V16.25C19.25 17.9069 17.9069 19.25 16.25 19.25H7.75C6.09315 19.25 4.75 17.9069 4.75 16.25V7.75Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        <path d="M10.75 16.25V14C10.75 12.7574 11.7574 11.75 13 11.75C14.2426 11.75 15.25 12.7574 15.25 14V16.25"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                        <path d="M10.75 11.75V16.25" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M7.75 11.75V16.25" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M7.75 8.75V9.25" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="socials__item">
+                <a class="socials__link" href="https://github.com/xoTEMPESTox" target="_blank"
+                    rel="noopener noreferrer" aria-label="GitHub profile">
+                    <svg stroke="currentColor" fill="none" stroke-width="1" viewBox="0 0 24 24"
+                        stroke-linecap="round" stroke-linejoin="round" height="20" width="20"
+                        xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <path
+                            d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                        </path>
+                        <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="socials__item">
+                <a class="socials__link" href="https://codolio.com/profile/_TEMPEST_" target="_blank"
+                    rel="noopener noreferrer" aria-label="Codolio LeetCode profile">
+                    <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true">
+                        <title>LeetCode</title>
+                        <path
+                            d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"
+                            fill="currentColor" stroke-width="1"></path>
+                    </svg>
+                </a>
+            </li>
+            <li class="socials__item">
+                <a class="socials__link" href="https://bit.ly/Priyanshu_Sah-Resume-Foreign" target="_blank"
+                    rel="noopener noreferrer" aria-label="Download CV">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"
+                        stroke-linejoin="round" role="img" aria-hidden="true">
+                        <path d="M12 22h6a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v3"></path>
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                        <path d="M5 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"></path>
+                        <path d="M7 16.5 8 22l-3-1-3 1 1-5.5"></path>
+                    </svg>
+                </a>
+            </li>
+        </ul>
 
         <!-- * Start home section -->
         <section class="home full-screen-left" id="home">
@@ -88,9 +181,11 @@
                                 <span></span>
                             </h2>
                             <p class="home__info__desc my-4">
-                                AI/ML Engineer | Full Stack Developer
+                                AI/ML Engineer
+                                <br> 
+                                Full Stack Developer
                                 <br>
-                                Currently interning at Liferythm Healthcare.
+                                @Intern at Liferythm Healthcare.
                             </p> <!-- ./home__info__desc -->
                             <a id="read-more-home" class="home__info__btn custom-btn mx-auto" href="index.html#">read more</a>
                         </div> <!-- ./home__info -->
@@ -102,107 +197,98 @@
         <!-- * Start about section -->
         <section class="about" id="about">
             <div class="container">
-                <div class="row d-flex justify-content-center align-items-center gx-5 gy-sm-4 mx-auto">
-                    <div class="col-md-7">
-                        <h3 class="about__title">Priyanshu Sah</h3>
+                <div class="about__layout">
+                    <div class="about__stack about__stack--left">
+                        <div class="about__info">
+                            <span class="about__info__label">Job:</span>
+                            <span class="about__info__value">Full-Stack AI Engineer</span>
+                        </div> <!-- ./about__info -->
 
-                        <div class="row gx-1 d-flex justify-content-center align-items-center mx-auto">
-                            <div class="col-sm-8 col-md-7">
-                                <div class="about__info-group">
-                                <div class="about__info">
-                                    <span class="about__info__label">job: </span><br>
-                                    <span class="about__info__value">Full-Stack AI Engineer</span><br>
-                                </div> <!-- ./about__info -->
+                        <div class="about__info">
+                            <span class="about__info__label">Degree:</span>
+                            <span class="about__info__value">B.Tech (AI & ML)</span>
+                        </div> <!-- ./about__info -->
 
-                                <div class="about__info">
-                                    <span class="about__info__label">degree: </span><br>
-                                    <span class="about__info__value">B.Tech (AI & ML)</span><br>
-                                </div> <!-- ./about__info -->
+                        <div class="about__info">
+                            <span class="about__info__label">Address:</span>
+                            <span class="about__info__value">Mumbai, India</span>
+                        </div> <!-- ./about__info -->
 
-                                <div class="about__info">
-                                    <span class="about__info__label">address: </span><br>
-                                    <span class="about__info__value">Mumbai,India</span><br>
-                                </div> <!-- ./about__info -->
+                        <div class="about__info">
+                            <span class="about__info__label">Phone:</span>
+                            <span class="about__info__value">+91 7666774342</span>
+                        </div> <!-- ./about__info -->
+                    </div> <!-- ./about__stack -->
 
-                                <div class="about__info">
-                                    <span class="about__info__label">phone: </span><br>
-                                    <span class="about__info__value">+91 7666774342</span><br>
-                                </div> <!-- ./about__info -->
-                                </div> <!-- ./about__info-group -->
-                            </div> <!-- ./col-sm-6 -->
-
-                            <div class="col-sm-4 mx-auto">
-                                <div class="about__info-group">
-                                <div class="about__info">
-                                    <span class="about__info__label">birthday: </span><br>
-                                    <span class="about__info__value">8 Nov 2004</span><br>
-                                </div> <!-- ./about__info -->
-
-                                <div class="about__info">
-                                    <span class="about__info__label">experience: </span><br>
-                                    <span class="about__info__value">1.5 years</span><br>
-                                </div> <!-- ./about__info -->
-
-                                <div class="about__info">
-                                    <span class="about__info__label">email: </span><br>
-                                    <span class="about__info__value">priyanshu123sah@gmail.com</span><br>
-                                </div> <!-- ./about__info -->
-
-                                <div class="about__info">
-                                    <span class="about__info__label">freelance: </span><br>
-                                    <span class="about__info__value">available</span><br>
-                                </div> <!-- ./about__info -->
-                                </div> <!-- ./about__info-group -->
-                            </div> <!-- ./col-sm-6 -->
-                        </div> <!-- ./row -->
-                    </div> <!-- ./col-md-8 -->
-
-                    <div class="col-md-3">
+                    <div class="about__center">
                         <div class="about__img">
                             <img src="/assets/images/person/man-2-min.jpg"
                                 alt="Priyanshu Sah's picture in about section" draggable="false" loading="lazy">
                         </div> <!-- ./about__img -->
-                    </div> <!-- ./col-md-4 -->
-                </div> <!-- ./row -->
+                        <h3 class="about__title">Priyanshu Sah</h3>
+                    </div> <!-- ./about__center -->
+
+                    <div class="about__stack about__stack--right">
+                        <div class="about__info">
+                            <span class="about__info__label">Birthday:</span>
+                            <span class="about__info__value">8 Nov 2004</span>
+                        </div> <!-- ./about__info -->
+
+                        <div class="about__info">
+                            <span class="about__info__label">Experience:</span>
+                            <span class="about__info__value">1.5 years</span>
+                        </div> <!-- ./about__info -->
+
+                        <div class="about__info">
+                            <span class="about__info__label">Email:</span>
+                            <span class="about__info__value">priyanshu123sah@gmail.com</span>
+                        </div> <!-- ./about__info -->
+
+                        <div class="about__info">
+                            <span class="about__info__label">Freelance:</span>
+                            <span class="about__info__value">Available</span>
+                        </div> <!-- ./about__info -->
+                    </div> <!-- ./about__stack -->
+                </div> <!-- ./about__layout -->
             </div> <!-- ./container -->
         </section> <!-- ./about -->
 
-        <!-- * Start quality section -->
-        <section class="quality" id="quality">
+        <!-- * Start journey section -->
+        <section class="journey" id="journey">
             <div class="container">
                 <div class="row align-items-center justify-content-center gx-5 gy-sm-4 mx-auto">
                     <div class="col-md-6">
-                        <h2 class="quality__title">my education</h2>
-                        <div class="quality__card-group">
-                        <div class="quality__card">
-                            <h3 class="quality__card__title">B.Tech (Honors) in Computer Science</h3>
-                            <p class="quality__card__place">
+                        <h2 class="journey__title">my education</h2>
+                        <div class="journey__card-group">
+                        <div class="journey__card">
+                            <h3 class="journey__card__title">B.Tech (Honors) in Computer Science</h3>
+                            <p class="journey__card__place">
                                 University of Mumbai | <span>2022 - 2026</span>
-                            </p> <!-- ./quality__card__place -->
-                            <p class="quality__card__desc">
+                            </p> <!-- ./journey__card__place -->
+                            <p class="journey__card__desc">
                                 Studying AI and ML with focus on deep learning and systems design.
-                            </p> <!-- ./quality__card__desc -->
-                        </div> <!-- ./quality__card -->
-                        </div> <!-- ./quality__card-group -->
+                            </p> <!-- ./journey__card__desc -->
+                        </div> <!-- ./journey__card -->
+                        </div> <!-- ./journey__card-group -->
                     </div> <!-- ./col-md-6 -->
 
                     <div class="col-md-6">
-                        <h3 class="quality__title">my experience</h3>
-                        <div class="quality__card-group">
-                        <div class="quality__card">
-                            <h3 class="quality__card__title">Full-Stack AI Engineer Intern</h3>
-                            <p class="quality__card__place">
+                        <h3 class="journey__title">my experience</h3>
+                        <div class="journey__card-group">
+                        <div class="journey__card">
+                            <h3 class="journey__card__title">Full-Stack AI Engineer Intern</h3>
+                            <p class="journey__card__place">
                                 Liferythm Healthcare | <span>Jul 2025 - Present</span>
-                            </p> <!-- ./quality__card__university -->
-                            <p class="quality__card__desc">
+                            </p> <!-- ./journey__card__university -->
+                            <p class="journey__card__desc">
                                 Building AI doctor modules using MedLLMs for workflow automation.
-                            </p> <!-- ./quality__card__desc -->
-                        </div> <!-- ./quality__card -->
-                        </div> <!-- ./quality__card-group -->
+                            </p> <!-- ./journey__card__desc -->
+                        </div> <!-- ./journey__card -->
+                        </div> <!-- ./journey__card-group -->
                     </div> <!-- ./col-md-6 -->
                 </div> <!-- ./row -->
             </div> <!-- ./container -->
-        </section> <!-- ./quality -->
+        </section> <!-- ./journey -->
 
         <!-- * Start skills section -->
         <section class="skills" id="skills">
@@ -222,7 +308,7 @@
 
                         <div class="skills__box">
                             <div class="skills__box__head">
-                                <span class="skills__box__head__lang">JavaScript</span>
+                                <span class="skills__box__head__lang">Node.js</span>
                                 <span class="skills__box__head__rate">80%</span>
                             </div> <!-- ./skills__box__head -->
                             <div class="skills__box__line">
@@ -232,8 +318,8 @@
 
                         <div class="skills__box">
                             <div class="skills__box__head">
-                                <span class="skills__box__head__lang">React</span>
-                                <span class="skills__box__head__rate">85%</span>
+                                <span class="skills__box__head__lang">JavaScript</span>
+                                <span class="skills__box__head__rate">80%</span>
                             </div> <!-- ./skills__box__head -->
                             <div class="skills__box__line">
                                 <span data-rate="85"></span>
@@ -242,8 +328,8 @@
 
                         <div class="skills__box">
                             <div class="skills__box__head">
-                                <span class="skills__box__head__lang">Node.js</span>
-                                <span class="skills__box__head__rate">95%</span>
+                                <span class="skills__box__head__lang">React</span>
+                                <span class="skills__box__head__rate">70%</span>
                             </div> <!-- ./skills__box__head -->
                             <div class="skills__box__line">
                                 <span data-rate="95"></span>
@@ -254,8 +340,8 @@
                     <div class="col-md-6">
                         <div class="skills__box">
                             <div class="skills__box__head">
-                                <span class="skills__box__head__lang">LangChain</span>
-                                <span class="skills__box__head__rate">70%</span>
+                                <span class="skills__box__head__lang">AWS</span>
+                                <span class="skills__box__head__rate">90%</span>
                             </div> <!-- ./skills__box__head -->
                             <div class="skills__box__line">
                                 <span data-rate="70"></span>
@@ -275,7 +361,7 @@
                         <div class="skills__box">
                             <div class="skills__box__head">
                                 <span class="skills__box__head__lang">MongoDB</span>
-                                <span class="skills__box__head__rate">90%</span>
+                                <span class="skills__box__head__rate">80%</span>
                             </div> <!-- ./skills__box__head -->
                             <div class="skills__box__line">
                                 <span data-rate="90"></span>
@@ -284,8 +370,8 @@
 
                         <div class="skills__box">
                             <div class="skills__box__head">
-                                <span class="skills__box__head__lang">AWS</span>
-                                <span class="skills__box__head__rate">80%</span>
+                                <span class="skills__box__head__lang">LangChain</span>
+                                <span class="skills__box__head__rate">70%</span>
                             </div> <!-- ./skills__box__head -->
                             <div class="skills__box__line">
                                 <span data-rate="80"></span>
@@ -323,7 +409,7 @@
                         <i class="demo-icon doc-texticon-"></i>
                     </div> <!-- ./services__wrapper__icons -->
 
-                    <div class="services__wrapper__icons__item" data-service-name="Deployment / Hosting">
+                    <div class="services__wrapper__icons__item" data-service-name="Deployment & Hosting">
                         <i class="demo-icon servericon-"></i>
                     </div> <!-- ./services__wrapper__icons -->
                 </div> <!-- ./services__wrapper__icons -->
@@ -341,12 +427,12 @@
                                     <div class="my-card">
                                         <div class="my-card__img">
                                             <img src="/assets/images/projects/project-1.png" alt="Project 1"
-                                                loading="lazy">
+                                                loading="eager">
                                             <div class="my-card__img__links">
-                                                <a href="index.html#" class="my-card__img__links__item">
+                                                <a href="https://github.com/xoTEMPESTox/Enerzal" class="my-card__img__links__item" target="_blank" rel="noopener noreferrer">
                                                     <i class="demo-icon searchicon-"></i>
                                                 </a> <!-- ./my-card__img__links__item -->
-                                                <a href="index.html#" class="my-card__img__links__item">
+                                                <a href="https://www.youtube.com/watch?v=azj_7OdSxcY" class="my-card__img__links__item" target="_blank" rel="noopener noreferrer">
                                                     <i class="demo-icon linkicon-"></i>
                                                 </a> <!-- ./my-card__img__links__item -->
                                             </div> <!-- ./my-card__img__links -->
@@ -364,13 +450,13 @@
                                 <div class="swiper-slide d-flex justify-content-center align-items-center">
                                     <div class="my-card">
                                         <div class="my-card__img">
-                                            <img src="/assets/images/projects/project-2.jpg" alt="Project 2"
-                                                loading="lazy">
+                                            <img src="/assets/images/projects/project-2.png" alt="Project 2"
+                                                loading="eager">
                                             <div class="my-card__img__links">
-                                                <a href="index.html#" class="my-card__img__links__item">
+                                                <a href="https://github.com/xoTEMPESTox/EcoChain" class="my-card__img__links__item" target="_blank" rel="noopener noreferrer">
                                                     <i class="demo-icon searchicon-"></i>
                                                 </a> <!-- ./my-card__img__links__item -->
-                                                <a href="index.html#" class="my-card__img__links__item">
+                                                <a href="https://eco-chain-ashen.vercel.app/" class="my-card__img__links__item" target="_blank" rel="noopener noreferrer">
                                                     <i class="demo-icon linkicon-"></i>
                                                 </a> <!-- ./my-card__img__links__item -->
                                             </div> <!-- ./my-card__img__links -->
@@ -389,12 +475,12 @@
                                     <div class="my-card">
                                         <div class="my-card__img">
                                             <img src="/assets/images/projects/project-3.png" alt="Project 3"
-                                                loading="lazy">
+                                                loading="eager">
                                             <div class="my-card__img__links">
-                                                <a href="index.html#" class="my-card__img__links__item">
+                                                <a href="https://github.com/xoTEMPESTox/Supplyzal" class="my-card__img__links__item" target="_blank" rel="noopener noreferrer">
                                                     <i class="demo-icon searchicon-"></i>
                                                 </a> <!-- ./my-card__img__links__item -->
-                                                <a href="index.html#" class="my-card__img__links__item">
+                                                <a href="https://www.youtube.com/watch?v=CEGqZsqdnN8" class="my-card__img__links__item" target="_blank" rel="noopener noreferrer">
                                                     <i class="demo-icon linkicon-"></i>
                                                 </a> <!-- ./my-card__img__links__item -->
                                             </div> <!-- ./my-card__img__links -->
@@ -498,7 +584,7 @@
         </section> <!-- ./contact -->
     </main> <!-- ./main -->
 
-    <!-- Bundled entry -->
+    <!-- Bundled entry -->
 </body>
 
 </html>
