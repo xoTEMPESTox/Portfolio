@@ -325,7 +325,7 @@ section {
 }
 
 .main:before {
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.0);
   content: "";
   height: 100%;
   left: 0;
@@ -515,6 +515,11 @@ section {
 
 .home__info {
   color: #ffffff;
+  border-radius: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
+  width: fit-content; margin: 0 auto;
 }
 
 @media (min-width: 992px) {
@@ -658,6 +663,10 @@ section {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
 }
 
 .about__title:first-letter {
@@ -686,7 +695,7 @@ section {
   transition:
     transform 0.34s ease-in 0s,
     -webkit-transform 0.34s ease-in 0s;
-  width: 100%;
+  width: 90%;
 }
 
 .about__title:hover:before {
@@ -738,6 +747,11 @@ section {
   margin-bottom: 1.6rem;
   margin-top: 1.6rem;
   text-transform: capitalize;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
+  width: fit-content;
 }
 
 @media (max-width: 575.98px) {
@@ -810,6 +824,10 @@ section {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
 }
 
 @media (max-width: 767.98px) {
@@ -833,6 +851,11 @@ section {
   color: #ffffff;
   margin-bottom: 3.2rem;
   position: relative;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
+  width: fit-content; 
 }
 
 .quality__card__title {
@@ -846,12 +869,12 @@ section {
   border: 0.1rem solid #ffffff;
   border-radius: 50%;
   content: "";
-  height: 1.5rem;
-  left: -3.2rem;
+  height: 1rem;
+  left: -3.1rem;
   outline: 0.7rem solid #000;
   position: absolute;
   top: 0;
-  width: 1.5rem;
+  width: 1rem;
 }
 
 .quality__card__place {
@@ -910,6 +933,11 @@ section {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
+  width: fit-content; 
 }
 
 @media (max-width: 767.98px) {
@@ -971,6 +999,10 @@ section {
   padding: 1.1rem;
   text-transform: capitalize;
   width: 100%;
+  border-radius: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 1.5rem;
 }
 
 @media (max-width: 767.98px) {
