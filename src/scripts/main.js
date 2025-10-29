@@ -257,9 +257,11 @@ function applyBackground(main, asset) {
         video.setAttribute("playsinline", "");
         video.setAttribute("autoplay", "");
         video.setAttribute("loop", "");
-        video.preload = "metadata";
-        video.setAttribute("preload", "metadata");
+        video.preload = "auto";
+        video.setAttribute("preload", "auto");
         video.setAttribute("fetchpriority", "low");
+        video.style.backgroundColor = "transparent";
+        video.style.transition = "none";
         if (placeholder) {
             video.setAttribute("poster", placeholder);
             setVideoPlaceholder(main, placeholder);
@@ -322,6 +324,15 @@ function applyBackground(main, asset) {
                 main.style.backgroundImage = "";
             }
         }, { once: true });
+        video.addEventListener("ended", () => {
+            video.currentTime = 0;
+            const resumePromise = video.play();
+            if (resumePromise && typeof resumePromise.catch === "function") {
+                resumePromise.catch(() => {
+                    // Autoplay might be blocked; nothing else to do.
+                });
+            }
+        });
         container.appendChild(video);
         if (typeof window !== "undefined" && "requestIdleCallback" in window) {
             window.requestIdleCallback(beginVideoLoad, { timeout: 2500 });
