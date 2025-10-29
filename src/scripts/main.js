@@ -302,15 +302,43 @@ function applyBackground(main, asset) {
             cancelFallback();
             revealVideo();
         };
+        const resumePlayback = () => {
+            const resumePromise = video.play();
+            if (resumePromise && typeof resumePromise.catch === "function") {
+                resumePromise.catch(() => {
+                    // Autoplay might be blocked; nothing else to do.
+                });
+            }
+        };
+        const manualLoopThreshold = 0.08;
+        const loopResetTime = 0.001;
+        let isLoopSeeking = false;
+        video.addEventListener("timeupdate", () => {
+            if (!video.duration || isLoopSeeking) {
+                return;
+            }
+            const remaining = video.duration - video.currentTime;
+            if (remaining > 0 && remaining <= manualLoopThreshold) {
+                isLoopSeeking = true;
+                try {
+                    video.currentTime = loopResetTime;
+                }
+                catch (_a) {
+                    isLoopSeeking = false;
+                }
+            }
+        });
+        video.addEventListener("seeked", () => {
+            if (!isLoopSeeking) {
+                return;
+            }
+            isLoopSeeking = false;
+            resumePlayback();
+        });
         video.addEventListener("playing", handleVideoPlaying, { once: true });
         video.addEventListener("loadeddata", () => {
             if (video.paused) {
-                const playPromise = video.play();
-                if (playPromise && typeof playPromise.catch === "function") {
-                    playPromise.catch(() => {
-                        // Autoplay might be blocked; keep placeholder in place.
-                    });
-                }
+                resumePlayback();
             }
             if (typeof window !== "undefined") {
                 revealFallbackId = window.setTimeout(() => {
@@ -325,13 +353,15 @@ function applyBackground(main, asset) {
             }
         }, { once: true });
         video.addEventListener("ended", () => {
-            video.currentTime = 0;
-            const resumePromise = video.play();
-            if (resumePromise && typeof resumePromise.catch === "function") {
-                resumePromise.catch(() => {
-                    // Autoplay might be blocked; nothing else to do.
-                });
+            if (video.currentTime !== loopResetTime) {
+                try {
+                    video.currentTime = loopResetTime;
+                }
+                catch (_a) {
+                    // ignore seek errors
+                }
             }
+            resumePlayback();
         });
         container.appendChild(video);
         if (typeof window !== "undefined" && "requestIdleCallback" in window) {
@@ -454,7 +484,6 @@ function clearVideoPlaceholder(main) {
     if (main.dataset.backgroundPlaceholder === "true") {
         delete main.dataset.backgroundPlaceholder;
     }
-    main.style.backgroundImage = "none";
 }
 function enableBackgroundParallax(main, asset) {
     if (cleanupParallax) {
