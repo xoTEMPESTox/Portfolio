@@ -754,6 +754,17 @@ section {
   width: fit-content;
 }
 
+.about__info-group {
+  display: grid;
+  grid-template-columns: max-content;
+  max-width: 100%;
+  width: max-content;
+}
+
+.about__info-group .about__info {
+  width: 100%;
+}
+
 @media (max-width: 575.98px) {
   .about__info {
     margin-bottom: 0.6rem;
@@ -856,6 +867,17 @@ section {
   backdrop-filter: blur(6px);
   padding: 1.5rem;
   width: fit-content; 
+}
+
+.quality__card-group {
+  display: grid;
+  grid-template-columns: max-content;
+  max-width: 100%;
+  width: max-content;
+}
+
+.quality__card-group .quality__card {
+  width: 100%;
 }
 
 .quality__card__title {
