@@ -10,12 +10,12 @@
 }
 
 ::-moz-selection {
-  background-color: #eae4d5;
+  background-color: #eaeaea;
   color: #000000;
 }
 
 ::selection {
-  background-color: #eae4d5;
+  background-color: #eaeaea;
   color: #000000;
 }
 
@@ -584,7 +584,7 @@ section {
 }
 
 .home__info__title span {
-  background-color: #b6b09f;
+  background-color: #C4C4C4;
   border-radius: 0.6rem;
   display: block;
   height: 100%;
@@ -771,13 +771,13 @@ section {
 }
 
 .about__title:first-letter {
-  color: #b6b09f;
+  color: #C4C4C4;
   font-size: clamp(2.3rem, 5.3vw, 3.8rem);
   text-transform: capitalize;
 }
 
 .about__title:before {
-  background-color: #b6b09f;
+  background-color: #C4C4C4;
   border-radius: 0.4rem;
   bottom: -0.2rem;
   content: "";
@@ -830,7 +830,7 @@ section {
 }
 
 .about__info__label {
-  color: #b6b09f;
+  color: #C4C4C4;
   display: block;
   font-weight: 600;
   margin-bottom: clamp(0.35rem, 0.8vw, 0.6rem);
@@ -926,12 +926,12 @@ section {
 }
 
 .quality .container .col-md-6 {
-  border-left: 0.1rem solid #eae4d5;
+  border-left: 0.1rem solid #eaeaea;
   padding-left: 2.4rem;
 }
 
 .quality__title {
-  color: #eae4d5;
+  color: #eaeaea;
   font-size: 2.55rem;
   margin-bottom: 4.5rem;
   position: relative;
@@ -951,7 +951,7 @@ section {
 }
 
 .quality__title:before {
-  background-color: #eae4d5;
+  background-color: #eaeaea;
   border-radius: 0.3rem;
   bottom: -25%;
   content: "";
@@ -1069,7 +1069,7 @@ section {
 }
 
 .skills__title:before {
-  background-color: #b6b09f;
+  background-color: #C4C4C4;
   border-radius: 0.4rem;
   bottom: -0.2rem;
   content: "";
@@ -1109,7 +1109,7 @@ section {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  color: #eae4d5;
+  color: #eaeaea;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1141,7 +1141,7 @@ section {
 
 @media (max-width: 767.98px) {
   .skills__box {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
     margin-top: 0;
     padding: 0.5rem 1rem;
   }
@@ -1175,7 +1175,7 @@ section {
 }
 
 .skills__box__line span {
-  background-color: #b6b09f;
+  background-color: #C4C4C4;
   border-radius: 100vmax;
   height: 100%;
   left: 0;
@@ -1605,7 +1605,7 @@ section {
 }
 
 .reviews .swiper-slide .review-card__info__job {
-  color: #b6b09f;
+  color: #C4C4C4;
 }
 
 .contact {
@@ -1735,7 +1735,7 @@ section {
   --bs-gray-900: #212529;
   --bs-primary: #000000;
   --bs-secondary: #3b6064;
-  --bs-success: #eae4d5;
+  --bs-success: #eaeaea;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
   --bs-danger: #dc3545;
