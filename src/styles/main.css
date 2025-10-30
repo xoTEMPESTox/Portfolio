@@ -1118,7 +1118,7 @@ section {
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  margin-top: 8%;
+  margin-top: 6%;
   margin-bottom: 10%;
 }
 
@@ -1167,6 +1167,67 @@ section {
   padding-left: 0;
   padding-right: 15px;
   overflow: visible;
+}
+
+.journey__experience {
+  position: relative;
+}
+
+.journey__scroll-indicator {
+  position: absolute;
+  left: 60%;
+  bottom: -1.5rem;
+  transform: translateX(-50%);
+  display: none;
+  pointer-events: none;
+  opacity: 0.9;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  visibility: visible;
+  z-index: 2;
+}
+
+.journey__scroll-indicator__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 999px;
+  border: 0.12rem solid rgba(234, 234, 234, 0 );
+  animation: journey-scroll-indicator-bounce 1.6s infinite ease-in-out;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+}
+
+.journey__scroll-indicator__chevron {
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-right: 0.18rem solid #eaeaea;
+  border-bottom: 0.18rem solid #eaeaea;
+  transform: rotate(45deg);
+  margin-bottom: 0.3rem;
+}
+
+.journey__scroll-indicator--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@keyframes journey-scroll-indicator-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.5rem);
+  }
+}
+
+@media (min-width: 992px) {
+  .journey__scroll-indicator {
+    display: flex;
+  }
 }
 
 .journey .container .col-md-6:last-child .journey__card-group,
