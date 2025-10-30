@@ -352,6 +352,89 @@ const initHomeRoleTyper = () => {
   window.addEventListener("beforeunload", cancelTyping, { once: true });
 };
 
+const initExperienceScrollIndicator = () => {
+  if (typeof document === "undefined") {
+    return;
+  }
+
+  const indicator = document.querySelector(".journey__scroll-indicator");
+
+  if (!indicator) {
+    return;
+  }
+
+  const experienceColumn = indicator.closest(".journey__experience");
+  const scrollContainer = experienceColumn
+    ? experienceColumn.querySelector(".journey__card-group")
+    : null;
+
+  if (!experienceColumn) {
+    indicator.classList.add("journey__scroll-indicator--hidden");
+    return;
+  }
+
+  let currentHiddenState = false;
+
+  const setHidden = (shouldHide) => {
+    if (currentHiddenState === shouldHide) {
+      return;
+    }
+    currentHiddenState = shouldHide;
+    indicator.classList.toggle("journey__scroll-indicator--hidden", shouldHide);
+  };
+
+  const evaluateVisibility = () => {
+    if (!experienceColumn) {
+      setHidden(true);
+      return;
+    }
+
+    const rect = experienceColumn.getBoundingClientRect();
+    const isOutOfViewport = rect.bottom <= 0 || rect.top >= window.innerHeight;
+    const hasScrolledInside =
+      !!scrollContainer && scrollContainer.scrollTop > 1;
+    const lacksOverflow =
+      !scrollContainer ||
+      scrollContainer.scrollHeight <= scrollContainer.clientHeight + 1;
+
+    setHidden(isOutOfViewport || hasScrolledInside || lacksOverflow);
+  };
+
+  evaluateVisibility();
+
+  const handleContainerScroll = () => {
+    evaluateVisibility();
+  };
+
+  if (scrollContainer) {
+    scrollContainer.addEventListener("scroll", handleContainerScroll, { passive: true });
+  }
+
+  window.addEventListener("scroll", evaluateVisibility, { passive: true });
+  window.addEventListener("resize", evaluateVisibility);
+
+  let resizeObserver = null;
+  if (typeof ResizeObserver === "function" && scrollContainer) {
+    resizeObserver = new ResizeObserver(evaluateVisibility);
+    resizeObserver.observe(scrollContainer);
+  }
+
+  const cleanup = () => {
+    if (scrollContainer) {
+      scrollContainer.removeEventListener("scroll", handleContainerScroll);
+    }
+    window.removeEventListener("scroll", evaluateVisibility);
+    window.removeEventListener("resize", evaluateVisibility);
+    if (resizeObserver) {
+      resizeObserver.disconnect();
+      resizeObserver = null;
+    }
+  };
+
+  window.addEventListener("pagehide", cleanup, { once: true });
+  window.addEventListener("beforeunload", cleanup, { once: true });
+};
+
 const scheduleDeferredBundles = () => {
   if (typeof window !== "undefined" && "requestIdleCallback" in window) {
     window.requestIdleCallback(loadDeferredBundles, { timeout: 2000 });
@@ -387,3 +470,4 @@ const runOnDomReady = (callback) => {
 
 runOnDomReady(initFloatingSocials);
 runOnDomReady(initHomeRoleTyper);
+runOnDomReady(initExperienceScrollIndicator);
