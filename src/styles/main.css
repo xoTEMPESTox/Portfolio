@@ -788,8 +788,9 @@ section {
   height: 100%;
   justify-content: center;
   opacity: 1;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   padding-inline: clamp(1.5rem, 5vw, 6rem);
+  padding-block: clamp(5rem, 15vh, 9rem);
   position: absolute;
   right: -100%;
   top: 0;
@@ -802,13 +803,14 @@ section {
 
 @media (max-width: 767.98px) {
   .about {
-    padding-block: clamp(3.5rem, 10vh, 7rem);
+    padding-block: clamp(5rem, 15vh, 9rem);
   }
 }
 
 @media (max-width: 575.98px) {
   .about {
     padding-inline: clamp(1rem, 6vw, 2.5rem);
+    padding-block: clamp(10rem, 30vh, 18rem);
   }
 }
 
