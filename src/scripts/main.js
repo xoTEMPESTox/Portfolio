@@ -820,7 +820,11 @@ function enableBackgroundParallax(main, asset) {
         const relativeY = (event.clientY - bounds.top) / bounds.height;
         updateTarget(relativeX, relativeY);
     };
-    const handlePointerLeave = () => {
+    const handlePointerLeave = (event) => {
+        const nextTarget = event?.relatedTarget ?? event?.toElement ?? null;
+        if (!nextTarget) {
+            return;
+        }
         updateTarget(0.5, 0.5);
     };
     main.addEventListener("mousemove", handlePointerMove);
