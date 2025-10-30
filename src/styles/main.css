@@ -1093,11 +1093,11 @@ section {
 }
 
 .journey {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  align-items: center;
+  align-items: flex-start;
   background-color: transparent;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1114,10 +1114,24 @@ section {
   transition: all 0.5s ease-in-out 0s;
   visibility: visible;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-top: 8%;
+  margin-bottom: 10%;
+}
+
+.journey::-webkit-scrollbar {
+  display: none;
 }
 
 .journey .container {
   z-index: 300;
+}
+
+.journey .container .row.align-items-center {
+  align-items: flex-start !important;
 }
 
 @media (max-width: 1023.98px) {
@@ -1133,6 +1147,7 @@ section {
     margin-bottom: 4.5rem;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
+    margin-top: 2%;
   }
 
   .journey .container .col-md-6:last-child {
@@ -1150,7 +1165,8 @@ section {
   border-left: 0;
   border-right: 0.1rem solid #eaeaea;
   padding-left: 0;
-  padding-right: 2.4rem;
+  padding-right: 15px;
+  overflow: visible;
 }
 
 .journey .container .col-md-6:last-child .journey__card-group,
@@ -1160,17 +1176,15 @@ section {
 
 .journey .container .col-md-6:last-child .journey__title {
   margin-left: auto;
+  margin-right:15px;
   text-align: right;
 }
 
 .journey .container .col-md-6:last-child .journey__card {
   text-align: right;
+  
 }
 
-.journey .container .col-md-6:last-child .journey__card__title:before {
-  left: auto;
-  right: -3.1rem;
-}
 
 .journey__title {
   color: #eaeaea;
@@ -1205,20 +1219,22 @@ section {
 
 .journey__card {
   color: #ffffff;
-  margin-bottom: 3.2rem;
   position: relative;
   border-radius: 12px;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(6px);
   padding: 1.5rem;
-  width: fit-content; 
+  max-width: var(--journey-card-max-width);
+  width: 100%;
 }
 
 .journey__card-group {
   display: grid;
-  grid-template-columns: max-content;
-  max-width: 100%;
-  width: max-content;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--journey-card-gap);
+  max-width: min(100%, var(--journey-card-max-width));
+  padding-bottom: var(--journey-card-gap);
+  width: 100%;
 }
 
 .journey__card-group .journey__card {
@@ -1231,18 +1247,7 @@ section {
   position: relative;
 }
 
-.journey__card__title:before {
-  background-color: #000;
-  border: 0.1rem solid #ffffff;
-  border-radius: 50%;
-  content: "";
-  height: 1rem;
-  left: -3.1rem;
-  outline: 0.7rem solid #000;
-  position: absolute;
-  top: 0;
-  width: 1rem;
-}
+
 
 .journey__card__place {
   font-size: 1.3rem;
@@ -1254,8 +1259,66 @@ section {
 }
 
 @media (max-width: 767.98px) {
+  .journey .container .col-md-6:last-child,
+  .journey .container .col-md-6:last-child .journey__card,
+  .journey .container .col-md-6:last-child .journey__card-group,
+  .journey .container .col-md-6:last-child .journey__title {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  .journey__card-group {
+    max-width: 100%;
+  }
+
+  .journey__card {
+    max-width: 100%;
+  }
+
   .journey__card__desc {
-    display: none;
+    font-size: 1.15rem;
+    margin-top: 0.75rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .journey .container {
+    align-items: flex-start;
+  }
+
+  .journey .container .col-md-6:last-child {
+    align-self: flex-start;
+    position: sticky;
+    top: calc(var(--viewport-top-clearance) + clamp(1rem, 2vh, 1.5rem));
+  }
+
+  .journey .container .col-md-6:last-child .journey__card-group {
+    height: var(--journey-experience-panel-height);
+    max-height: var(--journey-experience-panel-height);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 0.6rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+
+  .journey .container .col-md-6:last-child .journey__card {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .journey .container .col-md-6:last-child .journey__card-group::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  .journey .container .col-md-6:last-child .journey__card-group::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.45);
+    border-radius: 999px;
+  }
+
+  .journey .container .col-md-6:last-child .journey__card-group {
+    scrollbar-width: none;
+    scrollbar-color: rgba(255, 255, 255, 0.45) transparent;
   }
 }
 
@@ -3122,8 +3185,14 @@ progress {
 
 :root {
   --swiper-theme-color: #007aff;
-  --floating-nav-clearance: clamp(7rem, 12vh, 10rem);
-  --viewport-top-clearance: clamp(5rem, 10vh, 7rem);
+  --page-vertical-margin: max(5vh, 5rem);
+  --viewport-top-clearance: var(--page-vertical-margin);
+  --floating-nav-clearance: calc(var(--page-vertical-margin) + 4rem);
+  --journey-card-max-width: 55rem;
+  --journey-card-gap: clamp(2.4rem, 3.4vh, 3.2rem);
+  --journey-right-column-padding: clamp(1.25rem, 2.1vw, 1.85rem);
+  --journey-timeline-dot-offset: calc(var(--journey-right-column-padding) + 0.5rem);
+  --journey-experience-panel-height: clamp(28rem, 54vh, 30rem);
 }
 
 .swiper {
