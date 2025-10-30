@@ -341,39 +341,6 @@ function applyBackground(main, asset) {
             delete container.__backgroundCleanup;
         }
         container.innerHTML = "";
-        const createVideoElement = (isActive) => {
-            const element = document.createElement("video");
-            element.className = "main__background-media";
-            if (isActive) {
-                element.classList.add("is-active");
-            }
-            else {
-                element.classList.add("is-standby");
-            }
-            element.loop = false;
-            element.playsInline = true;
-            element.defaultMuted = true;
-            element.preload = "auto";
-            element.src = assetUrl;
-            element.muted = true;
-            element.autoplay = true;
-            element.setAttribute("muted", "");
-            element.setAttribute("playsinline", "");
-            element.setAttribute("webkit-playsinline", "");
-            element.setAttribute("autoplay", "");
-            element.setAttribute("preload", "auto");
-            element.setAttribute("fetchpriority", "low");
-            element.style.backgroundColor = "transparent";
-            if (placeholder) {
-                element.setAttribute("poster", placeholder);
-            }
-            return element;
-        };
-        const leadVideo = createVideoElement(true);
-        const tailVideo = createVideoElement(false);
-        const videos = [leadVideo, tailVideo];
-        container.appendChild(leadVideo);
-        container.appendChild(tailVideo);
         if (placeholder) {
             setVideoPlaceholder(main, placeholder);
         }
@@ -398,29 +365,29 @@ function applyBackground(main, asset) {
                 revealFallbackId = null;
             }
         };
-        let autoplayBlocked = false;
-        const handleAutoplayBlocked = () => {
-            if (autoplayBlocked) {
-                return;
-            }
-            autoplayBlocked = true;
-            cancelFallback();
-            removeBackgroundVideo(main);
+        const createVideoElement = (isActive) => {
+            const element = document.createElement("video");
+            element.className = "main__background-media";
+            element.classList.add(isActive ? "is-active" : "is-standby");
+            element.loop = false;
+            element.autoplay = true;
+            element.muted = true;
+            element.playsInline = true;
+            element.defaultMuted = true;
+            element.preload = "auto";
+            element.src = assetUrl;
+            element.disableRemotePlayback = true;
+            element.setAttribute("muted", "");
+            element.setAttribute("playsinline", "");
+            element.setAttribute("webkit-playsinline", "");
+            element.setAttribute("autoplay", "");
+            element.setAttribute("preload", "auto");
+            element.setAttribute("fetchpriority", "low");
+            element.style.backgroundColor = "transparent";
             if (placeholder) {
-                setVideoPlaceholder(main, placeholder);
+                element.setAttribute("poster", placeholder);
             }
-            else {
-                clearVideoPlaceholder(main);
-            }
-        };
-        const playVideo = (video) => {
-            const playPromise = video.play();
-            if (playPromise && typeof playPromise.catch === "function") {
-                playPromise.catch(() => {
-                    handleAutoplayBlocked();
-                });
-            }
-            return playPromise;
+            return element;
         };
         const waitForMetadata = (video) => {
             if (video.readyState >= 1) {
@@ -430,65 +397,230 @@ function applyBackground(main, asset) {
                 video.addEventListener("loadedmetadata", resolve, { once: true });
             });
         };
-        const beginVideoLoad = () => {
-            videos.forEach((video) => {
-                try {
-                    video.load();
-                }
-                catch (_a) {
-                    // Ignore load errors; the browser will handle failed fetches.
-                }
-            });
-        };
-        let lead = leadVideo;
-        let tail = tailVideo;
-        let isDisposed = false;
-        let isCrossfading = false;
-        let rafId = null;
-        let crossfadeTimeoutId = null;
-        const crossfadeOverlapSeconds = 0.75;
-        const cleanup = () => {
-            if (isDisposed) {
-                return;
+        let fallbackActivated = false;
+        const installSingleVideoLoop = () => {
+            fallbackActivated = true;
+            if (typeof container.__backgroundCleanup === "function") {
+                container.__backgroundCleanup();
+                delete container.__backgroundCleanup;
             }
-            isDisposed = true;
-            if (typeof window !== "undefined") {
-                if (rafId !== null) {
-                    window.cancelAnimationFrame(rafId);
-                    rafId = null;
-                }
-                if (crossfadeTimeoutId !== null) {
-                    window.clearTimeout(crossfadeTimeoutId);
-                    crossfadeTimeoutId = null;
-                }
+            container.innerHTML = "";
+            const video = document.createElement("video");
+            video.className = "main__background-media";
+            video.loop = true;
+            video.autoplay = true;
+            video.muted = true;
+            video.playsInline = true;
+            video.defaultMuted = true;
+            video.preload = "auto";
+            video.src = assetUrl;
+            video.disableRemotePlayback = true;
+            video.setAttribute("muted", "");
+            video.setAttribute("playsinline", "");
+            video.setAttribute("webkit-playsinline", "");
+            video.setAttribute("autoplay", "");
+            video.setAttribute("preload", "auto");
+            video.setAttribute("fetchpriority", "low");
+            video.style.backgroundColor = "transparent";
+            if (placeholder) {
+                video.setAttribute("poster", placeholder);
             }
-            videos.forEach((video) => {
+            const cleanup = () => {
+                if (typeof window !== "undefined" && revealFallbackId !== null) {
+                    window.clearTimeout(revealFallbackId);
+                    revealFallbackId = null;
+                }
                 try {
                     video.pause();
                 }
                 catch (_a) {
                     // ignore pause issues
                 }
-            });
+            };
+            container.__backgroundCleanup = cleanup;
+            const ensurePlayback = () => {
+                const playPromise = video.play();
+                if (playPromise && typeof playPromise.catch === "function") {
+                    playPromise.catch(() => {
+                        // If autoplay fails even here, keep placeholder visible.
+                    });
+                }
+            };
+            video.addEventListener("playing", () => {
+                cancelFallback();
+                revealVideo();
+            }, { once: true });
+            video.addEventListener("loadeddata", () => {
+                if (video.paused) {
+                    ensurePlayback();
+                }
+                if (typeof window !== "undefined") {
+                    revealFallbackId = window.setTimeout(() => {
+                        revealFallbackId = null;
+                        revealVideo();
+                    }, 2000);
+                }
+            }, { once: true });
+            video.addEventListener("error", () => {
+                cleanup();
+                removeBackgroundVideo(main);
+                if (placeholder) {
+                    setVideoPlaceholder(main, placeholder);
+                }
+                else {
+                    clearVideoPlaceholder(main);
+                }
+            }, { once: true });
+            container.appendChild(video);
         };
-        container.__backgroundCleanup = cleanup;
-        const scheduleCrossfadeFinalization = () => {
-            if (typeof window === "undefined") {
-                try {
-                    tail.pause();
-                }
-                catch (_a) {
-                    // ignore pause issues
-                }
-                tail.currentTime = 0;
+        const ensureFallback = () => {
+            if (fallbackActivated) {
                 return;
             }
-            if (crossfadeTimeoutId !== null) {
-                window.clearTimeout(crossfadeTimeoutId);
+            installSingleVideoLoop();
+        };
+        const installCrossfadeLoop = () => {
+            fallbackActivated = false;
+            if (typeof container.__backgroundCleanup === "function") {
+                container.__backgroundCleanup();
+                delete container.__backgroundCleanup;
             }
-            crossfadeTimeoutId = window.setTimeout(() => {
-                crossfadeTimeoutId = null;
-                if (isDisposed) {
+            container.innerHTML = "";
+            const leadVideo = createVideoElement(true);
+            const tailVideo = createVideoElement(false);
+            const videos = [leadVideo, tailVideo];
+            videos.forEach((video) => container.appendChild(video));
+            let disposed = false;
+            let rafId = null;
+            let crossfadeTimeoutId = null;
+            let lead = leadVideo;
+            let tail = tailVideo;
+            const crossfadeOverlapSeconds = 0.75;
+            const cleanup = () => {
+                if (disposed) {
+                    return;
+                }
+                disposed = true;
+                if (typeof window !== "undefined") {
+                    if (rafId !== null) {
+                        window.cancelAnimationFrame(rafId);
+                        rafId = null;
+                    }
+                    if (crossfadeTimeoutId !== null) {
+                        window.clearTimeout(crossfadeTimeoutId);
+                        crossfadeTimeoutId = null;
+                    }
+                }
+                videos.forEach((video) => {
+                    try {
+                        video.pause();
+                    }
+                    catch (_a) {
+                        // ignore pause issues
+                    }
+                });
+            };
+            container.__backgroundCleanup = cleanup;
+            const safePlay = (video) => {
+                const playPromise = video.play();
+                if (playPromise && typeof playPromise.catch === "function") {
+                    playPromise.catch(() => {
+                        if (disposed) {
+                            return;
+                        }
+                        cleanup();
+                        ensureFallback();
+                    });
+                }
+                return playPromise;
+            };
+            const scheduleReset = (video) => {
+                if (typeof window === "undefined") {
+                    try {
+                        video.pause();
+                    }
+                    catch (_a) {
+                        // ignore pause issues
+                    }
+                    try {
+                        video.currentTime = 0;
+                    }
+                    catch (_a) {
+                        // ignore seek issues
+                    }
+                    return;
+                }
+                if (crossfadeTimeoutId !== null) {
+                    window.clearTimeout(crossfadeTimeoutId);
+                }
+                crossfadeTimeoutId = window.setTimeout(() => {
+                    crossfadeTimeoutId = null;
+                    if (disposed) {
+                        return;
+                    }
+                    try {
+                        video.pause();
+                    }
+                    catch (_a) {
+                        // ignore pause issues
+                    }
+                    try {
+                        video.currentTime = 0;
+                    }
+                    catch (_a) {
+                        // ignore seek issues
+                    }
+                }, crossfadeOverlapSeconds * 1000);
+            };
+            const performCrossfade = () => {
+                if (disposed) {
+                    return;
+                }
+                const outgoing = lead;
+                const incoming = tail;
+                try {
+                    incoming.currentTime = 0;
+                }
+                catch (_a) {
+                    // ignore seek issues
+                }
+                safePlay(incoming);
+                incoming.classList.add("is-active");
+                incoming.classList.remove("is-standby");
+                outgoing.classList.remove("is-active");
+                outgoing.classList.add("is-standby");
+                lead = incoming;
+                tail = outgoing;
+                scheduleReset(outgoing);
+            };
+            const tick = () => {
+                if (disposed || typeof window === "undefined") {
+                    return;
+                }
+                const duration = lead.duration || 0;
+                if (duration && lead.currentTime >= duration - crossfadeOverlapSeconds) {
+                    performCrossfade();
+                }
+                if (lead.paused) {
+                    safePlay(lead);
+                }
+                rafId = window.requestAnimationFrame(tick);
+            };
+            lead.addEventListener("playing", () => {
+                cancelFallback();
+                revealVideo();
+            }, { once: true });
+            videos.forEach((video) => {
+                video.addEventListener("error", () => {
+                    if (disposed) {
+                        return;
+                    }
+                    cleanup();
+                    ensureFallback();
+                }, { once: true });
+            });
+            Promise.all(videos.map(waitForMetadata)).then(() => {
+                if (disposed) {
                     return;
                 }
                 try {
@@ -497,95 +629,29 @@ function applyBackground(main, asset) {
                 catch (_a) {
                     // ignore pause issues
                 }
-                tail.currentTime = 0;
-            }, crossfadeOverlapSeconds * 1000);
+                try {
+                    tail.currentTime = 0;
+                }
+                catch (_a) {
+                    // ignore seek issues
+                }
+                safePlay(lead);
+                if (typeof window !== "undefined") {
+                    rafId = window.requestAnimationFrame(tick);
+                    revealFallbackId = window.setTimeout(() => {
+                        revealFallbackId = null;
+                        revealVideo();
+                    }, 2000);
+                }
+            }).catch(() => {
+                if (disposed) {
+                    return;
+                }
+                cleanup();
+                ensureFallback();
+            });
         };
-        const performCrossfade = () => {
-            if (isDisposed || isCrossfading) {
-                return;
-            }
-            const outgoing = lead;
-            const incoming = tail;
-            isCrossfading = true;
-            try {
-                incoming.currentTime = 0;
-            }
-            catch (_a) {
-                // ignore seek issues
-            }
-            playVideo(incoming);
-            incoming.classList.add("is-active");
-            incoming.classList.remove("is-standby");
-            outgoing.classList.remove("is-active");
-            outgoing.classList.add("is-standby");
-            lead = incoming;
-            tail = outgoing;
-            scheduleCrossfadeFinalization();
-            isCrossfading = false;
-        };
-        const tick = () => {
-            if (isDisposed || typeof window === "undefined") {
-                return;
-            }
-            const duration = lead.duration || 0;
-            if (duration && lead.currentTime >= duration - crossfadeOverlapSeconds) {
-                performCrossfade();
-            }
-            rafId = window.requestAnimationFrame(tick);
-        };
-        const startLoop = () => {
-            if (isDisposed) {
-                return;
-            }
-            try {
-                tail.pause();
-            }
-            catch (_a) {
-                // ignore pause issues
-            }
-            try {
-                tail.currentTime = 0;
-            }
-            catch (_a) {
-                // ignore seek issues
-            }
-            playVideo(lead);
-            if (typeof window !== "undefined") {
-                rafId = window.requestAnimationFrame(tick);
-            }
-        };
-        lead.addEventListener("playing", () => {
-            cancelFallback();
-            revealVideo();
-        }, { once: true });
-        videos.forEach((video) => {
-            video.addEventListener("error", () => {
-                handleAutoplayBlocked();
-            }, { once: true });
-        });
-        Promise.all(videos.map(waitForMetadata)).then(() => {
-            if (isDisposed) {
-                return;
-            }
-            startLoop();
-            if (typeof window !== "undefined") {
-                revealFallbackId = window.setTimeout(() => {
-                    revealFallbackId = null;
-                    revealVideo();
-                }, 2000);
-            }
-        }).catch(() => {
-            handleAutoplayBlocked();
-        });
-        if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-            window.requestIdleCallback(beginVideoLoad, { timeout: 2500 });
-        }
-        else if (typeof window !== "undefined") {
-            window.setTimeout(beginVideoLoad, 700);
-        }
-        else {
-            beginVideoLoad();
-        }
+        installCrossfadeLoop();
     }
     else {
         removeBackgroundVideo(main);
