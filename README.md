@@ -8,6 +8,21 @@ A Vite-powered personal portfolio showcasing key projects, services, and testimo
 - Staged background loader shows the paired still immediately and fades in the video once buffered, keeping the first paint fast.
 - Bootstrap bundle is imported locally so data attributes (e.g. tooltips, dropdowns) work without additional setup.
 
+## Roadmap
+
+- [ ] Compress videos for seamless looping and trim clips as needed
+- [ ] Build richer animations for text, form fields, hover states, and transforms
+- [ ] Implement blurred content reveal for the About page with loading/unblur behaviour
+- [ ] Enhance Journey scroll with down-arrow prompt, container logic, and disintegration transitions
+- [ ] Tailor Journey mobile view with simplified disintegration and limit to two visible cards
+- [ ] Add a scroll-linked progress bar for the Journey section
+- [ ] Introduce a navbar pointer-follow gradient light effect
+- [ ] Animate the About section title with stroke-by-stroke drawing
+- [ ] Refresh project cards with improved UI, reveal animations, and border effects
+- [ ] Add scrolling feed for blog and LinkedIn posts
+- [ ] Expand Journey and Projects data with additional tech stack details
+- [ ] Refactor to React + Tailwind
+
 ## Getting Started
 
 ### Prerequisites
