@@ -336,41 +336,48 @@ function applyBackground(main, asset) {
     if (asset.type === "video") {
         const placeholder = asset.poster ? resolveAssetUrl(asset.poster, "image", asset.posterBasePath) : null;
         const container = ensureBackgroundContainer(main);
+        if (typeof container.__backgroundCleanup === "function") {
+            container.__backgroundCleanup();
+            delete container.__backgroundCleanup;
+        }
         container.innerHTML = "";
-        const video = document.createElement("video");
-        video.className = "main__background-media";
-        video.autoplay = true;
-        video.loop = true;
-        video.muted = true;
-        video.playsInline = true;
-        video.defaultMuted = true;
-        video.setAttribute("muted", "");
-        video.setAttribute("playsinline", "");
-        video.setAttribute("autoplay", "");
-        video.setAttribute("loop", "");
-        video.preload = "auto";
-        video.setAttribute("preload", "auto");
-        video.setAttribute("fetchpriority", "low");
-        video.style.backgroundColor = "transparent";
-        video.style.transition = "none";
+        const createVideoElement = (isActive) => {
+            const element = document.createElement("video");
+            element.className = "main__background-media";
+            if (isActive) {
+                element.classList.add("is-active");
+            }
+            else {
+                element.classList.add("is-standby");
+            }
+            element.autoplay = false;
+            element.loop = false;
+            element.muted = true;
+            element.playsInline = true;
+            element.defaultMuted = true;
+            element.preload = "auto";
+            element.src = assetUrl;
+            element.setAttribute("muted", "");
+            element.setAttribute("playsinline", "");
+            element.setAttribute("preload", "auto");
+            element.setAttribute("fetchpriority", "low");
+            element.style.backgroundColor = "transparent";
+            if (placeholder) {
+                element.setAttribute("poster", placeholder);
+            }
+            return element;
+        };
+        const leadVideo = createVideoElement(true);
+        const tailVideo = createVideoElement(false);
+        const videos = [leadVideo, tailVideo];
+        container.appendChild(leadVideo);
+        container.appendChild(tailVideo);
         if (placeholder) {
-            video.setAttribute("poster", placeholder);
             setVideoPlaceholder(main, placeholder);
         }
         else {
             main.style.backgroundImage = "";
         }
-        const beginVideoLoad = () => {
-            if (!video.src) {
-                video.src = assetUrl;
-                try {
-                    video.load();
-                }
-                catch (_a) {
-                    // Ignore load errors; the browser will handle failed fetches.
-                }
-            }
-        };
         const revealVideo = () => {
             const performClear = () => clearVideoPlaceholder(main);
             if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
@@ -404,70 +411,165 @@ function applyBackground(main, asset) {
                 clearVideoPlaceholder(main);
             }
         };
-        const handleVideoPlaying = () => {
-            cancelFallback();
-            revealVideo();
-        };
-        const resumePlayback = () => {
-            const resumePromise = video.play();
-            if (resumePromise && typeof resumePromise.catch === "function") {
-                resumePromise.catch(() => {
+        const playVideo = (video) => {
+            const playPromise = video.play();
+            if (playPromise && typeof playPromise.catch === "function") {
+                playPromise.catch(() => {
                     handleAutoplayBlocked();
                 });
             }
+            return playPromise;
         };
-        const manualLoopThreshold = 0.08;
-        const loopResetTime = 0.001;
-        let isLoopSeeking = false;
-        video.addEventListener("timeupdate", () => {
-            if (!video.duration || isLoopSeeking) {
-                return;
+        const waitForMetadata = (video) => {
+            if (video.readyState >= 1) {
+                return Promise.resolve();
             }
-            const remaining = video.duration - video.currentTime;
-            if (remaining > 0 && remaining <= manualLoopThreshold) {
-                isLoopSeeking = true;
+            return new Promise((resolve) => {
+                video.addEventListener("loadedmetadata", resolve, { once: true });
+            });
+        };
+        const beginVideoLoad = () => {
+            videos.forEach((video) => {
                 try {
-                    video.currentTime = loopResetTime;
+                    video.load();
                 }
                 catch (_a) {
-                    isLoopSeeking = false;
+                    // Ignore load errors; the browser will handle failed fetches.
                 }
-            }
-        });
-        video.addEventListener("seeked", () => {
-            if (!isLoopSeeking) {
+            });
+        };
+        let lead = leadVideo;
+        let tail = tailVideo;
+        let isDisposed = false;
+        let isCrossfading = false;
+        let rafId = null;
+        let crossfadeTimeoutId = null;
+        const crossfadeOverlapSeconds = 1;
+        const cleanup = () => {
+            if (isDisposed) {
                 return;
             }
-            isLoopSeeking = false;
-            resumePlayback();
-        });
-        video.addEventListener("playing", handleVideoPlaying, { once: true });
-        video.addEventListener("loadeddata", () => {
-            if (video.paused) {
-                resumePlayback();
+            isDisposed = true;
+            if (typeof window !== "undefined") {
+                if (rafId !== null) {
+                    window.cancelAnimationFrame(rafId);
+                    rafId = null;
+                }
+                if (crossfadeTimeoutId !== null) {
+                    window.clearTimeout(crossfadeTimeoutId);
+                    crossfadeTimeoutId = null;
+                }
             }
+            videos.forEach((video) => {
+                try {
+                    video.pause();
+                }
+                catch (_a) {
+                    // ignore pause issues
+                }
+            });
+        };
+        container.__backgroundCleanup = cleanup;
+        const scheduleCrossfadeFinalization = () => {
+            if (typeof window === "undefined") {
+                try {
+                    tail.pause();
+                }
+                catch (_a) {
+                    // ignore pause issues
+                }
+                tail.currentTime = 0;
+                return;
+            }
+            if (crossfadeTimeoutId !== null) {
+                window.clearTimeout(crossfadeTimeoutId);
+            }
+            crossfadeTimeoutId = window.setTimeout(() => {
+                crossfadeTimeoutId = null;
+                if (isDisposed) {
+                    return;
+                }
+                try {
+                    tail.pause();
+                }
+                catch (_a) {
+                    // ignore pause issues
+                }
+                tail.currentTime = 0;
+            }, crossfadeOverlapSeconds * 1000);
+        };
+        const performCrossfade = () => {
+            if (isDisposed || isCrossfading) {
+                return;
+            }
+            const outgoing = lead;
+            const incoming = tail;
+            isCrossfading = true;
+            try {
+                incoming.currentTime = 0;
+            }
+            catch (_a) {
+                // ignore seek issues
+            }
+            playVideo(incoming);
+            incoming.classList.add("is-active");
+            incoming.classList.remove("is-standby");
+            outgoing.classList.remove("is-active");
+            outgoing.classList.add("is-standby");
+            lead = incoming;
+            tail = outgoing;
+            scheduleCrossfadeFinalization();
+            isCrossfading = false;
+        };
+        const tick = () => {
+            if (isDisposed || typeof window === "undefined") {
+                return;
+            }
+            const duration = lead.duration || 0;
+            if (duration && lead.currentTime >= duration - crossfadeOverlapSeconds) {
+                performCrossfade();
+            }
+            rafId = window.requestAnimationFrame(tick);
+        };
+        const startLoop = () => {
+            if (isDisposed) {
+                return;
+            }
+            tail.pause();
+            try {
+                tail.currentTime = 0;
+            }
+            catch (_a) {
+                // ignore seek issues
+            }
+            playVideo(lead);
+            if (typeof window !== "undefined") {
+                rafId = window.requestAnimationFrame(tick);
+            }
+        };
+        lead.addEventListener("playing", () => {
+            cancelFallback();
+            revealVideo();
+        }, { once: true });
+        videos.forEach((video) => {
+            video.addEventListener("error", () => {
+                handleAutoplayBlocked();
+            }, { once: true });
+        });
+        Promise.all(videos.map(waitForMetadata)).then(() => {
+            if (isDisposed) {
+                return;
+            }
+            startLoop();
             if (typeof window !== "undefined") {
                 revealFallbackId = window.setTimeout(() => {
                     revealFallbackId = null;
                     revealVideo();
                 }, 2000);
             }
-        }, { once: true });
-        video.addEventListener("error", () => {
+        }).catch(() => {
             handleAutoplayBlocked();
-        }, { once: true });
-        video.addEventListener("ended", () => {
-            if (video.currentTime !== loopResetTime) {
-                try {
-                    video.currentTime = loopResetTime;
-                }
-                catch (_a) {
-                    // ignore seek errors
-                }
-            }
-            resumePlayback();
         });
-        container.appendChild(video);
         if (typeof window !== "undefined" && "requestIdleCallback" in window) {
             window.requestIdleCallback(beginVideoLoad, { timeout: 2500 });
         }
@@ -498,6 +600,10 @@ function ensureBackgroundContainer(main) {
 function removeBackgroundVideo(main) {
     const container = main.querySelector(".main__background");
     if (container) {
+        if (typeof container.__backgroundCleanup === "function") {
+            container.__backgroundCleanup();
+            delete container.__backgroundCleanup;
+        }
         container.innerHTML = "";
         container.style.transform = "";
     }
