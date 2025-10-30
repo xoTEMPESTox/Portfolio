@@ -389,6 +389,21 @@ function applyBackground(main, asset) {
                 revealFallbackId = null;
             }
         };
+        let autoplayBlocked = false;
+        const handleAutoplayBlocked = () => {
+            if (autoplayBlocked) {
+                return;
+            }
+            autoplayBlocked = true;
+            cancelFallback();
+            removeBackgroundVideo(main);
+            if (placeholder) {
+                setVideoPlaceholder(main, placeholder);
+            }
+            else {
+                clearVideoPlaceholder(main);
+            }
+        };
         const handleVideoPlaying = () => {
             cancelFallback();
             revealVideo();
@@ -397,7 +412,7 @@ function applyBackground(main, asset) {
             const resumePromise = video.play();
             if (resumePromise && typeof resumePromise.catch === "function") {
                 resumePromise.catch(() => {
-                    // Autoplay might be blocked; nothing else to do.
+                    handleAutoplayBlocked();
                 });
             }
         };
@@ -439,9 +454,7 @@ function applyBackground(main, asset) {
             }
         }, { once: true });
         video.addEventListener("error", () => {
-            if (!placeholder) {
-                main.style.backgroundImage = "";
-            }
+            handleAutoplayBlocked();
         }, { once: true });
         video.addEventListener("ended", () => {
             if (video.currentTime !== loopResetTime) {
