@@ -1788,7 +1788,7 @@ section {
   background-color: #000000;
   border-radius: 0.7rem;
   height: auto;
-  padding: 0 0 1.2rem;
+  padding: 0 0 1.5rem;
   width: 36rem;
 }
 
@@ -1852,6 +1852,7 @@ section {
 
 .portfolio .my-card__info {
   margin-top: 1.4rem;
+  padding: 0.5rem;
 }
 
 @media (min-width: 1200px) {
