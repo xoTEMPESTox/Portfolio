@@ -1795,10 +1795,17 @@ section {
 .portfolio .my-card__img {
   position: relative;
   width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 0.7rem 0.7rem 0 0;
+  overflow: hidden;
+  background-color: #020211;
 }
 
 .portfolio .my-card__img img {
-  border-radius: 0.7rem 0.7rem 0 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 .portfolio .my-card__img__links {
