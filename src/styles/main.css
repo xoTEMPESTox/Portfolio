@@ -1041,13 +1041,45 @@ section {
 @media (max-width: 575.98px) {
   .journey .container {
     margin-bottom: 4.5rem;
-    margin-left: 3rem;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
+  .journey .container .col-md-6:last-child {
+    padding-right: clamp(3rem, 12vw, 3.8rem);
   }
 }
 
 .journey .container .col-md-6 {
   border-left: 0.1rem solid #eaeaea;
   padding-left: 2.4rem;
+}
+
+.journey .container .col-md-6:last-child {
+  /* Mirror journey timeline styling for the experience column */
+  border-left: 0;
+  border-right: 0.1rem solid #eaeaea;
+  padding-left: 0;
+  padding-right: 2.4rem;
+}
+
+.journey .container .col-md-6:last-child .journey__card-group,
+.journey .container .col-md-6:last-child .journey__card {
+  margin-left: auto;
+}
+
+.journey .container .col-md-6:last-child .journey__title {
+  margin-left: auto;
+  text-align: right;
+}
+
+.journey .container .col-md-6:last-child .journey__card {
+  text-align: right;
+}
+
+.journey .container .col-md-6:last-child .journey__card__title:before {
+  left: auto;
+  right: -3.1rem;
 }
 
 .journey__title {
