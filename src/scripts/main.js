@@ -350,15 +350,17 @@ function applyBackground(main, asset) {
             else {
                 element.classList.add("is-standby");
             }
-            element.autoplay = false;
             element.loop = false;
-            element.muted = true;
             element.playsInline = true;
             element.defaultMuted = true;
             element.preload = "auto";
             element.src = assetUrl;
+            element.muted = true;
+            element.autoplay = true;
             element.setAttribute("muted", "");
             element.setAttribute("playsinline", "");
+            element.setAttribute("webkit-playsinline", "");
+            element.setAttribute("autoplay", "");
             element.setAttribute("preload", "auto");
             element.setAttribute("fetchpriority", "low");
             element.style.backgroundColor = "transparent";
@@ -444,7 +446,7 @@ function applyBackground(main, asset) {
         let isCrossfading = false;
         let rafId = null;
         let crossfadeTimeoutId = null;
-        const crossfadeOverlapSeconds = 1;
+        const crossfadeOverlapSeconds = 0.75;
         const cleanup = () => {
             if (isDisposed) {
                 return;
@@ -535,7 +537,12 @@ function applyBackground(main, asset) {
             if (isDisposed) {
                 return;
             }
-            tail.pause();
+            try {
+                tail.pause();
+            }
+            catch (_a) {
+                // ignore pause issues
+            }
             try {
                 tail.currentTime = 0;
             }
