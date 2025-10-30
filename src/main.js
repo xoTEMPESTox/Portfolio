@@ -125,8 +125,8 @@ const initHomeRoleTyper = () => {
   let eraseStarted = false;
   let isActive = true;
 
-  const typeSpeed = 80; // higher is Slower
-  const holdDelay = 1500;
+  const typeSpeed = 75; // higher is Slower
+  const holdDelay = 750;
   const transitionDelay = 350;
   const expandDuration = 450;
   const eraseDuration = 300;
