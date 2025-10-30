@@ -106,10 +106,14 @@ function changeListItems() {
         });
     });
     function readMoreHome() {
-        let btnHome = document.getElementById("read-more-home");
-        btnHome.addEventListener("click", () => {
-            removeFullScreenFromAllSections();
-            about.classList.add("full-screen-right");
+        const btnHome = document.getElementById("read-more-home");
+        const aboutNavItem = document.getElementById("item-about");
+        if (!btnHome || !aboutNavItem) {
+            return;
+        }
+        btnHome.addEventListener("click", (event) => {
+            event.preventDefault();
+            aboutNavItem.click();
         });
     }
     readMoreHome();
