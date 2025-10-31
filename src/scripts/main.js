@@ -20,6 +20,7 @@ function sanitizeBasePath(value) {
     return sanitized ? sanitized.replace(/\/+$/, "") : "";
 }
 let cleanupParallax = null;
+const parallaxPositionCache = new Map();
 if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
         changeListItems();
@@ -345,7 +346,7 @@ function applyBackground(main, asset) {
             setVideoPlaceholder(main, placeholder);
         }
         else {
-            main.style.backgroundImage = "";
+            clearVideoPlaceholder(main);
         }
         const revealVideo = () => {
             const performClear = () => clearVideoPlaceholder(main);
@@ -405,6 +406,9 @@ function applyBackground(main, asset) {
                 delete container.__backgroundCleanup;
             }
             container.innerHTML = "";
+            if (placeholder) {
+                setVideoPlaceholder(main, placeholder);
+            }
             const video = document.createElement("video");
             video.className = "main__background-media";
             video.loop = true;
@@ -486,31 +490,54 @@ function applyBackground(main, asset) {
                 delete container.__backgroundCleanup;
             }
             container.innerHTML = "";
+            if (placeholder) {
+                setVideoPlaceholder(main, placeholder);
+            }
             const leadVideo = createVideoElement(true);
             const tailVideo = createVideoElement(false);
             const videos = [leadVideo, tailVideo];
             videos.forEach((video) => container.appendChild(video));
             let disposed = false;
-            let rafId = null;
-            let crossfadeTimeoutId = null;
             let lead = leadVideo;
             let tail = tailVideo;
-            const crossfadeOverlapSeconds = 0.75;
+            const crossfadeDurationMs = 400;
+            const crossfadeTailMs = 200;
+            const crossfadeBufferSeconds = Math.max(0.1, crossfadeDurationMs / 1000);
+            let crossfadeInProgress = false;
+            let swapTimeoutId = null;
+            let swapTimeoutClear = null;
+            let teardownIncomingReady = null;
+            const listenerRegistry = new WeakMap();
+            const detachListeners = (video) => {
+                const listeners = listenerRegistry.get(video);
+                if (!listeners) {
+                    return;
+                }
+                listeners.forEach(([event, handler]) => video.removeEventListener(event, handler));
+                listenerRegistry.delete(video);
+            };
             const cleanup = () => {
                 if (disposed) {
                     return;
                 }
                 disposed = true;
-                if (typeof window !== "undefined") {
-                    if (rafId !== null) {
-                        window.cancelAnimationFrame(rafId);
-                        rafId = null;
-                    }
-                    if (crossfadeTimeoutId !== null) {
-                        window.clearTimeout(crossfadeTimeoutId);
-                        crossfadeTimeoutId = null;
-                    }
+                if (typeof teardownIncomingReady === "function") {
+                    teardownIncomingReady();
                 }
+                if (swapTimeoutId !== null) {
+                    if (typeof swapTimeoutClear === "function") {
+                        swapTimeoutClear(swapTimeoutId);
+                    }
+                    else if (typeof window !== "undefined") {
+                        window.clearTimeout(swapTimeoutId);
+                    }
+                    else if (typeof clearTimeout === "function") {
+                        clearTimeout(swapTimeoutId);
+                    }
+                    swapTimeoutId = null;
+                    swapTimeoutClear = null;
+                }
+                videos.forEach(detachListeners);
                 videos.forEach((video) => {
                     try {
                         video.pause();
@@ -534,77 +561,155 @@ function applyBackground(main, asset) {
                 }
                 return playPromise;
             };
-            const scheduleReset = (video) => {
-                if (typeof window === "undefined") {
-                    try {
-                        video.pause();
-                    }
-                    catch (_a) {
-                        // ignore pause issues
-                    }
-                    try {
-                        video.currentTime = 0;
-                    }
-                    catch (_a) {
-                        // ignore seek issues
-                    }
+            const startCrossfade = () => {
+                if (disposed || crossfadeInProgress) {
                     return;
                 }
-                if (crossfadeTimeoutId !== null) {
-                    window.clearTimeout(crossfadeTimeoutId);
-                }
-                crossfadeTimeoutId = window.setTimeout(() => {
-                    crossfadeTimeoutId = null;
-                    if (disposed) {
-                        return;
-                    }
-                    try {
-                        video.pause();
-                    }
-                    catch (_a) {
-                        // ignore pause issues
-                    }
-                    try {
-                        video.currentTime = 0;
-                    }
-                    catch (_a) {
-                        // ignore seek issues
-                    }
-                }, crossfadeOverlapSeconds * 1000);
-            };
-            const performCrossfade = () => {
-                if (disposed) {
-                    return;
-                }
+                crossfadeInProgress = true;
                 const outgoing = lead;
                 const incoming = tail;
+                detachListeners(outgoing);
+                if (typeof teardownIncomingReady === "function") {
+                    teardownIncomingReady();
+                    teardownIncomingReady = null;
+                }
                 try {
                     incoming.currentTime = 0;
                 }
                 catch (_a) {
                     // ignore seek issues
                 }
+                let transitionActivated = false;
+                const finalizeSwap = () => {
+                    if (disposed) {
+                        return;
+                    }
+                    if (typeof teardownIncomingReady === "function") {
+                        teardownIncomingReady();
+                        teardownIncomingReady = null;
+                    }
+                    try {
+                        outgoing.pause();
+                    }
+                    catch (_a) {
+                        // ignore pause issues
+                    }
+                    try {
+                        outgoing.currentTime = 0;
+                    }
+                    catch (_a) {
+                        // ignore seek issues
+                    }
+                    tail = outgoing;
+                    lead = incoming;
+                    crossfadeInProgress = false;
+                    attachLeadListeners(lead);
+                };
+                const finalizeDelayMs = crossfadeDurationMs + crossfadeTailMs;
+                const scheduleFinalize = () => {
+                    if (typeof window !== "undefined") {
+                        if (swapTimeoutId !== null) {
+                            if (typeof swapTimeoutClear === "function") {
+                                swapTimeoutClear(swapTimeoutId);
+                            }
+                            else {
+                                window.clearTimeout(swapTimeoutId);
+                            }
+                        }
+                        swapTimeoutClear = (id) => window.clearTimeout(id);
+                        swapTimeoutId = window.setTimeout(() => {
+                            swapTimeoutId = null;
+                            swapTimeoutClear = null;
+                            finalizeSwap();
+                        }, finalizeDelayMs);
+                    }
+                    else if (typeof setTimeout === "function") {
+                        if (swapTimeoutId !== null) {
+                            if (typeof swapTimeoutClear === "function") {
+                                swapTimeoutClear(swapTimeoutId);
+                            }
+                            else if (typeof clearTimeout === "function") {
+                                clearTimeout(swapTimeoutId);
+                            }
+                        }
+                        swapTimeoutClear = typeof clearTimeout === "function" ? (id) => clearTimeout(id) : null;
+                        swapTimeoutId = setTimeout(() => {
+                            swapTimeoutId = null;
+                            swapTimeoutClear = null;
+                            finalizeSwap();
+                        }, finalizeDelayMs);
+                    }
+                    else {
+                        finalizeSwap();
+                    }
+                };
+                let incomingReadyHandler = null;
+                const removeIncomingReadyListeners = () => {
+                    if (!incomingReadyHandler) {
+                        return;
+                    }
+                    incoming.removeEventListener("playing", incomingReadyHandler);
+                    incoming.removeEventListener("timeupdate", incomingReadyHandler);
+                    incomingReadyHandler = null;
+                };
+                const beginVisualTransition = () => {
+                    if (transitionActivated || disposed) {
+                        return;
+                    }
+                    transitionActivated = true;
+                    removeIncomingReadyListeners();
+                    teardownIncomingReady = null;
+                    incoming.classList.add("is-active");
+                    incoming.classList.remove("is-standby");
+                    outgoing.classList.remove("is-active");
+                    outgoing.classList.add("is-standby");
+                    scheduleFinalize();
+                };
+                teardownIncomingReady = () => {
+                    removeIncomingReadyListeners();
+                    teardownIncomingReady = null;
+                };
                 safePlay(incoming);
-                incoming.classList.add("is-active");
-                incoming.classList.remove("is-standby");
-                outgoing.classList.remove("is-active");
-                outgoing.classList.add("is-standby");
-                lead = incoming;
-                tail = outgoing;
-                scheduleReset(outgoing);
+                if (!incoming.paused && incoming.readyState >= 2) {
+                    beginVisualTransition();
+                }
+                else {
+                    incomingReadyHandler = () => {
+                        if (disposed) {
+                            return;
+                        }
+                        removeIncomingReadyListeners();
+                        teardownIncomingReady = null;
+                        beginVisualTransition();
+                    };
+                    incoming.addEventListener("playing", incomingReadyHandler);
+                    incoming.addEventListener("timeupdate", incomingReadyHandler);
+                }
             };
-            const tick = () => {
-                if (disposed || typeof window === "undefined") {
+            const attachLeadListeners = (video) => {
+                if (disposed) {
                     return;
                 }
-                const duration = lead.duration || 0;
-                if (duration && lead.currentTime >= duration - crossfadeOverlapSeconds) {
-                    performCrossfade();
-                }
-                if (lead.paused) {
-                    safePlay(lead);
-                }
-                rafId = window.requestAnimationFrame(tick);
+                detachListeners(video);
+                const handleTimeUpdate = () => {
+                    if (disposed || crossfadeInProgress) {
+                        return;
+                    }
+                    const duration = video.duration || 0;
+                    if (!duration) {
+                        return;
+                    }
+                    if (duration - video.currentTime <= crossfadeBufferSeconds) {
+                        startCrossfade();
+                    }
+                };
+                const handleEnded = () => startCrossfade();
+                const listeners = [
+                    ["timeupdate", handleTimeUpdate],
+                    ["ended", handleEnded]
+                ];
+                listenerRegistry.set(video, listeners);
+                listeners.forEach(([event, handler]) => video.addEventListener(event, handler));
             };
             lead.addEventListener("playing", () => {
                 cancelFallback();
@@ -636,8 +741,8 @@ function applyBackground(main, asset) {
                     // ignore seek issues
                 }
                 safePlay(lead);
+                attachLeadListeners(lead);
                 if (typeof window !== "undefined") {
-                    rafId = window.requestAnimationFrame(tick);
                     revealFallbackId = window.setTimeout(() => {
                         revealFallbackId = null;
                         revealVideo();
@@ -678,7 +783,9 @@ function removeBackgroundVideo(main) {
             delete container.__backgroundCleanup;
         }
         container.innerHTML = "";
-        container.style.transform = "";
+        container.style.removeProperty("--parallax-offset-x");
+        container.style.removeProperty("--parallax-offset-y");
+        container.style.removeProperty("--parallax-scale");
     }
 }
 function getStoredBackground(key) {
@@ -746,7 +853,10 @@ function applyStoredBackgroundPlaceholder(main, asset) {
     if (asset.type === "video") {
         const placeholder = asset.poster ? resolveAssetUrl(asset.poster, "image", asset.posterBasePath) : null;
         if (placeholder) {
-            main.style.backgroundImage = `url("${placeholder}")`;
+            setVideoPlaceholder(main, placeholder);
+        }
+        else {
+            clearVideoPlaceholder(main);
         }
     }
     else {
@@ -760,13 +870,41 @@ function setVideoPlaceholder(main, poster) {
     if (!poster) {
         return;
     }
-    main.style.backgroundImage = `url("${poster}")`;
+    const container = ensureBackgroundContainer(main);
+    let placeholder = container.querySelector(".main__background-placeholder");
+    if (!placeholder) {
+        placeholder = document.createElement("img");
+        placeholder.className = "main__background-media main__background-placeholder";
+        placeholder.alt = "";
+        placeholder.setAttribute("aria-hidden", "true");
+        placeholder.draggable = false;
+        container.prepend(placeholder);
+    }
+    placeholder.src = poster;
+    placeholder.classList.add("is-active");
+    placeholder.classList.remove("is-standby");
     main.dataset.backgroundPlaceholder = "true";
+    main.style.backgroundImage = "";
 }
 function clearVideoPlaceholder(main) {
+    const container = main.querySelector(".main__background");
+    if (container) {
+        const placeholder = container.querySelector(".main__background-placeholder");
+        if (placeholder) {
+            container.removeChild(placeholder);
+        }
+    }
     if (main.dataset.backgroundPlaceholder === "true") {
         delete main.dataset.backgroundPlaceholder;
     }
+}
+function getParallaxCacheKey(asset) {
+    if (!asset || !asset.src) {
+        return null;
+    }
+    const type = asset.type || "unknown";
+    const basePath = asset.srcBasePath || "";
+    return `${type}|${basePath}|${asset.src}`;
 }
 function enableBackgroundParallax(main, asset) {
     if (cleanupParallax) {
@@ -778,9 +916,23 @@ function enableBackgroundParallax(main, asset) {
         return;
     }
     const backgroundContainer = asset.type === "video" ? main.querySelector(".main__background") : null;
+    const cacheKey = getParallaxCacheKey(asset);
+    const cachedPosition = cacheKey ? parallaxPositionCache.get(cacheKey) : null;
+    const initialPosition = cachedPosition
+        ? {
+            x: Math.min(1, Math.max(0, typeof cachedPosition.x === "number" ? cachedPosition.x : 0.5)),
+            y: Math.min(1, Math.max(0, typeof cachedPosition.y === "number" ? cachedPosition.y : 0.5))
+        }
+        : { x: 0.5, y: 0.5 };
     const state = {
-        target: { x: 0.5, y: 0.5 },
-        current: { x: 0.5, y: 0.5 }
+        target: { x: initialPosition.x, y: initialPosition.y },
+        current: { x: initialPosition.x, y: initialPosition.y }
+    };
+    const rememberPosition = (position) => {
+        if (!cacheKey || !position) {
+            return;
+        }
+        parallaxPositionCache.set(cacheKey, position);
     };
     const smoothingFactor = 0.1;
     const settleThreshold = 0.00000000001;
@@ -799,7 +951,8 @@ function enableBackgroundParallax(main, asset) {
             state.current.y = state.target.y;
             animationFrameId = null;
         }
-        applyParallaxOffset(main, asset, backgroundContainer, state.current);
+        const appliedPosition = applyParallaxOffset(main, asset, backgroundContainer, state.current);
+        rememberPosition(appliedPosition);
     };
     const ensureAnimationRunning = () => {
         if (animationFrameId === null) {
@@ -829,6 +982,8 @@ function enableBackgroundParallax(main, asset) {
     };
     main.addEventListener("mousemove", handlePointerMove);
     main.addEventListener("mouseleave", handlePointerLeave);
+    const initialAppliedPosition = applyParallaxOffset(main, asset, backgroundContainer, state.current);
+    rememberPosition(initialAppliedPosition);
     ensureAnimationRunning();
     cleanupParallax = () => {
         main.removeEventListener("mousemove", handlePointerMove);
@@ -842,7 +997,7 @@ function enableBackgroundParallax(main, asset) {
 }
 function applyParallaxOffset(main, asset, container, position) {
     if (!asset) {
-        return;
+        return null;
     }
     const clampedX = Math.min(1, Math.max(0, position.x));
     const clampedY = Math.min(1, Math.max(0, position.y));
@@ -850,7 +1005,11 @@ function applyParallaxOffset(main, asset, container, position) {
         const offsetIntensity = 50;
         const offsetX = (clampedX - 0.5) * offsetIntensity;
         const offsetY = (clampedY - 0.5) * offsetIntensity;
-        container.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1.08)`;
+        const offsetXValue = `${offsetX}px`;
+        const offsetYValue = `${offsetY}px`;
+        container.style.setProperty("--parallax-offset-x", offsetXValue);
+        container.style.setProperty("--parallax-offset-y", offsetYValue);
+        container.style.setProperty("--parallax-scale", "1.08");
     }
     else {
         const offsetIntensityPercent = 50;
@@ -858,6 +1017,7 @@ function applyParallaxOffset(main, asset, container, position) {
         const offsetYPercent = (clampedY - 0.5) * offsetIntensityPercent;
         main.style.backgroundPosition = `${50 + offsetXPercent}% ${50 + offsetYPercent}%`;
     }
+    return { x: clampedX, y: clampedY };
 }
 function resetParallax(main, asset, container) {
     if (!asset) {
@@ -866,7 +1026,9 @@ function resetParallax(main, asset, container) {
     if (asset.type === "video") {
         const target = container || main.querySelector(".main__background");
         if (target) {
-            target.style.transform = "";
+            target.style.removeProperty("--parallax-offset-x");
+            target.style.removeProperty("--parallax-offset-y");
+            target.style.removeProperty("--parallax-scale");
         }
     }
     else {
