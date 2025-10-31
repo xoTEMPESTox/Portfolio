@@ -500,8 +500,8 @@ function applyBackground(main, asset) {
             let disposed = false;
             let lead = leadVideo;
             let tail = tailVideo;
-            const crossfadeDurationMs = 400;
-            const crossfadeTailMs = 200;
+            const crossfadeDurationMs = 2000;
+            const crossfadeTailMs = 1000;
             const crossfadeBufferSeconds = Math.max(0.1, crossfadeDurationMs / 1000);
             let crossfadeInProgress = false;
             let swapTimeoutId = null;
