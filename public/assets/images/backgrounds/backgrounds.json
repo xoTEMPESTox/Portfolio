@@ -4,12 +4,20 @@
         "video": "1.mp4"
     },
     {
-        "image": "2.jpeg",
-        "video": "2.mp4"
+        "image": "2-day.jpeg",
+        "video": "2-day.mp4"
     },
     {
-        "image": "3.jpeg",
-        "video": "3.mp4"
+        "image": "2-night.jpeg",
+        "video": "2-night.mp4"
+    },
+    {
+        "image": "3-day.jpeg",
+        "video": "3-day.mp4"
+    },
+    {
+        "image": "3-night.jpeg",
+        "video": "3-night.mp4"
     },
     {
         "image": "4.jpeg",
@@ -34,5 +42,9 @@
     {
         "image": "9.jpeg",
         "video": "9.mp4"
+    },
+    {
+        "image": "10.jpeg",
+        "video": "10.mp4"
     }
 ]
