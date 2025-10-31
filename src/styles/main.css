@@ -342,9 +342,11 @@ section {
 .main__background {
   bottom: 0;
   left: 0;
-  --background-crossfade-duration: 1500ms;
-  --background-blur-half-duration: calc(var(--background-crossfade-duration) / 2);
-  --background-blur-amount: 2px;
+  --background-crossfade-duration: 750ms;
+  --background-blur-overhead: 1.25;
+  --background-blur-amount: 5px;
+  --background-blur-in-duration: calc((0.5 + var(--background-blur-overhead)) * var(--background-crossfade-duration));
+  --background-blur-out-duration: calc((0.5 + var(--background-blur-overhead)) * var(--background-crossfade-duration));
   overflow: hidden;
   pointer-events: none;
   position: absolute;
@@ -356,6 +358,7 @@ section {
 
 .main__background .main__background-media {
   --background-blur-current: 0px;
+  --background-blur-transition-duration: var(--background-blur-out-duration);
   bottom: 0;
   left: 0;
   opacity: 0;
@@ -364,8 +367,8 @@ section {
   top: 0;
   filter: blur(var(--background-blur-current));
   transition:
-    opacity var(--background-crossfade-duration) ease-in-out var(--background-blur-half-duration),
-    filter var(--background-blur-half-duration) ease-in-out;
+    opacity var(--background-crossfade-duration) ease-in-out,
+    filter var(--background-blur-transition-duration) ease-in-out;
   transform: translate3d(var(--parallax-offset-x, 0px), var(--parallax-offset-y, 0px), 0)
     scale(var(--parallax-scale, 1));
   will-change: opacity, filter, transform;
@@ -378,6 +381,7 @@ section {
 }
 
 .main__background .main__background-media.is-blur-max {
+  --background-blur-transition-duration: var(--background-blur-in-duration);
   --background-blur-current: var(--background-blur-amount);
 }
 
