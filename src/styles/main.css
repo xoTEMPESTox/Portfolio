@@ -892,7 +892,9 @@ section {
 @media (max-width: 575.98px) {
   .about {
     padding-inline: clamp(1rem, 6vw, 2.5rem);
-    padding-block: clamp(10rem, 30vh, 18rem);
+    padding-top: clamp(10rem, 30vh, 20rem);
+    padding-bottom: clamp(10rem, 30vh, 18rem);
+    margin-top: 5%;
   }
 }
 
@@ -1411,6 +1413,10 @@ section {
 }
 
 @media (max-width: 575.98px) {
+  .skills {
+    padding-top: clamp(10rem, 30vh, 15rem);
+    margin-top: 5%;
+  }
   .skills .container {
     margin-bottom: 9rem;
     margin-top: 4rem;
