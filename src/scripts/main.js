@@ -500,13 +500,17 @@ function applyBackground(main, asset) {
             let disposed = false;
             let lead = leadVideo;
             let tail = tailVideo;
-            const crossfadeDurationMs = 2000;
-            const crossfadeTailMs = 1000;
-            const crossfadeBufferSeconds = Math.max(0.1, crossfadeDurationMs / 1000);
+            const crossfadeDurationMs = 1500;
+            const blurHalfDurationMs = Math.max(0, Math.round(crossfadeDurationMs / 2));
+            const crossfadeTailMs = crossfadeDurationMs * 0.5;
+            const crossfadeBufferSeconds = Math.max(0.1, (crossfadeDurationMs + blurHalfDurationMs) / 1000);
+            container.style.setProperty("--background-crossfade-duration", `${crossfadeDurationMs}ms`);
+            container.style.setProperty("--background-blur-half-duration", `${blurHalfDurationMs}ms`);
             let crossfadeInProgress = false;
             let swapTimeoutId = null;
             let swapTimeoutClear = null;
             let teardownIncomingReady = null;
+            let activeBlurCleanup = null;
             const listenerRegistry = new WeakMap();
             const detachListeners = (video) => {
                 const listeners = listenerRegistry.get(video);
@@ -521,6 +525,10 @@ function applyBackground(main, asset) {
                     return;
                 }
                 disposed = true;
+                if (typeof activeBlurCleanup === "function") {
+                    activeBlurCleanup();
+                    activeBlurCleanup = null;
+                }
                 if (typeof teardownIncomingReady === "function") {
                     teardownIncomingReady();
                 }
@@ -580,9 +588,33 @@ function applyBackground(main, asset) {
                     // ignore seek issues
                 }
                 let transitionActivated = false;
+                let cancelFadeDelay = null;
+                let cancelBlurOutDelay = null;
+                const scheduleWithDelay = (handler, delay) => {
+                    if (delay <= 0) {
+                        handler();
+                        return null;
+                    }
+                    if (typeof window !== "undefined" && typeof window.setTimeout === "function") {
+                        const id = window.setTimeout(handler, delay);
+                        return () => window.clearTimeout(id);
+                    }
+                    if (typeof setTimeout === "function") {
+                        const id = setTimeout(handler, delay);
+                        if (typeof clearTimeout === "function") {
+                            return () => clearTimeout(id);
+                        }
+                    }
+                    handler();
+                    return null;
+                };
                 const finalizeSwap = () => {
                     if (disposed) {
                         return;
+                    }
+                    if (typeof activeBlurCleanup === "function") {
+                        activeBlurCleanup();
+                        activeBlurCleanup = null;
                     }
                     if (typeof teardownIncomingReady === "function") {
                         teardownIncomingReady();
@@ -605,7 +637,7 @@ function applyBackground(main, asset) {
                     crossfadeInProgress = false;
                     attachLeadListeners(lead);
                 };
-                const finalizeDelayMs = crossfadeDurationMs + crossfadeTailMs;
+                const finalizeDelayMs = blurHalfDurationMs + crossfadeDurationMs + crossfadeTailMs;
                 const scheduleFinalize = () => {
                     if (typeof window !== "undefined") {
                         if (swapTimeoutId !== null) {
@@ -659,11 +691,51 @@ function applyBackground(main, asset) {
                     transitionActivated = true;
                     removeIncomingReadyListeners();
                     teardownIncomingReady = null;
-                    incoming.classList.add("is-active");
-                    incoming.classList.remove("is-standby");
-                    outgoing.classList.remove("is-active");
-                    outgoing.classList.add("is-standby");
-                    scheduleFinalize();
+                    if (typeof activeBlurCleanup === "function") {
+                        activeBlurCleanup();
+                        activeBlurCleanup = null;
+                    }
+                    const applyBlurClasses = () => {
+                        incoming.classList.add("is-blur-max");
+                        outgoing.classList.add("is-blur-max");
+                    };
+                    const removeBlurClasses = () => {
+                        incoming.classList.remove("is-blur-max");
+                        outgoing.classList.remove("is-blur-max");
+                    };
+                    const triggerFade = () => {
+                        if (disposed) {
+                            return;
+                        }
+                        incoming.classList.add("is-active");
+                        incoming.classList.remove("is-standby");
+                        outgoing.classList.remove("is-active");
+                        outgoing.classList.add("is-standby");
+                        scheduleFinalize();
+                        cancelFadeDelay = null;
+                    };
+                    const startBlurOut = () => {
+                        if (disposed) {
+                            return;
+                        }
+                        removeBlurClasses();
+                        cancelBlurOutDelay = null;
+                    };
+                    applyBlurClasses();
+                    cancelFadeDelay = scheduleWithDelay(triggerFade, blurHalfDurationMs);
+                    cancelBlurOutDelay = scheduleWithDelay(startBlurOut, blurHalfDurationMs + crossfadeDurationMs);
+                    activeBlurCleanup = () => {
+                        removeBlurClasses();
+                        if (typeof cancelFadeDelay === "function") {
+                            cancelFadeDelay();
+                        }
+                        if (typeof cancelBlurOutDelay === "function") {
+                            cancelBlurOutDelay();
+                        }
+                        cancelFadeDelay = null;
+                        cancelBlurOutDelay = null;
+                        activeBlurCleanup = null;
+                    };
                 };
                 teardownIncomingReady = () => {
                     removeIncomingReadyListeners();
