@@ -500,12 +500,19 @@ function applyBackground(main, asset) {
             let disposed = false;
             let lead = leadVideo;
             let tail = tailVideo;
-            const crossfadeDurationMs = 1500;
-            const blurHalfDurationMs = Math.max(0, Math.round(crossfadeDurationMs / 2));
-            const crossfadeTailMs = crossfadeDurationMs * 0.5;
-            const crossfadeBufferSeconds = Math.max(0.1, (crossfadeDurationMs + blurHalfDurationMs) / 1000);
+            const crossfadeDurationMs = 750;
+            const blurOverhead = 1.25;
+            const fadeDelayMs = Math.max(0, Math.round(crossfadeDurationMs * blurOverhead));
+            const blurInDurationMs = Math.max(0, Math.round(crossfadeDurationMs * (blurOverhead + 0.5)));
+            const blurOutDurationMs = blurInDurationMs;
+            const blurOutStartDelayMs = blurInDurationMs;
+            const totalTransitionMs = blurOutStartDelayMs + blurOutDurationMs;
+            const finalizeDelayMs = Math.max(0, totalTransitionMs - fadeDelayMs);
+            const crossfadeBufferSeconds = Math.max(0.1, totalTransitionMs / 1000);
             container.style.setProperty("--background-crossfade-duration", `${crossfadeDurationMs}ms`);
-            container.style.setProperty("--background-blur-half-duration", `${blurHalfDurationMs}ms`);
+            container.style.setProperty("--background-blur-overhead", `${blurOverhead}`);
+            container.style.setProperty("--background-blur-in-duration", `${blurInDurationMs}ms`);
+            container.style.setProperty("--background-blur-out-duration", `${blurOutDurationMs}ms`);
             let crossfadeInProgress = false;
             let swapTimeoutId = null;
             let swapTimeoutClear = null;
@@ -637,7 +644,6 @@ function applyBackground(main, asset) {
                     crossfadeInProgress = false;
                     attachLeadListeners(lead);
                 };
-                const finalizeDelayMs = blurHalfDurationMs + crossfadeDurationMs + crossfadeTailMs;
                 const scheduleFinalize = () => {
                     if (typeof window !== "undefined") {
                         if (swapTimeoutId !== null) {
@@ -722,8 +728,8 @@ function applyBackground(main, asset) {
                         cancelBlurOutDelay = null;
                     };
                     applyBlurClasses();
-                    cancelFadeDelay = scheduleWithDelay(triggerFade, blurHalfDurationMs);
-                    cancelBlurOutDelay = scheduleWithDelay(startBlurOut, blurHalfDurationMs + crossfadeDurationMs);
+                    cancelFadeDelay = scheduleWithDelay(triggerFade, fadeDelayMs);
+                    cancelBlurOutDelay = scheduleWithDelay(startBlurOut, blurOutStartDelayMs);
                     activeBlurCleanup = () => {
                         removeBlurClasses();
                         if (typeof cancelFadeDelay === "function") {
