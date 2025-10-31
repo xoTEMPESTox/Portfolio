@@ -342,6 +342,9 @@ section {
 .main__background {
   bottom: 0;
   left: 0;
+  --background-crossfade-duration: 1500ms;
+  --background-blur-half-duration: calc(var(--background-crossfade-duration) / 2);
+  --background-blur-amount: 2px;
   overflow: hidden;
   pointer-events: none;
   position: absolute;
@@ -352,16 +355,17 @@ section {
 }
 
 .main__background .main__background-media {
+  --background-blur-current: 0px;
   bottom: 0;
   left: 0;
   opacity: 0;
   position: absolute;
   right: 0;
   top: 0;
-  filter: blur(2px);
+  filter: blur(var(--background-blur-current));
   transition:
-    opacity 2s ease-in-out,
-    filter 2s ease-in-out;
+    opacity var(--background-crossfade-duration) ease-in-out var(--background-blur-half-duration),
+    filter var(--background-blur-half-duration) ease-in-out;
   transform: translate3d(var(--parallax-offset-x, 0px), var(--parallax-offset-y, 0px), 0)
     scale(var(--parallax-scale, 1));
   will-change: opacity, filter, transform;
@@ -370,8 +374,11 @@ section {
 
 .main__background .main__background-media.is-active {
   opacity: 1;
-  filter: blur(0);
   z-index: 1;
+}
+
+.main__background .main__background-media.is-blur-max {
+  --background-blur-current: var(--background-blur-amount);
 }
 
 .main__background .main__background-media.is-standby {
