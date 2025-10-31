@@ -348,498 +348,442 @@ function applyBackground(main, asset) {
         else {
             clearVideoPlaceholder(main);
         }
-        const revealVideo = () => {
-            const performClear = () => clearVideoPlaceholder(main);
-            if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
-                window.requestAnimationFrame(() => {
-                    window.requestAnimationFrame(performClear);
-                });
-            }
-            else {
-                performClear();
-            }
-        };
-        let revealFallbackId = null;
-        const cancelFallback = () => {
-            if (typeof window !== "undefined" && revealFallbackId !== null) {
-                window.clearTimeout(revealFallbackId);
-                revealFallbackId = null;
-            }
-        };
-        const createVideoElement = (isActive) => {
-            const element = document.createElement("video");
-            element.className = "main__background-media";
-            element.classList.add(isActive ? "is-active" : "is-standby");
-            element.loop = false;
-            element.autoplay = true;
-            element.muted = true;
-            element.playsInline = true;
-            element.defaultMuted = true;
-            element.preload = "auto";
-            element.src = assetUrl;
-            element.disableRemotePlayback = true;
-            element.setAttribute("muted", "");
-            element.setAttribute("playsinline", "");
-            element.setAttribute("webkit-playsinline", "");
-            element.setAttribute("autoplay", "");
-            element.setAttribute("preload", "auto");
-            element.setAttribute("fetchpriority", "low");
-            element.style.backgroundColor = "transparent";
-            if (placeholder) {
-                element.setAttribute("poster", placeholder);
-            }
-            return element;
-        };
-        const waitForMetadata = (video) => {
-            if (video.readyState >= 1) {
-                return Promise.resolve();
-            }
-            return new Promise((resolve) => {
-                video.addEventListener("loadedmetadata", resolve, { once: true });
-            });
-        };
-        let fallbackActivated = false;
-        const installSingleVideoLoop = () => {
-            fallbackActivated = true;
+        const video = document.createElement("video");
+        video.className = "main__background-media";
+        video.classList.add("is-active");
+        video.loop = false;
+        video.autoplay = true;
+        video.muted = true;
+        video.playsInline = true;
+        video.defaultMuted = true;
+        video.preload = "auto";
+        video.disableRemotePlayback = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
+        video.setAttribute("autoplay", "");
+        video.setAttribute("preload", "auto");
+        video.setAttribute("fetchpriority", "low");
+        video.style.backgroundColor = "transparent";
+        if (placeholder) {
+            video.setAttribute("poster", placeholder);
+        }
+        container.appendChild(video);
+        const teardown = initializeVideoBackgroundLoop(main, video, assetUrl, asset);
+        container.__backgroundCleanup = () => {
+            teardown();
             if (typeof container.__backgroundCleanup === "function") {
-                container.__backgroundCleanup();
                 delete container.__backgroundCleanup;
             }
-            container.innerHTML = "";
-            if (placeholder) {
-                setVideoPlaceholder(main, placeholder);
-            }
-            const video = document.createElement("video");
-            video.className = "main__background-media";
-            video.loop = true;
-            video.autoplay = true;
-            video.muted = true;
-            video.playsInline = true;
-            video.defaultMuted = true;
-            video.preload = "auto";
-            video.src = assetUrl;
-            video.disableRemotePlayback = true;
-            video.setAttribute("muted", "");
-            video.setAttribute("playsinline", "");
-            video.setAttribute("webkit-playsinline", "");
-            video.setAttribute("autoplay", "");
-            video.setAttribute("preload", "auto");
-            video.setAttribute("fetchpriority", "low");
-            video.style.backgroundColor = "transparent";
-            if (placeholder) {
-                video.setAttribute("poster", placeholder);
-            }
-            const cleanup = () => {
-                if (typeof window !== "undefined" && revealFallbackId !== null) {
-                    window.clearTimeout(revealFallbackId);
-                    revealFallbackId = null;
-                }
-                try {
-                    video.pause();
-                }
-                catch (_a) {
-                    // ignore pause issues
-                }
-            };
-            container.__backgroundCleanup = cleanup;
-            const ensurePlayback = () => {
-                const playPromise = video.play();
-                if (playPromise && typeof playPromise.catch === "function") {
-                    playPromise.catch(() => {
-                        // If autoplay fails even here, keep placeholder visible.
-                    });
-                }
-            };
-            video.addEventListener("playing", () => {
-                cancelFallback();
-                revealVideo();
-            }, { once: true });
-            video.addEventListener("loadeddata", () => {
-                if (video.paused) {
-                    ensurePlayback();
-                }
-                if (typeof window !== "undefined") {
-                    revealFallbackId = window.setTimeout(() => {
-                        revealFallbackId = null;
-                        revealVideo();
-                    }, 2000);
-                }
-            }, { once: true });
-            video.addEventListener("error", () => {
-                cleanup();
-                removeBackgroundVideo(main);
-                if (placeholder) {
-                    setVideoPlaceholder(main, placeholder);
-                }
-                else {
-                    clearVideoPlaceholder(main);
-                }
-            }, { once: true });
-            container.appendChild(video);
         };
-        const ensureFallback = () => {
-            if (fallbackActivated) {
-                return;
-            }
-            installSingleVideoLoop();
-        };
-        const installCrossfadeLoop = () => {
-            fallbackActivated = false;
-            if (typeof container.__backgroundCleanup === "function") {
-                container.__backgroundCleanup();
-                delete container.__backgroundCleanup;
-            }
-            container.innerHTML = "";
-            if (placeholder) {
-                setVideoPlaceholder(main, placeholder);
-            }
-            const leadVideo = createVideoElement(true);
-            const tailVideo = createVideoElement(false);
-            const videos = [leadVideo, tailVideo];
-            videos.forEach((video) => container.appendChild(video));
-            let disposed = false;
-            let lead = leadVideo;
-            let tail = tailVideo;
-            const crossfadeDurationMs = 750;
-            const blurOverhead = 1.25;
-            const fadeDelayMs = Math.max(0, Math.round(crossfadeDurationMs * blurOverhead));
-            const blurInDurationMs = Math.max(0, Math.round(crossfadeDurationMs * (blurOverhead + 0.5)));
-            const blurOutDurationMs = blurInDurationMs;
-            const blurOutStartDelayMs = blurInDurationMs;
-            const totalTransitionMs = blurOutStartDelayMs + blurOutDurationMs;
-            const finalizeDelayMs = Math.max(0, totalTransitionMs - fadeDelayMs);
-            const crossfadeBufferSeconds = Math.max(0.1, totalTransitionMs / 1000);
-            container.style.setProperty("--background-crossfade-duration", `${crossfadeDurationMs}ms`);
-            container.style.setProperty("--background-blur-overhead", `${blurOverhead}`);
-            container.style.setProperty("--background-blur-in-duration", `${blurInDurationMs}ms`);
-            container.style.setProperty("--background-blur-out-duration", `${blurOutDurationMs}ms`);
-            let crossfadeInProgress = false;
-            let swapTimeoutId = null;
-            let swapTimeoutClear = null;
-            let teardownIncomingReady = null;
-            let activeBlurCleanup = null;
-            const listenerRegistry = new WeakMap();
-            const detachListeners = (video) => {
-                const listeners = listenerRegistry.get(video);
-                if (!listeners) {
-                    return;
-                }
-                listeners.forEach(([event, handler]) => video.removeEventListener(event, handler));
-                listenerRegistry.delete(video);
-            };
-            const cleanup = () => {
-                if (disposed) {
-                    return;
-                }
-                disposed = true;
-                if (typeof activeBlurCleanup === "function") {
-                    activeBlurCleanup();
-                    activeBlurCleanup = null;
-                }
-                if (typeof teardownIncomingReady === "function") {
-                    teardownIncomingReady();
-                }
-                if (swapTimeoutId !== null) {
-                    if (typeof swapTimeoutClear === "function") {
-                        swapTimeoutClear(swapTimeoutId);
-                    }
-                    else if (typeof window !== "undefined") {
-                        window.clearTimeout(swapTimeoutId);
-                    }
-                    else if (typeof clearTimeout === "function") {
-                        clearTimeout(swapTimeoutId);
-                    }
-                    swapTimeoutId = null;
-                    swapTimeoutClear = null;
-                }
-                videos.forEach(detachListeners);
-                videos.forEach((video) => {
-                    try {
-                        video.pause();
-                    }
-                    catch (_a) {
-                        // ignore pause issues
-                    }
-                });
-            };
-            container.__backgroundCleanup = cleanup;
-            const safePlay = (video) => {
-                const playPromise = video.play();
-                if (playPromise && typeof playPromise.catch === "function") {
-                    playPromise.catch(() => {
-                        if (disposed) {
-                            return;
-                        }
-                        cleanup();
-                        ensureFallback();
-                    });
-                }
-                return playPromise;
-            };
-            const startCrossfade = () => {
-                if (disposed || crossfadeInProgress) {
-                    return;
-                }
-                crossfadeInProgress = true;
-                const outgoing = lead;
-                const incoming = tail;
-                detachListeners(outgoing);
-                if (typeof teardownIncomingReady === "function") {
-                    teardownIncomingReady();
-                    teardownIncomingReady = null;
-                }
-                try {
-                    incoming.currentTime = 0;
-                }
-                catch (_a) {
-                    // ignore seek issues
-                }
-                let transitionActivated = false;
-                let cancelFadeDelay = null;
-                let cancelBlurOutDelay = null;
-                const scheduleWithDelay = (handler, delay) => {
-                    if (delay <= 0) {
-                        handler();
-                        return null;
-                    }
-                    if (typeof window !== "undefined" && typeof window.setTimeout === "function") {
-                        const id = window.setTimeout(handler, delay);
-                        return () => window.clearTimeout(id);
-                    }
-                    if (typeof setTimeout === "function") {
-                        const id = setTimeout(handler, delay);
-                        if (typeof clearTimeout === "function") {
-                            return () => clearTimeout(id);
-                        }
-                    }
-                    handler();
-                    return null;
-                };
-                const finalizeSwap = () => {
-                    if (disposed) {
-                        return;
-                    }
-                    if (typeof activeBlurCleanup === "function") {
-                        activeBlurCleanup();
-                        activeBlurCleanup = null;
-                    }
-                    if (typeof teardownIncomingReady === "function") {
-                        teardownIncomingReady();
-                        teardownIncomingReady = null;
-                    }
-                    try {
-                        outgoing.pause();
-                    }
-                    catch (_a) {
-                        // ignore pause issues
-                    }
-                    try {
-                        outgoing.currentTime = 0;
-                    }
-                    catch (_a) {
-                        // ignore seek issues
-                    }
-                    tail = outgoing;
-                    lead = incoming;
-                    crossfadeInProgress = false;
-                    attachLeadListeners(lead);
-                };
-                const scheduleFinalize = () => {
-                    if (typeof window !== "undefined") {
-                        if (swapTimeoutId !== null) {
-                            if (typeof swapTimeoutClear === "function") {
-                                swapTimeoutClear(swapTimeoutId);
-                            }
-                            else {
-                                window.clearTimeout(swapTimeoutId);
-                            }
-                        }
-                        swapTimeoutClear = (id) => window.clearTimeout(id);
-                        swapTimeoutId = window.setTimeout(() => {
-                            swapTimeoutId = null;
-                            swapTimeoutClear = null;
-                            finalizeSwap();
-                        }, finalizeDelayMs);
-                    }
-                    else if (typeof setTimeout === "function") {
-                        if (swapTimeoutId !== null) {
-                            if (typeof swapTimeoutClear === "function") {
-                                swapTimeoutClear(swapTimeoutId);
-                            }
-                            else if (typeof clearTimeout === "function") {
-                                clearTimeout(swapTimeoutId);
-                            }
-                        }
-                        swapTimeoutClear = typeof clearTimeout === "function" ? (id) => clearTimeout(id) : null;
-                        swapTimeoutId = setTimeout(() => {
-                            swapTimeoutId = null;
-                            swapTimeoutClear = null;
-                            finalizeSwap();
-                        }, finalizeDelayMs);
-                    }
-                    else {
-                        finalizeSwap();
-                    }
-                };
-                let incomingReadyHandler = null;
-                const removeIncomingReadyListeners = () => {
-                    if (!incomingReadyHandler) {
-                        return;
-                    }
-                    incoming.removeEventListener("playing", incomingReadyHandler);
-                    incoming.removeEventListener("timeupdate", incomingReadyHandler);
-                    incomingReadyHandler = null;
-                };
-                const beginVisualTransition = () => {
-                    if (transitionActivated || disposed) {
-                        return;
-                    }
-                    transitionActivated = true;
-                    removeIncomingReadyListeners();
-                    teardownIncomingReady = null;
-                    if (typeof activeBlurCleanup === "function") {
-                        activeBlurCleanup();
-                        activeBlurCleanup = null;
-                    }
-                    const applyBlurClasses = () => {
-                        incoming.classList.add("is-blur-max");
-                        outgoing.classList.add("is-blur-max");
-                    };
-                    const removeBlurClasses = () => {
-                        incoming.classList.remove("is-blur-max");
-                        outgoing.classList.remove("is-blur-max");
-                    };
-                    const triggerFade = () => {
-                        if (disposed) {
-                            return;
-                        }
-                        incoming.classList.add("is-active");
-                        incoming.classList.remove("is-standby");
-                        outgoing.classList.remove("is-active");
-                        outgoing.classList.add("is-standby");
-                        scheduleFinalize();
-                        cancelFadeDelay = null;
-                    };
-                    const startBlurOut = () => {
-                        if (disposed) {
-                            return;
-                        }
-                        removeBlurClasses();
-                        cancelBlurOutDelay = null;
-                    };
-                    applyBlurClasses();
-                    cancelFadeDelay = scheduleWithDelay(triggerFade, fadeDelayMs);
-                    cancelBlurOutDelay = scheduleWithDelay(startBlurOut, blurOutStartDelayMs);
-                    activeBlurCleanup = () => {
-                        removeBlurClasses();
-                        if (typeof cancelFadeDelay === "function") {
-                            cancelFadeDelay();
-                        }
-                        if (typeof cancelBlurOutDelay === "function") {
-                            cancelBlurOutDelay();
-                        }
-                        cancelFadeDelay = null;
-                        cancelBlurOutDelay = null;
-                        activeBlurCleanup = null;
-                    };
-                };
-                teardownIncomingReady = () => {
-                    removeIncomingReadyListeners();
-                    teardownIncomingReady = null;
-                };
-                safePlay(incoming);
-                if (!incoming.paused && incoming.readyState >= 2) {
-                    beginVisualTransition();
-                }
-                else {
-                    incomingReadyHandler = () => {
-                        if (disposed) {
-                            return;
-                        }
-                        removeIncomingReadyListeners();
-                        teardownIncomingReady = null;
-                        beginVisualTransition();
-                    };
-                    incoming.addEventListener("playing", incomingReadyHandler);
-                    incoming.addEventListener("timeupdate", incomingReadyHandler);
-                }
-            };
-            const attachLeadListeners = (video) => {
-                if (disposed) {
-                    return;
-                }
-                detachListeners(video);
-                const handleTimeUpdate = () => {
-                    if (disposed || crossfadeInProgress) {
-                        return;
-                    }
-                    const duration = video.duration || 0;
-                    if (!duration) {
-                        return;
-                    }
-                    if (duration - video.currentTime <= crossfadeBufferSeconds) {
-                        startCrossfade();
-                    }
-                };
-                const handleEnded = () => startCrossfade();
-                const listeners = [
-                    ["timeupdate", handleTimeUpdate],
-                    ["ended", handleEnded]
-                ];
-                listenerRegistry.set(video, listeners);
-                listeners.forEach(([event, handler]) => video.addEventListener(event, handler));
-            };
-            lead.addEventListener("playing", () => {
-                cancelFallback();
-                revealVideo();
-            }, { once: true });
-            videos.forEach((video) => {
-                video.addEventListener("error", () => {
-                    if (disposed) {
-                        return;
-                    }
-                    cleanup();
-                    ensureFallback();
-                }, { once: true });
-            });
-            Promise.all(videos.map(waitForMetadata)).then(() => {
-                if (disposed) {
-                    return;
-                }
-                try {
-                    tail.pause();
-                }
-                catch (_a) {
-                    // ignore pause issues
-                }
-                try {
-                    tail.currentTime = 0;
-                }
-                catch (_a) {
-                    // ignore seek issues
-                }
-                safePlay(lead);
-                attachLeadListeners(lead);
-                if (typeof window !== "undefined") {
-                    revealFallbackId = window.setTimeout(() => {
-                        revealFallbackId = null;
-                        revealVideo();
-                    }, 2000);
-                }
-            }).catch(() => {
-                if (disposed) {
-                    return;
-                }
-                cleanup();
-                ensureFallback();
-            });
-        };
-        installCrossfadeLoop();
     }
     else {
         removeBackgroundVideo(main);
         delete main.dataset.backgroundPlaceholder;
         main.style.backgroundImage = `url("${assetUrl}")`;
+    }
+}
+function initializeVideoBackgroundLoop(main, video, assetUrl, asset) {
+    const createFallback = () => setupNativeVideoLoop(main, video, assetUrl);
+    if (typeof window === "undefined" ||
+        typeof window.MediaSource !== "function" ||
+        typeof URL === "undefined" ||
+        typeof URL.createObjectURL !== "function") {
+        return createFallback();
+    }
+    const cleanup = setupMseVideoLoop(main, video, assetUrl, asset, createFallback);
+    return cleanup || createFallback();
+}
+function setupNativeVideoLoop(main, video, assetUrl) {
+    const reveal = () => deferClearVideoPlaceholder(main);
+    const handlePlaying = () => {
+        reveal();
+    };
+    const handleLoaded = () => {
+        if (video.paused) {
+            const playPromise = video.play();
+            if (playPromise && typeof playPromise.catch === "function") {
+                playPromise.catch(() => {
+                    // keep placeholder if autoplay is blocked
+                });
+            }
+        }
+    };
+    video.loop = true;
+    video.src = assetUrl;
+    video.addEventListener("playing", handlePlaying, { once: true });
+    video.addEventListener("loadeddata", handleLoaded, { once: true });
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {
+            // autoplay might be blocked; placeholder will stay visible
+        });
+    }
+    return () => {
+        video.removeEventListener("playing", handlePlaying);
+        video.removeEventListener("loadeddata", handleLoaded);
+        try {
+            video.pause();
+        }
+        catch (_a) {
+            // ignore pause issues
+        }
+        video.removeAttribute("src");
+        try {
+            video.load();
+        }
+        catch (_b) {
+            // ignore load issues
+        }
+    };
+}
+function setupMseVideoLoop(main, video, assetUrl, asset, createFallbackCleanup) {
+    const MediaSourceCtor = typeof window !== "undefined" ? window.MediaSource : null;
+    if (!MediaSourceCtor || typeof MediaSourceCtor !== "function") {
+        return null;
+    }
+    let disposed = false;
+    let fallbackCleanup = null;
+    let mediaSource = null;
+    let sourceBuffer = null;
+    let objectUrl = null;
+    let segmentTemplate = null;
+    let segmentDuration = 0;
+    let loopsAppended = 0;
+    let appendQueued = false;
+    let lastOperation = null;
+    const cleanupCallbacks = [];
+    const abortController = typeof AbortController === "function" ? new AbortController() : null;
+    const addCleanup = (fn) => {
+        if (typeof fn === "function") {
+            cleanupCallbacks.push(fn);
+        }
+    };
+    const runCleanupCallbacks = () => {
+        while (cleanupCallbacks.length) {
+            const fn = cleanupCallbacks.pop();
+            try {
+                fn();
+            }
+            catch (_a) {
+                // ignore cleanup issues
+            }
+        }
+    };
+    const addEvent = (target, event, handler, options) => {
+        target.addEventListener(event, handler, options);
+        addCleanup(() => target.removeEventListener(event, handler));
+    };
+    const ensurePlayback = () => {
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === "function") {
+            playPromise.catch(() => {
+                // leave placeholder visible if autoplay is blocked
+            });
+        }
+    };
+    const teardownMse = () => {
+        runCleanupCallbacks();
+        if (sourceBuffer) {
+            try {
+                if (mediaSource && mediaSource.readyState === "open") {
+                    sourceBuffer.abort();
+                    mediaSource.removeSourceBuffer(sourceBuffer);
+                }
+            }
+            catch (_a) {
+                // ignore abort issues
+            }
+            sourceBuffer = null;
+        }
+        if (mediaSource && mediaSource.readyState === "open") {
+            try {
+                mediaSource.endOfStream();
+            }
+            catch (_b) {
+                // ignore endOfStream issues
+            }
+        }
+        if (abortController) {
+            abortController.abort();
+        }
+        if (video.src === objectUrl) {
+            try {
+                video.removeAttribute("src");
+                video.load();
+            }
+            catch (_c) {
+                // ignore load cleanup issues
+            }
+        }
+        if (objectUrl) {
+            URL.revokeObjectURL(objectUrl);
+        }
+        mediaSource = null;
+        objectUrl = null;
+        segmentTemplate = null;
+    };
+    const fallback = () => {
+        if (disposed || fallbackCleanup) {
+            return;
+        }
+        teardownMse();
+        fallbackCleanup = createFallbackCleanup();
+    };
+    const maintainBufferAhead = () => {
+        if (disposed || !segmentDuration || !sourceBuffer) {
+            return;
+        }
+        const bufferedAhead = loopsAppended * segmentDuration - video.currentTime;
+        if (!Number.isFinite(bufferedAhead) || bufferedAhead < 0) {
+            return;
+        }
+        if (bufferedAhead <= segmentDuration * 1.25) {
+            appendSegment();
+        }
+    };
+    const maybeTrimBuffer = () => {
+        if (disposed || !sourceBuffer || !segmentDuration) {
+            return;
+        }
+        if (loopsAppended < 6) {
+            return;
+        }
+        if (sourceBuffer.updating) {
+            return;
+        }
+        const retainDuration = segmentDuration * 3;
+        const trimBefore = Math.max(0, video.currentTime - retainDuration);
+        if (!Number.isFinite(trimBefore) || trimBefore <= 0) {
+            return;
+        }
+        const buffered = sourceBuffer.buffered;
+        if (!buffered || buffered.length === 0) {
+            return;
+        }
+        let start;
+        try {
+            start = buffered.start(0);
+        }
+        catch (_a) {
+            return;
+        }
+        if (trimBefore <= start + 0.25) {
+            return;
+        }
+        lastOperation = "trim";
+        try {
+            sourceBuffer.remove(0, trimBefore);
+        }
+        catch (error) {
+            console.warn("Failed to trim seamless background buffer:", error);
+            lastOperation = null;
+        }
+    };
+    const appendSegment = () => {
+        if (disposed || !sourceBuffer || !segmentTemplate) {
+            return;
+        }
+        if (sourceBuffer.updating) {
+            appendQueued = true;
+            return;
+        }
+        appendQueued = false;
+        lastOperation = "append";
+        try {
+            const copy = new Uint8Array(segmentTemplate);
+            sourceBuffer.appendBuffer(copy);
+        }
+        catch (error) {
+            console.error("Failed to append seamless background segment:", error);
+            lastOperation = null;
+            fallback();
+        }
+    };
+    const handleUpdateEnd = () => {
+        if (disposed || !sourceBuffer) {
+            return;
+        }
+        const wasAppend = lastOperation === "append";
+        lastOperation = null;
+        if (wasAppend) {
+            loopsAppended += 1;
+            if (!segmentDuration) {
+                const duration = Number.isFinite(video.duration) ? video.duration : 0;
+                if (duration > 0) {
+                    segmentDuration = duration;
+                }
+            }
+            maintainBufferAhead();
+            maybeTrimBuffer();
+        }
+        else {
+            maintainBufferAhead();
+        }
+        if (appendQueued) {
+            appendQueued = false;
+            appendSegment();
+        }
+        ensurePlayback();
+    };
+    const handleTimeUpdate = () => {
+        maintainBufferAhead();
+    };
+    const handleVideoError = () => {
+        fallback();
+    };
+    addEvent(video, "timeupdate", handleTimeUpdate);
+    addEvent(video, "error", handleVideoError);
+    addEvent(video, "playing", () => deferClearVideoPlaceholder(main), { once: true });
+    mediaSource = new MediaSourceCtor();
+    try {
+        objectUrl = URL.createObjectURL(mediaSource);
+    }
+    catch (error) {
+        console.error("Failed to create MediaSource URL:", error);
+        runCleanupCallbacks();
+        mediaSource = null;
+        return null;
+    }
+    video.src = objectUrl;
+    const onSourceOpen = async () => {
+        if (disposed) {
+            return;
+        }
+        mediaSource.removeEventListener("sourceopen", onSourceOpen);
+        try {
+            const fetchOptions = abortController ? { signal: abortController.signal } : undefined;
+            const response = await fetch(assetUrl, fetchOptions);
+            if (!response.ok) {
+                throw new Error(`Unexpected status ${response.status}`);
+            }
+            const arrayBuffer = await response.arrayBuffer();
+            if (!arrayBuffer || !arrayBuffer.byteLength) {
+                throw new Error("Received empty background segment.");
+            }
+            const mimeType = resolveMediaSourceMimeType(asset, assetUrl, response.headers.get("Content-Type"));
+            if (!mimeType || !MediaSourceCtor.isTypeSupported(mimeType)) {
+                throw new Error(`Unsupported MIME type: ${mimeType || "unknown"}`);
+            }
+            if (disposed) {
+                return;
+            }
+            sourceBuffer = mediaSource.addSourceBuffer(mimeType);
+            sourceBuffer.mode = "sequence";
+            addEvent(sourceBuffer, "updateend", handleUpdateEnd);
+            segmentTemplate = new Uint8Array(arrayBuffer);
+            mediaSource.duration = Infinity;
+            appendSegment();
+            ensurePlayback();
+        }
+        catch (error) {
+            console.error("Failed to initialize seamless background video:", error);
+            fallback();
+        }
+    };
+    mediaSource.addEventListener("sourceopen", onSourceOpen, { once: true });
+    addCleanup(() => mediaSource.removeEventListener("sourceopen", onSourceOpen));
+    return () => {
+        if (disposed) {
+            return;
+        }
+        disposed = true;
+        teardownMse();
+        if (fallbackCleanup) {
+            const cleanup = fallbackCleanup;
+            fallbackCleanup = null;
+            cleanup();
+        }
+        else {
+            try {
+                video.pause();
+            }
+            catch (_a) {
+                // ignore pause issues
+            }
+            video.removeAttribute("src");
+            try {
+                video.load();
+            }
+            catch (_b) {
+                // ignore load issues
+            }
+        }
+    };
+}
+function resolveMediaSourceMimeType(asset, assetUrl, responseType) {
+    const candidates = [];
+    const declared = sanitizePathValue(asset?.mimeType);
+    if (declared) {
+        candidates.push(declared);
+    }
+    const normalizedResponse = sanitizePathValue(responseType);
+    if (normalizedResponse) {
+        const baseResponse = normalizedResponse.split(";")[0].trim();
+        if (baseResponse) {
+            candidates.push(baseResponse);
+        }
+    }
+    const extension = sanitizePathValue(assetUrl).split(".").pop()?.toLowerCase() ?? "";
+    candidates.push(...getMimeTypeCandidatesForExtension(extension));
+    const MediaSourceCtor = typeof window !== "undefined" ? window.MediaSource : null;
+    const uniqueCandidates = [];
+    candidates.forEach((candidate) => {
+        const normalized = sanitizePathValue(candidate);
+        if (!normalized) {
+            return;
+        }
+        if (!uniqueCandidates.includes(normalized)) {
+            uniqueCandidates.push(normalized);
+        }
+    });
+    if (!MediaSourceCtor || typeof MediaSourceCtor.isTypeSupported !== "function") {
+        return uniqueCandidates[0] ?? null;
+    }
+    for (const candidate of uniqueCandidates) {
+        if (MediaSourceCtor.isTypeSupported(candidate)) {
+            return candidate;
+        }
+    }
+    return uniqueCandidates[0] ?? null;
+}
+function getMimeTypeCandidatesForExtension(extension) {
+    switch (extension) {
+        case "mp4":
+            return [
+                'video/mp4; codecs="avc1.64001F, mp4a.40.2"',
+                'video/mp4; codecs="avc1.42E01E, mp4a.40.2"',
+                "video/mp4"
+            ];
+        case "webm":
+            return [
+                'video/webm; codecs="vp9, opus"',
+                'video/webm; codecs="vp8, vorbis"',
+                "video/webm"
+            ];
+        case "ogg":
+        case "ogv":
+            return [
+                'video/ogg; codecs="theora, vorbis"',
+                "video/ogg"
+            ];
+        case "mov":
+            return [
+                "video/quicktime"
+            ];
+        default:
+            return [];
+    }
+}
+function deferClearVideoPlaceholder(main) {
+    const performClear = () => clearVideoPlaceholder(main);
+    if (typeof window !== "undefined" && typeof window.requestAnimationFrame === "function") {
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(performClear);
+        });
+    }
+    else {
+        performClear();
     }
 }
 function ensureBackgroundContainer(main) {
