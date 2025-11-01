@@ -98,7 +98,7 @@ vite.config.js                 # Vite configuration (default)
 ## SEO Assets
 
 - `public/robots.txt` allows major crawlers to index every section and advertises the sitemap endpoint.
-- `public/sitemap.xml` lists the canonical portfolio URL (`https://xotempestox.github.io/`) to help search engines discover updates quickly.
+- `public/sitemap.xml` lists the canonical portfolio URL (`https://priyanshusah.com/`) to help search engines discover updates quickly.
 - `index.html` head metadata includes canonical, Open Graph, Twitter, and Schema.org Person tags tailored to AI/ML and full-stack keywords.
 
 ## Deployment
