@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://xotempestox.github.io/sitemap.xml
+Sitemap: https://priyanshusah.com/sitemap.xml
