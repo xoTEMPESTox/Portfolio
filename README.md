@@ -101,6 +101,12 @@ vite.config.js                 # Vite configuration (default)
 - `public/sitemap.xml` lists the canonical portfolio URL (`https://priyanshusah.com/`) to help search engines discover updates quickly.
 - `index.html` head metadata includes canonical, Open Graph, Twitter, and Schema.org Person tags tailored to AI/ML and full-stack keywords.
 
+## URL Shortener & Aggregator
+
+- Friendly slugs such as `/linkedin`, `/github`, `/mail`, `/codolio`, `/resume-global`, `/twitch`, `/spotify`, `/steam`, and `/discord` route through the portfolio, so a single change updates both the site UI and external share links.
+- Each slug maps to a static redirect in `public/<slug>/index.html`, making the portfolio double as a lightweight URL shortener without server-side code.
+- `index.html` references those slugs for social icons, ensuring outbound links remain consistent even if destination URLs change later.
+
 ## Deployment
 
 1. Run `npm run build`.
