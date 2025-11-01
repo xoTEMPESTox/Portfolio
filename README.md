@@ -8,6 +8,26 @@ A Vite-powered personal portfolio showcasing key projects, services, and testimo
 - Staged background loader shows the paired still immediately and fades in the video once buffered, keeping the first paint fast.
 - Bootstrap bundle is imported locally so data attributes (e.g. tooltips, dropdowns) work without additional setup.
 
+## About Priyanshu Sah
+
+Hi, I'm Priyanshu Sah — an AI/ML engineer and full-stack developer focused on shipping production-ready machine learning systems, cloud-native applications, and end-to-end product experiences. My work spans data science research, model deployment, React + Node.js development, and MLOps automation.
+
+### Core Expertise
+
+- Designing intelligent products with Python, TensorFlow, PyTorch, and scikit-learn.
+- Building full-stack web apps with React, Node.js, Express, and TypeScript.
+- Automating data pipelines, CI/CD, and containerized workloads across AWS, Azure, and GCP.
+- Translating business goals into measurable ML metrics, dashboards, and user-facing experiences.
+
+### What You'll Find Here
+
+- Featured AI/ML case studies and engineering projects.
+- Skills matrix covering machine learning, data engineering, and full-stack development.
+- Services section outlining consulting, prototyping, and deployment capabilities.
+- Contact routes for collaborations, speaking opportunities, and mentorship.
+
+> SEO keywords intentionally woven throughout this README include: *AI engineer*, *machine learning engineer*, *data scientist*, *MLOps specialist*, *full-stack developer*, *cloud architect*, and *Priyanshu Sah portfolio*.
+
 ## Roadmap
 
 - [ ] Compress videos for seamless looping and trim clips as needed
@@ -75,6 +95,12 @@ vite.config.js                 # Vite configuration (default)
 - Adjust component styling in `src/styles/main.css`; the build includes Bootstrap variables for consistency.
 - Modify navigation behaviour, parallax thresholds, or Swiper options inside `src/scripts/main.js` and `src/scripts/swiper.js`.
 
+## SEO Assets
+
+- `public/robots.txt` allows major crawlers to index every section and advertises the sitemap endpoint.
+- `public/sitemap.xml` lists the canonical portfolio URL (`https://xotempestox.github.io/`) to help search engines discover updates quickly.
+- `index.html` head metadata includes canonical, Open Graph, Twitter, and Schema.org Person tags tailored to AI/ML and full-stack keywords.
+
 ## Deployment
 
 1. Run `npm run build`.
@@ -82,3 +108,8 @@ vite.config.js                 # Vite configuration (default)
 3. Ensure `public/assets/` is copied alongside the build output so media and manifest files resolve correctly.
 
 Feel free to adapt the content, color palette, or assets to tailor the portfolio for your own brand.
+
+## Credits
+
+- Inspiration: [Jamie Oliver Portfolio](https://james-oliver-portfolio.netlify.app/)
+- Backgrounds: Video backgrounds sourced from the Steam Wallpaper Engine Workshop — credit to the original artists.
