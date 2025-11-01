@@ -1,4 +1,4 @@
-name: Build and deploy Vite app to gh-pages
+name: Push to gh-pages
 
 on:
   # push:
