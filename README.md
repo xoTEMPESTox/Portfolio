@@ -117,5 +117,5 @@ Feel free to adapt the content, color palette, or assets to tailor the portfolio
 
 ## Credits
 
-- Inspiration: [Jamie Oliver Portfolio](https://james-oliver-portfolio.netlify.app/)
+- Inspiration: [James Oliver Portfolio](https://james-oliver-portfolio.netlify.app/)
 - Backgrounds: Video backgrounds sourced from the Steam Wallpaper Engine Workshop — credit to the original artists.
