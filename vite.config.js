@@ -2,7 +2,6 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 import { fileURLToPath } from "url";
 import { cp } from "fs/promises";
-import tailwindcss from '@tailwindcss/vite'
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
@@ -21,5 +20,5 @@ export default defineConfig({
         outDir: "dist",
         emptyOutDir: true,
     },
-    plugins: [copyRedirects(),tailwindcss(),],
+    plugins: [copyRedirects()],
 });

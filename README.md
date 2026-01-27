@@ -28,8 +28,37 @@ Hi, I'm Priyanshu Sah an AI/ML engineer and full-stack developer focused on ship
 
 > SEO keywords intentionally woven throughout this README include: *AI engineer*, *machine learning engineer*, *data scientist*, *MLOps specialist*, *full-stack developer*, *cloud architect*, and *Priyanshu Sah portfolio*.
 
+## Roadmap
 
+* [x] **Compress and optimize videos** for seamless looping; trim clips as needed for performance.
+* [ ] **Build richer animations** for text, form fields, hover states, and transforms.
+* [x] **Implement blurred content reveal** for the About page with smooth load and unblur behavior.
+* [ ] **Enhance Journey scroll experience**:
 
+  * Add down-arrow scroll prompt.
+  * Enable container scroll with one visible entry at a time.
+  * Add disintegration + blur transition (old fades, new emerges).
+  * Simplify mobile view to max two visible cards.
+* [ ] **Add a scroll-linked progress bar** tied to the Journey section.
+* [ ] **Create gradient light-follow effect** for navbar pointer.
+* [ ] **Animate Preload animation ** using stroke-by-stroke SVG animation of "Priyanshu Sah".
+* [ ] **Refresh project cards** with improved UI, reveal animations, and animated border effects.
+* [ ] **Add scrolling feed** for blog and LinkedIn posts; link posts directly to the website (not GitHub).
+* [ ] **Expand Journey and Project sections** with more detailed tech stack data.
+* [ ] **Add Tech Stack listing** as a standalone section or integrated into projects.
+* [ ] **Add small “refresh page” reminder** or animation cue for dynamic content.
+* [ ] **Fix image aspect ratio (16:9)** and ensure consistent photo scaling (fit/fill).
+* [ ] **Use TEMPEST logo in navbar** on compressing to a single line with logo in middle.
+* [ ] **Create a global gradient overlay** for navbar and social bar that adapts across iOS and desktop devices.
+* [ ] **Improve fallback and redirect handling** for invalid routes or offline states(Optional / use server side Redirect).
+* [ ] **Implement Dark/Light mode ** for user preference based on system mode.
+* [ ] ** Music player ** simialr to #2 Reference
+* [ ] **Services Gradient background** anbd border animation 
+* [ ] **Refactor entire project to React + Tailwind** for better maintainability and scalability.
+
+Reference : [[1](https://www.rauliqbal.my.id/#about),[2](https://tranhuudat2004.github.io/blog.html),[3](https://theodorusclarence.com/),[4](https://www.abirthakur.com/),[5](https://portfolio-rho-one-93.vercel.app/),[Music](https://open.spotify.com/track/10FzVK0cj8of3oGw2ALYOC?si=d382f8ca65bd4fc6 - Spotfiy embeed code comented out below]
+
+<!-- <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/2L74PiwfbQFS1QNs4XAGYj?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
 ## Getting Started
 
 ### Prerequisites
@@ -58,20 +87,15 @@ If you need to test from another device on your network, run `npm run dev -- --h
 ```
 .
 public/
-  assets/                      # Media assets (images, videos, etc.)
-  favicons/                    # Site favicons
-  fonts/                       # Custom font assets
+  assets/
+    images/backgrounds/        # Still images referenced by backgrounds.json
+    videos/backgrounds/        # Matching video files
 src/
-  components/                  # Reusable UI components (LofiPlayer, Cube, etc.)
-  pages/                       # Page-level components (Home, About, etc.)
-  styles/                      # CSS modules and global styles
-  App.jsx                      # Main application shell and layout
-  main.jsx                     # React entry point
-  router.jsx                   # React Router configuration
-  AnimatedOutlet.jsx           # Page transition logic
-index.html                     # HTML shell
-vite.config.js                 # Vite configuration
-tailwind.config.js             # Tailwind CSS configuration
+  scripts/                     # Behaviour: navigation logic, loaders, Swiper setup
+  styles/                      # Main styles and icon font bundle
+  main.js                      # Entry point wiring styles and scripts
+index.html                     # Page markup and section content
+vite.config.js                 # Vite configuration (default)
 ```
 
 ## Background Media
@@ -83,10 +107,9 @@ tailwind.config.js             # Tailwind CSS configuration
 
 ## Customization Tips
 
-- Edit page content and layouts in `src/pages/`.
-- Create or modify reusable UI elements in `src/components/`.
-- Styling is handled via Tailwind CSS and CSS modules in `src/styles/`.
-- Configure routes and navigation in `src/router.jsx`.
+- Edit section content and layout in `index.html`.
+- Adjust component styling in `src/styles/main.css`; the build includes Bootstrap variables for consistency.
+- Modify navigation behaviour, parallax thresholds, or Swiper options inside `src/scripts/main.js` and `src/scripts/swiper.js`.
 
 ## SEO Assets
 
@@ -109,26 +132,10 @@ tailwind.config.js             # Tailwind CSS configuration
 Feel free to adapt the content, color palette, or assets to tailor the portfolio for your own brand.
 
 ### Links
-- [Production](https://priyanshusah.com) - Vercel
-- [Dev](https://dev.priyanshusah.com/) - Vercel
+- [Production](https://priyanshusah.com) - Github Pages
+- [Test](https://dev.priyanshusah.com) - Cloudflare Pages
+
 ## Credits
 
 - Inspiration: [James Oliver Portfolio](https://james-oliver-portfolio.netlify.app/)
 - Backgrounds: Video backgrounds sourced from the Steam Wallpaper Engine Workshop — credit to the original artists.
-- Music: credits to the original artists.
-
-## Roadmap
-
-### Issue
-* [ ] Need to improve card hover animaiton for portfolio card , this is not it , also make it untrigger when you hover over light bulb
-* [ ] Content margin Cut off , way to different for desktop vs mobile , too much gap in mobile
-* [ ] Boxing still present in mobile need to check glow / svg interaction
-* [ ] Music Player Mobile UI , initial letters cut off
-* [ ] Hide theme controls + Music player while Scrolling down when the journey Scroll indicator Disappears [img](https://github.com/user-attachments/assets/e61b475a-aac9-493d-ae6d-865456506dea)
-* [ ] Add Typing effect same as Home page with same cursor and type effect to blog section Description [img](https://github.com/user-attachments/assets/fd813370-3d21-4c70-bc76-74f0a7b77726)
-* [ ] **Need to Discuss** Change the call to action Button at end of journey to use new "/mail" route instead of mail:to route on Desktop ( use mailto as default option in Mobile , but in desktop use "/mail" )
-* [ ] **Need to Discuss** in "/mail" On desktop don't trigger "mailto:" on Click button instead open new tab with gmail mail link , and then show the backup option with Copy and "mailto:" option (Essentially This means on Desktop "mailto:" and "gmail mail link" are swapped , no changes in Mobile UI
-* [ ] Remove old Analytics Script That were saved locally/ added to Pure Html , Will switch to vercel React version After prod Deployment
-* [ ] Click outside to Exit Expanded portfolio card , [img](https://github.com/user-attachments/assets/6fb89c48-5aff-4c0e-a020-395a9216138f)
-* [ ] Remove Arrow From "/mail" Button , Change Hover Animation use either 19 from this [link](https://tympanus.net/Development/ButtonHoverStyles/)
-* [ ] Prepare Blogs to use JSON as data source and prepare Ui for it . Rough Example : [json Structure](https://github.com/KartikBankar21/xoTEMPESTox.github.io/blob/80ab17039829bcf3aad2f253ed2ca6044a1a373c/public/data/blogs_v2.json) , Need some refinement but use this to gague rough feilds that will be present 
