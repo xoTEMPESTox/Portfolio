@@ -181,6 +181,7 @@ function App() {
   const journey = location.pathname === "/journey";
   const skills = location.pathname === "/skills";
   const about = location.pathname === "/about";
+  const topContentCutOff = skills || about;
 
   // ... inside your component
   const [isMobileForContent, setIsMobileForContent] = useState(false);
@@ -197,8 +198,8 @@ function App() {
     if (socials) return "calc(100vh - 16rem)";
     if (journey && isMobileForContent) return "calc(100vh - 14rem)";
     if (journey) return "calc(100vh - 8rem)";
-    if (skills && isMobileForContent) return "calc(100vh - 14rem)";
-    if (about && isMobileForContent) return "calc(100vh - 8rem)";
+    if (skills && isMobileForContent) return "calc(100vh - 12rem)";
+    if (about && isMobileForContent) return "calc(100vh - 12rem)";
     return "100vh";
   };
 
@@ -591,17 +592,7 @@ function App() {
           {!loading && (
             <>
               <div
-                className="page-overlay"
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  minHeight: getMinHeight(),
-                  zIndex: 10,
-                  top: socials ? "8rem" : "0rem",
-                }}
-              >
-                <div
-                  className={`
+                className={`
     ${positionClasses} 
     ${containerClasses} 
 
@@ -616,59 +607,67 @@ function App() {
 
     
   `}
-                  style={{
-                    // If hidden, force X to -250% (slide far left).
-                    // If visible, set to undefined (let Tailwind classes controls it).
-                    "--tw-translate-x": shouldHideUI ? "250%" : undefined,
-                  }}
-                >
-                  {isExpanded ? (
-                    <LoFiPlayer
-                      isExpanded={isExpanded}
-                      onCollapse={() => handleToggle(false)}
+                style={{
+                  // If hidden, force X to -250% (slide far left).
+                  // If visible, set to undefined (let Tailwind classes controls it).
+                  "--tw-translate-x": shouldHideUI ? "250%" : undefined,
+                }}
+              >
+                {isExpanded ? (
+                  <LoFiPlayer
+                    isExpanded={isExpanded}
+                    onCollapse={() => handleToggle(false)}
+                    currentTrack={currentTrack}
+                    isPlaying={isPlaying}
+                    currentTime={currentTime}
+                    duration={duration}
+                    onPlayPause={handleAudioPlay}
+                    onNext={handleNextSong}
+                    onPrev={handlePrevSong}
+                    // Menu Props
+                    isMenuOpen={isMenuOpen}
+                    onMenuToggle={handleMenuToggle}
+                    onTrackSelect={handleTrackSelect}
+                    tracks={musicAPI}
+                    trackIndex={trackIndex}
+                    // Volume Props - FIXED HERE
+                    volume={volume}
+                    onVolumeChange={handleVolumeChange}
+                  />
+                ) : (
+                  <div
+                    className={`mini-player h-[100%] w-[100%] rounded-bl-[2.5rem] lg:rounded-[1.4rem]`}
+                  >
+                    <MiniPlayer
+                      onExpand={() => handleToggle(true)}
                       currentTrack={currentTrack}
                       isPlaying={isPlaying}
-                      currentTime={currentTime}
-                      duration={duration}
-                      onPlayPause={handleAudioPlay}
+                      isMuted={isMuted}
+                      setIsMuted={setIsMuted}
+                      handleMuteToggle={handleMuteToggle}
+                      handleAudioPlay={handleAudioPlay}
                       onNext={handleNextSong}
                       onPrev={handlePrevSong}
-                      // Menu Props
-                      isMenuOpen={isMenuOpen}
-                      onMenuToggle={handleMenuToggle}
-                      onTrackSelect={handleTrackSelect}
-                      tracks={musicAPI}
-                      trackIndex={trackIndex}
-                      // Volume Props - FIXED HERE
-                      volume={volume}
-                      onVolumeChange={handleVolumeChange}
                     />
-                  ) : (
-                    <div
-                      className={`mini-player h-[100%] w-[100%] rounded-bl-[2.5rem] lg:rounded-[1.4rem]`}
-                    >
-                      <MiniPlayer
-                        onExpand={() => handleToggle(true)}
-                        currentTrack={currentTrack}
-                        isPlaying={isPlaying}
-                        isMuted={isMuted}
-                        setIsMuted={setIsMuted}
-                        handleMuteToggle={handleMuteToggle}
-                        handleAudioPlay={handleAudioPlay}
-                        onNext={handleNextSong}
-                        onPrev={handlePrevSong}
-                      />
-                    </div>
-                  )}
-                </div>
+                  </div>
+                )}
+              </div>
+              <ThemeControlsWrapper shouldHideUI={shouldHideUI} />
+              <div
+                className="page-overlay"
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  minHeight: getMinHeight(),
+                  zIndex: 10,
+                  top: topContentCutOff ? "4rem" : socials ? "8rem" : "0rem",
+                }}
+              >
                 <AnimatedOutlet
                   context={{ startAudioOnInteraction, setIsScrollingDown }}
                 />
-                <ThemeControlsWrapper shouldHideUI={shouldHideUI} />
               </div>
-              {
-                socials && <SocialBar />
-              }
+              {socials && <SocialBar />}
               <FooterNavbar onNavigate={startAudioOnInteraction} />
             </>
           )}
