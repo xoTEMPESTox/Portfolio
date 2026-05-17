@@ -92,14 +92,6 @@ const musicAPI = [
   },
   {
     index: 2,
-    title: "Comedy (SPY X FAMILY)",
-    artist: "Kayuo. Beats",
-    songSrc: "../assets/songs/Comedy.mp3",
-    img: "../assets/images/music/Comedy.jpeg",
-    duration: 166.34,
-  },
-  {
-    index: 3,
     title: "Resonance",
     artist: "Home",
     songSrc: "../assets/songs/Resonance.mp3",
@@ -107,7 +99,7 @@ const musicAPI = [
     duration: 212.74,
   },
   {
-    index: 4,
+    index: 3,
     title: "Von (Terror in Resonance)",
     artist: "Kayou. Beats",
     songSrc: "../assets/songs/Terror in Resonance.mp3",
@@ -115,20 +107,12 @@ const musicAPI = [
     duration: 171.12,
   },
   {
-    index: 5,
-    title: "Solo Leveling (Lofi)",
+    index: 4,
+    title: "Comedy (SPY X FAMILY)",
     artist: "Kayuo. Beats",
-    songSrc: "../assets/songs/Solo_Leveling.mp3",
-    img: "../assets/images/music/Solo_Leveling.jpeg",
-    duration: 153.05,
-  },
-  {
-    index: 6,
-    title: "Cyberpunk (Lofi)",
-    artist: "Rojs-Fi",
-    songSrc: "../assets/songs/Cyberpunk.mp3",
-    img: "../assets/images/music/Cyberpunk.jpeg",
-    duration: 198.97,
+    songSrc: "../assets/songs/Comedy.mp3",
+    img: "../assets/images/music/Comedy.jpeg",
+    duration: 166.34,
   },
 ];
 

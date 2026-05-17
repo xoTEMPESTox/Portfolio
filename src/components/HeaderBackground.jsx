@@ -50,7 +50,7 @@ const backgroundImageBasePath = "assets/images/backgrounds";
 const backgroundVideoBasePath = "assets/videos/backgrounds";
 const videoExtensions = ["mp4", "webm", "ogv", "ogg"];
 const storageKey = "portfolio:lastBackground";
-const themeStorageKey = "portfolio:theme";
+const themeStorageKey = "portfolio:manualTheme"; // Changed to ignore old wallpaper-forced theme storage
 
 const withBase = (path) => {
   if (!path) return baseUrl;
@@ -817,6 +817,34 @@ export const ThemePlayer = ({
 // 4. THEME PROVIDER (Unchanged Logic)
 // -----------------------------------------------------------------------------
 
+// Helper function to automatically select day/night wallpaper based on user's current time
+const getTimeBasedWallpaper = (asset, allAssets) => {
+  if (!asset || !allAssets || !allAssets.length) return asset;
+
+  const hour = new Date().getHours();
+  // Morning / Day time: 6 AM to 6 PM (6 to 17)
+  const isDayTime = hour >= 6 && hour < 18;
+
+  const src = asset.src || "";
+  const hasDay = src.includes("-day");
+  const hasNight = src.includes("-night");
+
+  // If the wallpaper does not have a day/night option (some wallpapers are standalone)
+  if (!hasDay && !hasNight) {
+    return asset;
+  }
+
+  const baseName = src.replace("-day", "").replace("-night", "");
+  const extIndex = baseName.lastIndexOf(".");
+  if (extIndex === -1) return asset;
+
+  const targetSuffix = isDayTime ? "-day" : "-night";
+  const targetSrc = baseName.substring(0, extIndex) + targetSuffix + baseName.substring(extIndex);
+
+  const matchedAsset = allAssets.find((a) => a.src === targetSrc);
+  return matchedAsset || asset;
+};
+
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
     try {
@@ -914,13 +942,7 @@ export const ThemeProvider = ({ children }) => {
     setCurrentAsset(wallpaper);
     setStoredBackground(serializeBackgroundConfig(wallpaper));
 
-    const wallpaperTheme = getThemeFromFilename(wallpaper.src);
-    if (wallpaperTheme !== "neutral") {
-      setTheme(wallpaperTheme);
-      try {
-        localStorage.setItem(themeStorageKey, wallpaperTheme);
-      } catch (e) {}
-    }
+    // Removed wallpaperTheme overriding setTheme so light/dark mode remains based on user default / system preference!
   };
 
   useEffect(() => {
@@ -961,8 +983,9 @@ export const ThemeProvider = ({ children }) => {
         }
 
         if (selectedAsset) {
-          setCurrentAsset(selectedAsset);
-          setStoredBackground(serializeBackgroundConfig(selectedAsset));
+          const timeBasedAsset = getTimeBasedWallpaper(selectedAsset, normalizedAssets);
+          setCurrentAsset(timeBasedAsset);
+          setStoredBackground(serializeBackgroundConfig(timeBasedAsset));
         }
       })
       .catch((err) => console.error(err));
