@@ -907,6 +907,7 @@ export const ThemeProvider = ({ children }) => {
   const setStoredBackground = (value) => {
     try {
       localStorage.setItem(storageKey, value);
+      localStorage.setItem("portfolio:lastBackgroundDate", new Date().toDateString());
     } catch (error) {
       console.error("Failed to store background:", error);
     }
@@ -945,10 +946,29 @@ export const ThemeProvider = ({ children }) => {
     // Removed wallpaperTheme overriding setTheme so light/dark mode remains based on user default / system preference!
   };
 
+  const location = useLocation();
+
   useEffect(() => {
     const manifestUrl = withBase("assets/images/backgrounds/backgrounds.json");
-    const storedBackgroundRaw = getStoredBackground();
-    const storedBackground = parseStoredBackground(storedBackgroundRaw);
+    
+    let storedBackground = null;
+    try {
+      if (location.pathname === "/") {
+        localStorage.removeItem(storageKey);
+        localStorage.removeItem("portfolio:lastBackgroundDate");
+      } else {
+        const storedDate = localStorage.getItem("portfolio:lastBackgroundDate");
+        const today = new Date().toDateString();
+        if (storedDate === today) {
+          const storedBackgroundRaw = getStoredBackground();
+          storedBackground = parseStoredBackground(storedBackgroundRaw);
+        } else {
+          localStorage.removeItem(storageKey);
+          localStorage.removeItem("portfolio:lastBackgroundDate");
+        }
+      }
+    } catch (e) {}
+
     let isMounted = true;
 
     fetch(manifestUrl)
@@ -993,7 +1013,7 @@ export const ThemeProvider = ({ children }) => {
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [location.pathname]);
 
   return (
     <ThemeContext.Provider
