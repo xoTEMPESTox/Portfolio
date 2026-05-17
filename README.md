@@ -41,7 +41,8 @@ npm install
 npm run dev       # Start dev server (http://localhost:5173, exposed to network)
 npm run build     # Production build → dist/
 npm run preview   # Preview production build locally
-npm run update    # Run LinkedIn scraper (installs deps + scrapes + LLM processes)
+npm run login     # One-time manual login to Playwright ScraperProfile
+npm run update    # Run LinkedIn scraper (scrapes + downloads media + LLM processes)
 ```
 
 ## 📁 Project Structure
@@ -50,6 +51,7 @@ npm run update    # Run LinkedIn scraper (installs deps + scrapes + LLM processe
 ├── public/
 │   ├── assets/                    # Images, videos, backgrounds
 │   ├── data/blogs_v2.json         # LinkedIn blog posts (auto-generated)
+│   ├── media/                     # Locally downloaded LinkedIn images, GIFs, and videos
 │   ├── favicons/                  # Site favicons
 │   ├── fonts/                     # Custom font files
 │   ├── robots.txt                 # SEO crawler config
@@ -74,7 +76,7 @@ npm run update    # Run LinkedIn scraper (installs deps + scrapes + LLM processe
 │   ├── main.jsx                   # React entry point
 │   └── router.jsx                 # React Router configuration
 ├── scripts/
-│   └── linkedin-scraper/          # Node.js LinkedIn scraper + Gemini LLM
+│   └── linkedin-scraper/          # Node.js Playwright scraper + Gemini LLM
 ├── index.html                     # HTML shell with SEO meta tags
 └── vite.config.js                 # Vite configuration
 ```
@@ -96,10 +98,11 @@ Static redirects in `public/<slug>/index.html` make the portfolio double as a br
 ## 📝 LinkedIn Blog Scraper
 
 An automated pipeline in `scripts/linkedin-scraper/` that:
-1. Scrapes posts from LinkedIn using Puppeteer
+1. Scrapes posts from LinkedIn using Playwright Chromium
 2. Transforms content via Gemini LLM (title, summary, markdown, curated tags)
-3. Supports incremental updates — only new posts hit the LLM
-4. Outputs to `public/data/blogs_v2.json`
+3. Downloads all media attachments (images, GIFs, `.mp4`/`.webm` videos) to `public/media/`
+4. Supports incremental updates — only new posts hit the LLM
+5. Outputs to `public/data/blogs_v2.json`
 
 See [`scripts/linkedin-scraper/README.md`](scripts/linkedin-scraper/README.md) for setup details.
 

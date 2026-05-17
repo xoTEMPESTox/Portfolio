@@ -232,6 +232,17 @@ const Socials = () => {
         }
         const data = await response.json();
         setPosts(data);
+
+        // Check deep-linking query parameter (?post=slug)
+        const params = new URLSearchParams(window.location.search);
+        const postSlug = params.get("post");
+        if (postSlug) {
+          const matchedPost = data.find((p) => p.slug === postSlug);
+          if (matchedPost) {
+            setSelectedPostId(matchedPost.id);
+            setCurrentPage("detail");
+          }
+        }
       } catch (error) {
         console.error("Error loading blog posts:", error);
         setPosts([]);

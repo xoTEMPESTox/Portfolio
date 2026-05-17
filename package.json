@@ -7,9 +7,11 @@
     "dev": "vite --host",
     "build": "npm install && vite build",
     "preview": "vite preview",
-    "update:scrape": "cd scripts/linkedin-scraper && npm install && node index.js --scrape-only",
-    "update:process": "cd scripts/linkedin-scraper && node index.js --process-only",
-    "update": "cd scripts/linkedin-scraper && npm install && node index.js"
+    "update:scrape": "npm --prefix scripts/linkedin-scraper run scrape",
+    "update:process": "npm --prefix scripts/linkedin-scraper run process",
+    "update": "npm --prefix scripts/linkedin-scraper run update",
+    "update:reprocess": "npm --prefix scripts/linkedin-scraper run update -- --reprocess-all",
+    "login": "npm --prefix scripts/linkedin-scraper run login"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",

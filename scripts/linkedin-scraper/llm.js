@@ -84,37 +84,37 @@ export async function processPostWithLLM(rawPost, existingTags = []) {
         ? `\nEXISTING BLOG TAGS (reuse these when they fit, for consistency):\n${existingTags.join(', ')}\n`
         : '';
 
-    const prompt = `You are a content formatter for a personal tech blog/portfolio. Transform this raw LinkedIn post into clean blog content.
+    const prompt = `You are an expert technical editor and content formatter for a premium personal tech blog/portfolio. Transform this raw LinkedIn post into a highly polished, engaging, and structured blog article.
 
 RAW POST TEXT:
 """
 ${rawPost.text}
 """
-${existingTagsList}
+
+PREDEFINED PREMIUM TAG TAXONOMY:
+["ai-ml", "system-design", "full-stack", "ui-ux", "career-growth", "research", "open-source", "internship", "cloud-devops", "creative-coding", "robotics", "architecture", "web-dev", "mobile-dev", "databases"]
+
 INSTRUCTIONS:
-1. Generate a concise, compelling blog TITLE (max 80 chars, no hashtags, no emojis at start)
-2. Generate a SUMMARY (1-2 sentences, max 150 chars, plain text, no emojis)
-3. Convert the post to clean MARKDOWN:
-   - Fix formatting: proper paragraphs, line breaks between sections
-   - Convert bullet points (•, 🔹) to proper markdown lists
-   - Clean up "hashtag#xyz" → remove entirely from body
-   - Keep emojis where they add value in headings
-   - Format mentions and company names properly
-   - Remove trailing hashtag blocks entirely
-   - Make URLs clickable markdown links
-4. Extract exactly 5 TAGS (lowercase, no # symbol):
-   - Choose tags that are useful for blog filtering (broad categories, not LinkedIn spam)
-   - PRIORITIZE reusing tags from the EXISTING BLOG TAGS list when they match
-   - Think: what topic categories would a reader filter by?
-   - Good examples: "robotics", "devops", "open-source", "career", "web-dev", "ai", "docker"
-   - Bad examples: "buildinpublic", "learningjourney", "nightcoder", "techforgood"
+1. Generate a concise, compelling blog TITLE (max 80 chars, professional, no hashtags, no emojis at start).
+2. Generate a SUMMARY (1-2 sentences, max 150 chars, plain text, no emojis).
+3. Convert the post to a polished, professional MARKDOWN blog article:
+   - Remove LinkedIn fluff and cliché openings ("Excited to share...", "I am thrilled to announce...", "I'm happy to share...").
+   - Structure the article with clear Markdown headings (###) where appropriate to break up thoughts.
+   - Use bold text for key takeaways or emphasis.
+   - Convert bullet points (•, 🔹) to proper clean markdown lists.
+   - Clean up "hashtag#xyz" → remove entirely from body.
+   - Remove trailing hashtag blocks entirely.
+   - Ensure the tone is authoritative, insightful, and professional.
+4. Select exactly 2 to 4 TAGS strictly from the PREDEFINED PREMIUM TAG TAXONOMY above:
+   - Do NOT invent new tags outside the predefined list.
+   - Choose the tags that best categorize the post for portfolio filtering.
 
 RESPOND IN THIS EXACT JSON FORMAT (no markdown code fences):
 {
   "title": "...",
   "summary": "...",
   "markdown": "...",
-  "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
+  "tags": ["tag1", "tag2"]
 }`;
 
     const result = await model.generateContent(prompt);

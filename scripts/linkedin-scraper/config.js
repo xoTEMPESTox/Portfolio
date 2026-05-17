@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 export default {
     // Chrome user data directory - this is where your logged-in profile lives
     // Windows default path shown below
-    chromeProfilePath: 'C:/Users/priya/AppData/Local/Google/Chrome/User Data',
+    chromeProfilePath: 'C:/Users/priya/AppData/Local/Google/Chrome/ScraperProfile',
 
     // Chrome executable path (adjust if Chrome is installed elsewhere)
     chromeExecutablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
@@ -19,7 +19,7 @@ export default {
     profileDirectory: 'Default',
 
     // Your LinkedIn activity URL
-    linkedInActivityUrl: 'https://www.linkedin.com/in/priyanshu123sah/recent-activity/all/',
+    linkedInActivityUrl: 'https://linkedin.com/in/priyanshu123sah/recent-activity/all/',
 
     // Output path for the scraped data
     outputPath: join(__dirname, '../../public/data/blogs_v2.json'),
