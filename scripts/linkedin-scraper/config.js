@@ -22,7 +22,7 @@ export default {
     linkedInActivityUrl: 'https://linkedin.com/in/priyanshu123sah/recent-activity/all/',
 
     // Output path for the scraped data
-    outputPath: join(__dirname, '../../public/data/blogs_v2.json'),
+    outputPath: join(__dirname, '../../public/data/blog_data.json'),
 
     // Author info (used for all posts)
     author: {

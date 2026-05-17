@@ -226,7 +226,7 @@ const Socials = () => {
     const fetchBlogPosts = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("/data/blogs_v2.json");
+        const response = await fetch("/data/blog_data.json");
         if (!response.ok) {
           throw new Error("Failed to fetch blog posts");
         }

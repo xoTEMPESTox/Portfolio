@@ -1,6 +1,6 @@
 # LinkedIn Posts Scraper
 
-Scrapes LinkedIn posts and exports to `blogs_v2.json` format for the portfolio.
+Scrapes LinkedIn posts and exports to `blog_data.json` format for the portfolio.
 Uses Gemini LLM to transform raw LinkedIn posts into clean blog-style content and downloads all images, GIFs, and videos locally for permanent storage.
 
 ## Setup
@@ -29,7 +29,7 @@ Opens Playwright Chromium with a dedicated scraper profile (`ScraperProfile`). L
 ```bash
 npm run update
 ```
-Installs inner dependencies, launches your saved session, scrapes new posts, downloads media (images, GIFs, videos) to `public/media/`, and formats markdown via Gemini.
+Installs inner dependencies, launches your saved session, scrapes new posts, downloads media (images, GIFs, videos) to `public/data/media/`, and formats markdown via Gemini.
 
 ## How It Works
 
@@ -39,17 +39,17 @@ Installs inner dependencies, launches your saved session, scrapes new posts, dow
 4. Extracts: text, images, videos, reactions, comments, shares, views, timestamps
 5. Saves raw data to `raw_posts.json` (Phase 1)
 6. Processes through Gemini LLM (Phase 2):
-   - **New posts** → generates title, summary, clean markdown, and 5 curated tags
+   - **New posts** → generates title, summary, clean markdown, and curated tags
    - **Existing posts** → only updates metrics (likes, views, comments)
-7. Downloads all media attachments (images, GIFs, `.mp4`/`.webm` videos) to `public/media/`
-8. Saves final output to `public/data/blogs_v2.json`
+7. Downloads all media attachments (images, GIFs, `.mp4`/`.webm` videos) to `public/data/media/`
+8. Saves final output to `public/data/blog_data.json`
 
 ## Project Structure
 
 ```
 ├── index.js          # Entry point & two-phase pipeline
 ├── scraper.js        # Browser automation & post extraction
-├── formatter.js      # Data → blogs_v2.json format
+├── formatter.js      # Data → blog_data.json format
 ├── llm.js            # Gemini LLM integration
 ├── config.js         # Paths & scraping settings
 ├── login.js          # One-time LinkedIn login helper

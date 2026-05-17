@@ -1,0 +1,1178 @@
+[
+    {
+        "id": "urn:li:activity:7435665852286320640",
+        "title": "Architecting Agentic Payment Flows: System Design Insights from TCS",
+        "slug": "architecting-agentic-payment-flows-system-design-insights-from-tcs",
+        "date": "2026-03-17T22:27:05.329Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 28,
+            "comments": 0,
+            "views": 1048,
+            "shares": 0
+        },
+        "tags": [
+            "system-design",
+            "architecture",
+            "research",
+            "internship"
+        ],
+        "content": {
+            "raw": "Three months ago, I began my Project Internship at Tata Consultancy Services (TCS), stepping into an environment that focuses less on routine development and more on exploration, architecture, and early stage innovation.\n\nAs the internship concludes, I am grateful for how much the scope of work evolved over these months.\n\nA large part of my work involved contributing to the agent farm ecosystem, where I explored how payment infrastructure could interact with agent driven systems. This included working on components around a payment gateway and thinking through how such systems could enable transaction flows between autonomous agents.\n\nThis involved thinking through how transaction flows, security considerations, and system behavior would operate when interacting with autonomous agents.\n\nOne interesting direction we explored was enabling two way agentic payment flows within an agent farm environment. it involved connecting payment infrastructure with agent based systems and evaluating how such interactions could function in a controlled architecture.\n\nLike the early weeks I shared about, this internship continued to sit at the intersection of research and system design, where the focus was often on evaluating feasibility, shaping architecture, and understanding how emerging technologies might translate into real systems.\n\nGrateful to have worked alongside Aadil Rayeen and Diya Manapetty, and deeply thankful to our mentor Nita Khare for the guidance and trust throughout this journey.\n\nThree months of learning, exploration, and systems thinking. Onwards. 🚀\n\n\nhashtag\n#tcs \nhashtag\n#internship \nhashtag\n#systemdesign \nhashtag\n#paymentsystems \nhashtag\n#researchengineering \nhashtag\n#architecture \nhashtag\n#aiml \nhashtag\n#learningjourney \nhashtag\n#career",
+            "markdown": "My recent three-month tenure at Tata Consultancy Services (TCS) provided a unique vantage point into the lifecycle of early-stage innovation. Unlike traditional development roles, this internship focused on **architecture, feasibility research, and the exploration of emerging tech ecosystems**.\n\n### Architecting the Agent Farm Ecosystem\nA significant portion of my work centered on the **agent farm ecosystem**, a space where autonomous agents interact within a controlled environment. My role involved bridging the gap between existing payment infrastructures and these agentic systems.\n\nKey areas of exploration included:\n- Designing system components for an integrated **payment gateway**.\n- Modeling transaction flows specifically tailored for **autonomous agents**.\n- Evaluating security considerations and behavioral protocols for machine-to-machine payments.\n\n### Enabling Agentic Payment Flows\nOne of the most compelling challenges was enabling **two-way agentic payment flows**. This required a deep dive into how financial infrastructure can be automated to support agents operating independently. By connecting standard payment rails with agent-based architectures, we were able to evaluate the practicalities of autonomous commerce within a controlled architecture.\n\n### Research Engineering and System Design\nThis experience sat firmly at the intersection of **research engineering and system design**. The focus was rarely on routine development; instead, the work prioritized:\n- Evaluating the technical **feasibility** of emerging concepts.\n- Shaping the high-level **architecture** of innovative platforms.\n- Translating theoretical technologies into functional, real-world systems through rigorous **systems thinking**.\n\nThis journey of exploration was supported by the guidance of my mentor, Nita Khare, and the collaboration of colleagues Aadil Rayeen and Diya Manapetty. These three months have served as a vital foundation for understanding how autonomous systems will shape the future of digital transactions.",
+            "summary": "A deep dive into the research and system design of agentic payment ecosystems during a three-month project internship at TCS."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7435665852286320640_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 436
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7435665852286320640_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 514
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7435665852286320640_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 554
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7435665852286320640/"
+    },
+    {
+        "id": "urn:li:activity:7421533400718770176",
+        "title": "Scaling Physical AI: Cross-Embodiment Navigation with NavDP and Isaac Sim",
+        "slug": "scaling-physical-ai-cross-embodiment-navigation-with-navdp-and-isaac-sim",
+        "date": "2026-02-17T22:27:05.344Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 18,
+            "comments": 0,
+            "views": 746,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "robotics",
+            "research",
+            "open-source"
+        ],
+        "content": {
+            "raw": "🚀 Deep Dive into Physical AI: NavDP, Diffusion Policies, and Custom Robots\nI’ve recently been diving deep into the world of Physical AI and Vision-Language-Action (VLA) models. \n\nMy goal is simple: master the stack from the underlying research logic to the simulation environments to become a specialized engineer in the embodied AI space.\n\nOne project that recently caught my eye is NavDP (Navigation Diffusion Policy).\n\n🧠 The Technical Breakdown: How NavDP Actually Works NavDP isn't just a standard navigation stack; it is a unified framework designed for cross-embodiment navigation without needing real-robot training data. \nBased on the architecture, here is what makes it distinct:\n\nEmbodiment-Aware Planning: Unlike traditional policies that might overfit to a specific hardware, NavDP utilizes a data generation pipeline that distinguishes between \"accessible\" and \"prohibited\" areas based on the robot's physical dimensions (as seen in the generated cost maps).\n\nThe Diffusion-Critic Loop: The core magic happens in the Navigation Diffusion Policy. It uses a diffusion process to generate a distribution of potential trajectories.\n\nDual Supervision: The model is trained with both Action Supervision (to suggest paths) and Critic Supervision (to evaluate safety). This allows the system to generate a trajectory and then have the critic \"filter\" it, selecting the safest path that avoids obstacles while respecting the specific kinematics of the robot.\n\n🛠️ The Hands-on: Isaac Sim & The Lekiwi Swap To put this research to the test, I decided to go beyond the provided defaults. Instead of using the standard Dingo robot, I integrated the Lekiwi (a low-cost, 3-wheel holonomic base) into the NavDP framework within NVIDIA Isaac Sim.\n\nThe Challenge:\nAsset Integration: Swapping a robot forced me to dive into URDFs, sensor placement (RGB-D alignment), and rigid body physics.\n\nProof of Generalization: This was the ultimate test of the paper's claims. By applying the NavDP policy to a completely different kinematic chain (Lekiwi's omni-wheels vs. Dingo), I could verify the robustness of the \"Zero-Shot\" transfer capabilities.\n\n🎯 Final Thoughts & Credits Bridging the gap between reading a research paper and executing it in a simulator is where the real engineering growth happens.\n\nA huge shoutout to the team at Intern Labs (Shanghai AI Laboratory) for their incredible work on open-sourcing this research. Their \"Unified Navigation Data Generation Pipeline\" is a massive step forward for Sim-to-Real applications. Also, this workflow wouldn't be possible without the robust simulation tools provided by NVIDIA Omniverse.\n\n🔗 Check out the code and the paper here: https://lnkd.in/dJQjcyqj\n\n\nhashtag\n#PhysicalAI \nhashtag\n#Robotics \nhashtag\n#DeepLearning \nhashtag\n#IsaacSim \nhashtag\n#NVIDIAOmniverse \nhashtag\n#ComputerVision \nhashtag\n#VLA \nhashtag\n#DiffusionModels \nhashtag\n#SimToReal \nhashtag\n#InternLabs \nhashtag\n#TechLearning",
+            "markdown": "The transition from traditional vision models to Vision-Language-Action (VLA) architectures marks a significant shift in the field of Embodied AI. Mastering this stack requires bridging the gap between theoretical research logic and high-fidelity simulation environments. A standout advancement in this space is **NavDP (Navigation Diffusion Policy)**, a unified framework designed for cross-embodiment navigation without the need for real-world training data.\n\n### Technical Architecture: How NavDP Works\n\nUnlike standard navigation stacks, NavDP utilizes a data generation pipeline that distinguishes between \"accessible\" and \"prohibited\" zones based on a robot’s specific physical dimensions. \n\n*   **Embodiment-Aware Planning:** Traditional policies often overfit to specific hardware. NavDP circumvents this by generating cost maps that respect the robot's footprint, ensuring the pathing is feasible for the specific platform.\n*   **The Diffusion-Critic Loop:** At the heart of the framework is a diffusion process that generates a distribution of potential trajectories. This is managed through **Dual Supervision**.\n*   **Action vs. Critic Supervision:** The model is trained with Action Supervision to suggest paths and Critic Supervision to evaluate safety. This allows the system to generate a trajectory and then filter it, selecting the safest route that respects the robot’s kinematics and obstacle constraints.\n\n### Implementation: Simulating the Lekiwi Robot\n\nTo validate the robustness of the NavDP framework, I integrated the **Lekiwi** a low-cost, 3-wheel holonomic base into the system within **NVIDIA Isaac Sim**, replacing the default Dingo robot assets.\n\nTesting the \"Zero-Shot\" transfer capabilities of a research paper requires moving beyond default configurations. This integration presented several engineering challenges:\n\n*   **Asset Integration:** Refining URDFs, managing rigid body physics, and ensuring precise RGB-D sensor alignment.\n*   **Generalization Testing:** Verifying if the policy could handle a completely different kinematic chain (Lekiwi's omni-wheels) compared to the original training environment.\n\n### Engineering Insights\n\nBridging the gap between a research paper and a functional simulation is where real engineering growth occurs. The **Unified Navigation Data Generation Pipeline** developed by the team at **Intern Labs (Shanghai AI Laboratory)** represents a major step forward for **Sim-to-Real** applications. When combined with the high-fidelity physics of **NVIDIA Omniverse**, it provides a powerful sandbox for developing generalized embodied agents that can navigate diverse environments regardless of their physical configuration.\n\nFor those interested in the underlying mechanics, the research and source code provide a robust foundation for further experimentation in the embodied AI space.",
+            "summary": "Exploring the NavDP framework for zero-shot navigation and its implementation with custom robot models using NVIDIA Isaac Sim."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7421533400718770176_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 436
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7421533400718770176_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 578
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7421533400718770176_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 288
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7421533400718770176_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 890
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7421533400718770176/"
+    },
+    {
+        "id": "urn:li:activity:7428664367392591872",
+        "title": "From Dev-Build to Digital Experience: Redefining the Modern Portfolio",
+        "slug": "from-dev-build-to-digital-experience-redefining-the-modern-portfolio",
+        "date": "2026-02-17T22:27:05.337Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 31,
+            "comments": 3,
+            "views": 1196,
+            "shares": 0
+        },
+        "tags": [
+            "full-stack",
+            "ui-ux",
+            "creative-coding",
+            "web-dev"
+        ],
+        "content": {
+            "raw": "From Dev-Build to Digital Experience.\nI’ve officially moved my portfolio to its permanent home: priyanshusah.com \n\nSince my last update, I’ve moved beyond just \"performance\" to focus on \"immersion.\" The site is no longer just a gallery of projects it’s a fully realized environment.\n\nNew Features:\n\nAudio Landscape: Added spatial ambient sounds and a curated music toggle for a truly immersive visit.\n\nVisual Fidelity: Overhauled the animation engine for smoother transitions and more complex motion design.\n\nCustom DX: Built a unique page loader and theme controls to give users full agency over their experience.\n\nFull-Stack Polish: Optimized the backend to ensure the site remains blazing fast, even with the new visual density.\n\nI’m proud to say this now stands as a true reflection of my work as an AI & Full-Stack Engineer blending heavy-duty tech with high-end UX.\n\nCheck it out here: [ https://priyanshusah.com/ ]\nCode: [ https://lnkd.in/gEPVtwcY ]\n\n\nhashtag\n#WebDesign \nhashtag\n#FullStack \nhashtag\n#CreativeCoding \nhashtag\n#ThreeJS \nhashtag\n#UXDesign \nhashtag\n#Portfolio \nhashtag\n#WebDev",
+            "markdown": "The transition of a personal portfolio from a development build to its permanent home at **priyanshusah.com** marks a significant shift in philosophy. Moving beyond a focus on sheer performance, the latest iteration emphasizes **immersion**, transforming the site from a simple project gallery into a fully realized digital environment.\n\n### Engineering the Immersive Layer\n\nTo achieve a high-end user experience, several core systems were rebuilt or enhanced to move the needle from functional to experiential:\n\n*   **Spatial Audio Landscape**: The integration of ambient sounds and a curated music toggle creates a sensory layer that grounds the user in the digital space.\n*   **Visual Fidelity Overhaul**: The animation engine was redesigned to support smoother transitions and more sophisticated motion design, ensuring a fluid interactive experience.\n*   **Custom DX and Personalization**: Unique page loaders and granular theme controls provide users with agency over how they consume and interact with the content.\n*   **Full-Stack Optimization**: High visual density requires a robust foundation. The backend has been optimized to maintain **blazing-fast performance** despite the increased complexity of the frontend assets.\n\n### Bridging Engineering and Design\n\nThis project serves as a practical application of the synergy between **AI and Full-Stack Engineering**. By blending heavy-duty technical architecture with high-end UX, the goal is to demonstrate how modern web technologies can be pushed to create more than just functional interfaces but memorable experiences.\n\n**Explore the Live Environment:** [priyanshusah.com](https://priyanshusah.com/)  \n**View the Source Code:** [GitHub Repository](https://github.com/Priyanshu611/priyanshusah.com)",
+            "summary": "An exploration of the technical and design choices behind a new immersive portfolio, blending full-stack engineering with high-end UX design."
+        },
+        "media": [
+            {
+                "type": "video",
+                "url": "/data/media/posts/urn_li_activity_7428664367392591872_0.jpg",
+                "videoUrl": "blob:https://www.linkedin.com/9c6edc40-cd92-40e8-8e13-987e8feeacad",
+                "alt": "Video post",
+                "width": 800,
+                "height": 800
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7428664367392591872/"
+    },
+    {
+        "id": "urn:li:activity:7412819681708769281",
+        "title": "Scaling Robot Simulation: Using AI-Generated Worlds for Domain Randomization",
+        "slug": "scaling-robot-simulation-using-ai-generated-worlds-for-domain-randomization",
+        "date": "2026-01-17T22:27:05.351Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 32,
+            "comments": 1,
+            "views": 1120,
+            "shares": 0
+        },
+        "tags": [
+            "robotics",
+            "ai-ml",
+            "research"
+        ],
+        "content": {
+            "raw": "⚙️🤖 From days of scene building to minutes of world generation for robot training.\n\n\nI have been exploring how AI generated 3d worlds can significantly improve robot training and data collection pipelines when paired with NVIDIA Omniverse Isaac Sim.\n\nUsing World Labs Marble AI a single world can be generated in 6 to 10 minutes and then reused to create massive environmental variation. Lighting, layout, clutter, and textures can all be randomized, making it extremely effective for domain generalization during training.\n\nThis approach was originally featured in an NVIDIA Developer Blog on Isaac Sim\n 👉 https://lnkd.in/denAvDF6\n\nI expanded on this by testing Isaac Sim tasks inside AI generated environments, including adapting the orange picker scene to run inside Marble generated worlds. This already helps with domain randomization, but the real impact will be for movement and locomotion based tasks, where exposure to diverse geometry, scale, and layout is critical for robust policy learning.\n\nOne key limitation I observed:\n • Collision meshes are generally usable but low fidelity. Large appliances and major structures have reasonable colliders, while smaller details like flower pots or decor are inconsistent. This is fine for navigation and locomotion, but precision manipulation will still need refinement.\n\nEven with this limitation, this is a huge step up from manually authored simulated worlds in engines like Unity or Unreal. Instead of spending days building environments, you can focus on scaling data diversity, which is what modern robot learning pipelines actually need.",
+            "markdown": "The traditional bottleneck in robot training has long been the manual creation of high-fidelity 3D environments. Traditionally, building a single scene in engines like Unity or Unreal Engine could take days of manual effort. By integrating **World Labs Marble AI** with **NVIDIA Omniverse Isaac Sim**, that timeline can be compressed into minutes.\n\n### Accelerating Domain Randomization\nAI-driven generation allows for the rapid creation of massive environmental variation. A single world can be generated in just 6 to 10 minutes, providing a foundation for extensive randomization of several key factors:\n\n- **Lighting and atmospheric conditions**\n- **Room layouts and spatial configurations**\n- **Clutter placement and object textures**\n\nThis approach is exceptionally effective for **domain generalization**, ensuring that trained policies are robust enough to handle the unpredictability of the real world.\n\n### Practical Application: Navigation and Locomotion\nTesting this workflow involved adapting standard Isaac Sim tasks, such as the orange picker scene, to run within Marble-generated environments. While this already assists with domain randomization, the most significant impact lies in **movement and locomotion-based tasks**. \n\nExposure to diverse geometry, varying scales, and complex layouts is critical for training robust navigation policies. In these scenarios, the ability to iterate through hundreds of unique layouts outweighs the need for bespoke, manually authored environments.\n\n### Technical Constraints and Fidelity\nWhile the speed of generation is a significant leap forward, there are technical trade-offs to consider regarding collision physics:\n\n- **Collision Mesh Fidelity:** Major structures and large appliances generally have usable colliders. However, smaller decorative elements like flower pots or fine details remain inconsistent.\n- **Task Suitability:** Currently, these environments are ideal for navigation. For precision manipulation tasks, collision refinement and higher-fidelity meshes are still required.\n\n### The Future of Data-Driven Robotics\nEven with current fidelity limitations, this workflow represents a major advancement over manual authorship. Instead of spending days building a single environment, developers can now focus on **scaling data diversity**. This shift toward automated, diverse scene generation is exactly what modern robot learning pipelines require to bridge the gap between simulation and reality.",
+            "summary": "Learn how combining World Labs Marble AI with NVIDIA Isaac Sim generates diverse 3D training environments in minutes instead of days."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7412819681708769281_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 342
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7412819681708769281_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 334
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7412819681708769281_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 334
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7412819681708769281_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 350
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7412819681708769281/"
+    },
+    {
+        "id": "urn:li:activity:7401886268466409473",
+        "title": "Engineering Production-Grade Audio Pipelines for AI at Scale",
+        "slug": "engineering-production-grade-audio-pipelines-for-ai-at-scale",
+        "date": "2025-12-17T22:27:05.387Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 27,
+            "comments": 2,
+            "views": 789,
+            "shares": 1
+        },
+        "tags": [
+            "ai-ml",
+            "system-design",
+            "architecture"
+        ],
+        "content": {
+            "raw": "✨ Wrapping up my one month contractual full time role at My Shadow Life\n\nI recently completed a one month contract at My Shadow Life, working closely with Ayush Rai, supervised by Boktiar Ahmed Bappy, and guided by the founder Jeremy Malai.\n\nEven within a short period, the role gave me hands on exposure to production level AI and ML data engineering challenges at scale.\nAlthough I cannot disclose the internal stack or proprietary methods due to NDA, my work focused on several high impact areas:\n\n• Audio Data Engineering transforming continuous, noisy real world audio streams into clean, structured, research ready datasets\n • AI and ML driven preprocessing applying advanced denoising, segmentation, and quality improvement techniques to extract meaningful signal from long form audio\n • Pipeline and workflow automation building reliable processing flows, automating multi stage transformations, and ensuring consistent output quality\n • Containerization and deployment packaging components through Docker for reproducible, scalable execution\n • Data readiness for downstream AI tasks preparing high quality datasets suited for speech, diarization, and other ML workloads\n • Knowledge graph generation contributing in the later weeks to structuring cleaned audio derived information into organized knowledge graph formats\nThis role strengthened my capability as an Audio Data and AI ML Engineer, especially in designing robust data pipelines, handling messy real world audio, and building automated workflows that support research teams and high quality ML tasks.\n\nGrateful to the entire team for the trust and collaboration. Excited to take these skills into my next challenge.",
+            "markdown": "### High-Scale Audio Engineering for Production AI\n\nRecently, I concluded a specialized one-month contract at **My Shadow Life**, focused on the intersection of audio data engineering and machine learning. Working alongside Jeremy Malai, Ayush Rai, and Boktiar Ahmed Bappy, I tackled the technical challenges of transforming unstructured, real-world audio into research-ready assets at scale.\n\n### Core Technical Objectives\n\nThe primary goal of this role was to move beyond laboratory-clean data and build systems capable of handling **noisy, continuous audio streams**. My work focused on several high-impact domains:\n\n*   **Advanced Audio Preprocessing**: Implementing denoising, segmentation, and quality enhancement techniques to isolate meaningful signals from complex long-form audio.\n*   **Automated Pipeline Development**: Engineering multi-stage transformation flows that ensure consistent output quality while reducing manual intervention.\n*   **Containerization and Deployment**: Utilizing **Docker** to package processing components, ensuring the system remains scalable and reproducible across diverse environments.\n*   **Machine Learning Readiness**: Preparing datasets specifically optimized for downstream tasks such as speech recognition, diarization, and other specialized ML workloads.\n\n### From Audio to Knowledge Graphs\n\nBeyond raw signal processing, a significant portion of the later weeks involved **structuring information**. I contributed to the generation of knowledge graphs derived from cleaned audio data, transforming unstructured sound into organized, queryable formats. This step is critical for moving from raw data to actionable intelligence in modern AI research.\n\n### Key Takeaways\n\nThis experience reinforced the importance of **robust data engineering** in the AI lifecycle. Success in ML-driven research depends heavily on the ability to handle \"messy\" real-world data and design automated workflows that guarantee data integrity from ingestion to inference. I look forward to applying these pipeline design principles to future challenges in the AI/ML space.",
+            "summary": "A look at building automated audio preprocessing pipelines and structured knowledge graphs for production-scale AI workloads at My Shadow Life."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7401886268466409473_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 576
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7401886268466409473_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 447
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7401886268466409473_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 423
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7401886268466409473_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 520,
+                "height": 774
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7401886268466409473/"
+    },
+    {
+        "id": "urn:li:activity:7402313930099838977",
+        "title": "From AI Foundations to Generalist Robotics: A Strategic Pivot",
+        "slug": "from-ai-foundations-to-generalist-robotics-a-strategic-pivot",
+        "date": "2025-12-17T22:27:05.381Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 23,
+            "comments": 2,
+            "views": 807,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "robotics",
+            "research"
+        ],
+        "content": {
+            "raw": "With the final stretch of my degree approaching, I’ve started transitioning my focus from broad AIML foundations to more specialized, high-impact domains.\n\nLately I’ve been diving deep into:\n 🔹 Vision-Language-Action models for robotics (multi-modal reasoning + control)\n 🔹 Robot learning frameworks like LeRobot\n 🔹 NVIDIA Isaac Sim for data generation, policy evaluation, and sim-to-real workflows\n\nThis space is moving incredibly fast, and it’s exciting to build skills that directly power the next wave of generalist robotics.\nLooking forward to applying these capabilities in upcoming projects and collaborations.",
+            "markdown": "### The Strategic Pivot to Specialized Robotics\n\nAs I approach the final stage of my degree, I am transitioning my focus from broad AI/ML foundations toward high-impact, specialized domains. The objective is to move beyond general theory and master the technologies powering the next generation of **generalist robotics**.\n\n### Core Technical Focus\n\nI am currently deep-diving into three critical pillars of modern robotic systems:\n\n*   **Vision-Language-Action (VLA) Models:** Exploring multi-modal reasoning and control to enable robots to interpret complex environments and execute precise actions.\n*   **Robot Learning Frameworks:** Utilizing open-source ecosystems like **LeRobot** to streamline the training and deployment of autonomous agents.\n*   **NVIDIA Isaac Sim:** Leveraging high-fidelity simulation for synthetic data generation, policy evaluation, and robust **sim-to-real** workflows.\n\n### Engineering the Future of Autonomy\n\nThe robotics landscape is evolving at an incredible pace. Building proficiency in these specialized areas is essential for creating autonomous systems that can generalize across diverse tasks and environments. I look forward to applying these frameworks in upcoming technical projects and collaborative research initiatives.",
+            "summary": "Pivoting from broad AI/ML foundations toward specialized domains in generalist robotics, multi-modal reasoning, and sim-to-real workflows."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7402313930099838977_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 457
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7402313930099838977_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 438
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7402313930099838977_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 449
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7402313930099838977_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 445
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7402313930099838977/"
+    },
+    {
+        "id": "urn:li:activity:7402670640010248192",
+        "title": "Plane Runner: Procedural Frameworks and Adaptive Difficulty in Flight Games",
+        "slug": "plane-runner-procedural-frameworks-and-adaptive-difficulty-in-flight-games",
+        "date": "2025-12-17T22:27:05.375Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 23,
+            "comments": 0,
+            "views": 927,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "research",
+            "creative-coding",
+            "mobile-dev"
+        ],
+        "content": {
+            "raw": "PLANE RUNNER: A Procedural and Adaptive Framework for Endless Flight Games\n\nAs I continue deep-diving into AI/ML foundations, I’ve been equally focused on applying those concepts inside interactive systems especially where AIML meets game development.\n\nSuper excited to share that our research paper has now been published in the International Journal of Research and Analytical Reviews (IJRAR)\npublished paper.\n\nThis project was built with Aadil Rayeen and under the guidance of Kunal Pandey where we explored how Procedural Content Generation (PCG) and Adaptive Difficulty Adjustment (ADA) can work together to create endlessly evolving environments similar to the ones shown in the screenshots below from our Unity MVP.\n\n🔹 Procedural Terrain Generation using noise-based variation and modular tiles\n 🔹 Adaptive Difficulty that responds to player performance in real time\n 🔹 Mobile-optimized pipeline with object pooling, batching, and lightweight shaders\n 🔹 Unity 2021.3 implementation demonstrating stable real-time generation and obstacle evolution\n\nThe paper highlights how PCG + adaptive models can push mobile games beyond static level design, aligning with modern trends in AI-driven generative systems and intelligent gameplay tuning.\n\nThis work sits right at the intersection of AI, simulation, and real-time systems areas I’m now actively upskilling in alongside vision-language-action models, Isaac Sim workflows, and robotics-focused AIML.\nExcited for the next phase of learning and experimentation.\n\n\nhashtag\n#gamedevelopment \nhashtag\n#unity \nhashtag\n#unity3d \nhashtag\n#aiml \nhashtag\n#machinelearning \nhashtag\n#generativeai \nhashtag\n#proceduralgeneration \nhashtag\n#pcg \nhashtag\n#gameai \nhashtag\n#simulation \nhashtag\n#mobilegamedev \nhashtag\n#technicalskills \nhashtag\n#researchpaper \nhashtag\n#publishedresearch \nhashtag\n#computerscience \nhashtag\n#innovation \nhashtag\n#buildinpublic \nhashtag\n#studentresearch \nhashtag\n#tech\n\nBuilt on top of the “Plane Runner 3D” Template (Unity Asset Store) by Black Rose Developers extended with our own custom procedural-generation and adaptive-difficulty system",
+            "markdown": "### Adaptive Environments in Modern Game Design\n\nThe integration of Artificial Intelligence and Machine Learning within interactive systems is redefining the boundaries of level design. By shifting away from static environments, developers can create experiences that are both endlessly varied and uniquely tailored to individual player skill levels.\n\n### Research Publication: Plane Runner\n\nOur research paper, published in the **International Journal of Research and Analytical Reviews (IJRAR)**, explores the synergy between **Procedural Content Generation (PCG)** and **Adaptive Difficulty Adjustment (ADA)**. Developed in collaboration with Aadil Rayeen under the guidance of Kunal Pandey, the project establishes a framework for creating evolving environments within a Unity-based flight simulation.\n\n### Technical Architecture\n\nThe Plane Runner framework focuses on four key pillars to ensure a seamless, high-performance experience on mobile platforms:\n\n- **Procedural Terrain Generation**: Leveraging noise-based variation and modular tiles to create infinite, non-repeating landscapes.\n- **Adaptive Difficulty (ADA)**: Implementing a real-time system that monitors player performance and scales challenge parameters dynamically to maintain engagement.\n- **Mobile-Optimized Pipeline**: Utilizing object pooling, draw-call batching, and lightweight shaders to ensure high performance on constrained hardware.\n- **Real-Time Evolution**: A Unity 2021.3 implementation demonstrating stable generation and obstacle scaling during active gameplay.\n\n### The Intersection of AI and Simulation\n\nThis work highlights how generative systems can push mobile games past the limitations of traditional, manual design. These methodologies align with modern industry trends in AI-driven gameplay tuning and intelligent content generation. \n\nBeyond game development, the principles of real-time adaptive systems are foundational to emerging fields such as **vision-language-action (VLA) models**, **Isaac Sim workflows**, and **robotics-focused machine learning** areas where I am currently focusing my research and technical upskilling.\n\n***\n\n*Note: This project was built upon the \"Plane Runner 3D\" template by Black Rose Developers and extended with custom procedural-generation and adaptive-difficulty logic.*",
+            "summary": "A research-backed exploration of Procedural Content Generation and Adaptive Difficulty systems for dynamic mobile flight simulations."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7402670640010248192_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 446
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7402670640010248192_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 743
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7402670640010248192_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 447
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7402670640010248192_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 451
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7402670640010248192/"
+    },
+    {
+        "id": "urn:li:activity:7403033102681497600",
+        "title": "Building Agentic AI and RAG Workflows: A Consultancy Engagement with CREO AI",
+        "slug": "building-agentic-ai-and-rag-workflows-a-consultancy-engagement-with-creo-ai",
+        "date": "2025-12-17T22:27:05.369Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 36,
+            "comments": 4,
+            "views": 1109,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "architecture",
+            "career-growth"
+        ],
+        "content": {
+            "raw": "Wrapping up my consultancy engagement with CREO AI Pvt. Ltd., conducted officially under my college and the Department of AI & ML.\n\nThis was a paid project-based collaboration where our team worked on building a voice-based chatbot powered by Retrieval-Augmented Generation and Agentic AI, tailored to CREO AI’s internal requirements.\n\nAcross this engagement, I contributed to:\n • Designing and implementing end-to-end chatbot workflows\n • Integrating RAG pipelines with CREO AI’s internal API endpoints\n • Building core components of the agentic automation system\n • Ensuring seamless integration with provided tools\n • Testing, documentation, and performance optimization\n \nOur team was formally recognized through an affiliation agreement, with full access to tools, APIs, and complete development ownership of the product.\n \nThis experience strengthened my foundations in Agentic AI, workflow automation, and applied RAG engineering, and gave me real exposure to building systems that balance technical depth with practical deployment needs.\n\nGrateful to everyone who guided this journey \nAbhishek Bhate, (Founder)\nDr. Shiwani Gupta, ( HOD AI&ML)\nand my teammate Ayush Rai for their constant support and direction throughout the project.\n\nAs I now transition into my winter internship and upcoming AIML work, I’m excited to build further on these learnings.\n\nOnward to the next chapter. 🚀\n\n\nhashtag\n#aiml \nhashtag\n#rag \nhashtag\n#agenticAI \nhashtag\n#chatbots \nhashtag\n#workflowautomation \nhashtag\n#aiengineering \nhashtag\n#consulting \nhashtag\n#studentprojects \nhashtag\n#creoai \nhashtag\n#industrymentor \nhashtag\n#buildinpublic \nhashtag\n#careerjourney",
+            "markdown": "### Project Overview\nIn collaboration with the Department of AI & ML, I recently concluded a specialized consultancy engagement with **CREO AI Pvt. Ltd.** The primary objective was to architect and deploy a custom voice-based chatbot designed to meet specific internal organizational requirements.\n\nThe solution leveraged **Retrieval-Augmented Generation (RAG)** and **Agentic AI** frameworks, transforming a standard conversational interface into a sophisticated system capable of executing complex, multi-step tasks with high precision.\n\n### Technical Implementation & Core Contributions\nThroughout this engagement, our team maintained full development ownership of the product. My work focused on bridging the gap between theoretical AI models and production-ready systems, ensuring that every component was optimized for performance and reliability.\n\nKey areas of contribution included:\n\n*   **Workflow Design:** Architecting end-to-end chatbot workflows to manage state, context, and voice-to-text transitions seamlessly.\n*   **RAG Pipeline Engineering:** Integrating robust RAG pipelines with internal API endpoints to facilitate accurate, data-backed responses.\n*   **Agentic Automation:** Building core components of the agentic system, enabling the chatbot to autonomously interface with provided tools and documentation.\n*   **Integration & Testing:** Ensuring seamless integration with existing internal infrastructure and conducting rigorous performance optimization.\n\n### Industrial Impact and Key Takeaways\nThis collaboration provided significant exposure to the practicalities of **applied RAG engineering** and the nuances of building **Agentic AI** systems. Operating under a formal affiliation agreement provided our team with direct access to proprietary APIs and professional toolsets, offering a realistic view of how modern AI products are built and scaled within a corporate environment.\n\nI am grateful for the guidance of **Abhishek Bhate** (Founder, CREO AI) and **Dr. Shiwani Gupta** (HOD AI&ML), and for the partnership of my teammate **Ayush Rai**. Their direction was instrumental in navigating the technical challenges of this project.\n\n### Future Directions\nAs I transition into my winter internship and subsequent AIML research, the foundations I have strengthened in workflow automation and system architecture will serve as a vital springboard. I look forward to applying these insights to increasingly complex challenges in the field of intelligent systems.",
+            "summary": "Technical overview of developing a voice-based chatbot using RAG and Agentic AI during a project-based consultancy for CREO AI."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7403033102681497600_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 436
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7403033102681497600_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 1131
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7403033102681497600_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 1131
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7403033102681497600_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 443
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7403033102681497600/"
+    },
+    {
+        "id": "urn:li:activity:7403395535103139840",
+        "title": "Architectural Exploration and Research Engineering at TCS",
+        "slug": "architectural-exploration-and-research-engineering-at-tcs",
+        "date": "2025-12-17T22:27:05.363Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 23,
+            "comments": 0,
+            "views": 951,
+            "shares": 0
+        },
+        "tags": [
+            "research",
+            "system-design",
+            "architecture",
+            "internship"
+        ],
+        "content": {
+            "raw": "Two weeks into my Project Internship at Tata Consultancy Services (TCS), and it has already been one of the most unique experiences in my journey so far.\n \nOur team doesn’t operate like a traditional SDE unit instead, we work at the exploratory and architectural layer where ideas begin. We evaluate new experimental concepts, take them through POT (Proof of Technology), and shape them into early MVP directions after validating feasibility.\n\nI can only share the work at a very high level, but our project sits at a rare and exciting intersection of:\n\n 🔹 Internal + External Public Agents\n 🔹 Blockchain-aligned mechanisms\n 🔹 Concepts around token movement \n 🔹 Security-focused HLV system design reviews\n 🔹 Research on viability of emerging technologies\n\nThis role gives me room not just to build, but to think contributing to research, system architecture, and early-stage validation, deciding what can work, what cannot, and why.\n\nGrateful to be working alongside Aadil Rayeen and Diya Manapetty, and guided by our mentor Nitaa Khare, whose direction has been instrumental in navigating this exploration-first environment.\n\nOnwards. 🚀\n\n\nhashtag\n#tcs \nhashtag\n#internship \nhashtag\n#systemdesign \nhashtag\n#researchengineering \nhashtag\n#aiml \nhashtag\n#blockchain \nhashtag\n#architecture \nhashtag\n#pot \nhashtag\n#mvp \nhashtag\n#learningjourney \nhashtag\n#career",
+            "markdown": "### The Intersection of Research and Engineering\n\nMy project internship at **Tata Consultancy Services (TCS)** operates at the critical phase where abstract ideas meet technical reality. Unlike traditional software development roles, this position is situated within the **exploratory and architectural layer**, focusing on the foundational elements of system design and feasibility.\n\n### From Proof of Technology to MVP\n\nThe core of our workflow involves evaluating experimental concepts and navigating them through a rigorous **Proof of Technology (POT)** phase. By validating technical feasibility at the earliest stages, we shape the direction of **Minimum Viable Products (MVPs)**, ensuring that only the most viable ideas move toward production. \n\n### Core Technical Domains\n\nWhile the specific details are proprietary, the project sits at a rare and complex intersection of several high-impact fields:\n\n- **Autonomous Agents:** Exploring both internal and external public agent frameworks.\n- **Blockchain Integration:** Implementing decentralized mechanisms and concepts surrounding token movement.\n- **Secure System Design:** Conducting HLV system design reviews with a focus on long-term security and stability.\n- **Emerging Tech Research:** Continuous viability studies on the next generation of enterprise technology.\n\n### A Research-First Mindset\n\nThis role offers a unique opportunity to bridge the gap between building and thinking. Beyond writing code, the work involves contributing to **system architecture and research-driven validation**. The objective is to determine not just what can be built, but what *should* be built, backed by technical evidence and architectural logic.\n\nWorking in an exploration-first environment requires a high degree of adaptability. Under the mentorship of **Nitaa Khare** and alongside colleagues **Aadil Rayeen** and **Diya Manapetty**, we continue to push the boundaries of what these emerging technologies can achieve in a structured, enterprise context.",
+            "summary": "An overview of my project internship at TCS, focusing on Proof of Technology and architectural research for blockchain and AI-driven systems."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7403395535103139840_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 552
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7403395535103139840/"
+    },
+    {
+        "id": "urn:li:activity:7403401081709400064",
+        "title": "Expanding Technical Horizons: Joining Tata Consultancy Services",
+        "slug": "expanding-technical-horizons-joining-tata-consultancy-services",
+        "date": "2025-12-17T22:27:05.357Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 35,
+            "comments": 5,
+            "views": 1067,
+            "shares": 0
+        },
+        "tags": [
+            "internship",
+            "career-growth"
+        ],
+        "content": {
+            "raw": "I’m happy to share that I have started a new position as Project Intern at Tata Consultancy Services!",
+            "markdown": "### New Chapter: Tata Consultancy Services\n\nI have officially transitioned into a new role as a **Project Intern** at **Tata Consultancy Services (TCS)**. This position represents a significant step in my professional journey, offering an opportunity to contribute to large-scale initiatives within a global technology leader.\n\n### Objectives and Impact\n\nDuring this internship, the focus will be on bridging the gap between academic theory and industry practice. Key areas of focus include:\n\n*   Applying technical frameworks to **real-world enterprise projects**.\n*   Collaborating with cross-functional teams to deliver **high-quality solutions**.\n*   Gaining deep insights into the lifecycle of **large-scale system deployments**.\n\n### Professional Growth\n\nJoining an organization with the scale and heritage of TCS provides a unique vantage point on the intersection of business strategy and technical execution. I look forward to refining my expertise, engaging with complex problem-sets, and contributing to the innovative work being driven by the team.",
+            "summary": "A transition into the Project Intern role at Tata Consultancy Services, focusing on enterprise-scale projects and professional development."
+        },
+        "media": [
+            {
+                "type": "badge",
+                "url": "/data/media/posts/urn_li_activity_7403401081709400064_0.gif",
+                "alt": "Celebration Badge",
+                "width": 800,
+                "height": 800
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7403401081709400064/"
+    },
+    {
+        "id": "urn:li:activity:7386381171590414336",
+        "title": "Beyond the Giants: Reviving TradingviewPlus During Hacktoberfest 2025",
+        "slug": "beyond-the-giants-reviving-tradingviewplus-during-hacktoberfest-2025",
+        "date": "2025-11-17T22:27:05.421Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 24,
+            "comments": 0,
+            "views": 857,
+            "shares": 0
+        },
+        "tags": [
+            "open-source",
+            "web-dev",
+            "full-stack",
+            "ui-ux"
+        ],
+        "content": {
+            "raw": "Hacktoberfest 2025 Contributing Back to Open Source\n\nThis Hacktoberfest, I decided to give some long-overdue attention to a small but incredibly useful project I’ve been using for over 3 years TradingviewPlus by Tiqur.\n\nIt’s a niche TradingView extension that improves the charting experience for a few hundred dedicated users. The project had been quiet for a while, with 30+ open issues piling up as TradingView’s codebase evolved. Over the past three weeks and 40+ hours , I’ve focused on bringing it back to life:\n\n ✅ Fixed 25+ issues, from broken UI components to major keybind refactors\n ✅ Migrated build scripts from Bash to Node.js for better cross-platform support\n ✅ Created 9 merged and 3 open PRs improving stability and functionality\nMost of the codebase runs on TypeScript, with some automation and packaging handled through JS. The next beta release will roll out these fixes soon and it feels great to see the bugs that annoyed me for months finally gone.\n\nHacktoberfest is often seen as a time to chase big-name repos like Node.js or LangChain, but contributing doesn’t have to mean scaling mountains. Sometimes it’s about supporting the smaller tools that quietly improve your workflow every day.\n\nIf you use it contribute to it. That’s how open source truly moves forward.\n(Also working on a LangChain issue next!)\n\nhttps://lnkd.in/dC4Da_VH\n\n\nhashtag\n#Hacktoberfest \nhashtag\n#OpenSource \nhashtag\n#OSS \nhashtag\n#JavaScript \nhashtag\n#TypeScript \nhashtag\n#TradingView \nhashtag\n#DevCommunity \nhashtag\n#Coding \nhashtag\n#WebDevelopment \nhashtag\n#SoftwareEngineering \nhashtag\n#Developers \nhashtag\n#Programming \nhashtag\n#DevTools \nhashtag\n#Automation \nhashtag\n#Productivity \nhashtag\n#BrowserExtensions \nhashtag\n#Frontend \nhashtag\n#Fullstack \nhashtag\n#UIUX \nhashtag\n#GitHub \nhashtag\n#Git \nhashtag\n#CodeQuality \nhashtag\n#Refactoring \nhashtag\n#BugFixes \nhashtag\n#Maintainer \nhashtag\n#Hacktoberfest2025 \nhashtag\n#TechCommunity \nhashtag\n#Innovation \nhashtag\n#DevLife \nhashtag\n#BuildInPublic \nhashtag\n#CodeNewbie \nhashtag\n#TechForGood \nhashtag\n#JSDev \nhashtag\n#Engineering \nhashtag\n#Contribution \nhashtag\n#DevProjects \nhashtag\n#LearningInPublic \nhashtag\n#DeveloperExperience \nhashtag\n#OpenSourceContributions \nhashtag\n#CodeRefactor \nhashtag\n#TradingTech \nhashtag\n#FintechDevelopment \nhashtag\n#NightCoder",
+            "markdown": "### The Value of Niche Open Source\n\nFor Hacktoberfest 2025, I decided to step away from the major repositories to focus on a tool that has been an essential part of my workflow for over three years: **TradingviewPlus by Tiqur**. \n\nWhile high-profile projects like Node.js or LangChain often dominate the conversation this month, small, niche extensions provide critical utility to dedicated user bases. TradingviewPlus is one such tool, enhancing the charting experience for several hundred users. However, as the TradingView codebase evolved, the extension had begun to accumulate technical debt, resulting in over 30 open issues.\n\n### The Technical Overhaul\n\nOver the past three weeks, I dedicated **40+ hours** to stabilizing the project and improving its maintainability. The codebase is primarily built on **TypeScript**, with specific automation and packaging handled via JavaScript. My efforts were focused on structural reliability and developer experience:\n\n*   **Bug Resolution:** Addressed over 25 individual issues ranging from broken UI components to complex keybind refactors.\n*   **Build System Modernization:** Migrated the project's build scripts from Bash to Node.js, ensuring more robust cross-platform support for future contributors.\n*   **Pull Requests:** Successfully authored 9 merged and 3 currently open PRs to enhance stability and functionality.\n\nThe upcoming beta release will integrate these fixes, resolving long-standing bugs that have impacted the user experience for months.\n\n### Scaling Mountains vs. Supporting Tools\n\nContributing to open source does not always require scaling the highest peaks of the software world. True progress in the ecosystem often comes from supporting the smaller, quieter tools that improve our daily productivity. When we contribute to the tools we actually use, we ensure their longevity and reliability.\n\nMoving forward, I will be shifting my focus toward **LangChain**, but the time spent on TradingviewPlus serves as a reminder: if you rely on a project, contribute to it. That is how the open-source community remains sustainable.",
+            "summary": "A look at revitalizing a niche open-source extension through bug fixes, TypeScript refactoring, and build script modernization."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7386381171590414336_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 382
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7386381171590414336_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 410
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7386381171590414336_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 323
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7386381171590414336_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 470
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7386381171590414336/"
+    },
+    {
+        "id": "urn:li:activity:7389383117549228032",
+        "title": "Engineering Motion: Building a High-Performance 60FPS Portfolio",
+        "slug": "engineering-motion-building-a-high-performance-60fps-portfolio",
+        "date": "2025-11-17T22:27:05.415Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 13,
+            "comments": 0,
+            "views": 633,
+            "shares": 0
+        },
+        "tags": [
+            "web-dev",
+            "ui-ux",
+            "creative-coding"
+        ],
+        "content": {
+            "raw": "Just pushed the pre-release of my portfolio site:\nhttps://lnkd.in/dkCdBM9A\n\nBuilt the experience around high-quality binaries running at 60fps/1080p with ~1s load times, backed by a CDN + aggressive caching.\n\nVisual stack includes parallax layers, rotating backgrounds, and procedural noise to keep the motion lively without sacrificing performance.\n\nTech stack write-up is live on github for anyone curious about the build.\n\nI’ll be rolling out more effects and content next week, so stay tuned\nand let me know what you think!\n\nhttps://lnkd.in/d5DpFaYS\n\n\nhashtag\n#LinkedIn \nhashtag\n#Portfolio \nhashtag\n#WebDevelopment \nhashtag\n#Frontend \nhashtag\n#PerformanceOptimization \nhashtag\n#WebDesign \nhashtag\n#JavaScript \nhashtag\n#ThreeJS \nhashtag\n#CreativeCoding \nhashtag\n#DeveloperPortfolio \nhashtag\n#CDN \nhashtag\n#UXDesign \nhashtag\n#MotionDesign \nhashtag\n#TechStack \nhashtag\n#GitHub",
+            "markdown": "### Engineering a High-Performance Visual Experience\n\nThe pre-release of my new portfolio focuses on the intersection of high-fidelity aesthetics and rigorous performance engineering. The objective was to build an immersive experience that maintains **60fps at 1080p resolution** while ensuring near-instantaneous access for the user.\n\n### Performance and Infrastructure\n\nDelivering a visually dense experience without performance degradation requires a robust infrastructure strategy. Key benchmarks include **~1s load times**, achieved through a combination of hardware-accelerated rendering and modern web standards:\n\n*   **Global CDN Integration:** Minimizing latency by serving assets from the network edge.\n*   **Aggressive Caching:** Reducing redundant data transfers and optimizing browser-side execution.\n*   **Binary Optimization:** Utilizing high-quality binaries to balance visual clarity with rapid execution.\n\n### Motion Design and Procedural Visuals\n\nThe visual stack is designed to be dynamic yet lightweight. Rather than relying on resource-intensive video files, the interface utilizes real-time techniques to keep the motion lively:\n\n*   **Parallax Layers:** Creating spatial depth during user interaction.\n*   **Procedural Noise:** Generating organic, real-time movement to maintain visual interest.\n*   **Dynamic Backgrounds:** Implementing rotating elements that evolve without taxing the system's GPU resources.\n\n### Documentation and Future Iterations\n\nFor a deeper dive into the underlying architecture, the full tech stack write-up is now available on [GitHub](https://lnkd.in/d5DpFaYS). This release marks the first phase of the rollout; additional visual effects and expanded content modules are scheduled for deployment next week.\n\nYou can explore the live pre-release at [this link](https://lnkd.in/dkCdBM9A).",
+            "summary": "An overview of the technical architecture behind a high-performance portfolio featuring 60FPS visuals, sub-second load times, and procedural motion."
+        },
+        "media": [
+            {
+                "type": "video",
+                "url": "/data/media/posts/urn_li_activity_7389383117549228032_0.jpg",
+                "videoUrl": "blob:https://www.linkedin.com/e68f9fe2-1961-4a73-806a-bcf15082c1a9",
+                "alt": "Video post",
+                "width": 800,
+                "height": 800
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7389383117549228032/"
+    },
+    {
+        "id": "urn:li:activity:7390120998823559169",
+        "title": "Crafting Seamless Vistas: The Technical Art of Infinite Looping",
+        "slug": "crafting-seamless-vistas-the-technical-art-of-infinite-looping",
+        "date": "2025-11-17T22:27:05.411Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 23,
+            "comments": 4,
+            "views": 1536,
+            "shares": 0
+        },
+        "tags": [
+            "creative-coding",
+            "ui-ux",
+            "open-source",
+            "architecture"
+        ],
+        "content": {
+            "raw": "🔁 99% Can’t Spot the Loop 🤙\n\nSpent an unreasonable amount of time crafting perfectly looping scenes for my portfolio 10 unique environments, with day and night versions. Every frame tuned, every texture balanced. It's not Just Dark and Light Mode , it's the vibe of the Day\n\nUsed small but powerful tricks like ramping up particle speed toward the loop’s end to mask transitions. The goal: make something you could stare at forever without seeing the break.\n\nThese loops aren’t just tests they’re scenes I genuinely love. They’re built from the wallpapers and vistas I’ve had on my screen for thousands of hours. Optimized, refined, and finally assembled into something that feels alive.\n\n🎨 Credits to the amazing artists and open assets on GitHub that made these worlds possible.\n\n👉 Watch the full video and try to spot where it loops.\nAnswer : 3 loops\n\n\nhashtag\n#VFX \nhashtag\n#MotionDesign \nhashtag\n#3DArt \nhashtag\n#LoopingAnimation \nhashtag\n#Blender3D \nhashtag\n#CGI \nhashtag\n#DigitalArt \nhashtag\n#Portfolio \nhashtag\n#EnvironmentDesign \nhashtag\n#ProceduralArt \nhashtag\n#Compositing \nhashtag\n#GameArt \nhashtag\n#RenderLoop \nhashtag\n#3DVisualization \nhashtag\n#ArtistsOnLinkedIn",
+            "markdown": "### The Pursuit of the Seamless Loop\n\nCreating a perfect loop requires more than simply matching the first and last frames; it demands a meticulous approach to timing and visual harmony. I recently completed a series of **ten unique 3D environments**, each featuring distinct day and night iterations. The objective was to move beyond simple lighting shifts and instead capture the specific atmospheric \"vibe\" inherent to different times of day.\n\n### Technical Execution and Transitions\n\nTo ensure the transitions were invisible to the naked eye, I utilized several subtle but powerful technical maneuvers. The goal was to create a scene that remains engaging indefinitely without the viewer ever spotting the break. Key techniques included:\n\n*   **Particle Speed Ramping:** By incrementally increasing particle velocity toward the end of the loop, I was able to effectively mask the transition point.\n*   **Texture Balancing:** Every texture was fine-tuned to ensure consistency across varying light intensities.\n*   **Frame Synchronization:** Every element within the scene was optimized to ensure movement felt fluid and cyclical rather than repetitive.\n\n### From Inspiration to Optimized Environments\n\nThese scenes are the culmination of thousands of hours spent observing the vistas and wallpapers that have occupied my own screens. They are not merely technical tests; they are refined digital worlds built to feel alive. \n\nBy leveraging **high-quality open-source assets from GitHub** and the work of talented community artists, I focused on the assembly, optimization, and compositing required to transform static concepts into breathing environments. Each scene represents a balance of artistic vision and procedural refinement.\n\n### Exploring the Results\n\nThe final renders invite the viewer to linger. Within the full sequence, there are **three distinct loops** designed to challenge the observer's perception of where the animation restarts. This project serves as a testament to the power of detail-oriented motion design and the impact of subtle VFX techniques.",
+            "summary": "A deep dive into the technical techniques used to create ten unique, seamless 3D environments featuring dynamic day and night cycles."
+        },
+        "media": [
+            {
+                "type": "video",
+                "url": "/data/media/posts/urn_li_activity_7390120998823559169_0.jpg",
+                "videoUrl": "blob:https://www.linkedin.com/72c90403-fea4-4679-80f2-1b781c5bd009",
+                "alt": "Video post",
+                "width": 800,
+                "height": 800
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7390120998823559169/"
+    },
+    {
+        "id": "urn:li:activity:7390483362991239168",
+        "title": "Building a Professional Digital Identity: Domain Launch and SEO Strategy",
+        "slug": "building-a-professional-digital-identity-domain-launch-and-seo-strategy",
+        "date": "2025-11-17T22:27:05.405Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 23,
+            "comments": 2,
+            "views": 1088,
+            "shares": 0
+        },
+        "tags": [
+            "web-dev",
+            "career-growth",
+            "full-stack"
+        ],
+        "content": {
+            "raw": "SEO Clients → Personal Domain 🤟\nPortfolio now live at: priyanshusah.com\n\nFinally got my own .com domain 🌐\n\nI also built a small in-house URL shortener into the site.\nNow you can use links like priyanshusah.com/linkedin to reach my profiles.\n\nIf I ever update a link, it reflects everywhere one change, all links updated.\n\nPlus, I’m adding blogs and content to strengthen SEO and get my name out organically.\n\n\n\nhashtag\n#WebDevelopment \nhashtag\n#Portfolio \nhashtag\n#Domain \nhashtag\n#URLShortener \nhashtag\n#Coding \nhashtag\n#FrontendDevelopment \nhashtag\n#JavaScript \nhashtag\n#HTML \nhashtag\n#CSS \nhashtag\n#GitHubPages \nhashtag\n#PersonalProject \nhashtag\n#Developer \nhashtag\n#Tech \nhashtag\n#WebDesign \nhashtag\n#Innovation \nhashtag\n#Automation \nhashtag\n#SEO \nhashtag\n#ContentStrategy \nhashtag\n#DigitalMarketing \nhashtag\n#BrandBuilding \nhashtag\n#PortfolioLaunch",
+            "markdown": "### The Shift to a Dedicated Personal Domain\n\nEstablishing a professional presence starts with ownership. Moving from managing SEO for clients to launching **priyanshusah.com** marks a significant transition toward a centralized, professional digital identity. \n\n### Engineering a Custom URL Shortener\n\nEfficiency is a core component of this new architecture. I have integrated a **custom in-house URL shortener** directly into the site. This allows for clean, branded redirects such as `priyanshusah.com/linkedin` that offer several technical advantages:\n\n- **Centralized Management:** Updating a single destination link automatically reflects across every shared instance, eliminating broken links.\n- **Scalability:** The system is built to handle an expanding portfolio of social profiles and external resources.\n- **Brand Integrity:** Replacing generic third-party shorteners with a personal domain strengthens professional credibility.\n\n### Strategic SEO and Content Integration\n\nThe platform is designed to be more than just a static landing page. By integrating technical blogs and long-form content, the primary objectives are to:\n\n- Strengthen **organic search engine visibility** through keyword optimization.\n- Establish **domain authority** within the web development and technical ecosystem.\n- Build a sustainable, professional narrative that surfaces naturally to prospective clients and collaborators.\n\nThis launch represents the foundation of a long-term strategy to leverage technical skills for personal brand equity.",
+            "summary": "A deep dive into the launch of priyanshusah.com, focusing on in-house URL shorteners and organic growth through content strategy."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7390483362991239168_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 457
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7390483362991239168/"
+    },
+    {
+        "id": "urn:li:activity:7390711843146706944",
+        "title": "Beyond the Code: Reflections on Hacktoberfest 2025",
+        "slug": "beyond-the-code-reflections-on-hacktoberfest-2025",
+        "date": "2025-11-17T22:27:05.399Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 22,
+            "comments": 2,
+            "views": 673,
+            "shares": 0
+        },
+        "tags": [
+            "open-source",
+            "career-growth",
+            "web-dev"
+        ],
+        "content": {
+            "raw": "Hacktoberfest 2025 Wrapped Up 🌱👕\n\nThis Hacktoberfest has officially come to an end, and it’s been a solid ride through open source collaboration, learning, and contribution.\n✅ 8 PRs merged\n✅ 28 issues closed\n✅ 1 tree planted in my name (Tree-Nation 🌳)\n✅ Hacktoberfest Supercontributor badge + limited-edition T-shirt unlocked\n\nEven though 2 of my PRs didn’t make the cut in the final review, the experience taught me more about code quality, community workflows, and real-world collaboration than any tutorial ever could.\n\nNow, I can confidently say Open Source isn’t just something I use it’s something I contribute to.\n\nBig thanks to the maintainers and the Hacktoberfest team for keeping the spirit alive.\n\nOnward to more meaningful contributions.\n\nhttps://lnkd.in/d27DvA3y\n\n\n\nhashtag\n#Hacktoberfest \nhashtag\n#Hacktoberfest2025 \nhashtag\n#OpenSource \nhashtag\n#OSS \nhashtag\n#Developers \nhashtag\n#Coding \nhashtag\n#GitHub \nhashtag\n#DevCommunity \nhashtag\n#DevProjects \nhashtag\n#SoftwareEngineering \nhashtag\n#WebDevelopment \nhashtag\n#Frontend \nhashtag\n#Fullstack \nhashtag\n#Backend \nhashtag\n#JavaScript \nhashtag\n#TypeScript \nhashtag\n#Python \nhashtag\n#Automation \nhashtag\n#DevTools \nhashtag\n#CodeQuality \nhashtag\n#Refactoring \nhashtag\n#BugFixes \nhashtag\n#LearningInPublic \nhashtag\n#TechCommunity \nhashtag\n#Programming \nhashtag\n#Engineer \nhashtag\n#DeveloperExperience \nhashtag\n#Innovation \nhashtag\n#Contribution \nhashtag\n#TechForGood \nhashtag\n#BuildInPublic \nhashtag\n#CodeNewbie \nhashtag\n#DevLife \nhashtag\n#CodeRefactor \nhashtag\n#Engineering \nhashtag\n#OpenSourceContribution \nhashtag\n#Collaboration \nhashtag\n#Community \nhashtag\n#TechEcosystem \nhashtag\n#ProjectBasedLearning \nhashtag\n#Git \nhashtag\n#GitHubCommunity \nhashtag\n#HacktoberfestIndia",
+            "markdown": "### The Hacktoberfest 2025 Milestone\n\nHacktoberfest 2025 has concluded, marking a significant chapter in my journey through the open-source ecosystem. This month was defined by consistent collaboration, rigorous code reviews, and a deep dive into community-driven development.\n\nKey achievements from this year's sprint include:\n\n* **8 Pull Requests merged** across various repositories.\n* **28 issues closed**, addressing both technical debt and new features.\n* Attainment of the **Hacktoberfest Supercontributor badge** and limited-edition apparel.\n\n### Tangible Impact Beyond the Repository\n\nOne of the most rewarding aspects of this year's participation was the environmental impact through Tree-Nation, resulting in **one tree planted** in my name. While the rewards are a welcome token of achievement, the true value lies in the social and environmental contributions fostered by the event.\n\n### Lessons in Code Quality and Resilience\n\nOpen source is a rigorous environment. While I successfully merged several contributions, two of my PRs did not pass the final review stage. Far from being setbacks, these instances provided the most significant learning opportunities. They offered practical insights into:\n\n* **Standardizing code quality** to meet project-specific guidelines.\n* Navigating complex **community workflows**.\n* Managing **real-world collaboration** and feedback loops.\n\nThese experiences provide a level of professional development that traditional tutorials cannot replicate.\n\n### From Consumer to Contributor\n\nThis month has solidified a fundamental shift in my professional perspective. Open source is no longer just a set of tools I consume; it is an ecosystem I actively help build. Moving forward, I remain committed to making meaningful, high-quality contributions that support the global developer community.",
+            "summary": "A look at the technical growth and community impact gained during Hacktoberfest 2025 through contributions to the open-source ecosystem."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7390711843146706944_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 382
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7390711843146706944_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 426
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7390711843146706944_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 390
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7390711843146706944_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 717,
+                "height": 912
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7390711843146706944/"
+    },
+    {
+        "id": "urn:li:activity:7392161385557798912",
+        "title": "The Evolution of Storage: A 300x Speed Leap in Seven Years",
+        "slug": "the-evolution-of-storage-a-300x-speed-leap-in-seven-years",
+        "date": "2025-11-17T22:27:05.394Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 17,
+            "comments": 0,
+            "views": 808,
+            "shares": 0
+        },
+        "tags": [
+            "system-design",
+            "architecture",
+            "ai-ml"
+        ],
+        "content": {
+            "raw": "⚙️ From 2018 to 2025 – The 300× Speed Leap 🚀\n\nHDD → SATA → NVMe Gen 4 → NVMe Gen 5\n\nWatching storage tech evolve this fast feels unreal.\nHere’s my personal speed timeline over the years:\n\n🗓️ 2018: HDD – 200 MB/s (patience was a skill 😅)\n🗓️ 2020: SATA SSD – 550 MB/s (finally no more lag!)\n🗓️ 2024: NVMe Gen 4 – 7000 MB/s (gaming + dev became smooth)\n🗓️ 2025: NVMe Gen 5 – 14,000 MB/s (lightning-fast AI & LLM workloads)\n\nThat’s ~300× faster in just 7 years. What used to take minutes now loads before your coffee’s ready. ☕",
+            "markdown": "### The Velocity of Storage Technology\n\nThe trajectory of storage technology over the last seven years represents one of the most significant performance leaps in modern computing. Between 2018 and 2025, we have transitioned from mechanical limitations to silicon-based speeds that were previously reserved for enterprise-grade data centers. This evolution has fundamentally changed the baseline for system responsiveness and data throughput.\n\n### A Seven-Year Performance Timeline\n\nThe shift from legacy hardware to next-generation interfaces highlights a **300x increase in total throughput**:\n\n*   **2018: The HDD Era (200 MB/s)** – Mechanical drives were the standard bottleneck, where high-capacity storage required significant patience for boot times and sequential file transfers.\n*   **2020: SATA SSD (550 MB/s)** – The mainstream adoption of solid-state drives via the SATA interface provided the first major leap, effectively eliminating the mechanical latency that plagued earlier systems.\n*   **2024: NVMe Gen 4 (7,000 MB/s)** – The transition to the PCIe 4.0 interface offered a 12x performance boost over SATA, creating a seamless environment for professional software development and high-fidelity gaming.\n*   **2025: NVMe Gen 5 (14,000 MB/s)** – The current frontier doubles the performance of its predecessor, providing the necessary bandwidth for lightning-fast data ingestion.\n\n### Impact on Modern Workloads\n\nThis rapid acceleration is not merely a benchmark victory; it is a necessity for the current era of computing. The shift to 14,000 MB/s is a critical enabler for **AI and Large Language Model (LLM) workloads**, which demand massive I/O capabilities to process vast datasets efficiently. \n\nWhat used to take several minutes of idle time now occurs almost instantaneously. As storage bottlenecks continue to vanish, the focus shifts toward optimizing software and architecture to keep pace with this **lightning-fast hardware evolution**.",
+            "summary": "Exploring the rapid 300x increase in storage speeds from 2018 to 2025 and its impact on modern workloads like AI and development."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7392161385557798912_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 533
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7392161385557798912_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 600
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7392161385557798912/"
+    },
+    {
+        "id": "urn:li:activity:7376943669699850240",
+        "title": "Engineering Around ISP Limitations: An ESP32 Wake-on-LAN Solution",
+        "slug": "engineering-around-isp-limitations-an-esp32-wake-on-lan-solution",
+        "date": "2025-10-17T22:27:05.443Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 27,
+            "comments": 2,
+            "views": 1162,
+            "shares": 0
+        },
+        "tags": [
+            "open-source",
+            "system-design",
+            "creative-coding"
+        ],
+        "content": {
+            "raw": "💡 One thing I’ve learned as an engineer: problems often look bigger than they really are until you slice them down and solve them piece by piece.\n\nRecently, I faced a simple but frustrating issue: my ISP wouldn’t allocate me a public IP. For most people, that’s a roadblock. For me, it became a weekend project.\n\nInstead of relying on the ISP, I set up an ESP32-based Wake-on-LAN bot that connects with Telegram. Now, with a single /wol command, I can power on my PC remotely no static IP required.\n\nIt’s not a groundbreaking AI system (that’s where I spend most of my time), but it’s a neat reminder of what a little coding + hardware tinkering can achieve. Sometimes, solving problems isn’t about waiting for infrastructure to change it’s about engineering around it.\n\n🔹 GitHub Repo: https://lnkd.in/d2AzDupC\n\n🔹 Demo Video: https://lnkd.in/dhAQa2UV\n\nWould love to hear what’s the smallest project you’ve built that saved you from a big headache?\n\n\n\nhashtag\n#Engineering \nhashtag\n#AI \nhashtag\n#IoT \nhashtag\n#ESP32 \nhashtag\n#TelegramBot \nhashtag\n#WakeOnLAN \nhashtag\n#Coding \nhashtag\n#ProblemSolving \nhashtag\n#OpenSource \nhashtag\n#SideProject",
+            "markdown": "### The Engineering Mindset: Solving Problems Piece by Piece\n\nAs an engineer, one of the most valuable lessons I have learned is that problems often appear more daunting than they truly are. When faced with a complex challenge, the key is to decompose it into manageable segments and address them iteratively. This philosophy recently helped me solve a common home-networking frustration.\n\n### The Challenge: Overcoming ISP Restrictions\n\nI recently encountered a standard but significant roadblock: my Internet Service Provider (ISP) would not allocate a public IP address. For many users, this limitation makes remote access and home automation nearly impossible without paying for expensive business-tier upgrades or navigating complex VPN setups. Rather than waiting for infrastructure changes, I decided to engineer a custom workaround.\n\n### The Solution: An ESP32-Based Wake-on-LAN Bot\n\nTo address this, I developed a custom **ESP32-based Wake-on-LAN (WoL) bot** that integrates directly with the Telegram API. By using Telegram as a communication layer, the bot functions as a secure bridge that bypasses the need for a static IP or port forwarding.\n\nWith a single `/wol` command sent via a Telegram chat, I can now power on my workstation remotely from anywhere in the world. The system is lightweight, reliable, and addresses a specific infrastructure gap with minimal hardware overhead.\n\n### Beyond the Code: Engineering as Problem Solving\n\nWhile I typically focus on developing large-scale AI systems, this project serves as a valuable reminder of the power of **IoT and hardware tinkering**. Engineering is not just about utilizing existing infrastructure; it is about finding creative ways to navigate around its limitations. Sometimes, the most satisfying solutions come from building the bridge yourself.\n\n### Project Resources\n\n*   **Source Code:** [GitHub Repository](https://lnkd.in/d2AzDupC)\n*   **Project Demo:** [Technical Demonstration Video](https://lnkd.in/dhAQa2UV)",
+            "summary": "How I built a Telegram-based Wake-on-LAN bot using an ESP32 to bypass public IP restrictions and manage remote power states."
+        },
+        "media": [
+            {
+                "type": "video",
+                "url": "/data/media/posts/urn_li_activity_7376943669699850240_0.jpg",
+                "videoUrl": "blob:https://www.linkedin.com/387cd7ca-92ab-4a78-9ade-fb279eaaa264",
+                "alt": "Video post",
+                "width": 800,
+                "height": 800
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7376943669699850240/"
+    },
+    {
+        "id": "urn:li:activity:7381749644797759488",
+        "title": "Mastering the Fundamentals: Reflections on 100 Days of Problem Solving",
+        "slug": "mastering-the-fundamentals-reflections-on-100-days-of-problem-solving",
+        "date": "2025-10-17T22:27:05.439Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 34,
+            "comments": 2,
+            "views": 1140,
+            "shares": 0
+        },
+        "tags": [
+            "career-growth",
+            "full-stack",
+            "architecture"
+        ],
+        "content": {
+            "raw": "💻 Leveling Up One Step at a Time!\n\nExcited to share a quick update just earned the 100 Days LeetCode Badge (2025)!\n\nBeen consistently working on strengthening my DSA fundamentals. In the 4 years of engineering, you explore everything projects, hackathons, freelance work and now, finally adding DSA into the mix feels like completing the circle.\n\nBuilding this habit early on to keep upskilling continuously, not just for college but for the rest of my developer journey ahead.\n\n\nhashtag\n#LearningNeverStops \nhashtag\n#DSA \nhashtag\n#Freelance \nhashtag\n#AI \nhashtag\n#LeetCode \nhashtag\n#ProblemSolving \nhashtag\n#DeveloperJourney \nhashtag\n#GrowthMindset",
+            "markdown": "### The Missing Piece of the Engineering Puzzle\n\nThroughout four years of engineering, the developer journey often involves a wide-ranging exploration of practical applications from **full-stack projects and hackathons** to professional freelance work. While these experiences build the 'how' of software development, focusing on Data Structures and Algorithms (DSA) addresses the 'why.' Integrating algorithmic thinking into a project-heavy background feels like completing the professional circle.\n\n### The Power of Consistent Habit Building\n\nEarning the **100 Days LeetCode Badge** represents more than a technical milestone; it is an exercise in discipline. Building this habit early in a career is essential for several reasons:\n\n*   **Continuous Upskilling:** Technical proficiency is not a destination but a trajectory. Regular practice ensures the mind remains sharp for complex problem-solving.\n*   **Beyond Academics:** While these skills are often associated with university curricula, their real value lies in the long-term developer journey and professional adaptability.\n*   **Analytical Rigor:** Strengthening DSA fundamentals improves the ability to write efficient, scalable code in any technical environment.\n\n### Moving Forward\n\nTechnical mastery requires a dual focus: building impactful products and mastering the underlying logic that makes them efficient. This milestone marks a commitment to maintaining that balance and fostering a **growth mindset** throughout my career.",
+            "summary": "A look at how consistent algorithmic practice completes the engineering circle alongside projects and freelance experience."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7381749644797759488_0.jpg",
+                "alt": "graphical user interface",
+                "width": 800,
+                "height": 443
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7381749644797759488/"
+    },
+    {
+        "id": "urn:li:activity:7382589764186800128",
+        "title": "Optimizing AI Microservices: Reducing Docker Image Sizes for Production",
+        "slug": "optimizing-ai-microservices-reducing-docker-image-sizes-for-production",
+        "date": "2025-10-17T22:27:05.434Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 14,
+            "comments": 0,
+            "views": 532,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "cloud-devops",
+            "system-design",
+            "architecture"
+        ],
+        "content": {
+            "raw": "🚀 Building for Production, Not Just for Demo\n\nCurrently preparing a client’s multi-microservice AI system for production optimizing it from the ground up instead of fixing it later.\n\nWhile setting up the architecture, we noticed how easily AI containers can bloat:\n- Each service (8 total) used torch, transformers, etc.\n- Even CPU-only services were built on GPU base images.\n- The default pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime image was ~12GB 😅\n\n⚙️ What we did:\n- Switched to a minimal CUDA runtime base → FROM nvidia/cuda:11.8.0-runtime-ubuntu20.04\n- Installed PyTorch 2.1.0 manually via pip\n- Dropped conda entirely (huge overhead)\n- Built shared CPU & GPU base images so all services reuse layers\n- Split upload & ingest modules for edge deployment, preprocessing close to data sources\n\n💡 Result:\n- Image size: 12GB → 4GB\n- Saved ~6 - 8GB per service\n- Faster image pulls & deploys\n- Lower runtime overhead and storage cost on GPU nodes\n- Cleaner, production-ready Docker setup\n\nOptimization isn’t only about faster models it’s also about smarter systems.\n\n The goal: lean, reproducible, and deployment-ready AI infrastructure from day one.\n\n\nhashtag\n#AIEngineering \nhashtag\n#MLOps \nhashtag\n#Docker \nhashtag\n#DevOps \nhashtag\n#PyTorch \nhashtag\n#Optimization \nhashtag\n#EdgeComputing \nhashtag\n#Microservices",
+            "markdown": "### The Challenge: Addressing Container Bloat\n\nMoving an AI system from a demonstration environment to production requires a fundamental shift in infrastructure strategy. During a recent deployment of a multi-microservice AI system, it became clear that standard configurations often lead to unsustainable container bloat. Initial images for the eight-service cluster were reaching **12GB** each, largely due to unoptimized base images and redundant dependencies.\n\n### Implementing Lean Infrastructure\n\nTo ensure the system was deployment-ready, we implemented a series of optimizations focused on efficiency and reproducibility:\n\n*   **Transitioned to Minimal CUDA Runtimes**: We replaced heavy default images with `nvidia/cuda:11.8.0-runtime-ubuntu20.04`, providing a cleaner foundation for execution.\n*   **Manual PyTorch Installation**: By switching to direct `pip` installations for PyTorch 2.1.0, we gained control over the installation footprint and eliminated the unnecessary overhead associated with pre-packaged AI runtime images.\n*   **Removed Conda**: Eliminating Conda in favor of streamlined dependency management significantly reduced layer size and environmental complexity.\n*   **Shared Layer Architecture**: We engineered centralized CPU and GPU base images. This allows all services to reuse common layers, accelerating build times and drastically reducing total storage requirements.\n*   **Architectural Decoupling**: We separated ingestion and upload modules to support edge deployment, ensuring preprocessing occurs as close to the data source as possible.\n\n### Measurable Impact\n\nThe results of these optimizations transformed the deployment pipeline, creating a leaner and more resilient infrastructure:\n\n*   **Significant Size Reduction**: Individual image sizes dropped from **12GB to 4GB**.\n*   **Storage Efficiency**: Saved approximately **6–8GB of storage** per service.\n*   **Improved Deployment Velocity**: Drastically faster image pulls and deployment cycles.\n*   **Reduced Operational Costs**: Lowered runtime overhead and storage costs across GPU nodes.\n\nTechnical optimization is not solely about model performance; it is about engineering smarter systems. Building lean, deployment-ready AI infrastructure from the start ensures that scaling remains sustainable and cost-effective.",
+            "summary": "A guide to reducing AI container bloat through base image optimization, Conda removal, and modular microservice architecture."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7382589764186800128_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 800
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7382589764186800128/"
+    },
+    {
+        "id": "urn:li:activity:7383178406139674624",
+        "title": "Efficiency at Scale: Streamlining Multi-Service Docker Builds",
+        "slug": "efficiency-at-scale-streamlining-multi-service-docker-builds",
+        "date": "2025-10-17T22:27:05.428Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 14,
+            "comments": 0,
+            "views": 632,
+            "shares": 0
+        },
+        "tags": [
+            "cloud-devops",
+            "ai-ml",
+            "system-design"
+        ],
+        "content": {
+            "raw": "🚀 Streamlining Docker Builds: Small Tweaks, Big Wins\n\nRecently spent some time tuning our multi-service Docker builds nothing broken, but definitely room to make things snappier.\nInstead of chasing big rewrites, I focused on the small flags and caching tricks that often get overlooked:\n\n🔧 What Changed\n- Enabled BuildKit caching so layers actually get reused\n- Parallelized multi-base builds to cut total time\n- Split heavy ML deps (PyTorch, TensorFlow) into shared base layers\n- Added simple flags for single-service builds, GPU detection, and cache skips\n- Auto-switched between CPU/GPU builds for better resource use\n\n⏱️ Results\n- Build time down from ~20 mins → 4–5 mins\n- Rebuilds now almost fully cached\n- Smaller images for non-ML services\n- Less manual setup for devs\n\n💭 Takeaway\n DevOps isn’t always about new tools it’s about knowing how things already work, and using the right flags wisely.\n Small, quiet optimizations that save real time and compute.\n\n😝 (…and having 160GB RAM doesn’t hurt either)\n\n\nhashtag\n#Docker \nhashtag\n#DevOps \nhashtag\n#BuildOptimization \nhashtag\n#Engineering \nhashtag\n#Python \nhashtag\n#ML \nhashtag\n#MLOps \nhashtag\n#SoftwareEngineering \nhashtag\n#CloudComputing",
+            "markdown": "### Optimization Over Overhaul\n\nIn many development environments, build pipelines slow down incrementally until they become a significant bottleneck. Rather than pursuing a complete architectural rewrite, substantial gains can often be found by mastering the existing toolset and implementing strategic configuration changes.\n\nI recently audited a series of multi-service Docker builds. While the system was functional, the 20-minute wait time was hindering developer velocity. By focusing on overlooked flags and caching mechanisms, I reduced that cycle time to under five minutes.\n\n### Key Technical Improvements\n\nThe optimization focused on five high-impact areas:\n\n- **BuildKit Caching**: Enabled advanced caching to ensure layers are reused effectively across builds, preventing redundant processing.\n- **Parallelized Multi-Base Builds**: Configured the pipeline to handle multiple base images simultaneously, cutting down the total execution time.\n- **Dependency Decoupling**: Split heavy machine learning dependencies, such as **PyTorch** and **TensorFlow**, into shared base layers to avoid repetitive, heavy-weight installations.\n- **Dynamic Resource Detection**: Implemented automated switching between CPU and GPU builds to optimize resource allocation based on the target environment.\n- **Developer-Centric Flags**: Added streamlined flags for single-service builds, GPU detection, and manual cache skips to provide the engineering team with more granular control.\n\n### Quantifiable Impact\n\nThe results of these strategic tweaks were immediate and impactful:\n\n- **Time Efficiency**: Total build time dropped from **20 minutes to approximately 4–5 minutes**.\n- **Improved Caching**: Rebuilds are now almost fully cached, ensuring near-instant updates for minor code changes.\n- **Leaner Images**: Non-ML services now yield significantly smaller images by excluding unnecessary dependencies.\n- **Reduced Overhead**: Manual setup for developers has been minimized, leading to a smoother local development experience and lower compute costs.\n\n### The Takeaway\n\nEffective DevOps is rarely about chasing the newest tool in the ecosystem. More often, it is about deep-diving into how your current tools like Docker actually function and utilizing their full feature set. Small, quiet optimizations often yield the most significant savings in both time and compute power.",
+            "summary": "Learn how small configuration tweaks and caching strategies reduced Docker build times from 20 minutes to under five for multi-service environments."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7383178406139674624_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 800
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7383178406139674624/"
+    },
+    {
+        "id": "urn:li:activity:7367548901358333952",
+        "title": "Redefining Digital Trust Through the Convergence of Blockchain and AI",
+        "slug": "redefining-digital-trust-through-the-convergence-of-blockchain-and-ai",
+        "date": "2025-09-17T22:27:05.452Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 4,
+            "comments": 0,
+            "views": 290,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "architecture",
+            "career-growth"
+        ],
+        "content": {
+            "raw": "✨ Grateful for the opportunity to speak at the Super AI Community Stakeholder Connect session on “What’s Next? Redefining Trust with Blockchain.” 🚀\n\nIt was a privilege to share the stage with Aadil Rayeen and dive into the journey of Blockchain 🌐 from its core principles to its powerful convergence with AI & ML for real-world applications.\n\nGrateful to Shilpa Mathur Ma’am for her unwavering encouragement 🙌 and to the Super AI team for building such an impactful platform that fosters collaboration, learning, and growth.\n\nLooking forward to contributing further to this vibrant community and its exciting vision for the future. 🌟\n\n\nhashtag\n#Blockchain \nhashtag\n#ArtificialIntelligence \nhashtag\n#AI \nhashtag\n#MachineLearning \nhashtag\n#Web3 \nhashtag\n#DigitalTrust \nhashtag\n#FutureOfTech \nhashtag\n#Innovation \nhashtag\n#SuperAI \nhashtag\n#Learning \nhashtag\n#Community \nhashtag\n#StudentGrowth \nhashtag\n#TechLeaders \nhashtag\n#EmergingTechnologies \nhashtag\n#SkillDevelopment",
+            "markdown": "### The Evolution of Digital Trust\n\nIn an era of rapid technological advancement, the mechanisms of trust are being fundamentally re-engineered. At the recent **Super AI Community Stakeholder Connect**, the discussion centered on the shifting paradigms of decentralized systems and their role in the modern tech stack.\n\n### Strategic Convergence: Blockchain, AI, and ML\n\nThe true potential of emerging technologies lies at their intersection. Moving beyond the core principles of distributed ledgers, the integration of **Blockchain, Artificial Intelligence (AI), and Machine Learning (ML)** is creating a robust framework for scalable, real-world applications. Key pillars of this convergence include:\n\n*   **Data Integrity:** Utilizing blockchain to ensure that the datasets powering ML models remain transparent and tamper-proof.\n*   **Decentralized Intelligence:** Distributing AI processing across secure, decentralized nodes to eliminate single points of failure.\n*   **Automated Trust:** Implementing smart contracts to govern AI-driven decision-making processes autonomously.\n\n### Fostering a Collaborative Ecosystem\n\nAdvancing the global tech landscape requires more than isolated innovation; it requires a vibrant community dedicated to collaboration and shared growth. Platforms like **Super AI** are essential for bridging the gap between stakeholders, fostering an environment where technical expertise and visionary leadership can align to build the future of Web3 and intelligent systems.\n\nContributing to these dialogues is a vital step in refining the tools and frameworks that will define the next generation of digital infrastructure.",
+            "summary": "Exploring the evolution of blockchain technology and its integration with AI and ML to solve complex trust and security challenges."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7367548901358333952_0.jpg",
+                "alt": "graphical user interface, website",
+                "width": 800,
+                "height": 418
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7367548901358333952/"
+    },
+    {
+        "id": "urn:li:activity:7371997101595017216",
+        "title": "Bridging Enterprise AI Theory and Practice: OCI Generative AI Certification",
+        "slug": "bridging-enterprise-ai-theory-and-practice-oci-generative-ai-certification",
+        "date": "2025-09-17T22:27:05.447Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 10,
+            "comments": 0,
+            "views": 613,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "cloud-devops",
+            "career-growth",
+            "internship"
+        ],
+        "content": {
+            "raw": "✨ Excited to share that I am now an Oracle Cloud Infrastructure 2025 Certified Generative AI Professional! 🚀\n\nOver the past year, I’ve gained hands-on experience in internships where I built AI-powered solutions from RAG systems and LLM integrations to multimodal chatbots and enterprise AI assistants. This certification now validates my skills with industry recognition, strengthening my foundation in applying Generative AI on cloud platforms for real-world enterprise use cases.\n🔹 Key highlights of this journey:\n ✅ Designing scalable AI solutions with LLMs, embeddings, and vector search.\n ✅ Learning best practices for deploying Generative AI on Oracle Cloud Infrastructure.\n ✅ Bridging my internship experience with industry-standard certification to prepare for AI + Cloud consulting and engineering roles.\n\nA huge thanks to Oracle & Oracle University for creating this initiative and helping young professionals like me step closer to impactful careers. 🙌\nI’m now open to work in the areas of AI Engineering, Cloud Consulting, and Applied AI, and excited to collaborate with professionals driving innovation in this space.\n\n\nhashtag\n#OracleCertified \nhashtag\n#OracleUniversity \nhashtag\n#GenerativeAI \nhashtag\n#OracleCloud \nhashtag\n#CloudComputing \nhashtag\n#ArtificialIntelligence \nhashtag\n#MachineLearning \nhashtag\n#LLM \n\nhashtag\n#CareerGrowth \nhashtag\n#Consulting \nhashtag\n#FutureOfWork",
+            "markdown": "### Validating Enterprise AI Expertise\n\nAchieving the **Oracle Cloud Infrastructure (OCI) 2025 Generative AI Professional** certification represents a significant milestone in my professional development. This credential serves as a rigorous validation of the skills required to architect and deploy generative models within complex cloud environments. It marks the transition from academic and internship-based exploration to industry-recognized proficiency.\n\n### From Implementation to Infrastructure\n\nOver the past year, my focus has been on building practical, AI-powered solutions. Through various internships, I have gained hands-on experience developing **RAG (Retrieval-Augmented Generation) systems**, LLM integrations, and multimodal chatbots. While building these solutions is one part of the equation, understanding the underlying cloud infrastructure is what enables them to scale at an enterprise level.\n\nThis certification has deepened my understanding of the OCI ecosystem, ensuring that the AI solutions I build are not only innovative but also secure, scalable, and cost-effective.\n\n### Core Technical Competencies\n\nThe journey toward this certification emphasized several critical pillars of modern AI engineering:\n\n*   **Scalable AI Design:** Utilizing Large Language Models (LLMs), embeddings, and vector search to create high-performance retrieval systems.\n*   **OCI Deployment Frameworks:** Mastering the best practices for deploying generative models specifically within Oracle’s high-performance cloud infrastructure.\n*   **Enterprise Integration:** Bridging the gap between experimental AI prototypes and production-ready enterprise assistants.\n\n### Looking Ahead\n\nWith a foundation built on both practical internship experience and industry-standard certification, I am focused on the intersection of **AI Engineering and Cloud Consulting**. I am eager to apply these validated skills to help organizations navigate the complexities of AI adoption and drive innovation through applied machine learning.",
+            "summary": "A deep dive into achieving the Oracle Cloud Infrastructure 2025 Generative AI Professional certification and its application in enterprise systems."
+        },
+        "media": [],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7371997101595017216/"
+    },
+    {
+        "id": "urn:li:activity:7236435187327238145",
+        "title": "Stepping into AI Leadership: Joining the TCET ACM SIG AI Committee",
+        "slug": "stepping-into-ai-leadership-joining-the-tcet-acm-sig-ai-committee",
+        "date": "2025-05-17T22:27:05.473Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 14,
+            "comments": 1,
+            "views": 593,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "career-growth",
+            "research"
+        ],
+        "content": {
+            "raw": "👋 Hello LinkedIn!\n\nUp until now, my profile has been quite bare bone, but I’ve decided it’s time to start sharing more about my journey and experiences here. As a BTech student at Thakur College of Engineering and Technology, I’m passionate about learning and growing in the field of engineering and technology.\n\nI’m excited to announce that I have recently joined the ACM SIG AI committee at my college! 🌟 Being part of this incredible community is a fantastic opportunity for me to dive deeper into the world of Artificial Intelligence and collaborate with like-minded individuals who share a passion for innovation and technology.\n\nAs I embark on this new chapter, I’m eager to learn, contribute, and grow with the ACM SIG AI team. We have some exciting projects and events lined up, and I can’t wait to share more about our journey and the impact we aim to create in the AI space.\n\nFeel free to check out our [Instagram](https://lnkd.in/d92HDcw8 ) and our [website](https://lnkd.in/dqAzrdAs) here to stay updated with our latest activities and initiatives. \nLooking forward to connecting with others who are passionate about AI and technology! 🚀\n\nTCET ACM SIGAI Student Chapter\n\n\n\nhashtag\n#ACMSIGAI \nhashtag\n#ArtificialIntelligence \nhashtag\n#MachineLearning \nhashtag\n#AICommunity \nhashtag\n#StudentLife \nhashtag\n#Engineering \nhashtag\n#ProfessionalGrowth",
+            "markdown": "### The Intersection of Engineering and Intelligence\n\nAs a BTech student at Thakur College of Engineering and Technology (TCET), my academic journey is centered on the practical application of emerging technologies. To deepen this focus, I have officially joined the **ACM SIG AI committee**, a specialized community dedicated to exploring the vast potential of Artificial Intelligence and its real-world implications.\n\n### Driving Innovation Through Collaboration\n\nBeing part of the ACM Special Interest Group on Artificial Intelligence (SIG AI) provides a structured environment to dive into technical research and collaborative development. My role within this committee is focused on fostering an ecosystem where like-minded individuals can bridge the gap between theoretical engineering and practical AI implementation.\n\nKey objectives for our upcoming term include:\n\n*   **Technical Excellence:** Developing projects that challenge our understanding of Machine Learning and Neural Networks.\n*   **Community Impact:** Organizing events and workshops designed to introduce complex AI concepts to a broader audience.\n*   **Collaborative Growth:** Working alongside a team of dedicated students to contribute meaningful research to the AI space.\n\n### Strategic Initiatives and Engagement\n\nThe TCET ACM SIG AI team is currently preparing a series of high-impact projects and initiatives. These efforts are aimed at creating a tangible footprint in the technology sector while providing members with the hands-on experience necessary for professional growth in the AI field.\n\nTo stay informed about our latest technical developments and community initiatives, you can visit our [Official Website](https://lnkd.in/dqAzrdAs) or follow our updates on [Instagram](https://lnkd.in/d92HDcw8). I look forward to connecting with fellow engineers, researchers, and innovators as we navigate this evolving landscape.",
+            "summary": "An overview of joining the ACM SIG AI committee at Thakur College of Engineering and Technology to advance AI research and community growth."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7236435187327238145_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 800
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7236435187327238145/"
+    },
+    {
+        "id": "urn:li:activity:7239289395843866624",
+        "title": "Advancing AI at TCET: The 2024-25 ACM SIGAI Core Committee",
+        "slug": "advancing-ai-at-tcet-the-2024-25-acm-sigai-core-committee",
+        "date": "2025-05-17T22:27:05.468Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 104,
+            "comments": 1,
+            "views": 0,
+            "shares": 1
+        },
+        "tags": [
+            "ai-ml",
+            "career-growth"
+        ],
+        "content": {
+            "raw": "📢 We are excited to introduce the dedicated and talented individuals who will lead the TCET ACM SIGAI community into a new year of technological exploration and academic excellence. Presenting the TCET ACM SIGAI CORE Committee for 2024-25! 📢\n\n⚜ Faculty Incharges ⚜\n- Dr. Shiwani Gupta, Faculty Sponsor, HOD AI&ML\n- Mrs.Pranjali Sankhe, Faculty Incharge \n\n⚜ SENIOR CORE ⚜\n🤵‍♂ Chairperson: Diya Manapetty\n🤵‍♂ Vice-Chairperson: Satish Gupta\n📑 Secretary: Sagar Kanekar\n🎉 Event Manager: Akshitha Chunchu\n💵 Treasurer: Saloni Parab\n💼 Sponsorship Head: Rahul George\n📣 PR Head: Saurabh Shukla\n🤵‍♂ Technical Head: Priyanshu Sah\n🎨 Creative Head: Shruthika K\n📚 Publication Head: Gayathri Poojary\n🌐 Webmaster: Khushi Sharma\n\n\n⚜ JUNIOR CORE ⚜\n📃 Joint Secretary: Mudassir Shaikh\n🎯 Joint Event Manager: Taran Shetty\n👨‍💻 Joint Technical Head: Kartik Bankar\n🎨 Joint Creative Head: Rishikesh Saroj\n📣 Joint PR Head: Sujit thakur\n\n\nCongratulations on this achievement! 🎉\n\nThis team embodies the essence of TCET’s innovation and determination. With a strong commitment to AI and ML, they are ready to push the boundaries of technology and foster a thriving academic community. We have no doubt that, under their leadership, TCET ACM SIGAI will reach new heights and inspire students across all disciplines.\n\nAs we look forward to an exciting year ahead, we encourage all TCET students to participate, share ideas, and contribute to the numerous workshops, events, and initiatives that this team has planned\n\n. Stay tuned for updates on upcoming opportunities that will help you grow and explore the limitless world of Artificial Intelligence and Machine Learning.\n\nLet’s make 2024-25 an unforgettable year for Tcet-ACM Sigai!\n\n\nhashtag\n#TCETACMSIGAI \nhashtag\n#Leadership \nhashtag\n#AIML \nhashtag\n#Innovation \nhashtag\n#AICommunity \nhashtag\n#TeamReveal \nhashtag\n#Congratulations \nhashtag\n#TechnologyExcellence",
+            "markdown": "### Engineering the Future of AI\n\nThe TCET ACM SIGAI community enters a new chapter for the 2024-25 academic year, driven by a commitment to technological exploration and academic excellence. This newly appointed committee represents a diverse group of student leaders poised to push the boundaries of **Artificial Intelligence and Machine Learning (AI/ML)**.\n\n### Faculty Guidance\n\nThe chapter operates under the strategic mentorship of faculty members who provide the foundational support for the community's growth and academic integrity.\n\n* **Dr. Shiwani Gupta** – Faculty Sponsor & HOD AI&ML\n* **Mrs. Pranjali Sankhe** – Faculty Incharge \n\n### Senior Core Committee\n\nThe Senior Core leads the high-level strategic initiatives, ranging from technical development to community outreach and financial management.\n\n* **Chairperson:** Diya Manapetty\n* **Vice-Chairperson:** Satish Gupta\n* **Secretary:** Sagar Kanekar\n* **Event Manager:** Akshitha Chunchu\n* **Treasurer:** Saloni Parab\n* **Sponsorship Head:** Rahul George\n* **PR Head:** Saurabh Shukla\n* **Technical Head:** Priyanshu Sah\n* **Creative Head:** Shruthika K\n* **Publication Head:** Gayathri Poojary\n* **Webmaster:** Khushi Sharma\n\n### Junior Core Committee\n\nSupporting the senior leadership, the Junior Core facilitates the execution of departmental goals and ensures operational continuity.\n\n* **Joint Secretary:** Mudassir Shaikh\n* **Joint Event Manager:** Taran Shetty\n* **Joint Technical Head:** Kartik Bankar\n* **Joint Creative Head:** Rishikesh Saroj\n* **Joint PR Head:** Sujit Thakur\n\n### Vision and Community Engagement\n\nThis team embodies the essence of **innovation and determination**. With a focused mission to cultivate a thriving AI ecosystem, the committee is prepared to lead high-impact workshops, technical events, and research-oriented initiatives.\n\nUnder this new leadership, TCET ACM SIGAI aims to inspire students across all disciplines to explore the limitless possibilities of modern technology. Students are encouraged to participate, share ideas, and contribute to the upcoming initiatives designed to foster growth in the evolving landscape of AI and ML.",
+            "summary": "TCET ACM SIGAI introduces its new leadership team dedicated to fostering innovation in artificial intelligence and machine learning."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7239289395843866624_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 600
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7239289395843866624/"
+    },
+    {
+        "id": "urn:li:activity:7249090500572463106",
+        "title": "Scaling Enterprise Productivity: Our Top 10 Finish at the Intel Gen AI Hackathon",
+        "slug": "scaling-enterprise-productivity-our-top-10-finish-at-the-intel-gen-ai-hackathon",
+        "date": "2025-05-17T22:27:05.462Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 102,
+            "comments": 12,
+            "views": 2547,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "system-design",
+            "career-growth"
+        ],
+        "content": {
+            "raw": "🎉 𝗧𝗵𝗿𝗶𝗹𝗹𝗲𝗱 𝘁𝗼 𝗦𝗵𝗮𝗿𝗲 𝗢𝘂𝗿 𝗦𝘂𝗰𝗰𝗲𝘀𝘀 𝗮𝘁 𝘁𝗵𝗲 𝗜𝗻𝘁𝗲𝗹 𝗞𝗣𝗥𝗜𝗘𝗧 𝗡𝗮𝘁𝗶𝗼𝗻𝗮𝗹 𝗟𝗲𝘃𝗲𝗹 𝗛𝗮𝗰𝗸𝗮𝘁𝗵𝗼𝗻🏆\n\n\nI’m excited to announce that my team, Tech Enerzal, secured the 𝟴𝘁𝗵 𝗿𝗮𝗻𝗸 at the 𝗜𝗻𝘁𝗲𝗹 𝗞𝗣𝗥𝗜𝗘𝗧 𝗡𝗮𝘁𝗶𝗼𝗻𝗮𝗹 𝗟𝗲𝘃𝗲𝗹 𝗚𝗲𝗻 𝗔𝗜 𝗛𝗮𝗰𝗸𝗮𝘁𝗵𝗼𝗻 held in 𝗖𝗼𝗶𝗺𝗯𝗮𝘁𝗼𝗿𝗲 on 4th-5th October. Competing with over 𝟯𝟬𝟬+ 𝘁𝗲𝗮𝗺𝘀 and 𝟭𝟬𝟬𝟬+ 𝗽𝗮𝗿𝘁𝗶𝗰𝗶𝗽𝗮𝗻𝘁𝘀 from 𝗮𝗰𝗿𝗼𝘀𝘀 𝗜𝗻𝗱𝗶𝗮, this was an intense 24-hour challenge that tested the boundaries of our innovation and teamwork!\n\nOur team, developed Enerzal, an AI-powered business assistant designed to tackle critical challenges in large organizations. 🤖\nEnerzal addresses issues faced by HR and IT teams, which are often overwhelmed by repetitive queries related to HR policies, IT support, and event management.\nUsing an advanced NLP and Gen-based Retrieval-Augmented Generation (RAG) pipeline, Enerzal automates these interactions, providing real-time responses to reduce wait times, enhance employee satisfaction, and relieve pressure on support teams. Fully customizable and secure, Enerzal seamlessly integrates with any system, whether deployed on local infrastructure or in the cloud a solution with immense potential to scale and improve efficiency in diverse business environments. 🌍💼\n\nTo my amazing teammates, Ayush Rai and Aadil Rayeen   thank you ❤️ for your support, endless fun, and the incredible learning experience we shared. It was a joy working alongside you both, and I couldn’t have asked for better teammates! 🙌🎉\n\nA huge thank you to our mentor, Mrs. Shilpa Mathur Ma'am 🙏, for her invaluable guidance throughout the hackathon. We are also grateful to Dr. Shiwani Gupta Ma'am (HOD AIML) for her support and motivation 🌟, and rajni bahuguna Ma'am (Activity Head) for her cooperation.\n\nA special shoutout to the Intel Corporation and its executive Shriram Vasudevan (FIE, FIETE,SMIEEE) 🎯, for putting together such a well-coordinated event at KPRIET in partnership with Intel. His insights and feedback were instrumental in refining our solution, and his involvement alongside KPRIET ensured that the event ran smoothly from start to finish. ✅🎤\n\nWe also want to extend our gratitude to the organizing team   Ahamed Thaiyub A, Jeyasundar R, and Pranesh Rajeswaran   whose flawless handling of the event made it an unforgettable experience. 🙌 And a big thanks to Rahamate alam ansari for taking care of all our accommodation needs and going above and beyond ensuring we were comfortable throughout the event. 🛏️🤗.\n\nThis hackathon has been an incredible learning experience, both in terms of technical knowledge and personal growth.\n\n\n\nhashtag\n#GENAIHackathon2024 \nhashtag\n#InnovationPinnacle \nhashtag\n#Intelai \n\nhashtag\n#intel \nhashtag\n#intelsoftware \nhashtag\n#oneAPI \nhashtag\n#jeyasundar \nhashtag\n#ahamedthaiyub \nhashtag\n#praneshrajeswaran \nhashtag\n#HackathonSuccess 🏆 \nhashtag\n#IntelKPRIET 💻 \nhashtag\n#AI 🤖 \nhashtag\n#Teamwork 🤝 \nhashtag\n#BusinessChatbot 💼 \nhashtag\n#GenAI 🔍 \nhashtag\n#Innovation 💡 🌍\nhashtag\n#Networking 🌟 \nhashtag\n#FutureTech 🌐 \nhashtag\n#TCET 🎓",
+            "markdown": "Our team, **Tech Enerzal**, recently secured the **8th rank** at the Intel KPRIET National Level Gen AI Hackathon in Coimbatore. Competing against over **300 teams and 1,000 participants** from across India, this 24-hour marathon challenged us to push the limits of Generative AI to solve complex corporate inefficiencies.\n\n### The Challenge: Enterprise Bottlenecks\nLarge organizations often face a common hurdle: HR and IT departments are frequently overwhelmed by high volumes of repetitive queries. These range from standard policy clarifications to routine technical support and event management. Such bottlenecks lead to delayed response times and reduced employee satisfaction.\n\n### Our Solution: Enerzal\nTo address these pain points, we developed **Enerzal**, an AI-powered business assistant designed to streamline internal communications. Enerzal functions as a secure, real-time interface that handles routine queries autonomously, allowing support teams to focus on high-impact tasks.\n\n**Key Technical Features:**\n\n*   **Advanced RAG Pipeline:** Enerzal utilizes a Retrieval-Augmented Generation (RAG) framework powered by advanced NLP to ensure responses are contextually accurate and grounded in specific organizational data.\n*   **Seamless Integration:** The solution is designed to be system-agnostic, integrating easily with existing enterprise tools and databases.\n*   **Flexible Deployment:** Enerzal can be deployed on local infrastructure for maximum data security or via cloud-based environments for rapid scalability.\n\n### Collaboration and Mentorship\nSuccess in a high-stakes environment is a result of technical synergy and dedication. I am incredibly grateful to my teammates, **Ayush Rai** and **Aadil Rayeen**, for their hard work throughout the 24-hour sprint.\n\nWe owe much of our progress to our mentor, **Mrs. Shilpa Mathur**, and the leadership of **Dr. Shiwani Gupta (HOD AIML)**. The event, expertly coordinated by **Shriram Vasudevan** from Intel Corporation in partnership with KPRIET, provided a platform that combined rigorous technical evaluation with invaluable industry feedback.\n\n### Final Thoughts\nThis experience was a deep dive into the practical application of RAG architectures and enterprise-grade AI. As Generative AI continues to evolve, tools like Enerzal will become essential for organizations looking to optimize their internal operations and scale efficiently. This hackathon has been an incredible milestone in both technical mastery and professional growth.",
+            "summary": "A technical look at Enerzal, an AI business assistant using RAG to automate organizational HR and IT workflows, developed for the Intel national hackathon."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7249090500572463106_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 532
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7249090500572463106_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 532
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7249090500572463106_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 532
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7249090500572463106_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 450
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7249090500572463106/"
+    },
+    {
+        "id": "urn:li:activity:7271579861717037056",
+        "title": "EcoChain: Designing a Decentralized Platform for Carbon Credit Trading",
+        "slug": "ecochain-designing-a-decentralized-platform-for-carbon-credit-trading",
+        "date": "2025-05-17T22:27:05.458Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 28,
+            "comments": 2,
+            "views": 1160,
+            "shares": 0
+        },
+        "tags": [
+            "web-dev",
+            "ui-ux",
+            "creative-coding"
+        ],
+        "content": {
+            "raw": "🚀 Sneak Peek of My Latest Project! 🌍\n\nSuper excited to kick off my weekly project showcase series! 🎉 Every Sunday, I'll be sharing one of my projects from past hackathons , starting today with a preview of the front end for EcoChain a decentralized carbon credit trading platform. 🌱\n\n🌟 This Week’s Highlight:\nI’ve completed the Hero Section and Landing Page, which feature:\n✅ A sleek, responsive design for a seamless user experience\n✅ Dynamic animations and smooth transitions\n✅ A focus on sustainability and innovation\n\nEcoChain is all about making carbon credit trading transparent, secure, and accessible to everyone, leveraging blockchain technology to make an impact.\nStarting today, I’ll continue to share more projects including some of my favorite hackathon creations every Sunday. Stay tuned for Week 2 next weekend! 🔥\n\n💬 Feedback welcome! What are your thoughts on EcoChain’s front end design and concept? Let me know below!\n\nLive for Desktop users : https://lnkd.in/dwTFY7T6\n\n\n\nhashtag\n#WebDevelopment \nhashtag\n#Frontend \nhashtag\n#EcoChain \nhashtag\n#Blockchain \nhashtag\n#Sustainability \nhashtag\n#HackathonProjects \nhashtag\n#WeeklyUpdates \nhashtag\n#GreenTech",
+            "markdown": "### The Vision for EcoChain\n\nEcoChain is a decentralized platform designed to bring transparency, security, and accessibility to the carbon credit market. By leveraging **blockchain technology**, the project aims to democratize sustainability initiatives, ensuring that carbon offset trading is verifiable, immutable, and impactful.\n\n### Designing for Impact: The Frontend\n\nThe initial phase of the project focuses on creating a high-performance landing page that balances aesthetic appeal with functional clarity. The design prioritizes a **seamless user experience** across all devices, acknowledging that accessibility is key to widespread adoption in the GreenTech space. \n\nThe interface is built to bridge the gap between complex decentralized finance (DeFi) mechanisms and intuitive user interactions.\n\n### Technical Highlights and Features\n\n*   **Responsive Architecture:** A sleek, fluid layout optimized for diverse screen sizes to ensure a consistent experience across desktop environments.\n*   **Dynamic Motion Design:** Implementation of smooth transitions and dynamic animations that guide the user through the platform’s core value proposition without sacrificing performance.\n*   **Sustainability-Centric UI:** A clean aesthetic that reflects the project's commitment to innovation and environmental impact.\n\n### Current Progress\n\nThe current iteration features a fully realized Hero Section and Landing Page, setting the design language for the rest of the decentralized application (dApp). This project is part of an ongoing series highlighting technical builds and hackathon innovations.\n\n### Project Preview\n\nThe live desktop version of the landing page is currently available for review:\n[EcoChain Live Demo](https://lnkd.in/dwTFY7T6)",
+            "summary": "An exploration of the frontend architecture and design principles behind EcoChain, a blockchain-based platform for transparent carbon credit trading."
+        },
+        "media": [
+            {
+                "type": "video",
+                "url": "/data/media/posts/urn_li_activity_7271579861717037056_0.jpg",
+                "videoUrl": "blob:https://www.linkedin.com/9d15000a-be21-4562-8902-ff3c8dea084a",
+                "alt": "Video post",
+                "width": 800,
+                "height": 800
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7271579861717037056/"
+    }
+]

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From Dev-Build to Digital Experience: Redefining the Modern Portfolio — Priyanshu Sah</title>
+    <meta name="description" content="An exploration of the technical and design choices behind a new immersive portfolio, blending full-stack engineering with high-end UX design.">
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://priyanshusah.com/socials/from-dev-build-to-digital-experience-redefining-the-modern-portfolio">
+    <meta property="og:title" content="From Dev-Build to Digital Experience: Redefining the Modern Portfolio">
+    <meta property="og:description" content="An exploration of the technical and design choices behind a new immersive portfolio, blending full-stack engineering with high-end UX design.">
+    <meta property="og:image" content="https://priyanshusah.com/data/media/posts/urn_li_activity_7428664367392591872_0.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://priyanshusah.com/socials/from-dev-build-to-digital-experience-redefining-the-modern-portfolio">
+    <meta property="twitter:title" content="From Dev-Build to Digital Experience: Redefining the Modern Portfolio">
+    <meta property="twitter:description" content="An exploration of the technical and design choices behind a new immersive portfolio, blending full-stack engineering with high-end UX design.">
+    <meta property="twitter:image" content="https://priyanshusah.com/data/media/posts/urn_li_activity_7428664367392591872_0.jpg">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "From Dev-Build to Digital Experience: Redefining the Modern Portfolio",
+  "description": "An exploration of the technical and design choices behind a new immersive portfolio, blending full-stack engineering with high-end UX design.",
+  "image": "https://priyanshusah.com/data/media/posts/urn_li_activity_7428664367392591872_0.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Priyanshu Sah",
+    "url": "https://linkedin.com/in/priyanshu123sah"
+  },
+  "datePublished": "2026-02-17T22:27:05.337Z",
+  "dateModified": "2026-02-17T22:27:05.337Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://priyanshusah.com/socials/from-dev-build-to-digital-experience-redefining-the-modern-portfolio"
+  }
+}
+    </script>
+
+    <!-- Styles matching portfolio aesthetics -->
+    <style>
+        :root {
+            --bg-color: #09090b;
+            --card-bg: #18181b;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent: #3b82f6;
+            --border: #27272a;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .nav-header {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+        .nav-back:hover {
+            color: var(--text-main);
+        }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+        article {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+        .author-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .author-name {
+            font-weight: 600;
+        }
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        h1 {
+            font-size: 2rem;
+            line-height: 1.3;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        h2, h3 {
+            margin-top: 2rem;
+            color: var(--text-main);
+        }
+        p {
+            margin-bottom: 1.5rem;
+            color: #d4d4d8;
+        }
+        .media-container {
+            margin: 2rem 0;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .media-container img, .media-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .tag {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .app-prompt {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .btn-interactive {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: opacity 0.2s;
+        }
+        .btn-interactive:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header class="nav-header">
+        <a href="/" class="nav-logo">Priyanshu Sah</a>
+        <a href="/socials" class="nav-back">← All Posts</a>
+    </header>
+    <main class="container">
+        <article>
+            <div class="meta-bar">
+                <img src="/data/media/avatars/author_avatar.jpg" alt="Priyanshu Sah" class="author-img">
+                <div class="author-info">
+                    <span class="author-name">Priyanshu Sah</span>
+                    <span class="post-date">February 18, 2026</span>
+                </div>
+            </div>
+            <h1>From Dev-Build to Digital Experience: Redefining the Modern Portfolio</h1>
+            
+            <div class="media-container">
+                
+                <video controls poster="/data/media/posts/urn_li_activity_7428664367392591872_0.jpg"><source src="blob:https://www.linkedin.com/9c6edc40-cd92-40e8-8e13-987e8feeacad" type="video/mp4"></video>
+                
+            </div>
+            
+            <div class="content-body">
+                <p>The transition of a personal portfolio from a development build to its permanent home at <strong>priyanshusah.com</strong> marks a significant shift in philosophy. Moving beyond a focus on sheer performance, the latest iteration emphasizes <strong>immersion</strong>, transforming the site from a simple project gallery into a fully realized digital environment.</p>
+<h3>Engineering the Immersive Layer</h3>
+<p>To achieve a high-end user experience, several core systems were rebuilt or enhanced to move the needle from functional to experiential:</p>
+<p>*   <strong>Spatial Audio Landscape</strong>: The integration of ambient sounds and a curated music toggle creates a sensory layer that grounds the user in the digital space.<br>*   <strong>Visual Fidelity Overhaul</strong>: The animation engine was redesigned to support smoother transitions and more sophisticated motion design, ensuring a fluid interactive experience.<br>*   <strong>Custom DX and Personalization</strong>: Unique page loaders and granular theme controls provide users with agency over how they consume and interact with the content.<br>*   <strong>Full-Stack Optimization</strong>: High visual density requires a robust foundation. The backend has been optimized to maintain <strong>blazing-fast performance</strong> despite the increased complexity of the frontend assets.</p>
+<h3>Bridging Engineering and Design</h3>
+<p>This project serves as a practical application of the synergy between <strong>AI and Full-Stack Engineering</strong>. By blending heavy-duty technical architecture with high-end UX, the goal is to demonstrate how modern web technologies can be pushed to create more than just functional interfaces—but memorable experiences.</p>
+<p><strong>Explore the Live Environment:</strong> <a href="https://priyanshusah.com/" target="_blank" rel="noopener noreferrer">priyanshusah.com</a>  <br><strong>View the Source Code:</strong> <a href="https://github.com/Priyanshu611/priyanshusah.com" target="_blank" rel="noopener noreferrer">GitHub Repository</a></p>
+            </div>
+            <div class="tags">
+                <span class="tag">#full-stack</span><span class="tag">#ui-ux</span><span class="tag">#creative-coding</span><span class="tag">#web-dev</span>
+            </div>
+        </article>
+        <div class="app-prompt">
+            <h3>Want to explore my full interactive portfolio?</h3>
+            <p>Experience 3D environments, cinematic looping backgrounds, and my complete engineering journey.</p>
+            <a href="/socials?post=from-dev-build-to-digital-experience-redefining-the-modern-portfolio" class="btn-interactive">Launch Interactive App 🚀</a>
+        </div>
+    </main>
+</body>
+</html>

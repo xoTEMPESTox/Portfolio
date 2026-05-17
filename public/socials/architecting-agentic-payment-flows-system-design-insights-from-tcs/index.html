@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecting Agentic Payment Flows: System Design Insights from TCS — Priyanshu Sah</title>
+    <meta name="description" content="A deep dive into the research and system design of agentic payment ecosystems during a three-month project internship at TCS.">
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://priyanshusah.com/socials/architecting-agentic-payment-flows-system-design-insights-from-tcs">
+    <meta property="og:title" content="Architecting Agentic Payment Flows: System Design Insights from TCS">
+    <meta property="og:description" content="A deep dive into the research and system design of agentic payment ecosystems during a three-month project internship at TCS.">
+    <meta property="og:image" content="https://priyanshusah.com/data/media/posts/urn_li_activity_7435665852286320640_0.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://priyanshusah.com/socials/architecting-agentic-payment-flows-system-design-insights-from-tcs">
+    <meta property="twitter:title" content="Architecting Agentic Payment Flows: System Design Insights from TCS">
+    <meta property="twitter:description" content="A deep dive into the research and system design of agentic payment ecosystems during a three-month project internship at TCS.">
+    <meta property="twitter:image" content="https://priyanshusah.com/data/media/posts/urn_li_activity_7435665852286320640_0.jpg">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Architecting Agentic Payment Flows: System Design Insights from TCS",
+  "description": "A deep dive into the research and system design of agentic payment ecosystems during a three-month project internship at TCS.",
+  "image": "https://priyanshusah.com/data/media/posts/urn_li_activity_7435665852286320640_0.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Priyanshu Sah",
+    "url": "https://linkedin.com/in/priyanshu123sah"
+  },
+  "datePublished": "2026-03-17T22:27:05.329Z",
+  "dateModified": "2026-03-17T22:27:05.329Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://priyanshusah.com/socials/architecting-agentic-payment-flows-system-design-insights-from-tcs"
+  }
+}
+    </script>
+
+    <!-- Styles matching portfolio aesthetics -->
+    <style>
+        :root {
+            --bg-color: #09090b;
+            --card-bg: #18181b;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent: #3b82f6;
+            --border: #27272a;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .nav-header {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+        .nav-back:hover {
+            color: var(--text-main);
+        }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+        article {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+        .author-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .author-name {
+            font-weight: 600;
+        }
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        h1 {
+            font-size: 2rem;
+            line-height: 1.3;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        h2, h3 {
+            margin-top: 2rem;
+            color: var(--text-main);
+        }
+        p {
+            margin-bottom: 1.5rem;
+            color: #d4d4d8;
+        }
+        .media-container {
+            margin: 2rem 0;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .media-container img, .media-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .tag {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .app-prompt {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .btn-interactive {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: opacity 0.2s;
+        }
+        .btn-interactive:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header class="nav-header">
+        <a href="/" class="nav-logo">Priyanshu Sah</a>
+        <a href="/socials" class="nav-back">← All Posts</a>
+    </header>
+    <main class="container">
+        <article>
+            <div class="meta-bar">
+                <img src="/data/media/avatars/author_avatar.jpg" alt="Priyanshu Sah" class="author-img">
+                <div class="author-info">
+                    <span class="author-name">Priyanshu Sah</span>
+                    <span class="post-date">March 18, 2026</span>
+                </div>
+            </div>
+            <h1>Architecting Agentic Payment Flows: System Design Insights from TCS</h1>
+            
+            <div class="media-container">
+                
+                <img src="/data/media/posts/urn_li_activity_7435665852286320640_0.jpg" alt="Architecting Agentic Payment Flows: System Design Insights from TCS">
+                
+            </div>
+            
+            <div class="content-body">
+                <p>My recent three-month tenure at Tata Consultancy Services (TCS) provided a unique vantage point into the lifecycle of early-stage innovation. Unlike traditional development roles, this internship focused on <strong>architecture, feasibility research, and the exploration of emerging tech ecosystems</strong>.</p>
+<h3>Architecting the Agent Farm Ecosystem</h3>
+A significant portion of my work centered on the <strong>agent farm ecosystem</strong>, a space where autonomous agents interact within a controlled environment. My role involved bridging the gap between existing payment infrastructures and these agentic systems.
+<ul><li>Designing system components for an integrated <strong>payment gateway</strong>.</li><li>Modeling transaction flows specifically tailored for <strong>autonomous agents</strong>.</li><li>Evaluating security considerations and behavioral protocols for machine-to-machine payments.</li></ul>
+<h3>Enabling Agentic Payment Flows</h3>
+One of the most compelling challenges was enabling <strong>two-way agentic payment flows</strong>. This required a deep dive into how financial infrastructure can be automated to support agents operating independently. By connecting standard payment rails with agent-based architectures, we were able to evaluate the practicalities of autonomous commerce within a controlled architecture.
+<h3>Research Engineering and System Design</h3>
+This experience sat firmly at the intersection of <strong>research engineering and system design</strong>. The focus was rarely on routine development; instead, the work prioritized:
+- Evaluating the technical <strong>feasibility</strong> of emerging concepts.
+- Shaping the high-level <strong>architecture</strong> of innovative platforms.
+- Translating theoretical technologies into functional, real-world systems through rigorous <strong>systems thinking</strong>.
+<p>This journey of exploration was supported by the guidance of my mentor, Nita Khare, and the collaboration of colleagues Aadil Rayeen and Diya Manapetty. These three months have served as a vital foundation for understanding how autonomous systems will shape the future of digital transactions.</p>
+            </div>
+            <div class="tags">
+                <span class="tag">#system-design</span><span class="tag">#architecture</span><span class="tag">#research</span><span class="tag">#internship</span>
+            </div>
+        </article>
+        <div class="app-prompt">
+            <h3>Want to explore my full interactive portfolio?</h3>
+            <p>Experience 3D environments, cinematic looping backgrounds, and my complete engineering journey.</p>
+            <a href="/socials?post=architecting-agentic-payment-flows-system-design-insights-from-tcs" class="btn-interactive">Launch Interactive App 🚀</a>
+        </div>
+    </main>
+</body>
+</html>

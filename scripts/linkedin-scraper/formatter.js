@@ -1,13 +1,13 @@
 // Data Formatter
-// Transforms raw scraped LinkedIn data into blogs_v2.json format
+// Transforms raw scraped LinkedIn data into blog_data.json format
 
 import slugify from 'slugify';
 import config from './config.js';
 
 /**
- * Formats raw scraped posts into blogs_v2.json structure
+ * Formats raw scraped posts into blog_data.json structure
  * @param {Array} rawPosts - Array of raw post data from scraper
- * @returns {Array} Formatted posts matching blogs_v2.json schema
+ * @returns {Array} Formatted posts matching blog_data.json schema
  */
 export function formatPosts(rawPosts) {
     return rawPosts

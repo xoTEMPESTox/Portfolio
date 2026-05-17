@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoChain: Designing a Decentralized Platform for Carbon Credit Trading — Priyanshu Sah</title>
+    <meta name="description" content="An exploration of the frontend architecture and design principles behind EcoChain, a blockchain-based platform for transparent carbon credit trading.">
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://priyanshusah.com/socials/ecochain-designing-a-decentralized-platform-for-carbon-credit-trading">
+    <meta property="og:title" content="EcoChain: Designing a Decentralized Platform for Carbon Credit Trading">
+    <meta property="og:description" content="An exploration of the frontend architecture and design principles behind EcoChain, a blockchain-based platform for transparent carbon credit trading.">
+    <meta property="og:image" content="https://priyanshusah.com/data/media/posts/urn_li_activity_7271579861717037056_0.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://priyanshusah.com/socials/ecochain-designing-a-decentralized-platform-for-carbon-credit-trading">
+    <meta property="twitter:title" content="EcoChain: Designing a Decentralized Platform for Carbon Credit Trading">
+    <meta property="twitter:description" content="An exploration of the frontend architecture and design principles behind EcoChain, a blockchain-based platform for transparent carbon credit trading.">
+    <meta property="twitter:image" content="https://priyanshusah.com/data/media/posts/urn_li_activity_7271579861717037056_0.jpg">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "EcoChain: Designing a Decentralized Platform for Carbon Credit Trading",
+  "description": "An exploration of the frontend architecture and design principles behind EcoChain, a blockchain-based platform for transparent carbon credit trading.",
+  "image": "https://priyanshusah.com/data/media/posts/urn_li_activity_7271579861717037056_0.jpg",
+  "author": {
+    "@type": "Person",
+    "name": "Priyanshu Sah",
+    "url": "https://linkedin.com/in/priyanshu123sah"
+  },
+  "datePublished": "2025-05-17T22:27:05.458Z",
+  "dateModified": "2025-05-17T22:27:05.458Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://priyanshusah.com/socials/ecochain-designing-a-decentralized-platform-for-carbon-credit-trading"
+  }
+}
+    </script>
+
+    <!-- Styles matching portfolio aesthetics -->
+    <style>
+        :root {
+            --bg-color: #09090b;
+            --card-bg: #18181b;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent: #3b82f6;
+            --border: #27272a;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .nav-header {
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(9, 9, 11, 0.8);
+            backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+        .nav-back {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s;
+        }
+        .nav-back:hover {
+            color: var(--text-main);
+        }
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+        article {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .meta-bar {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+        .author-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .author-name {
+            font-weight: 600;
+        }
+        .post-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        h1 {
+            font-size: 2rem;
+            line-height: 1.3;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+        h2, h3 {
+            margin-top: 2rem;
+            color: var(--text-main);
+        }
+        p {
+            margin-bottom: 1.5rem;
+            color: #d4d4d8;
+        }
+        .media-container {
+            margin: 2rem 0;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .media-container img, .media-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+        .tag {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .app-prompt {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .btn-interactive {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: opacity 0.2s;
+        }
+        .btn-interactive:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header class="nav-header">
+        <a href="/" class="nav-logo">Priyanshu Sah</a>
+        <a href="/socials" class="nav-back">← All Posts</a>
+    </header>
+    <main class="container">
+        <article>
+            <div class="meta-bar">
+                <img src="/data/media/avatars/author_avatar.jpg" alt="Priyanshu Sah" class="author-img">
+                <div class="author-info">
+                    <span class="author-name">Priyanshu Sah</span>
+                    <span class="post-date">May 18, 2025</span>
+                </div>
+            </div>
+            <h1>EcoChain: Designing a Decentralized Platform for Carbon Credit Trading</h1>
+            
+            <div class="media-container">
+                
+                <video controls poster="/data/media/posts/urn_li_activity_7271579861717037056_0.jpg"><source src="blob:https://www.linkedin.com/9d15000a-be21-4562-8902-ff3c8dea084a" type="video/mp4"></video>
+                
+            </div>
+            
+            <div class="content-body">
+                <h3>The Vision for EcoChain</h3>
+<p>EcoChain is a decentralized platform designed to bring transparency, security, and accessibility to the carbon credit market. By leveraging <strong>blockchain technology</strong>, the project aims to democratize sustainability initiatives, ensuring that carbon offset trading is verifiable, immutable, and impactful.</p>
+<h3>Designing for Impact: The Frontend</h3>
+<p>The initial phase of the project focuses on creating a high-performance landing page that balances aesthetic appeal with functional clarity. The design prioritizes a <strong>seamless user experience</strong> across all devices, acknowledging that accessibility is key to widespread adoption in the GreenTech space. </p>
+<p>The interface is built to bridge the gap between complex decentralized finance (DeFi) mechanisms and intuitive user interactions.</p>
+<h3>Technical Highlights and Features</h3>
+<p>*   <strong>Responsive Architecture:</strong> A sleek, fluid layout optimized for diverse screen sizes to ensure a consistent experience across desktop environments.<br>*   <strong>Dynamic Motion Design:</strong> Implementation of smooth transitions and dynamic animations that guide the user through the platform’s core value proposition without sacrificing performance.<br>*   <strong>Sustainability-Centric UI:</strong> A clean aesthetic that reflects the project's commitment to innovation and environmental impact.</p>
+<h3>Current Progress</h3>
+<p>The current iteration features a fully realized Hero Section and Landing Page, setting the design language for the rest of the decentralized application (dApp). This project is part of an ongoing series highlighting technical builds and hackathon innovations.</p>
+<h3>Project Preview</h3>
+<p>The live desktop version of the landing page is currently available for review:<br><a href="https://lnkd.in/dwTFY7T6" target="_blank" rel="noopener noreferrer">EcoChain Live Demo</a></p>
+            </div>
+            <div class="tags">
+                <span class="tag">#web-dev</span><span class="tag">#ui-ux</span><span class="tag">#creative-coding</span>
+            </div>
+        </article>
+        <div class="app-prompt">
+            <h3>Want to explore my full interactive portfolio?</h3>
+            <p>Experience 3D environments, cinematic looping backgrounds, and my complete engineering journey.</p>
+            <a href="/socials?post=ecochain-designing-a-decentralized-platform-for-carbon-credit-trading" class="btn-interactive">Launch Interactive App 🚀</a>
+        </div>
+    </main>
+</body>
+</html>

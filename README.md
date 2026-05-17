@@ -50,8 +50,9 @@ npm run update    # Run LinkedIn scraper (scrapes + downloads media + LLM proces
 ```
 ├── public/
 │   ├── assets/                    # Images, videos, backgrounds
-│   ├── data/blogs_v2.json         # LinkedIn blog posts (auto-generated)
-│   ├── media/                     # Locally downloaded LinkedIn images, GIFs, and videos
+│   ├── data/
+│   │   ├── blog_data.json         # LinkedIn blog posts (auto-generated)
+│   │   └── media/                 # Locally downloaded LinkedIn images, GIFs, and videos
 │   ├── favicons/                  # Site favicons
 │   ├── fonts/                     # Custom font files
 │   ├── robots.txt                 # SEO crawler config
@@ -63,22 +64,18 @@ npm run update    # Run LinkedIn scraper (scrapes + downloads media + LLM proces
 │   │   ├── MiniPlayer.jsx         # Compact player controls
 │   │   ├── Cube.jsx               # 3D interactive cube
 │   │   ├── BlogHeader.jsx         # Blog section header and search
-│   │   ├── PostCard.jsx           # Blog post card component
-│   │   ├── DetailView.jsx         # Full blog post reader with markdown
-│   │   ├── FilterSidebar.jsx      # Tag-based blog filtering
-│   │   ├── FooterNavbar.jsx       # Bottom navigation bar
-│   │   ├── SocialBar.jsx          # Floating social media links
-│   │   └── SvgLoaderLeftToRight.jsx # Page transition animations
-│   ├── pages/                     # Route-level page components
-│   ├── styles/
-│   │   └── main.css               # Global styles and animations
-│   ├── App.jsx                    # Application shell and layout
-│   ├── main.jsx                   # React entry point
-│   └── router.jsx                 # React Router configuration
-├── scripts/
-│   └── linkedin-scraper/          # Node.js Playwright scraper + Gemini LLM
-├── index.html                     # HTML shell with SEO meta tags
-└── vite.config.js                 # Vite configuration
+│   │   ├── FilterSidebar.jsx      # Tag filtering and sorting sidebar
+│   │   ├── PostList.jsx           # Grid of blog post cards
+│   │   └── DetailView.jsx         # Detailed blog reading view
+│   ├── pages/
+│   │   ├── home.jsx               # Hero landing page
+│   │   ├── about.jsx              # About me & background
+│   │   ├── journey.jsx            # Experience timeline
+│   │   ├── skills.jsx             # Tech stack & expertise
+│   │   └── socials.jsx            # Blog & social feeds
+│   ├── styles/                    # Global & utility CSS
+│   ├── App.jsx                    # Root app routing
+│   └── main.jsx                   # React DOM entry point
 ```
 
 ## 🎬 Background Media
@@ -89,7 +86,6 @@ npm run update    # Run LinkedIn scraper (scrapes + downloads media + LLM proces
 - Randomized per session with localStorage dedup
 - 10 unique scenes, each with day and night variants
 
-## 🔗 URL Shortener
 
 Static redirects in `public/<slug>/index.html` make the portfolio double as a branded short-link service:
 
@@ -100,9 +96,9 @@ Static redirects in `public/<slug>/index.html` make the portfolio double as a br
 An automated pipeline in `scripts/linkedin-scraper/` that:
 1. Scrapes posts from LinkedIn using Playwright Chromium
 2. Transforms content via Gemini LLM (title, summary, markdown, curated tags)
-3. Downloads all media attachments (images, GIFs, `.mp4`/`.webm` videos) to `public/media/`
+3. Downloads all media attachments (images, GIFs, `.mp4`/`.webm` videos) to `public/data/media/`
 4. Supports incremental updates — only new posts hit the LLM
-5. Outputs to `public/data/blogs_v2.json`
+5. Outputs to `public/data/blog_data.json`
 
 See [`scripts/linkedin-scraper/README.md`](scripts/linkedin-scraper/README.md) for setup details.
 
