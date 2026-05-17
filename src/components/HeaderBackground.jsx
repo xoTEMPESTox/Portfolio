@@ -994,10 +994,24 @@ export const ThemeProvider = ({ children }) => {
             const wTheme = getThemeFromFilename(w.src);
             return wTheme === theme || wTheme === "neutral";
           });
+
+          // Exclude the current wallpaper from the pool when randomizing for the next
+          let availableWallpapers = themeWallpapers;
+          if (currentAsset && currentAsset.src) {
+            const currentBase = currentAsset.src.replace("-day", "").replace("-night", "");
+            const filtered = themeWallpapers.filter((w) => {
+              const wBase = w.src.replace("-day", "").replace("-night", "");
+              return wBase !== currentBase;
+            });
+            if (filtered.length > 0) {
+              availableWallpapers = filtered;
+            }
+          }
+
           selectedAsset =
-            themeWallpapers.length > 0
-              ? themeWallpapers[
-                  Math.floor(Math.random() * themeWallpapers.length)
+            availableWallpapers.length > 0
+              ? availableWallpapers[
+                  Math.floor(Math.random() * availableWallpapers.length)
                 ]
               : normalizedAssets[0];
         }
