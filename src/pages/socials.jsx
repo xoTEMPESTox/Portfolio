@@ -135,7 +135,7 @@ const ImageGalleryModal = ({ images, onClose, theme = "dark" }) => {
                 className="w-full h-auto object-contain block mx-auto transition-transform duration-700 hover:scale-105"
                 loading="lazy"
               />
-              {image.alt && (
+              {image.alt && !image.alt.toLowerCase().includes("no alternative text") && (
                 <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
                   <p className="text-white text-sm md:text-base font-light">
                     {image.alt}

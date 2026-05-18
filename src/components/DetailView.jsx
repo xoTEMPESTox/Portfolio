@@ -117,7 +117,7 @@ const MediaItem = ({ item, theme, onImageClick, index, id, originalUrl }) => {
               <Trophy size={140} className="text-yellow-500" strokeWidth={1} />
             </div>
             <span className="text-zinc-400 font-medium tracking-wider uppercase text-sm">
-              {item.alt || "Career Milestone"}
+              {(item.alt && !item.alt.toLowerCase().includes("no alternative text")) ? item.alt : "Career Milestone"}
             </span>
           </div>
         ) : (
