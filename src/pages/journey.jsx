@@ -28,53 +28,64 @@ const experienceData = [
     title: "Full-Stack AI Engineer Intern",
     subtitle: "Liferythm Healthcare",
     description:
-      "Building AI doctor modules using MedLLMs for workflow automation. Developing secure, HIPAA-compliant interfaces and integrating complex medical knowledge graphs.",
+      "Building AI doctor modules including a Follow-Up Coach, voice-based Clinical Notes assistant, and Front Desk Assistant. Working on healthcare AI workflows, MedLLMs, and production deployments.",
     date: "Jul 2025 - Present",
     tag: "Internship",
     type: "exp",
     pos: 0.12,
   },
   {
+    image: "../assets/images/journey/tcs.png",
+    title: "Project Intern",
+    subtitle: "Tata Consultancy Services",
+    description:
+      "Worked in an exploratory engineering team evaluating emerging concepts through early POT efforts. Contributed to feasibility studies, architecture discussions, system integrations, and validation reviews.",
+    date: "Nov 2025 - Jan 2026",
+    tag: "Internship",
+    type: "exp",
+    pos: 0.28,
+  },
+  {
+    image: "../assets/images/journey/myshadowlife.png",
+    title: "Audio Data and AI/ML Engineer",
+    subtitle: "MyShadowLife",
+    description:
+      "Engineered end-to-end audio data pipelines for long-form recordings, applied preprocessing for denoising and segmentation, and prepared structured datasets for downstream ML tasks.",
+    date: "Oct 2025 - Nov 2025",
+    tag: "Contract",
+    type: "exp",
+    pos: 0.44,
+  },
+  {
     image: "../assets/images/journey/internship_placeholder.png",
     title: "Full-Stack AI Engineer Intern",
     subtitle: "Creo AI",
     description:
-      "Built an STS chatbot using RAG, agentic AI, and NLP for 1K+ concurrent users. Optimized vector database retrieval speeds by 40%.",
-    date: "Mar 2025 – Aug 2025",
+      "Built an STS chatbot using RAG, agentic AI, and voice pipelines for real-time reasoning. Designed scalable APIs and contributed to production-grade reliability.",
+    date: "Mar 2025 - Aug 2025",
     tag: "Internship",
     type: "exp",
-    pos: 0.32,
+    pos: 0.6,
   },
   {
     image: "../assets/images/journey/web3galaxy.png",
     title: "Full-Stack AI Engineer Intern",
     subtitle: "Web3Galaxy",
     description:
-      "Delivered a multimodal chatbot with TTS, STT, and document parsing. Integrated blockchain authentication for secure user sessions.",
-    date: "Dec 2024 – Feb 2025",
+      "Delivered a multimodal chatbot with STT, TTS, and document parsing. Implemented multilingual and location-aware support with secure, low-latency deployment.",
+    date: "Dec 2024 - Feb 2025",
     tag: "Internship",
     type: "exp",
-    pos: 0.52,
+    pos: 0.76,
   },
   {
-    image: "../assets/images/journey/internship_placeholder.png",
+    image: "../assets/images/journey/chart_raiders.jpg",
     title: "Software Developer Intern",
     subtitle: "Chart Raiders",
     description:
-      "Built LangChain+VectorDB trading assistant and tuned SLMs with synthetic Q&A. Focused on financial sentiment analysis and real-time data ingestion.",
-    date: "Feb 2024 – Aug 2024",
+      "Built an AI-powered trading assistant using LangChain and VectorDBs. Fine-tuned SLMs, created synthetic Q&A pipelines, and scaled RAG systems with CI/CD.",
+    date: "Feb 2024 - Aug 2024",
     tag: "Internship",
-    type: "exp",
-    pos: 0.72,
-  },
-  {
-    image: "../assets/images/journey/acm_sigai.jpeg",
-    title: "Technical Head",
-    subtitle: "ACM SIG AI TCET",
-    description:
-      "Led AI initiatives with 5+ workshop training 500+ students. Managed a team of 15 developers to build community-driven AI tools.",
-    date: "Jul 2024 – Jul 2025",
-    tag: "Leadership",
     type: "exp",
     pos: 0.92,
   },
@@ -233,14 +244,14 @@ const Journey = () => {
         <div className="flex items-center justify-center  mb-0 h-fit">
           <div
             className={`text-center mb-6 backdrop-blur-sm rounded-2xl m-0 w-[100%] p-12 w-fit transition-all duration-300 ${theme === "dark"
-                ? "bg-black/50"
-                : "bg-white/65 border border-slate-200 shadow-lg"
+              ? "bg-black/50"
+              : "bg-white/65 border border-slate-200 shadow-lg"
               }`}
           >
             <p
               className={`text-8xl md:text-9xl font-black mb-8 tracking-tighter bg-clip-text text-transparent bg-gradient-to-r uppercase ${theme === "dark"
-                  ? "from-sky-400 to-purple-400"
-                  : "from-sky-600 to-purple-600"
+                ? "from-sky-400 to-purple-400"
+                : "from-sky-600 to-purple-600"
                 }`}
             >
               Journey
@@ -257,8 +268,8 @@ const Journey = () => {
                 </span>
                 <div
                   className={`h-[2px] w-20 md:w-40 mt-3 rounded-full transition-all ${theme === "dark"
-                      ? "bg-sky-500 shadow-[0_0_15px_#3b82f6]"
-                      : "bg-sky-600 shadow-[0_2px_8px_rgba(2,132,199,0.4)]"
+                    ? "bg-sky-500 shadow-[0_0_15px_#3b82f6]"
+                    : "bg-sky-600 shadow-[0_2px_8px_rgba(2,132,199,0.4)]"
                     }`}
                 ></div>
               </div>
@@ -273,8 +284,8 @@ const Journey = () => {
                 </span>
                 <div
                   className={`h-[2px] w-20 md:w-40 mt-3 rounded-full transition-all ${theme === "dark"
-                      ? "bg-purple-500 shadow-[0_0_15px_#a855f7]"
-                      : "bg-purple-600 shadow-[0_2px_8px_rgba(147,51,234,0.4)]"
+                    ? "bg-purple-500 shadow-[0_0_15px_#a855f7]"
+                    : "bg-purple-600 shadow-[0_2px_8px_rgba(147,51,234,0.4)]"
                     }`}
                 ></div>
               </div>
@@ -284,8 +295,8 @@ const Journey = () => {
         <div
           ref={indicatorRef}
           className={`relative z-10 w-full max-w-lg md:max-w-2xl mx-auto px-6 p-12 mb-44 text-center backdrop-blur-md rounded-2xl transition-all duration-1000 ease-in-out ${theme === "dark"
-              ? "bg-black/50 border-white/5 shadow-2xl"
-              : "bg-white/60 border border-slate-200 shadow-xl"
+            ? "bg-black/50 border-white/5 shadow-2xl"
+            : "bg-white/60 border border-slate-200 shadow-xl"
             } ${isScrolled
               ? "opacity-0 translate-y-20 pointer-events-none invisible"
               : "opacity-100 translate-y-0"
@@ -294,8 +305,8 @@ const Journey = () => {
           <div className="inline-flex flex-col items-center group cursor-pointer">
             <p
               className={`font-mono font-bold text-xl md:text-2xl tracking-[0.3em] uppercase mb-12 transition-all duration-700 group-hover:tracking-[0.4em] ${theme === "dark"
-                  ? "text-white opacity-90 group-hover:opacity-100"
-                  : "text-slate-800 opacity-80 group-hover:opacity-100"
+                ? "text-white opacity-90 group-hover:opacity-100"
+                : "text-slate-800 opacity-80 group-hover:opacity-100"
                 }`}
             >
               The Journey Continues
@@ -305,8 +316,8 @@ const Journey = () => {
               {/* Mouse Icon */}
               <div
                 className={`relative w-8 h-14 rounded-full border-2 backdrop-blur-sm flex justify-center p-1.5 transition-all duration-500 ${theme === "dark"
-                    ? "border-white/70 group-hover:border-white"
-                    : "border-slate-400 group-hover:border-slate-900"
+                  ? "border-white/70 group-hover:border-white"
+                  : "border-slate-400 group-hover:border-slate-900"
                   }`}
               >
                 <div
@@ -318,8 +329,8 @@ const Journey = () => {
               {/* Vertical Path Line */}
               <div
                 className={`relative w-px h-24 mt-2 overflow-hidden transition-colors ${theme === "dark"
-                    ? "bg-gradient-to-b from-white/70 via-white/35 to-transparent"
-                    : "bg-gradient-to-b from-slate-400 via-slate-200 to-transparent"
+                  ? "bg-gradient-to-b from-white/70 via-white/35 to-transparent"
+                  : "bg-gradient-to-b from-slate-400 via-slate-200 to-transparent"
                   }`}
               >
                 <div
@@ -368,7 +379,7 @@ const Journey = () => {
                 return (
                   <div
                     key={`node-edu-${i}`}
-                    className={`absolute left-0 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full border-2 transition-all duration-500 flex items-center justify-center bg-black overflow-hidden z-20
+                    className={`absolute left-0 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border-2 transition-all duration-500 flex items-center justify-center bg-black overflow-hidden z-20
                       ${eduProgress >= effectivePos
                         ? "border-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.5)] scale-110"
                         : "border-white/10 grayscale opacity-20 scale-90"
@@ -427,7 +438,7 @@ const Journey = () => {
                 return (
                   <div
                     key={`node-exp-${i}`}
-                    className={`absolute right-0 translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full border-2 transition-all duration-500 flex items-center justify-center bg-black overflow-hidden z-20
+                    className={`absolute right-0 translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border-2 transition-all duration-500 flex items-center justify-center bg-black overflow-hidden z-20
                       ${expProgress >= effectivePos
                         ? "border-purple-400 shadow-[0_0_30px_rgba(168,85,247,0.5)] scale-110"
                         : "border-white/10 grayscale opacity-20 scale-90"
@@ -462,20 +473,20 @@ const Journey = () => {
         <div
           ref={footerRef}
           className={`mt-60 text-center pb-40 transition-all duration-1000 transform ${footerVisible
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-20"
+            ? "opacity-100 translate-y-0"
+            : "opacity-0 translate-y-20"
             }`}
         >
           <div
             className={`relative p-[1px] rounded-3xl inline-block transition-all duration-500 ${theme === "dark"
-                ? "bg-gradient-to-b from-white/10 to-transparent"
-                : "bg-gradient-to-b from-slate-200 to-transparent shadow-2xl"
+              ? "bg-gradient-to-b from-white/10 to-transparent"
+              : "bg-gradient-to-b from-slate-200 to-transparent shadow-2xl"
               }`}
           >
             <div
               className={`backdrop-blur-sm p-12 rounded-[calc(1.5rem-1px)] border max-w-2xl transition-all duration-500 ${theme === "dark"
-                  ? "bg-black/50 border-white/5"
-                  : "bg-white/50 border-slate-200"
+                ? "bg-black/50 border-white/5"
+                : "bg-white/50 border-slate-200"
                 }`}
             >
               <p
@@ -503,14 +514,14 @@ const Journey = () => {
                   }
                 }}
                 className={`group relative px-10 py-5 font-black uppercase rounded-full overflow-hidden transition-all shadow-xl ${theme === "dark"
-                    ? "bg-white text-black hover:shadow-white/10"
-                    : "bg-slate-900 text-white hover:shadow-slate-300"
+                  ? "bg-white text-black hover:shadow-white/10"
+                  : "bg-slate-900 text-white hover:shadow-slate-300"
                   }`}
               >
                 <span
                   className={`relative z-10 text-xl transition-colors ${theme === "dark"
-                      ? "group-hover:text-white"
-                      : "group-hover:text-slate-900"
+                    ? "group-hover:text-white"
+                    : "group-hover:text-slate-900"
                     }`}
                 >
                   Contact for My Next Gig
