@@ -55,24 +55,20 @@ const About = () => {
           <div className="about__layout">
             <div className="about__stack about__stack--left">
               <div className="about__info">
-                <span className="about__info__label">Job:</span>
+                <span className="about__info__label">Role:</span>
                 <span className="about__info__value">
-                  Full Stack AI Engineer
+                  Full-Stack AI Engineer
                 </span> 
               </div>
               <div className="about__info">
-                <span className="about__info__label">Degree:</span>
+                <span className="about__info__label">Education:</span>
                 <span className="about__info__value">
-                  B.Tech Honors CS ( AI & ML )
+                  B.Tech (Hons.) AI & ML
                 </span>
               </div>
               <div className="about__info">
-                <span className="about__info__label">Address:</span>
+                <span className="about__info__label">Location:</span>
                 <span className="about__info__value">Mumbai, India</span>
-              </div>
-              <div className="about__info">
-                <span className="about__info__label">Phone:</span>
-                <span className="about__info__value">+91 7666774342</span>
               </div>
             </div>
 
@@ -90,12 +86,8 @@ const About = () => {
 
             <div className="about__stack about__stack--right">
               <div className="about__info">
-                <span className="about__info__label">Birthday:</span>
-                <span className="about__info__value">8 Nov 2004</span>
-              </div>
-              <div className="about__info">
-                <span className="about__info__label">Experience:</span>
-                <span className="about__info__value">1.5 years</span>
+                <span className="about__info__label">Specialization:</span>
+                <span className="about__info__value">AI Systems • Backend • MLOps</span>
               </div>
               <div className="about__info">
                 <span className="about__info__label">Email:</span>
@@ -104,8 +96,8 @@ const About = () => {
                 </span>
               </div>
               <div className="about__info">
-                <span className="about__info__label">Freelance:</span>
-                <span className="about__info__value">Available</span>
+                <span className="about__info__label">Availability:</span>
+                <span className="about__info__value">Full-Time • Contract • Freelance</span>
               </div>
             </div>
           </div>

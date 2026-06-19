@@ -62,7 +62,7 @@ const DetailCard = ({ project, onClose }) => {
             {project.title}
           </h1>
         </div>
-        <p className={`text-xl max-w-md ${
+        <p className={`text-[1.1rem] min-[1265px]:text-xl max-w-3xl ${
           theme === 'dark' ? 'text-[#eaeaea]' : 'text-zinc-600'
         }`}>
           {project.tagline}
@@ -146,28 +146,45 @@ const DetailCard = ({ project, onClose }) => {
     <footer className={`p-6 border-t flex gap-4 transition-colors ${
       theme === 'dark' ? 'border-zinc-800/50 bg-zinc-950/50' : 'border-zinc-200 bg-zinc-50/50'
     }`}>
-      <button
-        onClick={() => window.open(project.links.github_link, "_blank")}
-        className={`flex-1 font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center space-x-2 border active:scale-[0.98] ${
-          theme === 'dark'
-            ? 'bg-zinc-900 hover:bg-zinc-800 text-white border-zinc-800'
-            : 'bg-white hover:bg-zinc-50 text-zinc-900 border-zinc-200 shadow-sm'
-        }`}
-      >
-        <Github size={18} />
-        <span>GitHub</span>
-      </button>
-      <button
-        onClick={() => window.open(project.links.live_link, "_blank")}
-        className={`flex-[2] font-semibold py-3 px-6 rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2 active:scale-[0.98] ${
-          theme === 'dark'
-            ? 'bg-white hover:bg-zinc-200 text-black shadow-white/5'
-            : 'bg-zinc-900 hover:bg-black text-white shadow-zinc-200'
-        }`}
-      >
-        <Globe size={18} />
-        <span>Visit Project</span>
-      </button>
+      {project.links.github_link || project.links.live_link ? (
+        <>
+          {project.links.github_link && (
+            <button
+              onClick={() => window.open(project.links.github_link, "_blank")}
+              className={`flex-1 font-semibold py-3 px-4 rounded-xl transition-all flex items-center justify-center space-x-2 border active:scale-[0.98] ${
+                theme === 'dark'
+                  ? 'bg-zinc-900 hover:bg-zinc-800 text-white border-zinc-800'
+                  : 'bg-white hover:bg-zinc-50 text-zinc-900 border-zinc-200 shadow-sm'
+              }`}
+            >
+              <Github size={18} />
+              <span>GitHub</span>
+            </button>
+          )}
+          {project.links.live_link && (
+            <button
+              onClick={() => window.open(project.links.live_link, "_blank")}
+              className={`flex-[2] font-semibold py-3 px-6 rounded-xl transition-all shadow-lg flex items-center justify-center space-x-2 active:scale-[0.98] ${
+                theme === 'dark'
+                  ? 'bg-white hover:bg-zinc-200 text-black shadow-white/5'
+                  : 'bg-zinc-900 hover:bg-black text-white shadow-zinc-200'
+              }`}
+            >
+              <Globe size={18} />
+              <span>Visit Project</span>
+            </button>
+          )}
+        </>
+      ) : (
+        <div className="flex flex-col justify-center text-center w-full space-y-1 py-2">
+          <div className={`font-bold text-lg tracking-wide ${theme === 'dark' ? 'text-zinc-300' : 'text-zinc-700'}`}>
+            {project.privateProject?.title || "🔒 Private Client Project"}
+          </div>
+          <div className={`text-[15px] whitespace-pre-line ${theme === 'dark' ? 'text-zinc-500' : 'text-zinc-500'}`}>
+            {project.privateProject?.description || "Source code and deployment details are private."}
+          </div>
+        </div>
+      )}
     </footer>
   </div>
 

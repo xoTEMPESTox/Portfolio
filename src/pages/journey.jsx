@@ -24,7 +24,7 @@ const educationData = [
 
 const experienceData = [
   {
-    image: "../assets/images/journey/ai_intern.png",
+    image: "../assets/images/journey/liferythem.jpg",
     title: "Full-Stack AI Engineer Intern",
     subtitle: "Liferythm Healthcare",
     description:
@@ -35,7 +35,7 @@ const experienceData = [
     pos: 0.12,
   },
   {
-    image: "../assets/images/journey/tcs.png",
+    image: "../assets/images/journey/tcs.jpg",
     title: "Project Intern",
     subtitle: "Tata Consultancy Services",
     description:
@@ -57,7 +57,7 @@ const experienceData = [
     pos: 0.44,
   },
   {
-    image: "../assets/images/journey/internship_placeholder.png",
+    image: "../assets/images/journey/creo.jpg",
     title: "Full-Stack AI Engineer Intern",
     subtitle: "Creo AI",
     description:
