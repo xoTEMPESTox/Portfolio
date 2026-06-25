@@ -74,7 +74,7 @@ const rawPortfolioData = [
     ],
     links: {
       github_link: "https://github.com/xoTEMPESTox/PokeDreamer",
-      live_link: "",
+      live_link: "https://pokedreamer.priyanshusah.com/",
     },
   },
   {
@@ -97,7 +97,7 @@ const rawPortfolioData = [
     ],
     links: {
       github_link: "https://github.com/xoTEMPESTox/NavDP",
-      live_link: "",
+      live_link: "https://navdp.priyanshusah.com/",
     },
   },
   {
