@@ -31,16 +31,16 @@ const SWIPE_THRESHOLD = 50;
 const rawPortfolioData = [
   {
     id: "liferythm-ai-doctor",
-    title: "AI Doctor Modules",
-    tagline: "Proprietary healthcare AI workflows for clinical support",
-    description: "End-to-end MedLLM-powered clinical automation suite. Designed to reduce administrative overhead through patient triage, automated clinical notes, AI receptionist integrations, and proactive follow-up workflows.",
+    title: "Healthcare AI Platform",
+    tagline: "End-to-end AI platform for community healthcare and clinical automation",
+    description: "End-to-end healthcare AI platform combining Medical LLMs, LangGraph workflows, React Native applications, FastAPI microservices, and Bluetooth-enabled medical device integrations. Designed to streamline community healthcare through patient triage, AI-assisted clinical documentation, intelligent reception, and proactive follow-up workflows.",
     image_url: "../assets/images/projects/liferythm.png",
     tag: "Healthcare AI",
     highlights: [
-      "Engineered full-lifecycle AI receptionist and patient follow-up workflows",
-      "Integrated MedLLMs for clinical recommendations and robust documentation automation",
-      "Built resilient backend services for real-time patient triage and intake parsing",
-      "Managed production monitoring, data preparation, and continuous model evaluation",
+      "Built AI Receptionist, Clinical Documentation, patient triage, and Follow-Up workflows using Medical LLMs",
+      "Developed FastAPI microservices and LangGraph orchestration powering production healthcare workflows",
+      "Integrated Bluetooth medical device SDKs with React Native applications for connected diagnostics",
+      "Contributed across architecture, deployment, model evaluation, and production AI workflows",
     ],
     techStack: [
       { name: "FastAPI", slug: "logos/fastapi", color: "009688", iconColor: "" },
@@ -57,8 +57,8 @@ const rawPortfolioData = [
   {
     id: "pokedreamer-rl",
     title: "PokeDreamer",
-    tagline: "Model-Based RL agent exploring latent environment dynamics",
-    description: "Experimental Reinforcement Learning research project applying Dreamer-style model-based architectures to play Pokémon Red from scratch. Focuses heavily on managing compounding errors during latent imagination rollouts.",
+    tagline: "Dreamer-style world models for model-based reinforcement learning",
+    description: "Research project exploring Dreamer-style world models for model-based reinforcement learning. Focused on learning latent environment dynamics, improving long-horizon prediction, and reducing compounding errors during imagination rollouts.",
     image_url: "../assets/images/projects/pokedreamer.png",
     tag: "AI Research",
     highlights: [
@@ -128,14 +128,14 @@ const rawPortfolioData = [
     id: "tv-plus",
     title: "TradingViewPlus",
     tagline: "TypeScript browser extension for 300+ active traders",
-    description: "A major open-source enhancement suite for the TradingView ecosystem. Actively serves hundreds of daily users by providing advanced UI controls, workflow upgrades, and deep platform customizations.",
+    description: "A major open-source enhancement suite for the TradingView ecosystem, actively used by 300+ traders. Contributing major feature releases, adapter-based support for TradingView-powered platforms, architectural improvements, and ongoing maintenance as a project maintainer.",
     image_url: "../assets/images/projects/project-6.jpg",
     tag: "Open Source",
     highlights: [
-      "Act as lead maintainer, triaging community issues and coordinating version releases",
-      "Authored 12+ core PRs and successfully closed 30+ GitHub issues",
-      "Architected significant feature refactors to ensure strict cross-platform compatibility",
-      "Leveraged AI-assisted development workflows to accelerate feature delivery",
+      "Contributed 20+ pull requests and resolved 30+ GitHub issues",
+      "Designed an adapter-based architecture supporting multiple TradingView-powered platforms",
+      "Shipped major feature releases and performance improvements as project maintainer",
+      "Continue maintaining and evolving the project alongside the open-source community",
     ],
     techStack: [
       { name: "TypeScript", slug: "logos/typescript-icon", color: "3178C6", iconColor: "" },
