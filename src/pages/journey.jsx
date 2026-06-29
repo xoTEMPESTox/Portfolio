@@ -43,7 +43,7 @@ const experienceData = [
     date: "Nov 2025 - Jan 2026",
     tag: "Internship",
     type: "exp",
-    pos: 0.28,
+    pos: 0.31,
   },
   {
     image: "../assets/images/journey/myshadowlife.png",
@@ -54,7 +54,7 @@ const experienceData = [
     date: "Oct 2025 - Nov 2025",
     tag: "Contract",
     type: "exp",
-    pos: 0.44,
+    pos: 0.46,
   },
   {
     image: "../assets/images/journey/creo.jpg",
@@ -65,7 +65,7 @@ const experienceData = [
     date: "Mar 2025 - Aug 2025",
     tag: "Internship",
     type: "exp",
-    pos: 0.6,
+    pos: 0.61,
   },
   {
     image: "../assets/images/journey/web3galaxy.png",
@@ -76,7 +76,7 @@ const experienceData = [
     date: "Dec 2024 - Feb 2025",
     tag: "Internship",
     type: "exp",
-    pos: 0.76,
+    pos: 0.77,
   },
   {
     image: "../assets/images/journey/chart_raiders.jpg",
@@ -87,7 +87,7 @@ const experienceData = [
     date: "Feb 2024 - Aug 2024",
     tag: "Internship",
     type: "exp",
-    pos: 0.92,
+    pos: 0.93,
   },
 ];
 
