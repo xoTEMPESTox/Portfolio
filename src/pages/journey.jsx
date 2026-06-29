@@ -28,7 +28,7 @@ const experienceData = [
     title: "Full-Stack AI Engineer Intern",
     subtitle: "Liferythm Healthcare",
     description:
-      "Building AI doctor modules including a Follow-Up Coach, voice-based Clinical Notes assistant, and Front Desk Assistant. Working on healthcare AI workflows, MedLLMs, and production deployments.",
+      "Building an end-to-end healthcare AI platform spanning AI Receptionists, Clinical Documentation, patient triage, Follow-Up automation, Medical LLMs, LangGraph workflows, FastAPI microservices, React Native, and Bluetooth-enabled medical device integrations.",
     date: "Jul 2025 - Present",
     tag: "Internship",
     type: "exp",
