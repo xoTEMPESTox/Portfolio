@@ -30,34 +30,94 @@ const SWIPE_THRESHOLD = 50;
 // --- Data ---
 const rawPortfolioData = [
   {
-    id: "org-chatbot",
-    title: "Organizational Chatbot",
-    tagline: "RAG-powered AI assistant for streamlined HR & IT support",
-    description:
-      "A sophisticated AI-driven assistant utilizing Retrieval-Augmented Generation (RAG) to provide accurate answers from internal documentation.",
-    image_url: "../assets/images/projects/project-1.png",
-    tag: "AI/ML Project",
+    id: "liferythm-ai-doctor",
+    title: "Healthcare AI Platform",
+    tagline: "End-to-end AI platform for community healthcare and clinical automation",
+    description: "End-to-end healthcare AI platform combining Medical LLMs, LangGraph workflows, React Native applications, FastAPI microservices, and Bluetooth-enabled medical device integrations. Designed to streamline community healthcare through patient triage, AI-assisted clinical documentation, intelligent reception, and proactive follow-up workflows.",
+    image_url: "../assets/images/projects/liferythm.png",
+    tag: "Healthcare AI",
     highlights: [
-      "Implemented RAG architecture for context-aware responses",
-      "Integrated 2FA security protocols using TOTP",
-      "Built dynamic tool-calling functionality",
-      "Developed a custom React-based chat interface",
+      "Built AI Receptionist, Clinical Documentation, patient triage, and Follow-Up workflows using Medical LLMs",
+      "Developed FastAPI microservices and LangGraph orchestration powering production healthcare workflows",
+      "Integrated Bluetooth medical device SDKs with React Native applications for connected diagnostics",
+      "Contributed across architecture, deployment, model evaluation, and production AI workflows",
+    ],
+    techStack: [
+      { name: "FastAPI", slug: "logos/fastapi", color: "009688", iconColor: "" },
+      { name: "LangChain", slug: "logos/python", color: "3776AB", iconColor: "" },
+      { name: "LangGraph", slug: "logos/python", color: "3776AB", iconColor: "" },
+      { name: "Firebase", slug: "logos/firebase", color: "FFCA28", iconColor: "" },
+    ],
+    links: { github_link: "", live_link: "" },
+    privateProject: {
+      title: "🔒 Proprietary Healthcare System",
+      description: "Built under internship agreement.\nSource code and deployment details are private.",
+    },
+  },
+  {
+    id: "pokedreamer-rl",
+    title: "PokeDreamer",
+    tagline: "Dreamer-style world models for model-based reinforcement learning",
+    description: "Research project exploring Dreamer-style world models for model-based reinforcement learning. Focused on learning latent environment dynamics, improving long-horizon prediction, and reducing compounding errors during imagination rollouts.",
+    image_url: "../assets/images/projects/pokedreamer.png",
+    tag: "AI Research",
+    highlights: [
+      "Engineered a discrete native-resolution Recurrent State-Space Model (RSSM)",
+      "Implemented a VAE+GRU dynamics baseline with continuous latent MPC planners",
+      "Executed scheduled-sampling ablation studies to evaluate predictive accuracy",
+      "Analyzed and mitigated latent imagination drift for stable RL environments",
+    ],
+    techStack: [
+      { name: "PyTorch", slug: "logos/pytorch", color: "EE4C2C", iconColor: "" },
+      { name: "Python", slug: "logos/python", color: "3776AB", iconColor: "" },
+      { name: "NumPy", slug: "logos/numpy", color: "013243", iconColor: "" },
+    ],
+    links: {
+      github_link: "https://github.com/xoTEMPESTox/PokeDreamer",
+      live_link: "https://pokedreamer.priyanshusah.com/",
+    },
+  },
+  {
+    id: "navdp-robotics",
+    title: "NavDP Sandbox",
+    tagline: "Navigation Diffusion Policy extension for omni-directional robotics",
+    description: "Academic research fork extending the official Navigation Diffusion Policy (NavDP) framework. Solves simulation-to-reality gaps through custom omni-directional hardware integration and physics optimization.",
+    image_url: "../assets/images/projects/navdp.png",
+    tag: "Sim-to-Real Robotics",
+    highlights: [
+      "Integrated a custom LeKiwi 3-wheeled omni-directional robot into the pipeline",
+      "Programmatically re-engineered and fixed broken USD collision geometries",
+      "Resolved NaN simulation explosions via actuator gain and physics tuning",
+      "Developed custom multi-perspective tools (BEV/3rd-Person) for path evaluation",
     ],
     techStack: [
       { name: "Python", slug: "logos/python", color: "3776AB", iconColor: "" },
-      {
-        name: "OpenAI",
-        slug: "logos/openai-icon",
-        color: "888888",
-        iconColor: "invert",
-      },
+      { name: "Robotics", slug: "logos/ros", color: "22314E", iconColor: "" },
+      { name: "Simulation", slug: "logos/nvidia", color: "76B900", iconColor: "" },
+    ],
+    links: {
+      github_link: "https://github.com/xoTEMPESTox/NavDP",
+      live_link: "https://navdp.priyanshusah.com/",
+    },
+  },
+  {
+    id: "enerzal",
+    title: "Enerzal Enterprise Assistant",
+    tagline: "Scalable RAG and tool-calling agent for IT/HR automation",
+    description: "Secure, highly-customizable enterprise AI assistant designed to automate repetitive internal queries. Replaces traditional IT/HR support channels with a real-time, document-aware generative interface.",
+    image_url: "../assets/images/projects/project-1.png",
+    tag: "Enterprise AI",
+    highlights: [
+      "Architected dynamic Graph-based RAG pipelines handling relationship-based data",
+      "Automated PDF/DOCX parsing routines, achieving sub-8-second retrieval latency",
+      "Engineered real-time tool calling integrations with personalized employee dashboards",
+      "Secured localized deployments utilizing strict 2FA (TOTP) access management flows",
+    ],
+    techStack: [
+      { name: "Python", slug: "logos/python", color: "3776AB", iconColor: "" },
+      { name: "OpenAI", slug: "logos/openai-icon", color: "888888", iconColor: "invert" },
       { name: "React", slug: "logos/react", color: "61DAFB", iconColor: "" },
-      {
-        name: "PostgreSQL",
-        slug: "logos/postgresql",
-        color: "4169E1",
-        iconColor: "",
-      },
+      { name: "PostgreSQL", slug: "logos/postgresql", color: "4169E1", iconColor: "" },
     ],
     links: {
       github_link: "https://github.com/xoTEMPESTox/Enerzal",
@@ -65,45 +125,70 @@ const rawPortfolioData = [
     },
   },
   {
+    id: "tv-plus",
+    title: "TradingViewPlus",
+    tagline: "TypeScript browser extension for 300+ active traders",
+    description: "A major open-source enhancement suite for the TradingView ecosystem, actively used by 300+ traders. Contributing major feature releases, adapter-based support for TradingView-powered platforms, architectural improvements, and ongoing maintenance as a project maintainer.",
+    image_url: "../assets/images/projects/project-6.jpg",
+    tag: "Open Source",
+    highlights: [
+      "Contributed 20+ pull requests and resolved 30+ GitHub issues",
+      "Designed an adapter-based architecture supporting multiple TradingView-powered platforms",
+      "Shipped major feature releases and performance improvements as project maintainer",
+      "Continue maintaining and evolving the project alongside the open-source community",
+    ],
+    techStack: [
+      { name: "TypeScript", slug: "logos/typescript-icon", color: "3178C6", iconColor: "" },
+      { name: "JavaScript", slug: "logos/javascript", color: "F7DF1E", iconColor: "" },
+      { name: "Chrome", slug: "logos/chrome", color: "4285F4", iconColor: "" },
+    ],
+    links: {
+      github_link: "https://github.com/xoTEMPESTox/TradingviewPlus",
+      live_link: "https://chromewebstore.google.com/detail/tradingviewplus/pkcgjgllebhppgegpedlhjmabmnpcpec?hl=en&authuser=0",
+    },
+  },
+  {
+    id: "creo-sts-chatbot",
+    title: "STS Chatbot",
+    tagline: "Speech-to-speech AI architecture for real-time reasoning",
+    description: "An end-to-end speech-to-speech (STS) conversational agent built to handle complex, real-time audio interactions with an emphasis on low-latency inference and high concurrency.",
+    image_url: "../assets/images/projects/creo.jpg",
+    tag: "Voice AI",
+    highlights: [
+      "Led end-to-end engineering of natural language processing and agentic AI reasoning loops",
+      "Designed advanced Voice+LLM pipelines to minimize audio-to-text-to-audio latency",
+      "Deployed scalable API endpoints engineered explicitly for high concurrency workloads",
+      "Integrated live Retrieval-Augmented Generation (RAG) directly into the voice stream",
+    ],
+    techStack: [
+      { name: "FastAPI", slug: "logos/fastapi", color: "009688", iconColor: "" },
+      { name: "LangChain", slug: "logos/python", color: "3776AB", iconColor: "" },
+      { name: "Python", slug: "logos/python", color: "3776AB", iconColor: "" },
+    ],
+    links: { github_link: "", live_link: "" },
+    privateProject: {
+      title: "🔒 Client Project",
+      description: "Built during internship engagement.\nRepository and production environment are private.",
+    },
+  },
+  {
     id: "eco-chain",
     title: "Eco Chain",
-    tagline:
-      "Blockchain marketplace for transparent carbon credit tokenization",
-    description:
-      "A decentralized ecosystem designed to tokenize carbon credits.",
+    tagline: "Full-stack Web3 marketplace for carbon credit tokenization",
+    description: "A decentralized full-stack application (DApp) structured to bring transparency and automated trading to environmental assets. Designed specifically to reduce double-counting in carbon markets.",
     image_url: "../assets/images/projects/project-2.png",
     tag: "Web3 Ecosystem",
     highlights: [
-      "Developed smart contracts for ERC-20 tokenization",
-      "Built a MERN-stack dashboard",
-      "Integrated MetaMask for Web3 authentication",
-      "Designed a custom ledger view",
+      "Programmed Ethereum smart contracts via Solidity for secure ERC-20 tokenization",
+      "Architected a responsive MERN-stack frontend bridging traditional UI with Web3 protocols",
+      "Integrated MetaMask flows for secure, decentralized user authentication and signing",
+      "Automated decentralized funding ledgers to drastically improve market transparency",
     ],
     techStack: [
-      {
-        name: "Solidity",
-        slug: "skill-icons/solidity",
-        color: "888888",
-        iconColor: "",
-      },
-      {
-        name: "Ethereum",
-        slug: "logos/ethereum",
-        color: "888888",
-        iconColor: "",
-      },
-      {
-        name: "Node.js",
-        slug: "logos/nodejs-icon",
-        color: "339933",
-        iconColor: "",
-      },
-      {
-        name: "MongoDB",
-        slug: "logos/mongodb-icon",
-        color: "47A248",
-        iconColor: "",
-      },
+      { name: "Solidity", slug: "skill-icons/solidity", color: "888888", iconColor: "" },
+      { name: "Ethereum", slug: "logos/ethereum", color: "888888", iconColor: "" },
+      { name: "Node.js", slug: "logos/nodejs-icon", color: "339933", iconColor: "" },
+      { name: "MongoDB", slug: "logos/mongodb-icon", color: "47A248", iconColor: "" },
     ],
     links: {
       github_link: "https://github.com/xoTEMPESTox/EcoChain",
@@ -111,221 +196,29 @@ const rawPortfolioData = [
     },
   },
   {
-    id: "supplyzal",
-    title: "Supplyzal",
-    tagline:
-      "Blockchain-based supply tracking with verified sustainability markers",
-    description:
-      "A comprehensive supply chain management tool that leverages blockchain.",
-    image_url: "../assets/images/projects/project-3.png",
-    tag: "Blockchain Dapp",
-    highlights: [
-      "Created a transparent tracking system",
-      "Utilized decentralized storage (IPFS)",
-      "Reduced logistics verification time by 40%",
-      "Integrated QR-code based scanning",
-    ],
-    techStack: [
-      {
-        name: "Hardhat",
-        slug: "logos/hardhat-icon",
-        color: "FFF000",
-        iconColor: "",
-      },
-      { name: "React", slug: "logos/react", color: "61DAFB", iconColor: "" },
-      {
-        name: "Ethers.js",
-        slug: "logos/ethereum",
-        color: "888888",
-        iconColor: "",
-      },
-      {
-        name: "IPFS",
-        slug: "skill-icons/ipfs-light",
-        color: "65C2CB",
-        iconColor: "invert",
-      },
-    ],
-    links: {
-      github_link: "https://github.com/xoTEMPESTox/Supplyzal",
-      live_link: "https://www.youtube.com/watch?v=CEGqZsqdnN8",
-    },
-  },
-  {
-    id: "ledger-play",
-    title: "LedgerPlay",
-    tagline: "Multiplayer Web3 gaming with real-time token staking mechanics",
-    description:
-      "A competitive multiplayer gaming platform where players can stake tokens.",
-    image_url: "../assets/images/projects/project-4.png",
-    tag: "Gaming/Web3",
-    highlights: [
-      "Engineered high-concurrency WebSocket server",
-      "Implemented ERC-20 staking logic",
-      "Designed an interactive lobby system",
-      "Optimized game assets for 60FPS",
-    ],
-    techStack: [
-      {
-        name: "Socket.io",
-        slug: "logos/socket-io",
-        color: "888888",
-        iconColor: "",
-      },
-      {
-        name: "Unity",
-        slug: "skill-icons/unity-dark",
-        color: "E64A19",
-        iconColor: "",
-      },
-      {
-        name: "Solidity",
-        slug: "skill-icons/solidity",
-        color: "888888",
-        iconColor: "",
-      },
-    ],
-    links: {
-      github_link: "https://github.com/xoTEMPESTox/LedgerPlay",
-      live_link: "https://www.youtube.com/watch?v=w-SHifenCqE",
-    },
-  },
-  {
     id: "wakebot32",
     title: "WakeBot32",
-    tagline: "IoT Wake-on-LAN controller with Telegram API integration",
-    description:
-      "A hardware-based solution using ESP32 to remotely wake computers.",
+    tagline: "Low-power IoT automation tool with secure remote access",
+    description: "A practical, lightweight C++ hardware application utilizing an ESP32 microcontroller. Circumvents the need for heavy local servers by acting as a dedicated, secure bridge for remote PC wake commands.",
     image_url: "../assets/images/projects/project-5.jpg",
-    tag: "Hardware/IoT",
+    tag: "IoT & Hardware",
     highlights: [
-      "Programmed ESP32 using C++",
-      "Built a secure Telegram bot bridge",
-      "Implemented auto-reconnect logic",
-      "Designed a custom PCB layout",
+      "Engineered robust, low-power ESP32 hardware memory interactions using C++",
+      "Implemented a secure, user-authenticated polling bridge utilizing the Telegram API",
+      "Constructed and deployed network-level Wake-on-LAN (WOL) magic packets",
+      "Designed an automated hardware-reboot architecture to guarantee long-term stability",
     ],
     techStack: [
       { name: "C++", slug: "logos/c-plusplus", color: "00599C", iconColor: "" },
-      {
-        name: "ESP32",
-        slug: "simple-icons/espressif",
-        color: "888888",
-        iconColor: "invert",
-      },
-      {
-        name: "Telegram",
-        slug: "logos/telegram",
-        color: "26A5E4",
-        iconColor: "",
-      },
-      {
-        name: "Arduino",
-        slug: "logos/arduino",
-        color: "00979D",
-        iconColor: "",
-      },
+      { name: "ESP32", slug: "simple-icons/espressif", color: "888888", iconColor: "invert" },
+      { name: "Telegram", slug: "logos/telegram", color: "26A5E4", iconColor: "" },
+      { name: "Arduino", slug: "logos/arduino", color: "00979D", iconColor: "" },
     ],
     links: {
       github_link: "https://github.com/xoTEMPESTox/WakeBot32",
       live_link: "https://youtu.be/fOirqvQiiFo",
     },
-  },
-  {
-    id: "tv-plus",
-    title: "TradingviewPlus",
-    tagline:
-      "Open-source browser extension enhancing the TradingView ecosystem",
-    description: "An open-source utility for advanced charting tools.",
-    image_url: "../assets/images/projects/project-6.png",
-    tag: "OSS Contribution",
-    highlights: [
-      "Contributed to core extension architecture",
-      "Developed custom CSS injection engine",
-      "Optimized DOM manipulation",
-      "Managed community PRs",
-    ],
-    techStack: [
-      {
-        name: "JavaScript",
-        slug: "logos/javascript",
-        color: "F7DF1E",
-        iconColor: "",
-      },
-      { name: "CSS3", slug: "logos/css-3", color: "1572B6", iconColor: "" },
-      { name: "Chrome", slug: "logos/chrome", color: "4285F4", iconColor: "" },
-    ],
-    links: {
-      github_link: "https://github.com/Tiqur/TradingviewPlus",
-      live_link: "https://chromewebstore.google.com/...",
-    },
-  },
-  {
-    id: "portfolio-web",
-    title: "Portfolio Website",
-    tagline: "High-performance interactive developer showcase",
-    description: "A bespoke portfolio built with 3D interactions.",
-    image_url: "../assets/images/preview.png",
-    tag: "Personal Website",
-    highlights: [
-      "100/100 performance score on Lighthouse",
-      "Advanced CSS 3D transforms",
-      "Fully responsive layout",
-      "Utilized Framer Motion",
-    ],
-    techStack: [
-      { name: "React", slug: "logos/react", color: "61DAFB", iconColor: "" },
-      {
-        name: "Tailwind",
-        slug: "logos/tailwindcss-icon",
-        color: "06B6D4",
-        iconColor: "",
-      },
-      { name: "Vite", slug: "logos/vitejs", color: "646CFF", iconColor: "" },
-      {
-        name: "Framer",
-        slug: "logos/framer",
-        color: "0055FF",
-        iconColor: "invert",
-      },
-    ],
-    links: {
-      github_link: "https://github.com/xoTEMPESTox/xoTEMPESTox.github.io",
-      live_link: "https://priyanshusah.com",
-    },
-  },
-  {
-    id: "ml-kaggle",
-    title: "ML Kaggle Competition",
-    tagline: "Organized machine learning challenge",
-    description: "Planned and hosted a competitive data science event.",
-    image_url: "../assets/images/projects/project-8.png",
-    tag: "Competition Host",
-    highlights: [
-      "Curated proprietary dataset",
-      "Managed platform for 200+ participants",
-      "Conducted post-competition workshops",
-      "Collaborated with industry partners",
-    ],
-    techStack: [
-      { name: "Python", slug: "logos/python", color: "3776AB", iconColor: "" },
-      {
-        name: "Pandas",
-        slug: "logos/pandas-icon",
-        color: "888888",
-        iconColor: "",
-      },
-      {
-        name: "Scikit-learn",
-        slug: "skill-icons/scikitlearn-light",
-        color: "F7931E",
-        iconColor: "",
-      },
-    ],
-    links: {
-      github_link: "https://github.com/xoTEMPESTox/TCET_ACM_SIGAI_KAGGLE_COMP",
-      live_link: "https://www.kaggle.com/competitions/acm-sigai-tcet",
-    },
-  },
+  }
 ];
 
 /**
@@ -639,21 +532,19 @@ const Portfolio = () => {
         <div
           className={`
           backdrop-blur-sm rounded-4xl inline-block p-4 md:p-6 border 
-          ${
-            theme === "dark"
+          ${theme === "dark"
               ? "bg-black/50 border-white/5"
               : "bg-white/50 border-black/5 shadow-xl"
-          }
+            }
         `}
         >
           <p
             className={`
             text-8xl md:text-9xl font-black mb-0! tracking-tighter bg-clip-text text-transparent uppercase
-            ${
-              theme === "dark"
+            ${theme === "dark"
                 ? "bg-gradient-to-b from-white to-white/50"
                 : "bg-gradient-to-b from-gray-900 to-gray-500"
-            }
+              }
           `}
           >
             Portfolio

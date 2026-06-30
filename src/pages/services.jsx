@@ -38,27 +38,27 @@ const Services = () => {
           <div className="services__wrapper__circle rounding"></div>
 
           <div className="services__wrapper__icons" id="icon-div">
-            <div className="services__wrapper__icons__item " data-service-name="AI Systems">
+            <div className="services__wrapper__icons__item" data-service-name="AI Systems">
               <i className="demo-icon desktopicon-"></i>
             </div>
 
-            <div className="services__wrapper__icons__item" data-service-name="Web Development">
+            <div className="services__wrapper__icons__item" data-service-name="Agentic Workflows">
               <i className="demo-icon codeicon-"></i>
             </div>
 
-            <div className="services__wrapper__icons__item" data-service-name="UI / UX">
+            <div className="services__wrapper__icons__item" data-service-name="Backend & APIs">
               <i className="demo-icon penicon-"></i>
             </div>
 
-            <div className="services__wrapper__icons__item" data-service-name="Cloud Integration">
+            <div className="services__wrapper__icons__item" data-service-name="MLOps & Deployment">
               <i className="demo-icon searchicon-"></i>
             </div>
 
-            <div className="services__wrapper__icons__item" data-service-name="API Automation">
+            <div className="services__wrapper__icons__item" data-service-name="Voice & Multimodal AI">
               <i className="demo-icon doc-texticon-"></i>
             </div>
 
-            <div className="services__wrapper__icons__item" data-service-name="Deployment & Hosting">
+            <div className="services__wrapper__icons__item" data-service-name="Open Source">
               <i className="demo-icon servericon-"></i>
             </div>
           </div>

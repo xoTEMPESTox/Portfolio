@@ -1755,7 +1755,7 @@ HeaderBackground {
   margin: 0;
   padding: clamp(1rem, 2.5vw, 1.75rem);
   line-height: 1.4;
-  width: min(100%, clamp(18rem, 32vw, 25rem));
+  width: min(100%, clamp(18rem, 35vw, 28rem));
   overflow-wrap: anywhere;
 }
 

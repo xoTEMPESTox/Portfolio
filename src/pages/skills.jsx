@@ -4,8 +4,8 @@ import { useTheme } from "../components/HeaderBackground";
 
 
 const Skills = () => {
-    const { theme } = useTheme(); 
-  
+  const { theme } = useTheme();
+
 
   useEffect(() => {
     function initSkillBarAnimations() {
@@ -121,33 +121,23 @@ const Skills = () => {
         <div className="skills-container">
           <h1 className="skills__title text-capitalize">my skills</h1>
           <div className="row justify-content-center gy-0">
- 
+
             {/* COLUMN 1 */}
             <div className="col-md-6">
               <div className="skills__box">
                 <div className="skills__box__head">
-                  <span className="skills__box__head__lang">GenAI (Agents, LangChain, MCP, FineTuning)</span>
-                  <span className="skills__box__head__rate">90%</span>
+                  <span className="skills__box__head__lang">GenAI / LLMs (RAG, Agentic Systems, LangChain, LangGraph, MCP)</span>
+                  <span className="skills__box__head__rate">100%</span>
                 </div>
                 <div className="skills__box__line">
-                  <span data-rate="90"></span>
+                  <span data-rate="100"></span>
                 </div>
               </div>
 
               <div className="skills__box">
                 <div className="skills__box__head">
-                  <span className="skills__box__head__lang">Machine Learning</span>
+                  <span className="skills__box__head__lang">Python Backend (FastAPI, Flask, REST APIs)</span>
                   <span className="skills__box__head__rate">85%</span>
-                </div>
-                <div className="skills__box__line">
-                  <span data-rate="80"></span>
-                </div>
-              </div>
-
-              <div className="skills__box">
-                <div className="skills__box__head">
-                  <span className="skills__box__head__lang">Data Structures & Algorithms (Python)</span>
-                  <span className="skills__box__head__rate">80%</span>
                 </div>
                 <div className="skills__box__line">
                   <span data-rate="85"></span>
@@ -156,11 +146,21 @@ const Skills = () => {
 
               <div className="skills__box">
                 <div className="skills__box__head">
-                  <span className="skills__box__head__lang">Computer Vision & Audio</span>
+                  <span className="skills__box__head__lang">Model Evaluation / Fine-Tuning / Data Prep</span>
+                  <span className="skills__box__head__rate">75%</span>
+                </div>
+                <div className="skills__box__line">
+                  <span data-rate="75"></span>
+                </div>
+              </div>
+
+              <div className="skills__box">
+                <div className="skills__box__head">
+                  <span className="skills__box__head__lang">Machine Learning (PyTorch, Transformers, Hugging Face)</span>
                   <span className="skills__box__head__rate">70%</span>
                 </div>
                 <div className="skills__box__line">
-                  <span data-rate="95"></span>
+                  <span data-rate="70"></span>
                 </div>
               </div>
             </div>
@@ -169,18 +169,18 @@ const Skills = () => {
             <div className="col-md-6">
               <div className="skills__box">
                 <div className="skills__box__head">
-                  <span className="skills__box__head__lang">MLOps / DevOps (Docker, Kubernetes, Terraform)</span>
-                  <span className="skills__box__head__rate">90%</span>
+                  <span className="skills__box__head__lang">MLOps / Deployment (Docker, AWS, Nginx, Cloudflare)</span>
+                  <span className="skills__box__head__rate">85%</span>
                 </div>
                 <div className="skills__box__line">
-                  <span data-rate="70"></span>
+                  <span data-rate="85"></span>
                 </div>
               </div>
 
               <div className="skills__box">
                 <div className="skills__box__head">
-                  <span className="skills__box__head__lang">CI/CD (GitHub Actions, n8n)</span>
-                  <span className="skills__box__head__rate">85%</span>
+                  <span className="skills__box__head__lang">Full-Stack Development (React, TypeScript, Tailwind)</span>
+                  <span className="skills__box__head__rate">80%</span>
                 </div>
                 <div className="skills__box__line">
                   <span data-rate="80"></span>
@@ -189,17 +189,17 @@ const Skills = () => {
 
               <div className="skills__box">
                 <div className="skills__box__head">
-                  <span className="skills__box__head__lang">Web Development (MERN Stack)</span>
+                  <span className="skills__box__head__lang">Open Source / Product Engineering</span>
                   <span className="skills__box__head__rate">80%</span>
                 </div>
                 <div className="skills__box__line">
-                  <span data-rate="90"></span>
+                  <span data-rate="80"></span>
                 </div>
               </div>
 
               <div className="skills__box">
                 <div className="skills__box__head">
-                  <span className="skills__box__head__lang">SEO / Hosting</span>
+                  <span className="skills__box__head__lang">Databases / Search (MongoDB, SQL, Firebase, ChromaDB, Elasticsearch)</span>
                   <span className="skills__box__head__rate">70%</span>
                 </div>
                 <div className="skills__box__line">

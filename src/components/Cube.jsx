@@ -444,48 +444,77 @@ const Cube = React.memo(
                 </span>
               </div>
 
-              {/* Button Container (Bottom Left) */}
-              <div
-                className={`relative z-40 flex gap-3 px-4 pt-4 pb-3 rounded-tr-3xl border-t border-r transition-colors ${theme === "dark"
-                  ? "bg-zinc-900 border-white/10"
-                  : "bg-white border-zinc-200 shadow-lg"
-                  }`}
-                onMouseEnter={(e) => {
-                  e.stopPropagation();
-                  setIsHovered(false);
-                }}
-                onMouseLeave={(e) => {
-                  e.stopPropagation();
-                }}
-              >
-                {/* Github Button */}
-                <button
-                  onClick={handleLinkClick(item.links.github_link)}
-                  onMouseDown={(e) => e.stopPropagation()}
-                  onTouchStart={(e) => e.stopPropagation()}
-                  className={`w-14 h-14 flex items-center justify-center rounded-full transition-all transform hover:scale-110 border cursor-pointer ${theme === "dark"
-                    ? "bg-black hover:bg-zinc-800 text-white border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]"
-                    : "bg-zinc-900 hover:bg-black text-white border-transparent shadow-md"
+              {/* Button Container (Bottom Left) or Private Badge */}
+              {item.links.github_link || item.links.live_link ? (
+                <div
+                  className={`relative z-40 flex gap-3 px-4 pt-4 pb-3 rounded-tr-3xl border-t border-r transition-colors ${theme === "dark"
+                    ? "bg-zinc-900 border-white/10"
+                    : "bg-white border-zinc-200 shadow-lg"
                     }`}
-                  style={{ pointerEvents: "auto" }}
+                  onMouseEnter={(e) => {
+                    e.stopPropagation();
+                    setIsHovered(false);
+                  }}
+                  onMouseLeave={(e) => {
+                    e.stopPropagation();
+                  }}
                 >
-                  <Github size={18} />
-                </button>
+                  {/* Github Button */}
+                  {item.links.github_link && (
+                    <button
+                      onClick={handleLinkClick(item.links.github_link)}
+                      onMouseDown={(e) => e.stopPropagation()}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      className={`w-14 h-14 flex items-center justify-center rounded-full transition-all transform hover:scale-110 border cursor-pointer ${theme === "dark"
+                        ? "bg-black hover:bg-zinc-800 text-white border-white/20 shadow-[0_0_15px_rgba(0,0,0,0.5)]"
+                        : "bg-zinc-900 hover:bg-black text-white border-transparent shadow-md"
+                        }`}
+                      style={{ pointerEvents: "auto" }}
+                    >
+                      <Github size={18} />
+                    </button>
+                  )}
 
-                {/* Live Link Button */}
-                <button
-                  onClick={handleLinkClick(item.links.live_link)}
-                  onMouseDown={(e) => e.stopPropagation()}
-                  onTouchStart={(e) => e.stopPropagation()}
-                  className={`w-14 h-14 flex items-center justify-center rounded-full transition-all transform hover:scale-110 border cursor-pointer ${theme === "dark"
-                    ? "bg-white hover:bg-zinc-200 text-black border-black/10 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
-                    : "bg-white hover:bg-zinc-50 text-zinc-900 border-zinc-200 shadow-md"
+                  {/* Live Link Button */}
+                  {item.links.live_link && (
+                    <button
+                      onClick={handleLinkClick(item.links.live_link)}
+                      onMouseDown={(e) => e.stopPropagation()}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      className={`w-14 h-14 flex items-center justify-center rounded-full transition-all transform hover:scale-110 border cursor-pointer ${theme === "dark"
+                        ? "bg-white hover:bg-zinc-200 text-black border-black/10 shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                        : "bg-white hover:bg-zinc-50 text-zinc-900 border-zinc-200 shadow-md"
+                        }`}
+                      style={{ pointerEvents: "auto" }}
+                    >
+                      <ExternalLink size={15} />
+                    </button>
+                  )}
+                </div>
+              ) : (
+                <div
+                  className={`relative z-40 flex items-center px-4 pt-4 pb-3 rounded-tr-3xl border-t border-r transition-colors ${theme === "dark"
+                    ? "bg-zinc-900 border-white/10"
+                    : "bg-white border-zinc-200 shadow-lg"
                     }`}
-                  style={{ pointerEvents: "auto" }}
+                  onMouseEnter={(e) => {
+                    e.stopPropagation();
+                    setIsHovered(false);
+                  }}
+                  onMouseLeave={(e) => {
+                    e.stopPropagation();
+                  }}
                 >
-                  <ExternalLink size={15} />
-                </button>
-              </div>
+                  <div className="h-14 flex items-center justify-center px-1">
+                    <span className={`font-bold uppercase tracking-wider whitespace-nowrap transition-colors ${theme === 'dark' ? 'text-white' : 'text-zinc-900'}`}>
+                      {/* Mobile text */}
+                      <span className="text-[10px] min-[1265px]:hidden">🔒 CLIENT WORK</span>
+                      {/* Desktop text */}
+                      <span className="hidden min-[1265px]:inline text-xs">🔒 PRIVATE CLIENT WORK</span>
+                    </span>
+                  </div>
+                </div>
+              )}
 
               <RopeBulb
                 isOn={isLightOn}
