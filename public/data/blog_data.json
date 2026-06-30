@@ -1,5 +1,115 @@
 [
     {
+        "id": "urn:li:activity:7475137372762943488",
+        "title": "Was reading through world model / model-based RL papers and wanted to actuall...",
+        "slug": "was-reading-through-world-model-model-based-rl-papers-and-wanted-to-actuall",
+        "date": "2026-06-24T09:23:24.749Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 13,
+            "comments": 2,
+            "views": 468,
+            "shares": 0
+        },
+        "tags": [
+            "reinforcementlearning",
+            "worldmodels",
+            "machinelearning"
+        ],
+        "content": {
+            "raw": "Was reading through world model / model-based RL papers and wanted to actually get my hands dirty instead of just reading started small, using Pokémon Red as a quick sandbox, with an eye toward eventually working up to replicating something like DIAMOND (https://lnkd.in/g-_qGZ6a) properly. This first pass is nowhere close to that, and that's expected wanted to feel the actual failure modes firsthand before reading about how the bigger papers solve them.\n\nWhat I tried: a VAE + recurrent dynamics model that imagines future game frames without running the emulator, plus a frozen PPO checkpoint steered toward targets without retraining (a rough System 1 / System 2 split). Also started a discrete RSSM at native resolution, a few epochs in.\nWhat didn't work / what I learned: → Imagined rollouts degrade fast compounding error means predictions drift away from reality within a handful of steps, the core challenge this whole model class exists to solve. → Scheduled sampling (occasionally feeding the model its own predictions during training, instead of always ground truth) measurably reduced that drift the one result I'd call a real finding rather than a guess. → A few epochs on a discrete RSSM isn't enough to get clean reconstructions visual fidelity needs real training time I didn't put in yet.\n\nNo polished demo here, just the thinking behind a quick first pass and where it broke. Next: actually train a policy inside the imagined rollouts instead of just visiting them, give the RSSM proper training time, and keep working through the papers (PlaNet → Dreamer → DIAMOND) that this small experiment is helping me actually understand instead of just skim.\n\nRepo: https://lnkd.in/gJB_zib4\n\nhashtag\n#ReinforcementLearning \nhashtag\n#WorldModels \nhashtag\n#MachineLearning",
+            "markdown": "Was reading through world model / model-based RL papers and wanted to actually get my hands dirty instead of just reading started small, using Pokémon Red as a quick sandbox, with an eye toward eventually working up to replicating something like DIAMOND (https://lnkd.in/g-_qGZ6a) properly. This first pass is nowhere close to that, and that's expected wanted to feel the actual failure modes firsthand before reading about how the bigger papers solve them.\n\nWhat I tried: a VAE + recurrent dynamics model that imagines future game frames without running the emulator, plus a frozen PPO checkpoint steered toward targets without retraining (a rough System 1 / System 2 split). Also started a discrete RSSM at native resolution, a few epochs in.\nWhat didn't work / what I learned: → Imagined rollouts degrade fast compounding error means predictions drift away from reality within a handful of steps, the core challenge this whole model class exists to solve. → Scheduled sampling (occasionally feeding the model its own predictions during training, instead of always ground truth) measurably reduced that drift the one result I'd call a real finding rather than a guess. → A few epochs on a discrete RSSM isn't enough to get clean reconstructions visual fidelity needs real training time I didn't put in yet.\n\nNo polished demo here, just the thinking behind a quick first pass and where it broke. Next: actually train a policy inside the imagined rollouts instead of just visiting them, give the RSSM proper training time, and keep working through the papers (PlaNet → Dreamer → DIAMOND) that this small experiment is helping me actually understand instead of just skim.\n\nRepo: https://lnkd.in/gJB_zib4",
+            "summary": "Was reading through world model / model-based RL papers and wanted to actually get my hands dirty instead of just reading started small, using Poké..."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7475137372762943488_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 450
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7475137372762943488_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 436
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7475137372762943488_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 436
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7475137372762943488/"
+    },
+    {
+        "id": "urn:li:activity:7475375089882906624",
+        "title": "Beyond Pixel Prediction: The Evolution of World Models",
+        "slug": "beyond-pixel-prediction-the-evolution-of-world-models",
+        "date": "2026-06-24T09:23:24.741Z",
+        "author": {
+            "name": "Priyanshu Sah",
+            "avatar": "/data/media/avatars/author_avatar.jpg",
+            "profileUrl": "https://linkedin.com/in/priyanshu123sah"
+        },
+        "metrics": {
+            "likes": 34,
+            "comments": 3,
+            "views": 901,
+            "shares": 0
+        },
+        "tags": [
+            "ai-ml",
+            "research",
+            "robotics",
+            "system-design"
+        ],
+        "content": {
+            "raw": "After spending the last week reading world model papers:\n\nThe interesting question is no longer whether models can generate worlds.\nIt's whether agents can learn inside them.\n\nThe old story was prediction:\n\"Given past observations, predict the next frame.\"\n\nThe newer story is much bigger:\n\"Build a simulation good enough that an agent can practice, reason, fail, and improve inside it.\"\n\n\nA few resources that helped connect the dots:\n• The Not Boring piece on World Models (easily the clearest overview I've read)\n• DIAMOND : trains policies entirely inside a learned world (https://lnkd.in/g-_qGZ6a) \n• SIMA 2 : DeepMind pushing agents that learn and collaborate in 3D environments (https://lnkd.in/gAYhHD6a) \n• Cosmos 3 : NVIDIA moving toward world foundation models for physical AI (https://lnkd.in/gmv5TZTd)\n\nWhat stands out is how the field is converging.\nRL researchers want better simulators.\nAgent researchers want environments for long-horizon reasoning.\nRobotics researchers want scalable training data.\nWorld models sit in the middle of all three.\n\nWe're moving from models that generate pixels to models that generate experiences. \nThat's a much bigger shift than another benchmark gain.",
+            "markdown": "### Beyond Prediction: The New Role of World Models\n\nThe fundamental question in AI research has shifted. We are no longer simply asking if models can generate realistic worlds; the focus has moved to whether agents can effectively **learn inside them**.\n\nThe traditional narrative was centered on prediction: using past observations to forecast the next frame. However, the emerging story is far more ambitious. We are now building simulations robust enough for an agent to practice, reason, fail, and improve iteratively within a digital environment before ever interacting with the physical world.\n\n### Key Research and Resources\n\nSeveral recent developments illustrate this transition toward interactive simulation:\n\n*   **DIAMOND**: A framework that trains reinforcement learning policies entirely within a learned world model.\n*   **SIMA 2 (DeepMind)**: Research into agents capable of learning and collaborating within complex 3D environments.\n*   **Cosmos (NVIDIA)**: A move toward world foundation models specifically designed for physical AI and robotics applications.\n*   **Not Boring's World Model Overview**: An excellent entry point for understanding the conceptual landscape of this field.\n\n### The Convergence of AI Disciplines\n\nWhat is most striking about this shift is how disparate fields of research are converging on a single point. World models now sit at the center of three major domains:\n\n1.  **Reinforcement Learning**: Researchers seeking higher-fidelity, more efficient simulators for policy training.\n2.  **Agentic AI**: Researchers requiring environments that support and test long-horizon reasoning.\n3.  **Robotics**: Researchers needing scalable, high-quality synthetic training data to bridge the sim-to-real gap.\n\n### From Pixels to Experiences\n\nWe are moving from models that generate pixels to models that **generate experiences**. This represents a much more significant shift than a simple benchmark gain; it is a fundamental change in how we develop intelligent systems. By creating worlds that agents can inhabit, we are providing the necessary infrastructure for the next generation of autonomous reasoning.",
+            "summary": "A look at the shift from world models that predict pixels to high-fidelity simulations where AI agents learn, reason, and improve through experience."
+        },
+        "media": [
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7475375089882906624_0.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 450
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7475375089882906624_1.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 800,
+                "height": 376
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7475375089882906624_2.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 792,
+                "height": 554
+            },
+            {
+                "type": "image",
+                "url": "/data/media/posts/urn_li_activity_7475375089882906624_3.jpg",
+                "alt": "No alternative text description for this image",
+                "width": 794,
+                "height": 421
+            }
+        ],
+        "originalUrl": "https://www.linkedin.com/feed/update/urn:li:activity:7475375089882906624/"
+    },
+    {
         "id": "urn:li:activity:7435665852286320640",
         "title": "Architecting Agentic Payment Flows: System Design Insights from TCS",
         "slug": "architecting-agentic-payment-flows-system-design-insights-from-tcs",
@@ -12,7 +122,7 @@
         "metrics": {
             "likes": 28,
             "comments": 0,
-            "views": 1048,
+            "views": 1263,
             "shares": 0
         },
         "tags": [
@@ -64,7 +174,7 @@
         "metrics": {
             "likes": 18,
             "comments": 0,
-            "views": 746,
+            "views": 771,
             "shares": 0
         },
         "tags": [
@@ -123,7 +233,7 @@
         "metrics": {
             "likes": 31,
             "comments": 3,
-            "views": 1196,
+            "views": 1349,
             "shares": 0
         },
         "tags": [
@@ -141,7 +251,7 @@
             {
                 "type": "video",
                 "url": "/data/media/posts/urn_li_activity_7428664367392591872_0.jpg",
-                "videoUrl": "blob:https://www.linkedin.com/9c6edc40-cd92-40e8-8e13-987e8feeacad",
+                "videoUrl": "blob:https://www.linkedin.com/d69dd93f-7626-420d-aba9-37eba72c6410",
                 "alt": "Video post",
                 "width": 800,
                 "height": 800
@@ -220,7 +330,7 @@
         "metrics": {
             "likes": 27,
             "comments": 2,
-            "views": 789,
+            "views": 801,
             "shares": 1
         },
         "tags": [
@@ -276,9 +386,9 @@
             "profileUrl": "https://linkedin.com/in/priyanshu123sah"
         },
         "metrics": {
-            "likes": 23,
+            "likes": 24,
             "comments": 2,
-            "views": 807,
+            "views": 823,
             "shares": 0
         },
         "tags": [
@@ -336,7 +446,7 @@
         "metrics": {
             "likes": 23,
             "comments": 0,
-            "views": 927,
+            "views": 950,
             "shares": 0
         },
         "tags": [
@@ -395,7 +505,7 @@
         "metrics": {
             "likes": 36,
             "comments": 4,
-            "views": 1109,
+            "views": 1133,
             "shares": 0
         },
         "tags": [
@@ -453,7 +563,7 @@
         "metrics": {
             "likes": 23,
             "comments": 0,
-            "views": 951,
+            "views": 968,
             "shares": 0
         },
         "tags": [
@@ -491,7 +601,7 @@
         "metrics": {
             "likes": 35,
             "comments": 5,
-            "views": 1067,
+            "views": 1087,
             "shares": 0
         },
         "tags": [
@@ -527,7 +637,7 @@
         "metrics": {
             "likes": 24,
             "comments": 0,
-            "views": 857,
+            "views": 863,
             "shares": 0
         },
         "tags": [
@@ -586,7 +696,7 @@
         "metrics": {
             "likes": 13,
             "comments": 0,
-            "views": 633,
+            "views": 638,
             "shares": 0
         },
         "tags": [
@@ -603,7 +713,7 @@
             {
                 "type": "video",
                 "url": "/data/media/posts/urn_li_activity_7389383117549228032_0.jpg",
-                "videoUrl": "blob:https://www.linkedin.com/e68f9fe2-1961-4a73-806a-bcf15082c1a9",
+                "videoUrl": "blob:https://www.linkedin.com/5478add1-d67a-4b9b-932c-82fb2741c39a",
                 "alt": "Video post",
                 "width": 800,
                 "height": 800
@@ -624,7 +734,7 @@
         "metrics": {
             "likes": 23,
             "comments": 4,
-            "views": 1536,
+            "views": 1552,
             "shares": 0
         },
         "tags": [
@@ -642,7 +752,7 @@
             {
                 "type": "video",
                 "url": "/data/media/posts/urn_li_activity_7390120998823559169_0.jpg",
-                "videoUrl": "blob:https://www.linkedin.com/72c90403-fea4-4679-80f2-1b781c5bd009",
+                "videoUrl": "blob:https://www.linkedin.com/0af21070-dacb-4d51-84e4-dad6c5272c50",
                 "alt": "Video post",
                 "width": 800,
                 "height": 800
@@ -663,7 +773,7 @@
         "metrics": {
             "likes": 23,
             "comments": 2,
-            "views": 1088,
+            "views": 1099,
             "shares": 0
         },
         "tags": [
@@ -700,7 +810,7 @@
         "metrics": {
             "likes": 22,
             "comments": 2,
-            "views": 673,
+            "views": 680,
             "shares": 0
         },
         "tags": [
@@ -758,7 +868,7 @@
         "metrics": {
             "likes": 17,
             "comments": 0,
-            "views": 808,
+            "views": 816,
             "shares": 0
         },
         "tags": [
@@ -802,7 +912,7 @@
         "metrics": {
             "likes": 27,
             "comments": 2,
-            "views": 1162,
+            "views": 1172,
             "shares": 0
         },
         "tags": [
@@ -819,7 +929,7 @@
             {
                 "type": "video",
                 "url": "/data/media/posts/urn_li_activity_7376943669699850240_0.jpg",
-                "videoUrl": "blob:https://www.linkedin.com/387cd7ca-92ab-4a78-9ade-fb279eaaa264",
+                "videoUrl": "blob:https://www.linkedin.com/85ba121f-4558-442c-a3d3-e2a06fe2ba21",
                 "alt": "Video post",
                 "width": 800,
                 "height": 800
@@ -840,7 +950,7 @@
         "metrics": {
             "likes": 34,
             "comments": 2,
-            "views": 1140,
+            "views": 1146,
             "shares": 0
         },
         "tags": [
@@ -877,7 +987,7 @@
         "metrics": {
             "likes": 14,
             "comments": 0,
-            "views": 532,
+            "views": 535,
             "shares": 0
         },
         "tags": [
@@ -915,7 +1025,7 @@
         "metrics": {
             "likes": 14,
             "comments": 0,
-            "views": 632,
+            "views": 635,
             "shares": 0
         },
         "tags": [
@@ -952,7 +1062,7 @@
         "metrics": {
             "likes": 4,
             "comments": 0,
-            "views": 290,
+            "views": 293,
             "shares": 0
         },
         "tags": [
@@ -989,7 +1099,7 @@
         "metrics": {
             "likes": 10,
             "comments": 0,
-            "views": 613,
+            "views": 619,
             "shares": 0
         },
         "tags": [
@@ -1019,7 +1129,7 @@
         "metrics": {
             "likes": 14,
             "comments": 1,
-            "views": 593,
+            "views": 606,
             "shares": 0
         },
         "tags": [
@@ -1092,7 +1202,7 @@
         "metrics": {
             "likes": 102,
             "comments": 12,
-            "views": 2547,
+            "views": 2551,
             "shares": 0
         },
         "tags": [
@@ -1150,7 +1260,7 @@
         "metrics": {
             "likes": 28,
             "comments": 2,
-            "views": 1160,
+            "views": 1163,
             "shares": 0
         },
         "tags": [
@@ -1167,7 +1277,7 @@
             {
                 "type": "video",
                 "url": "/data/media/posts/urn_li_activity_7271579861717037056_0.jpg",
-                "videoUrl": "blob:https://www.linkedin.com/9d15000a-be21-4562-8902-ff3c8dea084a",
+                "videoUrl": "blob:https://www.linkedin.com/74f51ec0-7155-4a4d-af7b-dfb48a6c8ab8",
                 "alt": "Video post",
                 "width": 800,
                 "height": 800
