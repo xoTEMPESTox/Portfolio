@@ -126,4 +126,33 @@ See [`scripts/linkedin-scraper/README.md`](scripts/linkedin-scraper/README.md) f
 
 ## Roadmap
 
-- [x] Currently no planned updates
+- [ ] **Phase 0: Journey Timeline Hotfix (LifeRhythm Reversion)**
+  - [ ] **Revert Description**: Shorten `Liferythm Healthcare` description back to: `"Building AI doctor modules including a Follow-Up Coach, voice-based Clinical Notes assistant, and Front Desk Assistant. Working on healthcare AI workflows, MedLLMs, and production deployments."` in `src/pages/journey.jsx`.
+  - [ ] **Revert Offsets**: Restore original absolute spacing percentages in `journey.jsx`:
+    - TCS -> `pos: 0.28`
+    - MyShadowLife -> `pos: 0.44`
+    - Creo AI -> `pos: 0.60`
+    - Web3Galaxy -> `pos: 0.76`
+    - Chart Raiders -> `pos: 0.92`
+  - [ ] **Investigate Auto-Layout**: Design a dynamic timeline offset algorithm using `getBoundingClientRect()` inside a `scroll` listener to eliminate hardcoded `pos` offsets.
+
+- [ ] **Phase 1: Fullscreen Image Gallery (Bulb View)**
+  - [ ] **Data Model Update**: Add optional `images: string[]` to project objects in `rawPortfolioData` inside `portfolio.jsx`.
+  - [ ] **Carousel Navigation**:
+    - Add `currentIndex` state inside `FullscreenZoomableImage`, initialized with `image.activeImageIndex || 0`.
+    - Render absolute absolute-positioned side chevron buttons (using `ChevronLeft` and `ChevronRight` from `lucide-react`) when `images.length > 1`.
+    - Render dot pagination indicators below the image caption.
+  - [ ] **Keyboard Support**: Set up a `keydown` handler listening for `ArrowLeft` / `ArrowRight` inside `FullscreenZoomableImage`.
+  - [ ] **State Cleanup**: Ensure `scale` resets to `1` and `position` resets to `{x:0, y:0}` on index swap.
+  - [ ] **Swipe Gestures**: Track `clientX` delta in `onTouchStart`/`onTouchEnd` for swipe direction, triggering navigation if zoomed scale is `1` and distance > `50px`.
+
+- [ ] **Phase 2: Project Detail Card Gallery**
+  - [ ] **Prop Integration**: Pass `onImageOpen` (bound to `setFullscreenImage`) to `DetailCard` component.
+  - [ ] **Visual Grid**: Add a flex/grid section "Architecture & Screenshots" right below the project description in `src/components/DetailedCard.jsx`.
+  - [ ] **Thumbnail Interactivity**: Render thumbnails for all image items in the array (falling back to `image_url`). Clicking a thumbnail triggers `onImageOpen({ ...project, image_url: selectedUrl, activeImageIndex: index })` to launch the fullscreen zoom view directly at that specific image index.
+
+- [ ] **Phase 3: Deep Linking & History Sync**
+  - [ ] **Mount Parsing**: Add check in `portfolio.jsx` `useEffect` on load for search params `?project=id` or hash `#id`. If matched, open detail modal.
+  - [ ] **Carousel Snapping**: Set background `activeIndex` to match the data index of the deep-linked project, ensuring the background aligns behind the modal.
+  - [ ] **History Sync**: Add a window `hashchange` event listener in `portfolio.jsx` to dynamically close or transition detail views on browser back/forward navigation.
+  - [ ] **URL Updates**: Set `window.location.hash = project.id` when details open, and use `window.history.pushState` on close to clean the URL without page jumps.
