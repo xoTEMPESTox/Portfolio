@@ -53,7 +53,15 @@
     <priority>0.2</priority>
   </url>
   <url>
+    <loc>https://priyanshusah.com/resume-ai</loc>
+    <priority>0.2</priority>
+  </url>
+  <url>
     <loc>https://priyanshusah.com/resume-global</loc>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://priyanshusah.com/resume-fullstack</loc>
     <priority>0.2</priority>
   </url>
   <url>

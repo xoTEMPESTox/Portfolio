@@ -7,11 +7,21 @@
     },
     {
       "source": "/resume",
-      "destination": "https://drive.google.com/file/d/1BxF2rP6R23QSWQTM5wPrK21jCAW-FAuw/view?usp=sharing",
+      "destination": "https://drive.google.com/file/d/16Sq1ukM2xMSuhGC4ChWXdOuRnrl9q8yQ/view?usp=drive_link",
+      "permanent": true
+    },
+    {
+      "source": "/resume-ai",
+      "destination": "https://drive.google.com/file/d/16Sq1ukM2xMSuhGC4ChWXdOuRnrl9q8yQ/view?usp=drive_link",
       "permanent": true
     },
     {
       "source": "/resume-global",
+      "destination": "https://drive.google.com/file/d/16Sq1ukM2xMSuhGC4ChWXdOuRnrl9q8yQ/view?usp=drive_link",
+      "permanent": true
+    },
+    {
+      "source": "/resume-fullstack",
       "destination": "https://drive.google.com/file/d/1xDaBzWh3j2qQt14hQwANJYp-GX88xisc/view?usp=drive_link",
       "permanent": true
     },

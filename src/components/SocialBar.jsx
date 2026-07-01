@@ -127,7 +127,7 @@ const SocialBar = () => {
       ),
     },
     {
-      href: "/resume-global",
+      href: "/resume",
       label: "Download CV",
       target: "_blank",
       rel: "noopener noreferrer",
